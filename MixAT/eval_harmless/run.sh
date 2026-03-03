@@ -5,7 +5,7 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat18
+#SBATCH --nodelist=oat14
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -62,6 +62,7 @@ else
   echo ".env file not found"
   exit 1
 fi
-export HF_HOME="../../.cache/huggingface"
+export HF_HOME=/scratch-ssd/$USER/.cache/huggingface
+mkdir -p "$HF_HOME"
 python evaluation.py $1 $2 $3 None True False
 

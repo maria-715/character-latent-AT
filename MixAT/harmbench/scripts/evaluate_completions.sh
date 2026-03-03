@@ -1,5 +1,37 @@
 #!/bin/bash
 
+# ===================================
+#SBATCH --job-name=run_generate_samples
+#SBATCH --partition=msc
+
+#SBATCH --gres=gpu:a100:1
+#SBATCH --nodelist=oat14
+
+#SBATCH --output=slurm-%j.out
+#SBATCH --error=slurm-%j.err
+# ===================================
+
+# ======================================================
+# Conda settings
+export CONDA_ENVS_PATH=/scratch-ssd/$USER/conda_envs
+export CONDA_PKGS_DIRS=/scratch-ssd/$USER/conda_pkgs
+
+# Force conda to use node-local scratch for cache
+export XDG_CACHE_HOME=/scratch-ssd/$USER/.cache
+mkdir -p "$XDG_CACHE_HOME"
+
+# Because I'm going to use pip
+export TMPDIR=/scratch/$USER/tmp
+mkdir -p "$TMPDIR"
+
+# Create conda env
+CONDA_BIN=/scratch-ssd/oatml/miniconda3/bin/conda
+ENV_NAME="env_harmbench"
+RUN_LOCK=/scratch-ssd/oatml/run_locked.sh
+
+source /scratch-ssd/oatml/miniconda3/bin/activate "$ENV_NAME"
+# ======================================================
+
 source /opt/rh/devtoolset-10/enable
 
 cls_path="$1"
