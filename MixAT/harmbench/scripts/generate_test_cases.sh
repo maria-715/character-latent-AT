@@ -4,7 +4,7 @@
 #SBATCH --job-name=run_generate_samples
 #SBATCH --partition=msc
 
-#SBATCH --gres=gpu:a100:1
+#SBATCH --gres=gpu:a100:2 # 2 for AutoDAN
 #SBATCH --nodelist=oat14
 
 #SBATCH --output=slurm-%j.out

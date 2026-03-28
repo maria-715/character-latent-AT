@@ -4,7 +4,7 @@
 #SBATCH --job-name=run_generate_samples
 #SBATCH --partition=msc
 
-#SBATCH --gres=gpu:a100:1
+#SBATCH --gres=gpu:a100:2 # 2 for AutoDAN
 #SBATCH --nodelist=oat14
 
 #SBATCH --output=slurm-%j.out
@@ -41,11 +41,11 @@ fi
 
 source /scratch-ssd/oatml/miniconda3/bin/activate "$ENV_NAME"
 
-# pip install requirements
 if [ "$NEED_PIP_INSTALL" -eq 1 ]; then
   /scratch-ssd/oatml/run_locked.sh env TMPDIR="$TMPDIR" pip install -r ../requirements/requirements_harmbench.txt
   /scratch-ssd/oatml/run_locked.sh env TMPDIR="$TMPDIR" pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
   /scratch-ssd/oatml/run_locked.sh env TMPDIR="$TMPDIR" pip install -e "../harmbench/requirement/FastChat[model_worker,webui]"
+  /scratch-ssd/oatml/run_locked.sh env TMPDIR="$TMPDIR" pip install flash-attn --no-build-isolation
 fi
 
 # ======================================================

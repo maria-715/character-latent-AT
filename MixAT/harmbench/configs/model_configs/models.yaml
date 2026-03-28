@@ -216,13 +216,60 @@ zephyr_7b:
   num_gpus: 1
   model_type: open_source
 
+# NOTE somehow handle the device_map
 # Zephyr trained with CAT (GitHub model)
 zephyr_7b_cat_github:
   model:
     model_name_or_path: HuggingFaceH4/zephyr-7b-beta
     use_fast_tokenizer: False
     dtype: bfloat16
-    peft_path: ../../experiments/CAT_experiments/training/ul/None/final_model
+    peft_path: ../../experiments/CAT_experiment_initial/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_cat_github_eps_0_1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_experiment_0_1/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_cat_github_eps_0_2:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_experiment_0_2/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_cat_github_eps_0_4:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_experiment_0_4/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_cat_github_refait:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_experiment_refait/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
   num_gpus: 1
   model_type: open_source
 
@@ -233,6 +280,8 @@ zephyr_7b_cat_huggingface:
     use_fast_tokenizer: False
     dtype: bfloat16
     peft_path: ContinuousAT/Zephyr-CAT
+    device_map: # When generating with AutoDAN
+      "": "cuda:1"
   num_gpus: 1
   model_type: open_source
 

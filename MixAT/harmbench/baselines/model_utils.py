@@ -352,9 +352,15 @@ def load_model_and_tokenizer(
             revision=revision,
             **model_kwargs).eval()
     if peft_path is not None:
-        model = PeftModel.from_pretrained(model, peft_path)
-        a_norm = torch.zeros(1).cuda()
-        b_norm = torch.zeros(1).cuda()
+        model = PeftModel.from_pretrained(model, peft_path, device_map=device_map)
+
+        # NOTE: MODIFIED
+        # a_norm = torch.zeros(1).cuda()
+        # b_norm = torch.zeros(1).cuda()
+        base_device = next(model.parameters()).device
+        a_norm = torch.zeros(1, device=base_device)
+        b_norm = torch.zeros(1, device=base_device)
+        
         for name, param in model.named_parameters():
             if 'lora_A' in name:  # Adjust this if necessary
                 a_norm += (param.data**2).sum()
