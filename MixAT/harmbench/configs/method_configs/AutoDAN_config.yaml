@@ -119,6 +119,15 @@ zephyr_7b_cat_huggingface:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
 
+zephyr_7b_rcat_hard_nn_search:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
 # =====================================
 
 zephyr_7b_robust6_data2:

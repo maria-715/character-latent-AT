@@ -285,6 +285,17 @@ zephyr_7b_cat_huggingface:
   num_gpus: 1
   model_type: open_source
 
+zephyr_7b_rcat_hard_nn_search:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_hard_NN_search/training/ul/None/final_model
+    device_map: # When generating with AutoDAN
+      "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
 # Zephyr 7B + R2D2 (adversarial training against GCG)
 zephyr_7b_robust:
   model:
