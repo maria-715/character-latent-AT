@@ -2,10 +2,13 @@
 venv
 .cache
 .env
+.vscode
 
 # Project folders
 experiments
 results
+slurm-*.out
+slurm-*.err
 
 # Helper files
 commands.txt
