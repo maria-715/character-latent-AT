@@ -262,6 +262,39 @@ zephyr_7b_cat_github_eps_0_4:
   num_gpus: 1
   model_type: open_source
 
+zephyr_7b_cat_true_eps_0_5:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_true_eps_0_5/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_cat_true_eps_1_0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_true_eps_1_0/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_cat_true_eps_2_0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_true_eps_2_0/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
 zephyr_7b_cat_github_refait:
   model:
     model_name_or_path: HuggingFaceH4/zephyr-7b-beta
@@ -280,19 +313,41 @@ zephyr_7b_cat_huggingface:
     use_fast_tokenizer: False
     dtype: bfloat16
     peft_path: ContinuousAT/Zephyr-CAT
-    device_map: # When generating with AutoDAN
-      "": "cuda:1"
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
   num_gpus: 1
   model_type: open_source
 
-zephyr_7b_rcat_hard_nn_search:
+zephyr_7b_rcat_torch_topk1_lambda50:
   model:
     model_name_or_path: HuggingFaceH4/zephyr-7b-beta
     use_fast_tokenizer: False
     dtype: bfloat16
-    peft_path: ../../experiments/RCAT_hard_NN_search/training/ul/None/final_model
-    device_map: # When generating with AutoDAN
-      "": "cuda:1"
+    peft_path: ../../experiments/RCAT_torch_topk1_lambda50/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_rcat_torch_topk1_lambda25:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_torch_topk1_lambda25/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_rcat_torch_topk5_lambda50_tau20_beta005:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_torch_topk5_lambda50_tau20_beta005/training/ul/None/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
   num_gpus: 1
   model_type: open_source
 
