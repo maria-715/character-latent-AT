@@ -10,7 +10,7 @@ hydra:
 experiment: adversarial_training
 
 dataset:
-  data_path: ./data/
+  data_path: ../Reachable-Continuous-AdvTrain/data/
   utility_data: ultrachat_200k
   probabilities:
   - 0.125 # adv

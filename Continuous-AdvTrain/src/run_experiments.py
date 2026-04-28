@@ -90,7 +90,7 @@ class TrainerHyperParams:
 
 @dataclass
 class DatasetConfig:
-    data_path: Optional[str] = "../../../data/"
+    data_path: Optional[str] = "../../../../Reachable-Continuous-AdvTrain/data/"
     dataset_name: Optional[str] = "adv_training_behaviors"
     utility_data: Optional[str] = "ultrachat"  # TODO remove this and use dataset_name
     probabilities: List[float] = field(default_factory=lambda: [0.5, 0.5])
