@@ -60,10 +60,12 @@ class MyTrainingConfig:
 @dataclass
 class ReachabilityConfig:
     enable: bool = False
-    lambda_weight: float = 0.2
+    use_torch_nn_search: bool = True
+    lambda_weight: float = 50.0
     metric: str = "l2"
-    topk: int = 1
+    top_k: int = 1
     tau: float = 20.0
+    beta: float = 0.0
 
 @dataclass
 class AdversarialTrainingConfig:
@@ -188,11 +190,19 @@ def main(cfg: GlobalConfig) -> None:
         cfg.model_name = cfg.path.model_name
 
     hydra_dir = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
+
+    # logging_path is now treated as ROOT (passed from CLI)
+    root_dir = cfg.path.logging_path
+
+    # Hydra output goes inside root_dir
     cfg.path.logging_path = hydra_dir
     if hydra.core.hydra_config.HydraConfig.get().mode == RunMode.MULTIRUN:
         cfg.path.checkpoint_path = cfg.path.checkpoint_path + "/" + hydra_dir.strip().split("/")[-1]
     else:
         cfg.path.checkpoint_path = cfg.path.logging_path
+
+    # experiments_db always inside root_dir
+    cfg.path.experiments_path = os.path.join(root_dir, "experiments_db/")
 
     logging.info(f"Running experiment: {cfg.experiment}")
     logging.info(f"Results will be saved to {cfg.path.logging_path}")

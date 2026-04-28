@@ -5,6 +5,8 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
+#SBATCH --nodelist=oat[11-18]
+#SBATCH --nodes=1
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -28,7 +30,7 @@ CONDA_BIN=/scratch-ssd/oatml/miniconda3/bin/conda
 ENV_NAME="env_RCAT"
 RUN_LOCK=/scratch-ssd/oatml/run_locked.sh
 
-# $CONDA_BIN remove --name $ENV_NAME --all -y
+#$CONDA_BIN remove --name $ENV_NAME --all -y
 
 NEED_PIP_INSTALL=0
 if ! "$CONDA_BIN" env list | awk '{print $1}' | grep -qx "$ENV_NAME"; then
@@ -52,6 +54,50 @@ fi
 
 # ======================================================
 
+# For current experimentation
+TORCH_NN_SEARCH="True"
+LAMBDA_WEIGHT=0.0
+TOP_K=1
+TAU=0.0
+BETA=0.0
+
+# Output folder
+LOGGING_PATH=""
+
+if [[ "$*" == *"use_torch_nn_search=False"* ]]; then
+  TORCH_NN_SEARCH="False"
+fi
+
+for arg in "$@"; do
+  if [[ "$arg" == lambda_weight=* ]]; then
+    LAMBDA_WEIGHT="${arg#lambda_weight=}"
+  elif [[ "$arg" == top_k=* ]]; then
+    TOP_K="${arg#top_k=}"
+  elif [[ "$arg" == tau=* ]]; then
+    TAU="${arg#tau=}"
+  elif [[ "$arg" == beta=* ]]; then
+    BETA="${arg#beta=}"
+
+  elif [[ "$arg" == logging_path=* ]]; then
+    LOGGING_PATH="${arg#logging_path=}"
+  fi
+done
+
+
+if [ -z "$LOGGING_PATH" ]; then
+  echo "ERROR: You must provide logging_path=..."
+  echo "Example: sbatch script.sh logging_path=./experiments_topk1_lambda25"
+  exit 1
+fi
+mkdir -p "$LOGGING_PATH"
+
 
 # srun python src/run_experiments.py --config-name=adv_train_ul path=example_path adversarial.eps=0.4
-srun python src/run_experiments.py --config-name=adv_train_ul path=example_path
+srun python src/run_experiments.py --config-name=adv_train_ul path=example_path \
+     hydra.run.dir=$LOGGING_PATH \
+     path.logging_path=$LOGGING_PATH \
+     adversarial.reachability_config.use_torch_nn_search=$TORCH_NN_SEARCH \
+     adversarial.reachability_config.lambda_weight=$LAMBDA_WEIGHT \
+     adversarial.reachability_config.top_k=$TOP_K \
+     adversarial.reachability_config.tau=$TAU \
+     adversarial.reachability_config.beta=$BETA

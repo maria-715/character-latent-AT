@@ -109,6 +109,9 @@ class EmbeddingSpaceAttack:
             debug (int, optional): The debug level with increasing verbosity. (0 None, 1 print final loss, 2 include loss at every iteration, 3 include norms and shapes)
         """
 
+        # For RCAT, always disabling it
+        relative_lr = False
+
         self.embed_weights = embed_weights
         # self.response_key = response_key  # TODO Needed? Remove if not (also line bellow and argument)
         # self.response_key_ids = tokenizer.encode(response_key, return_tensors="pt")
@@ -138,10 +141,13 @@ class EmbeddingSpaceAttack:
         self.reachability_config = reachability_config
         if self.reachability_config["enable"]:
             self.reachability = ReachabilityPenalty(
-                ReachabilityIndex(embed_weights, metric=self.reachability_config["metric"]),
+                ReachabilityIndex(embed_weights, 
+                                  metric=self.reachability_config["metric"], 
+                                  use_torch_nn_search=self.reachability_config["use_torch_nn_search"]),
                 lambda_weight=self.reachability_config["lambda_weight"],
-                topk=self.reachability_config["topk"],
+                top_k=self.reachability_config["top_k"],
                 tau=self.reachability_config["tau"],
+                beta=self.reachability_config["beta"],
             )
 
 
@@ -151,18 +157,38 @@ class EmbeddingSpaceAttack:
         
         # save losses and responses
         best_loss = torch.inf
+        best_idx = -1
+        best_stats = None
+
         all_losses = []
         affirmative_responses = []
 
         all_harm_losses = []
         all_reach_losses = []
         all_nn_dists = []
+        all_nn_entropies = []
+        all_nn_ids = []
 
         # init embeddings of input instruction and target and initialize adversarial perturbation
         adv_perturbation, adv_perturbation_mask = self.init_perturbation(
             input_ids, target_ids, attention_mask
         )
+
+        logging.info(f"adv_perturbation.shape = {adv_perturbation.shape}")
+        logging.info(f"adv_perturbation_mask.shape = {adv_perturbation_mask.shape}")
+        print(f"adv_perturbation.shape = {adv_perturbation.shape}")
+        print(f"adv_perturbation_mask.shape = {adv_perturbation_mask.shape}")
         
+        # total tokens perturbed across the whole batch
+        num_tokens = adv_perturbation_mask.sum().item()
+        logging.info(f"num_perturbed_tokens = {num_tokens}")
+        print(f"num_perturbed_tokens = {num_tokens}")
+
+        # how many tokens are perturbed in each example
+        tokens_per_sample = adv_perturbation_mask.sum(dim=1)
+        logging.info(f"tokens_per_sample = {tokens_per_sample}")
+        print(f"tokens_per_sample = {tokens_per_sample}")
+
         input_embeds = self.get_embeddings(input_ids)
         target_one_hot = self.get_one_hot(target_ids)
 
@@ -194,33 +220,88 @@ class EmbeddingSpaceAttack:
             reach_loss = torch.tensor(0.0, device=adv_embeds.device)
             nn_dist = torch.tensor(0.0, device=adv_embeds.device)
             if self.reachability is not None:
-                reach_loss, nn_dist, _ = self.reachability(adv_embeds, adv_perturbation_mask)
-                loss = harmful_loss + self.reachability.lambda_weight * reach_loss
+                reach_loss, nn_dist, nn_ids, nn_entropy = self.reachability(adv_embeds, adv_perturbation_mask)
+                reach_contribution = self.reachability.lambda_weight * reach_loss
+                loss = harmful_loss + reach_contribution
             # ==================================
             else:
                 loss = harmful_loss
+                nn_entropy = torch.tensor(0.0, device=adv_embeds.device)
 
             loss.backward()
             all_losses.append(loss.item())
-            all_harm_losses.append(harmful_loss.item())
-            all_reach_losses.append(reach_loss.item())
-            all_nn_dists.append(nn_dist.item())
+            # all_harm_losses.append(harmful_loss.item())
+            # all_reach_losses.append(reach_loss.item())
+            # all_nn_dists.append(nn_dist.item())
+            # all_nn_entropies.append(nn_entropy.item())
             opt.step()
 
+            '''  # REMOVING THE LP-BALL CONSTRAINT
             # perturbations that are applied directly to the instruction are constraint to a small lp ball
             if self.init_type == "instruction":
                 adv_perturbation = self.project_l2(adv_perturbation)
             # perturbations that are added as a suffix should be projected to the simplex
             elif self.init_type == "suffix":
                 adv_perturbation = self.project_simplex(adv_perturbation)
+            '''
 
             num_affirmative_responses = self.get_num_affirmative_responses(target_ids, logits)
             affirmative_responses.append(num_affirmative_responses)
 
-            # save best perturbation
-            if loss < best_loss:
+            # save best perturbation (I added the item())
+            if loss.item() < best_loss:
                 best_loss = loss
                 self.best_adv_perturbation = adv_perturbation
+
+                # TEMPORARY BC DETACH() TAKES A LOT OF TIME
+                best_nn_ids = nn_ids.detach().cpu().clone()
+
+                best_idx = i
+
+                # NN change vs original input
+                # - Flatten everything consistently
+                original_ids = input_ids.detach().cpu().view(-1)
+                mask_flat = adv_perturbation_mask.detach().cpu().view(-1)
+
+                # - Select only masked positions
+                original_ids_masked = original_ids[mask_flat == 1]
+                nn_ids_flat = nn_ids.detach().cpu().view(-1)
+
+                nn_change_from_input = (
+                    (nn_ids_flat != original_ids_masked).float().mean().item()
+                )
+
+                # Calculate margins between NNs (for top_k >= 2)
+                if hasattr(self.reachability, "last_Dists") and self.reachability.last_Dists is not None:
+                    Dists = self.reachability.last_Dists  # [N, K]
+                    if Dists.shape[1] > 1:
+                        margin = (Dists[:, 1] - Dists[:, 0]).mean().item()
+                    else:
+                        margin = 0.0
+                else:
+                    margin = 0.0
+
+                # Actual perturbed tokens (not mask!)
+                token_norms = adv_perturbation.norm(dim=-1) # [B, T]
+                actual_perturbed_fraction = (
+                    (token_norms > 1e-6).float().mean().item()
+                )
+
+                best_stats = {
+                    "index": best_idx,
+                    "attack_loss": loss.item(),
+                    "harm_loss": harmful_loss.item(),
+                    "reach_loss": reach_loss.item(),
+                    "nn_dist": nn_dist.item(),
+                    "nn_entropy": nn_entropy.item(),
+                    "affirmative": num_affirmative_responses,
+                    "adv_norm": adv_perturbation.reshape(adv_perturbation.size(0), -1).norm(p=2, dim=1).mean().item(),
+                    "nn_ids": best_nn_ids,
+                    "mask": adv_perturbation_mask.detach().cpu(),
+                    "nn_change_from_input": nn_change_from_input,
+                    "nn_margin": margin,
+                    "actual_perturbed_fraction": actual_perturbed_fraction,
+                }
 
             # debug
             if self.debug > 2:
@@ -232,32 +313,7 @@ class EmbeddingSpaceAttack:
             self.debug_output(target_ids, logits, attention_mask)
 
         enable_model_gradients(model)
-        
-        stats = {
-            "attack_loss_mean": sum(all_losses) / len(all_losses) if len(all_losses) > 0 else None,
-            "attack_loss_min": min(all_losses) if all_losses else None,
-            "attack_loss_last": all_losses[-1] if len(all_losses) > 0 else None,
-            "attack_loss_improvement": (all_losses[0] - min(all_losses)) if all_losses else None,
-            
-            "affirmative_count": sum(affirmative_responses) if affirmative_responses else None,
-            "affirmative_rate": (sum(affirmative_responses) / len(affirmative_responses)) if affirmative_responses else None,
-            "affirmative_last": affirmative_responses[-1] if len(affirmative_responses) > 0 else None,
 
-            "harm_loss_mean": sum(all_harm_losses) / len(all_harm_losses) if len(all_harm_losses) > 0 else None,
-            "harm_loss_min": min(all_harm_losses) if all_harm_losses else None,
-            "harm_loss_last": all_harm_losses[-1] if len(all_harm_losses) > 0 else None,
-            "harm_loss_improvement": (all_harm_losses[0] - min(all_harm_losses)) if all_harm_losses else None,
-
-            "reach_loss_mean": sum(all_reach_losses) / len(all_reach_losses) if len(all_reach_losses) > 0 else None,
-            "reach_loss_min": min(all_reach_losses) if all_reach_losses else None,
-            "reach_loss_last": all_reach_losses[-1] if len(all_reach_losses) > 0 else None,
-            "reach_loss_improvement": (all_reach_losses[0] - min(all_reach_losses)) if all_reach_losses else None,
-
-            "nn_dist_mean": sum(all_nn_dists) / len(all_nn_dists) if len(all_nn_dists) > 0 else None,
-            "nn_dist_min": min(all_nn_dists) if all_nn_dists else None,
-            "nn_dist_last": all_nn_dists[-1] if len(all_nn_dists) > 0 else None,
-            "nn_dist_improvement": (all_nn_dists[0] - min(all_nn_dists)) if all_nn_dists else None,
-        }
 
         return (
             input_embeds.detach(),
@@ -265,7 +321,7 @@ class EmbeddingSpaceAttack:
             adv_perturbation_mask.detach(),
             all_losses,
             affirmative_responses,
-            stats,
+            best_stats,
         )
 
     def calc_loss(self, i, model, input_embeds, target_one_hot, attention_mask, loss_mask, log_debug=True):
@@ -525,30 +581,37 @@ class SignSGD(Optimizer):
 import faiss
 import numpy as np
 import torch
+import torch.nn.functional as F
 
 class ReachabilityIndex:
 
-    def __init__(self, embed_weights: torch.Tensor, metric: str = "l2"):
+    def __init__(self, embed_weights: torch.Tensor, metric: str = "l2", use_torch_nn_search: bool = True):
         self.metric = metric
-        self.embed_weights = embed_weights.detach()
+        self.use_torch_nn_search = use_torch_nn_search
+        self.embed_weights = embed_weights.detach().clone()
 
-        # x base: the set of vectors stored in the index, shape: [vocab_size, d]
-        xb = self.embed_weights.float().cpu().numpy().astype("float32")
-        d = xb.shape[1]
+        if not self.use_torch_nn_search:
+            # x base: the set of vectors stored in the index, shape: [vocab_size, d]
+            xb = self.embed_weights.float().cpu().numpy().astype("float32")
+            d = xb.shape[1]
 
-        print(f"Vocab size: {xb.shape[0]}")
-        logging.info(f"Vocab size: {xb.shape[0]}")
-        
-        # Brute-force searches
-        if metric == "cosine":
-            faiss.normalize_L2(xb) # Convert the metric to inner product
-            self.index = faiss.IndexFlatIP(d)
+            print(f"Vocab size: {xb.shape[0]}")
+            logging.info(f"Vocab size: {xb.shape[0]}")
+            
+            # Brute-force searches
+            if metric == "cosine":
+                faiss.normalize_L2(xb) # Convert the metric to inner product
+                self.index = faiss.IndexFlatIP(d)
+            else:
+                self.index = faiss.IndexFlatL2(d)
+
+            self.index.add(xb)
+
         else:
-            self.index = faiss.IndexFlatL2(d)
+            self.index = None
 
-        self.index.add(xb)
+    def _search_faiss(self, q: torch.Tensor, top_k: int = 1):
 
-    def search(self, q: torch.Tensor, topk: int = 1):
         # q: batch of query vectors, shape: [N, d]
         xq = q.detach().float().cpu().numpy().astype("float32")
         if self.metric == "cosine":
@@ -556,20 +619,54 @@ class ReachabilityIndex:
 
         # D: distances (or inner products for cosine)
         # I: indices
-        # Both have shape [N, topk]
-        D, I = self.index.search(xq, topk)
+        # Both have shape [N, top_k]
+        D, I = self.index.search(xq, top_k)
         return (
             torch.from_numpy(D).to(q.device),
             torch.from_numpy(I).to(q.device),
         )
+
+
+    def _search_torch(self, q: torch.Tensor, top_k: int = 1):
+        # hard top_k selection is still discrete 
+        # but returned distances computed in torch and usable in backprop
+        E = self.embed_weights.to(q.device).float() # [V, D]
+        q = q.float() # [N, D]
+
+        if self.metric == "cosine":
+            qn = F.normalize(q, dim=-1) # [N, D]
+            En = F.normalize(E, dim=-1) # [V, D]
+            scores = qn @ En.T # [N, V] cosine similarity
+            D, I = torch.topk(scores, k=top_k, dim=-1, largest=True, sorted=True)
+            return D, I
+
+        # L2 mode (squared Euclidean distance, matching FAISS IndexFlatL2)
+        # dist^2(q,e) = ||q||^2 + ||e||^2 - 2 q.e
+        q2 = (q ** 2).sum(dim=-1, keepdim=True) # [N, 1]
+        e2 = (E ** 2).sum(dim=-1).unsqueeze(0) # [1, V]
+        scores = q2 + e2 - 2.0 * (q @ E.T) # [N, V] squared L2 distance
+        D, I = torch.topk(scores, k=top_k, dim=-1, largest=False, sorted=True)
+        return D, I
+
+    def search(self, q: torch.Tensor, top_k: int = 1):
+            
+        # Returns D: [N, top_k], I: D: [N, top_k]
+        # L2 mode: D is squared L2 distance in both differentiability modes
+        # Cosine mode: D is cosine similarity if use_torch_nn_search=False with FAISS IndexFlatIP
+        #              D is cosine similarity if use_torch_nn_search=True too
+        if self.use_torch_nn_search:
+            return self._search_torch(q, top_k=top_k)
+        else:
+            return self._search_faiss(q, top_k=top_k)
     
 # Differentiable regularisation loss
 class ReachabilityPenalty:
-    def __init__(self, reach_index: ReachabilityIndex, lambda_weight=0.2, topk=1, tau=20.0):
+    def __init__(self, reach_index: ReachabilityIndex, lambda_weight=50.0, top_k=1, tau=20.0, beta=0.0):
         self.reach_index = reach_index
         self.lambda_weight = lambda_weight
-        self.topk = topk
+        self.top_k = top_k
         self.tau = tau
+        self.beta = beta
 
     def __call__(self, adv_embeds: torch.Tensor, mask: torch.Tensor):
         # adv_embeds: current perturbed embeddings [B, T, D], mask: to ignore padding [B, T]
@@ -578,27 +675,37 @@ class ReachabilityPenalty:
         flat_mask = mask.reshape(-1).bool()
 
         # Get nearest token embeddings
-        Dists, Indices = self.reach_index.search(flat_q, topk=self.topk)
+        Dists, Indices = self.reach_index.search(flat_q, top_k=self.top_k)
+        self.last_Dists = Dists.detach()
 
         token_embed_matrix = self.reach_index.embed_weights.to(adv_embeds.device)
-        cand = token_embed_matrix[Indices]          # [N, K, D]
-        q = flat_q[:, None, :]                  # [N, 1, D]
+        cand = token_embed_matrix[Indices] # [N, K, D]
+        q = flat_q[:, None, :] # [N, 1, D]
 
-        # L2 distance to each candidate (even if similarity metric is cosine!)
-        cand_dist = torch.norm(q - cand, dim=-1)  # [N, K]
+        if self.reach_index.metric == "cosine":
+            qn = F.normalize(q, dim=-1)
+            candn = F.normalize(cand, dim=-1)
+            cand_dist = 1.0 - (qn * candn).sum(dim=-1) # [N, K], cosine distance
+        else:
+            cand_dist = torch.norm(q - cand, dim=-1) # [N, K], L2 distance
 
-        if self.topk == 1:
-            penalty_per_token = cand_dist[:, 0]
-        else: # ==== TODO: To review especially for everything I have abt "cosine" ====
-            if self.reach_index.metric == "cosine":
-                w = torch.softmax(self.tau * Dists, dim=-1)
-            else:
-                w = torch.softmax(-self.tau * Dists, dim=-1)
-            penalty_per_token = (w * cand_dist).sum(dim=-1)
+        weights = torch.softmax(-self.tau * cand_dist, dim=-1)
 
+        # Discourage "in-between" states
+        entropy = torch.zeros(flat_q.shape[0], device=adv_embeds.device, dtype=adv_embeds.dtype)
+        if self.beta > 0.0:
+            entropy = -(weights * (weights + 1e-12).log()).sum(dim=-1)
+
+        penalty_per_token = (weights * cand_dist).sum(dim=-1) + self.beta * entropy
         penalty = penalty_per_token[flat_mask].mean()
-        nn_dist = Dists[:, 0][flat_mask].mean()
+
+        # For cosine, Dists[:, 0] is similarity, not distance
+        # So, need to reverse
+        if self.reach_index.metric == "cosine":
+            nn_dist = (1.0 - Dists[:, 0])[flat_mask].mean()
+        else:
+            nn_dist = Dists[:, 0][flat_mask].mean()
         nn_ids = Indices[:, 0][flat_mask]
 
-        return penalty, nn_dist, nn_ids
+        return penalty, nn_dist, nn_ids, entropy[flat_mask].mean()
     

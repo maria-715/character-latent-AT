@@ -1,6 +1,8 @@
 from typing import Dict, Tuple
 import logging
 import torch
+import json
+import os
 
 from contextlib import contextmanager, nullcontext
 
@@ -910,9 +912,9 @@ def log(
         if v is None:
             return "None"
         if isinstance(v, torch.Tensor):
-            return f"{v.item():.4f}"
+            return f"{v.item():.8f}"
         if isinstance(v, float):
-            return f"{v:.4f}"
+            return f"{v:.8f}"
         return str(v)
 
     logging.info(
@@ -927,29 +929,18 @@ def log(
             f"Away-Toward output {away_text}; "
             f"Utility output {utility_text}; "
 
-            f"attack_loss_mean={prepare(stats.get('attack_loss_mean'))}; "
-            f"attack_loss_min={prepare(stats.get('attack_loss_min'))}; "
-            f"attack_loss_last={prepare(stats.get('attack_loss_last'))}; "
-            f"attack_loss_improvement={prepare(stats.get('attack_loss_improvement'))}; "
+            f"index={prepare(stats.get('index'))}; "
+            f"attack_loss={prepare(stats.get('attack_loss'))}; "
+            f"harm_loss={prepare(stats.get('harm_loss'))}; "
+            f"reach_loss={prepare(stats.get('reach_loss'))}; "
+            f"nn_dist={prepare(stats.get('nn_dist'))}; "
+            f"nn_entropy={prepare(stats.get('nn_entropy'))}; "
+            f"affirmative={prepare(stats.get('affirmative'))}; "
+            f"adv_norm={prepare(stats.get('adv_norm'))}; "  
 
-            f"affirmative_count={prepare(stats.get('affirmative_count'))}; "
-            f"affirmative_rate={prepare(stats.get('affirmative_rate'))}; "
-            f"affirmative_last={prepare(stats.get('affirmative_last'))}; "
-
-            f"harm_loss_mean={prepare(stats.get('harm_loss_mean'))}; "
-            f"harm_loss_min={prepare(stats.get('harm_loss_min'))}; "
-            f"harm_loss_last={prepare(stats.get('harm_loss_last'))}; "
-            f"harm_loss_improvement={prepare(stats.get('harm_loss_improvement'))}; "
-
-            f"reach_loss_mean={prepare(stats.get('reach_loss_mean'))}; "
-            f"reach_loss_min={prepare(stats.get('reach_loss_min'))}; "
-            f"reach_loss_last={prepare(stats.get('reach_loss_last'))}; "
-            f"reach_loss_improvement={prepare(stats.get('reach_loss_improvement'))}; "
-
-            f"nn_dist_mean={prepare(stats.get('nn_dist_mean'))}; "
-            f"nn_dist_min={prepare(stats.get('nn_dist_min'))}; "
-            f"nn_dist_last={prepare(stats.get('nn_dist_last'))}; "
-            f"nn_dist_improvement={prepare(stats.get('nn_dist_improvement'))}; "
+            f"nn_change_from_input={prepare(stats.get('nn_change_from_input'))}; "
+            f"nn_margin={prepare(stats.get('nn_margin'))}; "
+            f"actual_perturbed_fraction={prepare(stats.get('actual_perturbed_fraction'))}; "         
 
         )
     )
@@ -965,29 +956,17 @@ def log(
     }
 
     for key in [
-        "attack_loss_mean",
-        "attack_loss_min",
-        "attack_loss_last",
-        "attack_loss_improvement",
-
-        "affirmative_count",
-        "affirmative_rate",
-        "affirmative_last",
-
-        "harm_loss_mean",
-        "harm_loss_min",
-        "harm_loss_loss",
-        "harm_loss_improvement",
-
-        "reach_loss_mean",
-        "reach_loss_min",
-        "reach_loss_last",
-        "reach_loss_improvement",
-
-        "nn_dist_mean",
-        "nn_dist_min",
-        "nn_dist_last",
-        "nn_dist_improvement",
+        "index",
+        "attack_loss",
+        "harm_loss",
+        "reach_loss",
+        "nn_dist",
+        "nn_entropy",
+        "affirmative",
+        "adv_norm",
+        "nn_change_from_input",
+        "nn_margin",
+        "actual_perturbed_fraction",
     ]:
         if stats.get(key) is not None:
             metrics[key] = prep_for_log(stats[key])
@@ -998,3 +977,54 @@ def log(
     if last_step:
         log_hparams(trainer, trainer.hparams, metrics)
     trainer.log(metrics)
+
+
+    nn_ids = stats.get("nn_ids")
+    mask = stats.get("mask")
+    if nn_ids is None:
+        return
+    
+    if isinstance(mask, torch.Tensor):
+        mask = mask.detach().cpu().tolist()
+
+    if trainer.state.global_step % 50 == 0:
+    
+        nn_ids = nn_ids.tolist()
+        tokenizer = trainer.tokenizer
+        
+        decoded = []
+        decoded_text = []
+
+        # If single sample case (top_k=1)
+        if isinstance(nn_ids[0], int):
+            nn_ids = [nn_ids]
+
+        for sample in nn_ids: # each sample = list of token ids
+            # Ensure sample is iterable
+            if isinstance(sample, int):
+                sample = [sample]
+
+            tokens = tokenizer.convert_ids_to_tokens(sample)
+            if len(tokens) == 0:
+                decoded.append([])
+                decoded_text.append("")
+                continue
+
+            text = tokenizer.convert_tokens_to_string(tokens)
+
+            decoded.append([
+                {"id": int(tid), "token": tok}
+                for tid, tok in zip(sample, tokens)
+            ])
+            decoded_text.append(text)
+
+
+        record = {
+            "step": trainer.state.global_step,
+            "nn_tokens": decoded,
+            "nn_text": decoded_text,
+        }
+
+        file_path = os.path.join(trainer.args.output_dir, "nn_sequences.jsonl")
+        with open(file_path, "a") as f:
+            f.write(json.dumps(record) + "\n")

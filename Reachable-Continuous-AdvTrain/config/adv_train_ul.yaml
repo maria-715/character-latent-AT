@@ -26,10 +26,12 @@ adversarial:
   init_type: instruction
   reachability_config: # ============ Added Reachability ============
     enable: true
-    lambda_weight: 0.2
+    use_torch_nn_search: true
+    lambda_weight: 50.0
     metric: l2 # or cosine
-    topk: 1
+    top_k: 1
     tau: 20.0
+    beta: 0.0
 
 
 sfttrainer:
