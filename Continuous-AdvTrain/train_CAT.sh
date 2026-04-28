@@ -5,7 +5,7 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat12
+#SBATCH --nodelist=oat14
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -53,5 +53,5 @@ fi
 # ======================================================
 
 
-# srun python src/run_experiments.py --config-name=adv_train_ul path=example_path adversarial.eps=0.4
-srun python src/run_experiments.py --config-name=adv_train_ul path=example_path
+srun python src/run_experiments.py --config-name=adv_train_ul path=example_path adversarial.eps=11.3149171270
+#srun python src/run_experiments.py --config-name=adv_train_ul path=example_path
