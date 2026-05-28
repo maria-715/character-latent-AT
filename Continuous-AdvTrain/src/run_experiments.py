@@ -13,6 +13,12 @@ import database_handling
 import model_utils
 import eval_config
 
+# Adding seed
+import random
+import numpy as np
+import torch
+from transformers import set_seed as hf_set_seed
+
 
 @dataclass
 class MyLoraConfig:
@@ -55,6 +61,17 @@ class MyTrainingConfig:
     evaluation_strategy: str = "no"
     eval_steps: Optional[float] = None
     remove_unused_columns: bool = False
+
+    # I added this
+    seed: int = 42
+
+def seed_everything(seed: int) -> None:
+    logging.info(f"Seeding everything with seed {seed}")
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    hf_set_seed(seed)
 
 
 @dataclass
@@ -170,6 +187,10 @@ def releaseLock(locked_file_descriptor):
 def main(cfg: GlobalConfig) -> None:
     print("Starting program")
 
+    # I added seed
+    seed = cfg.training.seed
+    seed_everything(seed)
+
     if cfg.experiment not in EXPERIMENTS:
         raise ValueError(f"Invalid experiment: {cfg.experiment}. Choose from: {EXPERIMENTS}")
 
@@ -179,11 +200,19 @@ def main(cfg: GlobalConfig) -> None:
         cfg.model_name = cfg.path.model_name
 
     hydra_dir = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
+    
+    # logging_path is now treated as ROOT (passed from CLI)
+    root_dir = cfg.path.logging_path
+
+    # Hydra output goes inside root_dir
     cfg.path.logging_path = hydra_dir
     if hydra.core.hydra_config.HydraConfig.get().mode == RunMode.MULTIRUN:
         cfg.path.checkpoint_path = cfg.path.checkpoint_path + "/" + hydra_dir.strip().split("/")[-1]
     else:
         cfg.path.checkpoint_path = cfg.path.logging_path
+
+    # experiments_db always inside root_dir
+    cfg.path.experiments_path = os.path.join(root_dir, "experiments_db/")
 
     logging.info(f"Running experiment: {cfg.experiment}")
     logging.info(f"Results will be saved to {cfg.path.logging_path}")

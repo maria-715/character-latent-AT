@@ -5,7 +5,8 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat14
+#SBATCH --nodelist=oat[11-18]
+#SBATCH --nodes=1
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -52,6 +53,44 @@ fi
 
 # ======================================================
 
+# Output folder
+LOGGING_PATH=""
+EPS=0.5
+SEED=42
 
-srun python src/run_experiments.py --config-name=adv_train_ul path=example_path adversarial.eps=11.3149171270
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --eps)
+      EPS="$2"
+      shift 2
+      ;;
+    --logging_path)
+      LOGGING_PATH="$2"
+      shift 2
+      ;;
+    --seed)
+      SEED="$2"
+      shift 2
+      ;;
+    *)
+      echo "Unknown argument: $1"
+      exit 1
+      ;;
+  esac
+done
+
+if [ -z "$LOGGING_PATH" ]; then
+  echo "ERROR: You must provide --logging_path ..."
+  echo "Example: sbatch script.sh --logging_path ./experiments_eps01 --eps 0.1 --seed 42"
+  exit 1
+fi
+mkdir -p "$LOGGING_PATH"
+
+
+srun python src/run_experiments.py --config-name=adv_train_ul path=example_path \
+     adversarial.eps=$EPS \
+     hydra.run.dir=$LOGGING_PATH \
+     path.logging_path=$LOGGING_PATH \
+     training.seed=$SEED
+
 #srun python src/run_experiments.py --config-name=adv_train_ul path=example_path

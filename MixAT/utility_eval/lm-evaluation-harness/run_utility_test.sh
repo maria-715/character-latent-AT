@@ -5,7 +5,7 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat14
+#SBATCH --nodelist=oat13
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -49,8 +49,9 @@ fi
 
 # ======================================================
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <model>"
+# I added the seed
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <model> <seed>"
     exit 1
 fi
 
@@ -72,4 +73,5 @@ lm_eval --model hf \
     --batch_size auto:12 \
     --output_path ../utility_eval/results/{$1}_{$2} \
     --log_samples \
-    --cache_requests true
+    --cache_requests true \
+    --seed $2

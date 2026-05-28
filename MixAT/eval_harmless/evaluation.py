@@ -1,8 +1,10 @@
 import os
 import sys
 import json
+import random
+import numpy as np
 from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, set_seed
 import neptune
 from vllm import LLM, SamplingParams
 import torch
@@ -85,8 +87,9 @@ Answer:<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 '''
 }
 
-if len(sys.argv) != 7:
-        print("Usage: python script.py <hugging_face_model> <peft_path>(None if no) <model_name> lora_experiment(None if no) load_in_4_bit with_the_built_in_system_message")
+# I added seed
+if len(sys.argv) != 8:
+        print("Usage: python script.py <hugging_face_model> <peft_path>(None if no) <model_name> lora_experiment(None if no) load_in_4_bit with_the_built_in_system_message <seed>")
         sys.exit(1)
     
 hugging_face_model_path = sys.argv[1]
@@ -95,6 +98,13 @@ model_name = sys.argv[3]
 lora_scaling_experiment = sys.argv[4]
 load_in_4bit_val = sys.argv[5] == "True"
 is_system_message = sys.argv[6] == "True"
+seed = int(sys.argv[7])
+
+set_seed(seed)
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+np.random.seed(seed)
+random.seed(seed)
 
 
 nf4_config = BitsAndBytesConfig(
@@ -212,9 +222,9 @@ if lora_scaling_experiment == "None":
     judge_model_path = "meta-llama/Meta-Llama-3-8B-Instruct"
     model_kwargs_my = {"max_model_len": 2048} 
 
-    judge_model = LLM(model=judge_model_path,trust_remote_code=True,tensor_parallel_size=1,**model_kwargs_my)
+    judge_model = LLM(model=judge_model_path,trust_remote_code=True,tensor_parallel_size=1, seed=seed, **model_kwargs_my)
     judge_model.llm_engine.tokenizer.tokenizer.truncation_side="left"
-    judge_model_params = SamplingParams(temperature=0.0, max_tokens=4)
+    judge_model_params = SamplingParams(temperature=0.0, max_tokens=4, seed=seed)
 
 
 
@@ -372,9 +382,9 @@ else:
         judge_model_path = "meta-llama/Meta-Llama-3-8B-Instruct"
         model_kwargs_my = {"max_model_len": 2048} 
 
-        judge_model = LLM(model=judge_model_path,trust_remote_code=True,tensor_parallel_size=1,**model_kwargs_my)
+        judge_model = LLM(model=judge_model_path,trust_remote_code=True,tensor_parallel_size=1, seed=seed, **model_kwargs_my)
         judge_model.llm_engine.tokenizer.tokenizer.truncation_side="left"
-        judge_model_params = SamplingParams(temperature=0.0, max_tokens=4)
+        judge_model_params = SamplingParams(temperature=0.0, max_tokens=4, seed=seed)
 
 
         #Generate predictions

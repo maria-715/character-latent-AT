@@ -15,6 +15,8 @@ transformers.utils.logging.set_verbosity_error()
 import copy
 import ray
 import argparse
+import random
+import numpy as np
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Running red teaming with baseline methods.")
@@ -77,8 +79,12 @@ def parse_args():
         type=str,
         help="Numbers separated with comas. If provided this fill be the interval",
     )
+
+    # I added the seed
+    parser.add_argument("--seed", type=int, default=0, help="Random seed")
     
     args = parser.parse_args()
+
     return args
 
 
@@ -86,6 +92,11 @@ def main():
     # ========== load arguments and config ========== #
     args = parse_args()
     print(args)
+
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.cuda.manual_seed_all(args.seed)
 
     method_name = args.method_name
     experiment_name = args.experiment_name
@@ -188,7 +199,8 @@ def main():
             method_config_new = copy.deepcopy(method_config)
             method_class_new = copy.deepcopy(method_class)
             method_config_new["lam"] = lam
-
+            
+            method_config_new["seed"] = args.seed
             method = init_method(method_class_new, method_config_new)
             save_dir_new = save_dir + f"_lambda_{lam}"
             filtered_behaviors = []
@@ -238,6 +250,7 @@ def main():
     else:
         # ==== Init Method ====
         old_method_config = copy.deepcopy(method_config)
+        method_config["seed"] = args.seed
         method = init_method(method_class, method_config)    
         test_cases, logs = method.generate_test_cases(behaviors=behaviors, verbose=args.verbose,save_dir=save_dir,method_config=method_config,run_id=args.run_id)
         

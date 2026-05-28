@@ -5,7 +5,7 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat14
+#SBATCH --nodelist=oat13
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -35,6 +35,7 @@ source /scratch-ssd/oatml/miniconda3/bin/activate "$ENV_NAME"
 base_save_dir="../robustness_eval_harmbench/results"
 method_name=$1
 experiment=$2
+seed=$3
 save_dir="$base_save_dir/$method_name/$experiment/test_cases"
 
 experiment_dir="$base_save_dir/$method_name/$experiment"
@@ -52,4 +53,4 @@ save_path="$base_save_dir/$method_name/$experiment/results/$model_name.json"
 
 ./scripts/merge_test_cases.sh $method_name $save_dir
 ./scripts/generate_completions.sh $model_name $behaviors_path $test_cases_path $save_path_completions $max_new_tokens $incremental_update
-./scripts/evaluate_completions.sh $cls_path $behaviors_path $completions_path $save_path
+./scripts/evaluate_completions.sh $cls_path $behaviors_path $completions_path $save_path $seed

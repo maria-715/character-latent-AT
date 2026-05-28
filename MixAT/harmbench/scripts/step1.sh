@@ -5,7 +5,7 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat14
+#SBATCH --nodelist=oat13
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err

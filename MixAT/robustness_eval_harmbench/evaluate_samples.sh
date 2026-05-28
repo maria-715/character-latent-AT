@@ -5,7 +5,7 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat14
+#SBATCH --nodelist=oat13
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -49,8 +49,8 @@ if [ "$NEED_PIP_INSTALL" -eq 1 ]; then
 fi
 # ======================================================
 
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <attack> <model>"
+if [ $# -ne 3 ]; then
+    echo "Usage: $0 <attack> <model> <seed>"
     exit 1
 fi
 
@@ -65,4 +65,4 @@ else
 fi
 export HF_HOME=/scratch-ssd/$USER/.cache/huggingface
 mkdir -p "$HF_HOME"
-./../robustness_eval_harmbench/evaluation_command.sh $1 $2
+./../robustness_eval_harmbench/evaluation_command.sh $1 $2 $3

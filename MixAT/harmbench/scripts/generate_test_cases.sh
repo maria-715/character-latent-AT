@@ -5,7 +5,7 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1 # 2 for AutoDAN
-#SBATCH --nodelist=oat14
+#SBATCH --nodelist=oat13
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -34,6 +34,7 @@ source /scratch-ssd/oatml/miniconda3/bin/activate "$ENV_NAME"
 
 source /opt/rh/devtoolset-10/enable
 
+# I added the seed
 method_name="$1"
 experiment_name="$2"
 behaviors_path="$3"
@@ -41,16 +42,17 @@ save_dir="$4"
 start_idx="$5"
 end_idx="$6"
 behavior_ids_subset="$7"
-lora_exp="$8"
-multiple_exp="$9"
-begin_num="${10}"
-end_num="${11}"
-step_num="${12}"
-final_num="${13}"
-list_num="${14}"
-run_id="${15}"
-overwrite="${16}"
-verbose="${17}"
+seed="$8" # Added and changed everything after that
+lora_exp="$9"
+multiple_exp="${10}"
+begin_num="${11}"
+end_num="${12}"
+step_num="${13}"
+final_num="${14}"
+list_num="${15}"
+run_id="${16}"
+overwrite="${17}"
+verbose="${18}"
 
 echo "method_name=$method_name"
 echo "experiment_name=$experiment_name"
@@ -58,7 +60,8 @@ echo "behaviors_path=$behaviors_path"
 echo "save_dir=$save_dir"
 echo "start_idx=$start_idx"
 echo "end_idx=$end_idx"
-echo "beahavior_ids_subset=$behavior_ids_subset"
+echo "behavior_ids_subset=$behavior_ids_subset"
+echo "seed=$seed"
 echo "lora_exp=$lora_exp"
 echo "multiple_exp=$multiple_exp"
 echo "begin_num=$begin_num"
@@ -75,6 +78,7 @@ cmd="python -u generate_test_cases.py \
     --method_name $method_name \
     --experiment_name $experiment_name \
     --behaviors_path $behaviors_path \
+    --seed $seed
     --save_dir $save_dir"
 
 # Check if start_idx is provided and not empty

@@ -14,7 +14,10 @@ omegaconf==2.3.0
 pandas==2.2.2
 peft==0.9.0
 tinydb==4.8.0
-torch #==2.1.2 COMMENTED because doesn't exist
+# torch #==2.1.2 COMMENTED because doesn't exist
+# FOR REACHABILITY BC TOO RECENT VERSION INSTALLED torch #==2.1.2 COMMENTED because doesn't exist
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.5.1+cu124
 tqdm==4.66.2
 # transformers==4.41.3 COMMENTED because doesn't exist/can't find it
 transformers==4.41.2 # Added

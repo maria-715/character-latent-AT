@@ -295,6 +295,677 @@ zephyr_7b_cat_true_eps_2_0:
   num_gpus: 1
   model_type: open_source
 
+zephyr_7b_CAT_adv_eps005:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_0_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_1_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_2:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_3:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_3_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_4:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_4_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_42_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_123:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_123_0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_123_1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_123_2:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_123_3:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_123_4:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_123_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_456:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_456_0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_456_1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_456_2:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_456_3:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_456_4:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_456_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+  
+zephyr_7b_CAT_adv_eps005_789:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_789_0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_789_1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_789_2:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_789_3:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_789_4:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_789_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+  
+zephyr_7b_CAT_adv_eps005_1337:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_1337_0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_1337_1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_1337_2:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_1337_3:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_1337_4:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps005_1337_COMPLETE:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps005_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps01_42:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps01_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps01_123:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps01_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps01_456:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps01_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+  
+zephyr_7b_CAT_adv_eps01_789:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps01_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+  
+zephyr_7b_CAT_adv_eps01_1337:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps01_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps02_42:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps02_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps02_123:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps02_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps02_456:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps02_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+  
+zephyr_7b_CAT_adv_eps02_789:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps02_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+  
+zephyr_7b_CAT_adv_eps02_1337:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps02_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps04_42:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps04_42/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps04_123:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps04_123/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps04_456:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps04_456/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+  
+zephyr_7b_CAT_adv_eps04_789:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps04_789/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+  
+zephyr_7b_CAT_adv_eps04_1337:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps04_1337/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps01:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps01/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps02:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps02/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_adv_eps04:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_adv_eps04/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_true_eps05:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_true_eps05/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_true_eps1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_true_eps1/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_CAT_true_eps2:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/CAT_true_eps2/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
 zephyr_7b_cat_github_refait:
   model:
     model_name_or_path: HuggingFaceH4/zephyr-7b-beta
@@ -340,6 +1011,61 @@ zephyr_7b_rcat_torch_topk1_lambda25:
   num_gpus: 1
   model_type: open_source
 
+zephyr_7b_rcat_lambda1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_lambda1/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_rcat_lambda05:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_lambda05/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_rcat_lambda5:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_lambda5/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_rcat_lambda01:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_lambda01/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_rcat_lambda200:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_lambda200/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
 zephyr_7b_rcat_torch_topk5_lambda50_tau20_beta005:
   model:
     model_name_or_path: HuggingFaceH4/zephyr-7b-beta
@@ -350,6 +1076,260 @@ zephyr_7b_rcat_torch_topk5_lambda50_tau20_beta005:
     #   "": "cuda:1"
   num_gpus: 1
   model_type: open_source
+
+zephyr_7b_RCAT_topk10_lambda50_tau20_beta005:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk10_lambda50_tau20_beta005/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau20_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau20_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau20_beta03:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau20_beta03/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau5_beta005:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau5_beta005/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau05_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau05_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau1_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau1_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau3_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau3_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau5_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau5_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau10_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau10_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau5_beta001:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau5_beta001/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau5_beta01:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau5_beta01/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau5_beta1:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau5_beta1/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau5_beta1_5:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau5_beta1_5/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda50_tau5_beta3:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda50_tau5_beta3/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda5_tau3_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda5_tau3_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda25_tau3_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda25_tau3_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda100_tau3_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda100_tau3_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda5_tau5_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda5_tau5_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda25_tau5_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda25_tau5_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda100_tau5_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda100_tau5_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda5_tau10_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda5_tau10_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda25_tau10_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda25_tau10_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
+zephyr_7b_RCAT_topk5_lambda100_tau10_beta0:
+  model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    dtype: bfloat16
+    peft_path: ../../experiments/RCAT_topk5_lambda100_tau10_beta0/final_model
+    # device_map: # When generating with AutoDAN
+    #   "": "cuda:1"
+  num_gpus: 1
+  model_type: open_source
+
 
 # Zephyr 7B + R2D2 (adversarial training against GCG)
 zephyr_7b_robust:

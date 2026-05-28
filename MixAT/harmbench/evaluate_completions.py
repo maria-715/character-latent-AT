@@ -8,6 +8,7 @@ import os
 import csv
 from tqdm import tqdm 
 import numpy as np
+import random
 
 from vllm import LLM, SamplingParams
 
@@ -76,6 +77,10 @@ def parse_args():
         type=str,
         help="Numbers separated with comas. If provided this fill be the interval",
     )
+
+    # I added the seed
+    parser.add_argument("--seed", type=int, default=0, help="Random seed")
+
     args = parser.parse_args()
     return args
 
@@ -84,6 +89,11 @@ def main():
     # ========== load arguments and config ========== #
     args = parse_args()
     print(args)
+
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.cuda.manual_seed_all(args.seed)
     
     # ========== load behaviors (for tags and context strings) ========== #
     with open(args.behaviors_path, 'r', encoding='utf-8') as f:
@@ -132,10 +142,10 @@ def main():
 
             # ========== evaluate completions ========== #
 
-            cls = LLM(model=args.cls_path, tensor_parallel_size=1,**model_kwargs_my)
+            cls = LLM(model=args.cls_path, tensor_parallel_size=1, seed=args.seed, **model_kwargs_my)
             cls.llm_engine.tokenizer.tokenizer.truncation_side="left"
 
-            cls_params = SamplingParams(temperature=0.0, max_tokens=1)
+            cls_params = SamplingParams(temperature=0.0, max_tokens=1, seed=args.seed)
 
             results = {}
             for behavior_id, data in tqdm(completions.items()):
@@ -197,10 +207,10 @@ def main():
             # ========== evaluate completions ========== #
             gc.collect()
             torch.cuda.empty_cache()
-            cls = LLM(model=args.cls_path, tensor_parallel_size=1,**model_kwargs_my)
+            cls = LLM(model=args.cls_path, tensor_parallel_size=1, seed=args.seed, **model_kwargs_my)
             cls.llm_engine.tokenizer.tokenizer.truncation_side="left"
 
-            cls_params = SamplingParams(temperature=0.0, max_tokens=1)
+            cls_params = SamplingParams(temperature=0.0, max_tokens=1, seed=args.seed)
 
             results = {}
             for behavior_id, data in tqdm(completions.items()):
@@ -246,7 +256,7 @@ def main():
         tokenizer.truncation_side="right"
 
         # ========== evaluate completions ========== #
-        cls = LLM(model=args.cls_path, tensor_parallel_size=1,**model_kwargs_my)
+        cls = LLM(model=args.cls_path, tensor_parallel_size=1, seed=args.seed, **model_kwargs_my)
         cls.llm_engine.tokenizer.tokenizer.truncation_side="left"
 
         if args.temperature_repeats:
@@ -280,7 +290,7 @@ def main():
                     clipped_generation = tokenizer.decode(tokenized_text, skip_special_tokens=True)
                     completion['generation'] = clipped_generation
 
-            cls_params = SamplingParams(temperature=0.0, max_tokens=1)
+            cls_params = SamplingParams(temperature=0.0, max_tokens=1, seed=args.seed)
             db = 0
             results = {}
             hash_evluation_args = dict()

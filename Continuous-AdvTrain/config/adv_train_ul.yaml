@@ -35,6 +35,7 @@ training:
   gradient_accumulation_steps: 8
   fp16: True
   bf16: False
+  seed: 42 # I added seed
 
 trainer_hparams:
   utility_weight: 1.0

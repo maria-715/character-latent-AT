@@ -106,6 +106,7 @@ class EmbeddingSpaceAttack:
         """
 
         self.embed_weights = embed_weights
+        self.embed_norms = (self.embed_weights ** 2).sum(dim=1)
         # self.response_key = response_key  # TODO Needed? Remove if not (also line bellow and argument)
         # self.response_key_ids = tokenizer.encode(response_key, return_tensors="pt")
         self.tokenizer = tokenizer
@@ -135,6 +136,11 @@ class EmbeddingSpaceAttack:
         
         # save losses and responses
         best_loss = torch.inf
+        best_iter = -1
+        best_mean_l2 = None
+        best_max_l2 = None
+        best_mean_nearest = None
+        best_min_nearest = None
         all_losses = []
         affirmative_responses = []
 
@@ -183,19 +189,74 @@ class EmbeddingSpaceAttack:
             num_affirmative_responses = self.get_num_affirmative_responses(target_ids, logits)
             affirmative_responses.append(num_affirmative_responses)
 
-            # save best perturbation
-            if loss < best_loss:
-                best_loss = loss
-                self.best_adv_perturbation = adv_perturbation
-
             # debug
             if self.debug > 2:
                 self.debug_norm(adv_perturbation)
+
+            # L2 distance to original embeddings (to measure attack strength, should be bounded by epsilon)
+            delta = adv_embeds - input_embeds
+            l2_to_orig = torch.norm(delta, p=2, dim=-1)  # (B, T)
+
+            mask = adv_perturbation_mask
+            mask_flat = mask.view(-1).bool()
+            l2_flat = l2_to_orig.view(-1)
+
+            mean_l2_to_orig = l2_flat[mask_flat].mean()
+            max_l2_to_orig = l2_flat[mask_flat].max()
+
+
+            # L2 distance to nearest embedding
+            # adv_embeds: (B,T,D), embed_weights: (V,D)
+
+            adv_flat = adv_embeds.view(-1, self.embedding_size) # (B*T, D)
+            embed_norms = self.embed_norms # (V,)
+            adv_norms = (adv_flat ** 2).sum(dim=1, keepdim=True) # (B*T, 1)
+
+            # distances^2 = ||a||^2 + ||b||^2 - 2ab
+            dist_sq = adv_norms + embed_norms.unsqueeze(0) - 2 * adv_flat @ self.embed_weights.T
+            dist_sq = torch.clamp(dist_sq, min=0.0) # for numerical stability
+
+            min_dist_sq, nearest_idx = dist_sq.min(dim=1)
+            min_dist = torch.sqrt(min_dist_sq)
+
+            # reshape back
+            min_dist = min_dist.view(adv_embeds.shape[:2]) # (B, T)
+
+            # masked nearest metrics
+            min_dist_flat = min_dist.view(-1)
+            mean_nearest = min_dist_flat[mask_flat].mean()
+            min_nearest = min_dist_flat[mask_flat].min()
+
+            # save best perturbation
+            if loss < best_loss:
+                best_loss = loss
+                self.best_adv_perturbation = adv_perturbation.detach().clone()
+
+                best_iter = i
+                best_mean_l2 = mean_l2_to_orig.item()
+                best_max_l2 = max_l2_to_orig.item()
+                best_mean_nearest = mean_nearest.item()
+                best_min_nearest = min_nearest.item()
+
+            # print(f"[Iter {i}] "
+            #     f"L2(orig): mean={mean_l2_to_orig:.4f}, max={max_l2_to_orig:.4f} | "
+            #     f"L2(nearest): mean={mean_nearest:.4f}, min={min_nearest:.4f}")
+
+            logging.info(f"[Iter {i}] "
+                f"L2(orig): mean={mean_l2_to_orig:.4f}, max={max_l2_to_orig:.4f} | "
+                f"L2(nearest): mean={mean_nearest:.4f}, min={min_nearest:.4f}")
+
 
         if self.debug > 0:
             self.debug_loss(best_loss)
         if self.debug > 2:
             self.debug_output(target_ids, logits, attention_mask)
+
+        logging.info(
+            f"[BEST @ Iter {best_iter}] "
+            f"L2(orig): mean={best_mean_l2:.4f}, max={best_max_l2:.4f} | "
+            f"L2(nearest): mean={best_mean_nearest:.4f}, min={best_min_nearest:.4f}"
+        )
 
         enable_model_gradients(model)
         

@@ -5,7 +5,7 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat14
+#SBATCH --nodelist=oat13
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -34,28 +34,31 @@ source /scratch-ssd/oatml/miniconda3/bin/activate "$ENV_NAME"
 
 source /opt/rh/devtoolset-10/enable
 
+# I added the seed and changed the numbers
 cls_path="$1"
 behaviors_path=$2
 completions_path=$3
 save_path=$4
-lora_exp="$5"
-multiple_exp="$6"
-begin_num="${7}"
-end_num="${8}"
-step_num="${9}"
-final_num="${10}"
-list_num="${11}"
-temp_repeats="${12}"
-window_book="${13}"
-overlap_book="${14}"
-window_lyrics="${15}"
-overlap_lyrics="${16}"
-threshold="${17}"
+seed=$5
+lora_exp="$6"
+multiple_exp="$7"
+begin_num="${8}"
+end_num="${9}"
+step_num="${10}"
+final_num="${11}"
+list_num="${12}"
+temp_repeats="${13}"
+window_book="${14}"
+overlap_book="${15}"
+window_lyrics="${16}"
+overlap_lyrics="${17}"
+threshold="${18}"
 
 echo "cls_path=$cls_path"
 echo "behaviors_path=$behaviors_path"
 echo "completions_path=$completions_path"
 echo "save_path=$save_path"
+echo "seed=$seed"
 echo "lora_exp=$lora_exp"
 echo "multiple_exp=$multiple_exp"
 echo "begin_num=$begin_num"
@@ -74,6 +77,7 @@ cmd="python -u evaluate_completions.py \
     --cls_path $cls_path \
     --behaviors_path $behaviors_path \
     --completions_path $completions_path \
+    --seed $seed \
     --save_path $save_path "
 
 if [[ ! -z "$lora_exp" && "$lora_exp" == "True" ]]; then
