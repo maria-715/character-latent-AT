@@ -1,0 +1,13 @@
+# Adapted
+
+datasets==2.17.1
+# huggingface_hub==0.21.3 COMMENTED because conflicts with the new transformers version
+huggingface_hub==0.23.2
+numpy==1.26.4
+pandas==2.2.2
+peft==0.9.0
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.5.1+cu124
+tqdm==4.66.2
+# transformers==4.41.3 COMMENTED because doesn't exist/can't find it
+transformers==4.41.2 # Added
