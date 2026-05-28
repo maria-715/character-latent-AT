@@ -939,8 +939,21 @@ def log(
             f"adv_norm={prepare(stats.get('adv_norm'))}; "  
 
             f"nn_change_from_input={prepare(stats.get('nn_change_from_input'))}; "
+            f"nn_change_between_steps={prepare(stats.get('nn_change_between_steps'))}; "
+
             f"nn_margin={prepare(stats.get('nn_margin'))}; "
-            f"actual_perturbed_fraction={prepare(stats.get('actual_perturbed_fraction'))}; "         
+            f"nn_margin_std={prepare(stats.get('nn_margin_std'))}; "
+
+            f"nn_unique_tokens={prepare(stats.get('nn_unique_tokens'))}; "
+
+            f"actual_perturbed_fraction={prepare(stats.get('actual_perturbed_fraction'))}; "
+            f"reach_to_harm_ratio={prepare(stats.get('reach_to_harm_ratio'))}; "
+
+            f"nn_dist_std={prepare(stats.get('nn_dist_std'))}; "
+            f"nn_dist_min={prepare(stats.get('nn_dist_min'))}; "
+            f"nn_dist_max={prepare(stats.get('nn_dist_max'))}; "
+
+            f"grad_norm={prepare(stats.get('grad_norm'))}; "        
 
         )
     )
@@ -960,13 +973,20 @@ def log(
         "attack_loss",
         "harm_loss",
         "reach_loss",
-        "nn_dist",
         "nn_entropy",
         "affirmative",
         "adv_norm",
         "nn_change_from_input",
+        "nn_change_between_steps",
         "nn_margin",
+        "nn_margin_std",
+        "nn_unique_tokens",
         "actual_perturbed_fraction",
+        "reach_to_harm_ratio",
+        "nn_dist_std",
+        "nn_dist_min",
+        "nn_dist_max",
+        "grad_norm",
     ]:
         if stats.get(key) is not None:
             metrics[key] = prep_for_log(stats[key])
@@ -980,51 +1000,105 @@ def log(
 
 
     nn_ids = stats.get("nn_ids")
+    original_ids = stats.get("original_ids")
     mask = stats.get("mask")
-    if nn_ids is None:
+    
+    if nn_ids is None or original_ids is None or mask is None:
         return
-    
-    if isinstance(mask, torch.Tensor):
-        mask = mask.detach().cpu().tolist()
 
-    if trainer.state.global_step % 50 == 0:
-    
-        nn_ids = nn_ids.tolist()
-        tokenizer = trainer.tokenizer
-        
-        decoded = []
-        decoded_text = []
+    if trainer.state.global_step % 10 != 0:
+        return
 
-        # If single sample case (top_k=1)
-        if isinstance(nn_ids[0], int):
-            nn_ids = [nn_ids]
+    tokenizer = trainer.tokenizer
 
-        for sample in nn_ids: # each sample = list of token ids
-            # Ensure sample is iterable
-            if isinstance(sample, int):
-                sample = [sample]
+    def to_cpu_tensor(x):
+        if isinstance(x, torch.Tensor):
+            return x.detach().cpu()
+        return torch.tensor(x)
 
-            tokens = tokenizer.convert_ids_to_tokens(sample)
-            if len(tokens) == 0:
-                decoded.append([])
-                decoded_text.append("")
-                continue
+    nn_ids = to_cpu_tensor(nn_ids)
+    original_ids = to_cpu_tensor(original_ids)
+    mask = to_cpu_tensor(mask)
 
-            text = tokenizer.convert_tokens_to_string(tokens)
+    if mask.dim() == 3 and mask.size(-1) == 1:
+        mask = mask.squeeze(-1)
 
-            decoded.append([
-                {"id": int(tid), "token": tok}
-                for tid, tok in zip(sample, tokens)
-            ])
-            decoded_text.append(text)
+    # Make batch dimension explicit when needed
+    if nn_ids.dim() == 1:
+        nn_ids = nn_ids.unsqueeze(0)
+    if original_ids.dim() == 1:
+        original_ids = original_ids.unsqueeze(0)
+    if mask.dim() == 1:
+        mask = mask.unsqueeze(0)
 
+    def decode_ids(ids_list):
+        if len(ids_list) == 0:
+            return [], ""
+        toks = tokenizer.convert_ids_to_tokens([int(x) for x in ids_list])
+        txt = tokenizer.convert_tokens_to_string(toks)
+        return toks, txt
 
-        record = {
-            "step": trainer.state.global_step,
-            "nn_tokens": decoded,
-            "nn_text": decoded_text,
-        }
+    decoded_samples = []
 
-        file_path = os.path.join(trainer.args.output_dir, "nn_sequences.jsonl")
-        with open(file_path, "a") as f:
-            f.write(json.dumps(record) + "\n")
+    batch_size = min(nn_ids.size(0), original_ids.size(0), mask.size(0))
+    for b in range(batch_size):
+        mask_b = mask[b].bool()
+        original_b = original_ids[b]
+        nn_b = nn_ids[b]
+
+        masked_positions = mask_b.nonzero(as_tuple=False).squeeze(-1).tolist()
+
+        original_masked = original_b[mask_b]
+        original_masked_ids = [int(x) for x in original_masked.tolist()]
+        original_masked_tokens, original_masked_text = decode_ids(original_masked_ids)
+
+        # Two possible cases:
+        # 1) nn_b has full sequence length -> compare only masked positions
+        # 2) nn_b is already filtered to masked positions -> use it directly
+        if nn_b.numel() == original_masked.numel():
+            nn_masked = nn_b.view(-1)
+            comparison_mode = "already_masked"
+        elif nn_b.shape == original_b.shape:
+            nn_masked = nn_b[mask_b]
+            comparison_mode = "full_sequence"
+        else:
+            # Fallback: compare as much as possible
+            nn_flat = nn_b.view(-1)
+            m = min(nn_flat.numel(), original_masked.numel())
+            nn_masked = nn_flat[:m]
+            original_masked = original_masked[:m]
+            original_masked_ids = [int(x) for x in original_masked.tolist()]
+            original_masked_tokens, original_masked_text = decode_ids(original_masked_ids)
+            comparison_mode = "truncated_fallback"
+
+        nn_masked_ids = [int(x) for x in nn_masked.tolist()]
+        nn_masked_tokens, nn_masked_text = decode_ids(nn_masked_ids)
+
+        changed_mask = [
+            int(o != n) for o, n in zip(original_masked_ids, nn_masked_ids)
+        ]
+
+        decoded_samples.append({
+            "sample_index": b,
+            "comparison_mode": comparison_mode,
+            "masked_positions": masked_positions,
+            "original_ids_masked": original_masked_ids,
+            "original_tokens_masked": original_masked_tokens,
+            "original_text_masked": original_masked_text,
+            "nn_ids_masked": nn_masked_ids,
+            "nn_tokens_masked": nn_masked_tokens,
+            "nn_text_masked": nn_masked_text,
+            "changed_mask": changed_mask,
+            "changed_fraction_masked": (
+                sum(changed_mask) / len(changed_mask) if len(changed_mask) > 0 else 0.0
+            ),
+        })
+
+    record = {
+        "step": int(trainer.state.global_step),
+        "decoded_samples": decoded_samples,
+    }
+
+    file_path = os.path.join(trainer.args.output_dir, "nn_sequences.jsonl")
+    with open(file_path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record) + "\n")

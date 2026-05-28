@@ -211,6 +211,8 @@ class EmbeddingSpaceAttack:
                 loss_mask,
             )
 
+        prev_nn_ids = None
+        nn_change_between_steps = 0.0
         for i in range(self.iters):
             opt.zero_grad()
             adv_embeds = self.get_adv_embeddings(input_embeds, adv_perturbation, adv_perturbation_mask)
@@ -254,37 +256,77 @@ class EmbeddingSpaceAttack:
                 self.best_adv_perturbation = adv_perturbation
 
                 # TEMPORARY BC DETACH() TAKES A LOT OF TIME
-                best_nn_ids = nn_ids.detach().cpu().clone()
+                # nn_ids already filtered by the mask
+                nn_ids_cpu = nn_ids.detach().cpu()
+                mask_cpu = adv_perturbation_mask.detach().cpu()
 
+                best_nn_ids = nn_ids_cpu.clone()
                 best_idx = i
 
                 # NN change vs original input
                 # - Flatten everything consistently
                 original_ids = input_ids.detach().cpu().view(-1)
-                mask_flat = adv_perturbation_mask.detach().cpu().view(-1)
+                mask_flat = mask_cpu.view(-1)
 
                 # - Select only masked positions
                 original_ids_masked = original_ids[mask_flat == 1]
-                nn_ids_flat = nn_ids.detach().cpu().view(-1)
+                nn_ids_masked = nn_ids_cpu.view(-1)
+
+                # Sanity check
+                assert len(original_ids_masked) == len(nn_ids_masked), \
+                    f"Mismatch: original {len(original_ids_masked)} vs nn_ids {len(nn_ids_masked)}"
 
                 nn_change_from_input = (
-                    (nn_ids_flat != original_ids_masked).float().mean().item()
+                    (nn_ids_masked != original_ids_masked).float().mean().item()
                 )
+
+                # NN switching
+                if prev_nn_ids is not None:
+                    curr_flat = nn_ids_cpu.view(-1)
+                    prev_flat = prev_nn_ids.view(-1)
+                    nn_change_between_steps = (
+                        (curr_flat != prev_flat).float().mean().item()
+                    )
+
+                prev_nn_ids = nn_ids_cpu.clone()
 
                 # Calculate margins between NNs (for top_k >= 2)
                 if hasattr(self.reachability, "last_Dists") and self.reachability.last_Dists is not None:
-                    Dists = self.reachability.last_Dists  # [N, K]
+                    Dists = self.reachability.last_Dists # [N, K]
                     if Dists.shape[1] > 1:
-                        margin = (Dists[:, 1] - Dists[:, 0]).mean().item()
+                        margins = Dists[:, 1] - Dists[:, 0]
+                        margin = margins.mean().item()
+                        margin_std = margins.std().item()
                     else:
                         margin = 0.0
+                        margin_std = 0.0
                 else:
                     margin = 0.0
+                    margin_std = 0.0
 
-                # Actual perturbed tokens (not mask!)
+                # NN diversity (masked)
+                unique_nn_tokens = len(torch.unique(nn_ids_masked))
+
+                # Dist stats
+                if nn_dist.dim() > 0:
+                    nn_dist_std = nn_dist.std().item()
+                    nn_dist_min = nn_dist.min().item()
+                    nn_dist_max = nn_dist.max().item()
+                else:
+                    nn_dist_std = 0.0
+                    nn_dist_min = nn_dist.item()
+                    nn_dist_max = nn_dist.item()
+
+                # Perturbation
                 token_norms = adv_perturbation.norm(dim=-1) # [B, T]
                 actual_perturbed_fraction = (
                     (token_norms > 1e-6).float().mean().item()
+                )
+
+                grad_norm = (
+                    adv_perturbation.grad.norm().item()
+                    if adv_perturbation.grad is not None
+                    else 0.0
                 )
 
                 best_stats = {
@@ -292,15 +334,23 @@ class EmbeddingSpaceAttack:
                     "attack_loss": loss.item(),
                     "harm_loss": harmful_loss.item(),
                     "reach_loss": reach_loss.item(),
-                    "nn_dist": nn_dist.item(),
                     "nn_entropy": nn_entropy.item(),
                     "affirmative": num_affirmative_responses,
                     "adv_norm": adv_perturbation.reshape(adv_perturbation.size(0), -1).norm(p=2, dim=1).mean().item(),
                     "nn_ids": best_nn_ids,
-                    "mask": adv_perturbation_mask.detach().cpu(),
+                    "original_ids": input_ids.detach().cpu().clone(),
+                    "mask": mask_cpu,
                     "nn_change_from_input": nn_change_from_input,
+                    "nn_change_between_steps": nn_change_between_steps,
                     "nn_margin": margin,
+                    "nn_margin_std": margin_std,
+                    "nn_unique_tokens": unique_nn_tokens,
                     "actual_perturbed_fraction": actual_perturbed_fraction,
+                    "reach_to_harm_ratio": (reach_loss / (harmful_loss + 1e-8)).item(),                    
+                    "grad_norm": grad_norm,
+                    "nn_dist_std": nn_dist_std,
+                    "nn_dist_min": nn_dist_min,
+                    "nn_dist_max": nn_dist_max,
                 }
 
             # debug

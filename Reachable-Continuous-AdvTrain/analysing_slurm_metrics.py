@@ -1,41 +1,75 @@
 import argparse
+import ast
+import os
 import re
-import pandas as pd
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import os
+import pandas as pd
 
 
-PATTERN = re.compile(
-    r"harm_loss=(?P<harm_loss>[-+]?\d*\.\d+|\d+); "
-    r"reach_loss=(?P<reach_loss>[-+]?\d*\.\d+|\d+); "
-    r"nn_dist=(?P<nn_dist>[-+]?\d*\.\d+|\d+); "
-    r"nn_entropy=(?P<nn_entropy>[-+]?\d*\.\d+|\d+); "
-    r"affirmative=(?P<affirmative>\d+); "
-    r"adv_norm=(?P<adv_norm>[-+]?\d*\.\d+|\d+); "
-    r"nn_change_from_input=(?P<nn_change>[-+]?\d*\.\d+|\d+); "
-    r"nn_margin=(?P<nn_margin>[-+]?\d*\.\d+|\d+); "
-    r"actual_perturbed_fraction=(?P<pert_frac>[-+]?\d*\.\d+|\d+);"
-)
+def parse_scalar(v):
+    v = v.strip()
+    if v == "None":
+        return None
+    if v == "nan":
+        return float("nan")
+    if re.fullmatch(r"[-+]?\d+", v):
+        return int(v)
+    try:
+        return float(v)
+    except ValueError:
+        return v
 
 
 def parse_slurm(path):
     rows = []
+    current_step = None
+
+    # Matches key=value; pairs in the semicolon log line
+    pair_re = re.compile(r"([A-Za-z_]+)=([^;]+);")
 
     with open(path, "r", encoding="utf-8", errors="ignore") as f:
         for line in f:
-            match = PATTERN.search(line)
-            if match:
-                data = {k: float(v) for k, v in match.groupdict().items()}
-                rows.append(data)
+            line = line.strip()
+
+            # 1) Capture step from the dict line
+            if line.startswith("{'global_step'") or line.startswith('{"global_step"'):
+                try:
+                    d = ast.literal_eval(line)
+                    if isinstance(d, dict) and "global_step" in d:
+                        current_step = int(d["global_step"])
+                except Exception:
+                    pass
+                continue
+
+            # 2) Parse only the semicolon metric line
+            if "index=" not in line or "attack_loss=" not in line:
+                continue
+
+            # Start from the first metric field, ignore the text outputs before it
+            start = line.find("index=")
+            metric_part = line[start:]
+
+            pairs = pair_re.findall(metric_part)
+            if not pairs:
+                continue
+
+            row = {k: parse_scalar(v) for k, v in pairs}
+
+            # Keep only actual attack rows
+            if row.get("index") is None:
+                continue
+
+            row["global_step"] = current_step if current_step is not None else len(rows)
+            rows.append(row)
 
     df = pd.DataFrame(rows)
-    df["step"] = range(len(df))
+    if not df.empty:
+        df = df.sort_values(["global_step", "index"]).reset_index(drop=True)
     return df
 
-
-# ===== Plot helpers =====
 
 def save_plot(fig, output_dir, name):
     path = os.path.join(output_dir, f"{name}.png")
@@ -43,71 +77,48 @@ def save_plot(fig, output_dir, name):
     plt.close(fig)
 
 
-def plot_core(df, output_dir):
-    fig = plt.figure(figsize=(10,5))
-    plt.plot(df["step"], df["harm_loss"], label="harm_loss")
-    plt.plot(df["step"], df["reach_loss"], label="reach_loss")
-    plt.legend()
-    plt.title("Harm vs Reach loss")
-    plt.xlabel("step")
+def plot_if_present(df, xcol, ycol, title, output_dir, name):
+    if xcol not in df.columns or ycol not in df.columns:
+        print(f"Skipping {name}: missing {xcol} or {ycol}")
+        return
 
-    save_plot(fig, output_dir, "harm_vs_reach")
+    fig = plt.figure(figsize=(10, 5))
+    plt.plot(df[xcol], df[ycol])
+    plt.title(title)
+    plt.xlabel(xcol)
+    plt.ylabel(ycol)
+    save_plot(fig, output_dir, name)
 
-
-def plot_nn_behavior(df, output_dir):
-    fig = plt.figure(figsize=(10,5))
-    plt.plot(df["step"], df["nn_change"], label="nn_change_from_input")
-    plt.plot(df["step"], df["pert_frac"], label="perturbed_fraction")
-    plt.legend()
-    plt.title("Token change & perturbation fraction")
-
-    save_plot(fig, output_dir, "token_change")
-
-
-def plot_margin(df, output_dir):
-    fig = plt.figure(figsize=(10,5))
-    plt.plot(df["step"], df["nn_margin"])
-    plt.title("NN margin")
-
-    save_plot(fig, output_dir, "nn_margin")
-
-
-def plot_distance(df, output_dir):
-    fig = plt.figure(figsize=(10,5))
-    plt.plot(df["step"], df["nn_dist"])
-    plt.title("NN distance")
-
-    save_plot(fig, output_dir, "nn_distance")
-
-
-def plot_norm(df, output_dir):
-    fig = plt.figure(figsize=(10,5))
-    plt.plot(df["step"], df["adv_norm"])
-    plt.title("Perturbation norm")
-
-    save_plot(fig, output_dir, "adv_norm")
-
-
-# ===== Main =====
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", required=True, help="Path to SLURM log")
-    parser.add_argument("--output_dir", default="plots_analysing_slurm_metrics", help="Where to save plots")
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--output_dir", default="plots_analysing_slurm_metrics")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
 
     df = parse_slurm(args.input)
-
     print(f"Parsed {len(df)} steps")
-    print(f"Saving plots to: {args.output_dir}")
+    print(f"Saving plots to {args.output_dir}")
 
-    plot_core(df, args.output_dir)
-    plot_nn_behavior(df, args.output_dir)
-    plot_margin(df, args.output_dir)
-    plot_distance(df, args.output_dir)
-    plot_norm(df, args.output_dir)
+    if df.empty:
+        print("No attack rows found. Check that the log contains lines with index=0, index=1, etc.")
+        return
+
+    xcol = "global_step" if "global_step" in df.columns else "step"
+
+    plot_if_present(df, xcol, "harm_loss", "Harm loss", args.output_dir, "harm_loss")
+    plot_if_present(df, xcol, "reach_loss", "Reach loss", args.output_dir, "reach_loss")
+    plot_if_present(df, xcol, "nn_entropy", "NN entropy", args.output_dir, "nn_entropy")
+    plot_if_present(df, xcol, "nn_change_from_input", "NN change from input", args.output_dir, "nn_change_from_input")
+    plot_if_present(df, xcol, "nn_change_between_steps", "NN change between steps", args.output_dir, "nn_change_between_steps")
+    plot_if_present(df, xcol, "nn_margin", "NN margin", args.output_dir, "nn_margin")
+    plot_if_present(df, xcol, "nn_margin_std", "NN margin std", args.output_dir, "nn_margin_std")
+    plot_if_present(df, xcol, "nn_unique_tokens", "Unique NN tokens", args.output_dir, "nn_unique_tokens")
+    plot_if_present(df, xcol, "actual_perturbed_fraction", "Actual perturbed fraction", args.output_dir, "actual_perturbed_fraction")
+    plot_if_present(df, xcol, "reach_to_harm_ratio", "Reach / harm ratio", args.output_dir, "reach_to_harm_ratio")
+    plot_if_present(df, xcol, "adv_norm", "Adversarial norm", args.output_dir, "adv_norm")
 
 
 if __name__ == "__main__":
