@@ -3,8 +3,8 @@ Add the .log files that upload_models.py skipped to the repos that already exist
 Only .log files are uploaded; nothing else is touched. wandb/ folders are left out.
 
 Usage (from the experiments folder, in hf-upload-env):
-    python ../upload_missing_logs.py . --dry-run
-    python ../upload_missing_logs.py .
+    python ../repo_management/upload_missing_logs.py . --dry-run
+    python ../repo_management/upload_missing_logs.py .
 
 Safe to rerun: folders already done are recorded in logs_uploaded.json and skipped.
 """

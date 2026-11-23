@@ -3,8 +3,8 @@ Check that every uploaded folder really is on the Hugging Face Hub, byte for byt
 Read-only: nothing is deleted, changed or uploaded.
 
 Usage (from the experiments folder, in hf-upload-env):
-    python ../verify_uploads.py . --exclude "*.jsonl"            # full check (checksums)
-    python ../verify_uploads.py . --exclude "*.jsonl" --quick    # sizes only, much faster
+    python ../repo_management/verify_uploads.py . --exclude "*.jsonl"            # full check (checksums)
+    python ../repo_management/verify_uploads.py . --exclude "*.jsonl" --quick    # sizes only, much faster
 
 Use the same --exclude you used for the upload.
 

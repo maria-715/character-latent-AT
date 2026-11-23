@@ -3,8 +3,8 @@ Inventory of the subfolders in a directory: what each one actually contains.
 Read-only: nothing is modified or uploaded. No extra packages needed.
 
 Usage (from inside the experiments folder):
-    python ../inspect_folders.py .
-    python ../inspect_folders.py . --csv inventory.csv
+    python ../repo_management/inspect_folders.py .
+    python ../repo_management/inspect_folders.py . --csv inventory.csv
 
 For each subfolder it reports:
   kind      : full model / LoRA adapter / checkpoints / weights (other) / no weights

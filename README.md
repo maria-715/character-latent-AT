@@ -25,7 +25,7 @@ The repository combines several public research codebases, which I used as start
 | [`experiments/`](experiments) | Mine | **Aggregated analyses** of the CAT attack traces / embedding-space geometry. Each sub-folder has `tables/`, `plots/`, `per_run/` and a `report.txt`. |
 | [`plots_and_charts/`](plots_and_charts) | Mine | **Final figures for the thesis**, each with the script that produced it: `Main/`, `Methods/`, `Inner-loop/`, `LAT/`, `OR/`, `Workshop_submission/`, `Workshop_poster/`. |
 | [`commands/`](commands) | Mine | Commands used to launch training/evaluation jobs on the cluster (`commands*.txt`, `commands_lat.md`) and the list of final models used in the thesis (`All_final_used_models.txt`). |
-| `upload_models.py`, `verify_uploads.py`, `upload_missing_logs.py` | Mine | Scripts used to upload the trained adapters to Hugging Face and check the uploads. |
+| [`repo_management/`](repo_management) | Mine | Housekeeping scripts, not part of the experiments: uploading the trained adapters to Hugging Face and verifying them (`upload_models.py`, `upload_missing_logs.py`, `verify_uploads.py`), inventorying model folders (`inspect_folders.py`) and checking file sizes before pushing to GitHub (`git_size_report.py`). |
 
 ## Naming of runs and models
 

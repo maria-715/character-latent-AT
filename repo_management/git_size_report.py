@@ -2,8 +2,8 @@
 Show what makes the unpushed commits so large. Read-only: changes nothing.
 
 Usage (from the Code folder, the root of the git repo):
-    python git_size_report.py
-    python git_size_report.py --base origin/main --top 40
+    python repo_management/git_size_report.py
+    python repo_management/git_size_report.py --base origin/main --top 40
 """
 import argparse
 import subprocess

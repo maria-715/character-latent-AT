@@ -15,10 +15,10 @@ File selection:
 
 Usage (from inside the folder that holds the models, use "." as the path):
     hf auth login
-    python upload_models.py . --dry-run
-    python upload_models.py . --exclude "*.jsonl" --dry-run
-    python upload_models.py . --exclude "*.jsonl"
-    python upload_models.py . --single-repo cat-checkpoints
+    python ../repo_management/upload_models.py . --dry-run
+    python ../repo_management/upload_models.py . --exclude "*.jsonl" --dry-run
+    python ../repo_management/upload_models.py . --exclude "*.jsonl"
+    python ../repo_management/upload_models.py . --single-repo cat-checkpoints
 
 Already-uploaded folders are recorded in upload_log.json and skipped on rerun.
 Folders that fail are recorded in upload_failed.json and retried on the next run.
