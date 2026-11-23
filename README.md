@@ -1,4 +1,4 @@
-# MSc Thesis: Continuous Adversarial Training for LLMs: Robustness, Utility and Over-refusal
+# Characterising Latent-Space Adversarial Training for LLM Safety
 
 Code, results and logs for my Oxford MSc thesis and my NeurIPS 2026 (Agents in the Wild) workshop paper, both named _Characterising Latent-Space Adversarial Training for LLM Safety_. The work studies **continuous (embedding-space) adversarial training (CAT)** and **latent adversarial training (LAT)** of LLMs (Zephyr-7B, Llama-3-8B, Mistral-7B). It looks at robustness to jailbreak attacks, utility, and over-refusal of benign prompts.
 
