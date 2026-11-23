@@ -1,0 +1,138 @@
+# ==================== HARMLESS 40 ====================
+for name in "${names[@]}"; do
+    if [[ "$name" == CAT_zephyr* || "$name" == CAT_adv* ]]; then
+        model="HuggingFaceH4/zephyr-7b-beta"
+    else
+        model="meta-llama/Meta-Llama-3-8B-Instruct"
+    fi
+
+    echo "Launching $name with base model $model"
+
+    sbatch run.sh \
+        "$model" \
+        "../../experiments/${name}/final_model" \
+        "${name}" \
+        0
+done
+
+# ==================== HARMLESS OR Remaining ====================
+for name in "${names[@]}"; do
+    if [[ "$name" == CAT_zephyr* || "$name" == CAT_adv* ]]; then
+        model="HuggingFaceH4/zephyr-7b-beta"
+    else
+        model="meta-llama/Meta-Llama-3-8B-Instruct"
+    fi
+
+    echo "Launching $name with base model $model"
+
+    sbatch run.sh \
+        "$model" \
+        "../../experiments/${name}/final_model" \
+        "${name}_OR_remaining" \
+        0
+done
+
+# ==================== HARMLESS Train set ====================
+for name in "${names[@]}"; do
+    if [[ "$name" == CAT_zephyr* || "$name" == CAT_adv* ]]; then
+        model="HuggingFaceH4/zephyr-7b-beta"
+    else
+        model="meta-llama/Meta-Llama-3-8B-Instruct"
+    fi
+
+    echo "Launching $name with base model $model"
+
+    sbatch run.sh \
+        "$model" \
+        "../../experiments/${name}/final_model" \
+        "${name}_OR_from80k1k_train" \
+        0
+done
+
+# ==================== MMLU/ARC-E/ARC-C ====================
+for name in "${names[@]}"; do
+    if [[ "$name" == CAT_zephyr* ]]; then
+        model="HuggingFaceH4/zephyr-7b-beta"
+    else
+        model="meta-llama/Meta-Llama-3-8B-Instruct"
+    fi
+
+    echo "Launching $name"
+    sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh \
+        "$model" \
+        "../../experiments/$name/final_model" \
+        0
+done
+
+# ==================== Generate GCG ====================
+for name in "${names[@]}"; do
+    echo "Launching GCG attack for $name"
+
+    sbatch ./../robustness_eval_harmbench/generate_samples.sh \
+        "GCG" \
+        "$name" \
+        0
+done
+
+# ==================== Evaluate GCG ====================
+for name in "${names[@]}"; do
+    echo "Launching GCG evaluation for $name"
+
+    sbatch ./../robustness_eval_harmbench/evaluate_samples.sh \
+        "GCG" \
+        "$name" \
+        0
+done
+
+# ==================== Generate AutoDAN ====================
+for name in "${names[@]}"; do
+    echo "Launching AutoDAN attack for $name"
+
+    sbatch ./../robustness_eval_harmbench/generate_samples.sh \
+        "AutoDAN" \
+        "$name" \
+        0
+done
+
+# ==================== Evaluate AutoDAN ====================
+for name in "${names[@]}"; do
+    echo "Launching AutoDAN evaluation for $name"
+
+    sbatch ./../robustness_eval_harmbench/evaluate_samples.sh \
+        "AutoDAN" \
+        "$name" \
+        0
+done
+
+# ==================== XSTest ====================
+for name in "${names[@]}"; do
+    if [[ "$name" == CAT_zephyr* ]]; then
+        model="HuggingFaceH4/zephyr-7b-beta"
+    else
+        model="meta-llama/Meta-Llama-3-8B-Instruct"
+    fi
+
+    echo "Launching $name"
+    sbatch --job-name="$name" \
+        xstest_eval.sh \
+        --model_path "$model" \
+        --adapter "../experiments/$name/final_model" \
+        --output "results/${name}_utility.jsonl"
+done
+
+# ==================== circuit-breakers ====================
+for name in "${names[@]}"; do
+    if [[ "$name" == CAT_zephyr* ]]; then
+        model="HuggingFaceH4/zephyr-7b-beta"
+    else
+        model="meta-llama/Meta-Llama-3-8B-Instruct"
+    fi
+
+    echo "Launching $name"
+
+    sbatch run_embedding_attack.sh \
+        --model "$model" \
+        --adapter "../experiments/${name}/final_model" \
+        --logging_path "results/${name}_42" \
+        --seed 42
+done

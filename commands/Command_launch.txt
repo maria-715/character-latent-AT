@@ -1,0 +1,26 @@
+#!/bin/bash
+
+names=(
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight00595
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight00595
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight00595
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0238
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0952
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0014875
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight0014875
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight0014875
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight000371875
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight000371875
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight000371875
+)
+
+for name in "${names[@]}"; do
+    echo "Launching GCG evaluation for $name"
+
+    sbatch ./../robustness_eval_harmbench/evaluate_samples.sh \
+        "AutoDAN" \
+        "$name" \
+        0
+done

@@ -1,0 +1,653 @@
+## On my computer
+cd /mnt/c/Users/maria/Documents/Oxford/Masters_Thesis/Code
+
+# From mine to node
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' Code/ ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' Code/ ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude multirun --exclude '.git' --exclude 'experiments' --exclude 'MixAT/robustness_eval_harmbench/results' Code/ ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude outputs --exclude results --exclude 'MixAT/robustness_eval_harmbench/results' --exclude slurm-* --exclude samples --exclude evaluated Code/ ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project
+
+# Send an experiment from mine to node
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'attack_traces' Code/experiments/CAT_experiment_refait ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/experiments
+
+# Folder from node to mine
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/robustness_eval_harmbench/results/AutoDAN ./Transfer/
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/ Code/
+
+
+# Slurm logs from node to mine
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/harmbench/slurm-* ./Transfer/
+
+
+## On OAT computer
+
+ssh ms25mds@oat0.cs.ox.ac.uk
+ssh plgms25mds@helios.cyfronet.pl
+cd ../../../../net/scratch/hscra/plgrid/plgms25mds/MSc_Project/
+du -sh . (total including cache files)
+du -sh * | sort -hr
+du -hs -- * .[^.]* | sort -h
+cd /scratch-ssd/$USER
+scontrol show job 73261
+scancel --user $USER
+srun --partition=msc --nodelist=oat15 --time=1:00:00 --pty bash
+
+
+## Harmless evaluation
+
+cd MixAT/eval_harmless
+
+sbatch run.sh <model_path> <peft_path>(optional) <model_name>
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_initial/training/ul/None/final_model" "mistral_CAT_github"
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" None "mistral_raw"
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "ContinuousAT/Zephyr-CAT" "mistral_CAT_huggingface"
+
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_0_1/training/ul/None/final_model" "mistral_CAT_github_eps_0_1"
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_0_2/training/ul/None/final_model" "mistral_CAT_github_eps_0_2"
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_0_4/training/ul/None/final_model" "mistral_CAT_github_eps_0_4"
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_refait/training/ul/None/final_model" "mistral_CAT_github_refait"
+
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_true_eps_2_0/training/ul/None/final_model" "mistral_CAT_true_eps_2_0"
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/RCAT_torch_topk5_lambda50_tau20_beta005/training/ul/None/final_model" "mistral_RCAT_torch_topk5_lambda50_tau20_beta005"
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/RCAT_torch_topk1_lambda25/training/ul/None/final_model" "mistral_RCAT_torch_topk1_lambda25"
+
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" None "llama3b_raw" 0
+sbatch run.sh "ContinuousAT/Llama3-8B-IT-CAT" None "llama3b_CAT_huggingface" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_005/final_model" "CAT_llama3b_005" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_005_relativelr/final_model" "CAT_llama3b_005_relativelr" 0
+
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_otherparams/final_model" "CAT_llama3b_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0075_relativelr_otherparams/final_model" "CAT_llama3b_0075_relativelr_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0150_relativelr_otherparams/final_model" "CAT_llama3b_0150_relativelr_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0300_relativelr_otherparams/final_model" "CAT_llama3b_0300_relativelr_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0600_relativelr_otherparams/final_model" "CAT_llama3b_0600_relativelr_otherparams" 0
+
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_github_42_REFAIT/final_model" "CAT_zephyr_github_42_REFAIT" 0
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_github_123_REFAIT/final_model" "CAT_zephyr_github_123_REFAIT" 0
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_github_456_REFAIT/final_model" "CAT_zephyr_github_456_REFAIT" 0
+
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_123_otherparams/final_model" "CAT_llama3b_123_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0075_relativelr_123_otherparams/final_model" "CAT_llama3b_0075_relativelr_123_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0150_relativelr_123_otherparams/final_model" "CAT_llama3b_0150_relativelr_123_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0300_relativelr_123_otherparams/final_model" "CAT_llama3b_0300_relativelr_123_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0600_relativelr_123_otherparams/final_model" "CAT_llama3b_0600_relativelr_123_otherparams" 0
+
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_456_otherparams/final_model" "CAT_llama3b_456_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0075_relativelr_456_otherparams/final_model" "CAT_llama3b_0075_relativelr_456_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0150_relativelr_456_otherparams/final_model" "CAT_llama3b_0150_relativelr_456_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0300_relativelr_456_otherparams/final_model" "CAT_llama3b_0300_relativelr_456_otherparams" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0600_relativelr_456_otherparams/final_model" "CAT_llama3b_0600_relativelr_456_otherparams" 0
+
+
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_eps005_42_utility/final_model" "CAT_zephyr_eps005_42_utility" 0
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_eps005_42_relativelr_utility/final_model" "CAT_zephyr_eps005_42_relativelr_utility" 0
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_eps04_42_relativelr_utility/final_model" "CAT_zephyr_eps04_42_relativelr_utility" 0
+
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_42_utility/final_model" "CAT_llama3b_42_utility" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_eps005_42_utility/final_model" "CAT_llama3b_eps005_42_utility" 0
+
+
+
+## Robustness evaluation
+
+cd MixAT/harmbench
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh <attack> <model>
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh <attack> <model>
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b"
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b"
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b" # NEED 2 GPUs
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b_cat_huggingface"
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_cat_huggingface"
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b_cat_huggingface" # NEED 2 GPUs
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b_cat_huggingface"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b_cat_github"
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_cat_github"
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b_cat_github" # NEED 2 GPUs
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b_cat_github"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b_cat_github_eps_0_1"
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_cat_github_eps_0_1"
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b_cat_github_eps_0_1" # NEED 2 GPUs
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b_cat_github_eps_0_1"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b_cat_github_eps_0_2"
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_cat_github_eps_0_2"
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b_cat_github_eps_0_2" # NEED 2 GPUs
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b_cat_github_eps_0_2"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b_cat_github_eps_0_4"
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_cat_github_eps_0_4"
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b_cat_github_eps_0_4" # NEED 2 GPUs
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b_cat_github_eps_0_4"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b_cat_github_refait"
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_cat_github_refait"
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b_cat_github_refait" # NEED 2 GPUs
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b_cat_github_refait"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b_rcat_torch_topk1_lambda25"
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_rcat_torch_topk1_lambda25"
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b_rcat_torch_topk5_lambda50_tau20_beta005" # NEED 2 GPUs
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b_cat_true_eps_0_5"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "llama3_base" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "llama3_CAT" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_005" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_005_relativelr" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_01_relativelr" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_02_relativelr" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_04_relativelr" 0
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0075_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0150_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0300_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0600_relativelr_otherparams" 0
+
+# _123 variants
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0075_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0150_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0300_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0600_relativelr_123_otherparams" 0
+
+# _456 variants
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0075_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0150_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0300_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "CAT_llama3b_0600_relativelr_456_otherparams" 0
+
+
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0075_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0150_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0300_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0600_relativelr_otherparams" 0
+
+# _123 variants
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0075_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0150_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0300_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0600_relativelr_123_otherparams" 0
+
+# _456 variants
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0075_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0150_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0300_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "CAT_llama3b_0600_relativelr_456_otherparams" 0
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0075_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0150_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0300_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0600_relativelr_otherparams" 0
+
+# _123 variants
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0075_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0150_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0300_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0600_relativelr_123_otherparams" 0
+
+# _456 variants
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0075_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0150_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0300_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "CAT_llama3b_0600_relativelr_456_otherparams" 0
+
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0075_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0150_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0300_relativelr_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0600_relativelr_otherparams" 0
+
+# _123 variants
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0075_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0150_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0300_relativelr_123_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0600_relativelr_123_otherparams" 0
+
+# _456 variants
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0075_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0150_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0300_relativelr_456_otherparams" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "CAT_llama3b_0600_relativelr_456_otherparams" 0
+
+
+
+## ARC-E, ARC-C and MMLU Utility Evaluation
+
+cd MixAT/lm-evaluation-harness	
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test.sh <model_path>
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh <model_path> <peft_path>
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test.sh "HuggingFaceH4/zephyr-7b-beta"
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "ContinuousAT/Zephyr-CAT"
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiments/training/ul/None/final_model"
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_0_1/training/ul/None/final_model"
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_0_2/training/ul/None/final_model"
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_0_4/training/ul/None/final_model"
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_experiment_refait/training/ul/None/final_model"
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_true_eps_2_0/training/ul/None/final_model"
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/RCAT_torch_topk5_lambda50_tau20_beta005/training/ul/None/final_model"
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/RCAT_torch_topk1_lambda25/training/ul/None/final_model"
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test.sh "meta-llama/Meta-Llama-3-8B-Instruct" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test.sh "ContinuousAT/Llama3-8B-IT-CAT" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_005/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_005_relativelr/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_01_relativelr/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_02_relativelr/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_04_relativelr/final_model" 0
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0075_relativelr_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0150_relativelr_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0300_relativelr_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0600_relativelr_otherparams/final_model" 0
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_123_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0075_relativelr_123_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0150_relativelr_123_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0300_relativelr_123_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0600_relativelr_123_otherparams/final_model" 0
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_456_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0075_relativelr_456_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0150_relativelr_456_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0300_relativelr_456_otherparams/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "../../experiments/CAT_llama3b_0600_relativelr_456_otherparams/final_model" 0
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_github_42/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_github_123/final_model" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/CAT_zephyr_github_456/final_model" 0
+
+
+## MT-Bench Evaluation
+
+cd MixAt/fastchat/fastchat/llm_judge
+
+sbatch ./../../../utility_eval/mt_bench/run_utility_evaluate.sh <model_path> <model_name>
+sbatch ./../../../utility_eval/mt_bench/run_utility_evaluate_peft.sh <model_path> <model_name> <peft_path>
+
+sbatch ./../../../utility_eval/mt_bench/run_utility_evaluate.sh "HuggingFaceH4/zephyr-7b-beta" "mistral_raw"
+
+sbatch ./../../../utility_eval/mt_bench/run_utility_evaluate_peft.sh "HuggingFaceH4/zephyr-7b-beta" "mistral_CAT_huggingface" "ContinuousAT/Zephyr-CAT"
+sbatch ./../../../utility_eval/mt_bench/run_utility_evaluate_peft.sh "HuggingFaceH4/zephyr-7b-beta" "mistral_CAT_github_refait" "../../../../experiments/CAT_experiment_refait/training/ul/None/final_model"
+sbatch ./../../../utility_eval/mt_bench/run_utility_evaluate_peft.sh "HuggingFaceH4/zephyr-7b-beta" "mistral_CAT_github_eps_0_1" "../../../../experiments/CAT_experiment_0_1/training/ul/None/final_model"
+sbatch ./../../../utility_eval/mt_bench/run_utility_evaluate_peft.sh "HuggingFaceH4/zephyr-7b-beta" "mistral_CAT_github_eps_0_2" "../../../../experiments/CAT_experiment_0_2/training/ul/None/final_model"
+sbatch ./../../../utility_eval/mt_bench/run_utility_evaluate_peft.sh "HuggingFaceH4/zephyr-7b-beta" "mistral_CAT_github_eps_0_4" "../../../../experiments/CAT_experiment_0_4/training/ul/None/final_model"
+
+
+## XSTest
+
+sbatch xstest_eval.sh model_path=HuggingFaceH4/zephyr-7b-beta output=results/xstest_outputs_raw_mistral.jsonl
+sbatch xstest_eval.sh model_path=HuggingFaceH4/zephyr-7b-beta adapter=ContinuousAT/Zephyr-CAT output=results/xstest_outputs_cat_huggingface.jsonl
+sbatch xstest_eval.sh model_path=HuggingFaceH4/zephyr-7b-beta adapter="../experiments/CAT_experiment_refait/training/ul/None/final_model" output=results/xstest_outputs_cat_github.jsonl
+
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_otherparams/final_model" --output results/xstest_CAT_llama3b_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0075_relativelr_otherparams/final_model" --output results/xstest_CAT_llama3b_0075_relativelr_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0150_relativelr_otherparams/final_model" --output results/xstest_CAT_llama3b_0150_relativelr_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0300_relativelr_otherparams/final_model" --output results/xstest_CAT_llama3b_0300_relativelr_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0600_relativelr_otherparams/final_model" --output results/xstest_CAT_llama3b_0600_relativelr_otherparams.jsonl
+
+# _123 variants
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_123_otherparams/final_model" --output results/xstest_CAT_llama3b_123_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0075_relativelr_123_otherparams/final_model" --output results/xstest_CAT_llama3b_0075_relativelr_123_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0150_relativelr_123_otherparams/final_model" --output results/xstest_CAT_llama3b_0150_relativelr_123_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0300_relativelr_123_otherparams/final_model" --output results/xstest_CAT_llama3b_0300_relativelr_123_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0600_relativelr_123_otherparams/final_model" --output results/xstest_CAT_llama3b_0600_relativelr_123_otherparams.jsonl
+
+# _456 variants
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_456_otherparams/final_model" --output results/xstest_CAT_llama3b_456_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0075_relativelr_456_otherparams/final_model" --output results/xstest_CAT_llama3b_0075_relativelr_456_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0150_relativelr_456_otherparams/final_model" --output results/xstest_CAT_llama3b_0150_relativelr_456_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0300_relativelr_456_otherparams/final_model" --output results/xstest_CAT_llama3b_0300_relativelr_456_otherparams.jsonl
+sbatch xstest_eval.sh --model_path meta-llama/Meta-Llama-3-8B-Instruct --adapter "../experiments/CAT_llama3b_0600_relativelr_456_otherparams/final_model" --output results/xstest_CAT_llama3b_0600_relativelr_456_otherparams.jsonl
+
+
+## RCAT
+
+cd Reachable-Continuous-AdvTrain
+
+sbatch train_RCAT.sh lambda_weight=1 logging_path=./RCAT_lambda1/
+
+
+## circuit-breakers-eval
+
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --logging_path "results/raw_mistral_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "ContinuousAT/Zephyr-CAT" --logging_path "results/mistral_cat_huggingface_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_experiment_refait/training/ul/None/final_model" --logging_path "results/mistral_cat_experiment_refait_42" --seed 42
+
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps005_42_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps005_42_relativelr_REFAIT_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps005_123_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps005_123_relativelr_REFAIT_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps005_456_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps005_456_relativelr_REFAIT_42" --seed 42
+
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps01_42_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps01_42_relativelr_REFAIT_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps01_123_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps01_123_relativelr_REFAIT_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps01_456_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps01_456_relativelr_REFAIT_42" --seed 42
+
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps02_42_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps02_42_relativelr_REFAIT_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps02_123_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps02_123_relativelr_REFAIT_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps02_456_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps02_456_relativelr_REFAIT_42" --seed 42
+
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps04_42_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps04_42_relativelr_REFAIT_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps04_123_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps04_123_relativelr_REFAIT_42" --seed 42
+sbatch run_embedding_attack.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/CAT_adv_eps04_456_relativelr_REFAIT/final_model" --logging_path "results/CAT_adv_eps04_456_relativelr_REFAIT_42" --seed 42
+
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --logging_path "results/raw_llama3b_42" --seed 42
+sbatch run_embedding_attack.sh --model "ContinuousAT/Llama3-8B-IT-CAT" --logging_path "results/llama3b_huggingface_42" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_005/final_model" --logging_path "results/CAT_llama3b_005_42" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_005_relativelr/final_model" --logging_path "results/CAT_llama3b_005_relativelr_42" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_01_relativelr/final_model" --logging_path "results/CAT_llama3b_01_relativelr_42" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_02_relativelr/final_model" --logging_path "results/CAT_llama3b_02_relativelr_42" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_04_relativelr/final_model" --logging_path "results/CAT_llama3b_04_relativelr_42" --seed 42
+
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_otherparams/final_model" --logging_path "results/CAT_llama3b_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0075_relativelr_otherparams/final_model" --logging_path "results/CAT_llama3b_0075_relativelr_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0150_relativelr_otherparams/final_model" --logging_path "results/CAT_llama3b_0150_relativelr_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0300_relativelr_otherparams/final_model" --logging_path "results/CAT_llama3b_0300_relativelr_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0600_relativelr_otherparams/final_model" --logging_path "results/CAT_llama3b_0600_relativelr_otherparams" --seed 42
+
+# _123 variants
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_123_otherparams/final_model" --logging_path "results/CAT_llama3b_123_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0075_relativelr_123_otherparams/final_model" --logging_path "results/CAT_llama3b_0075_relativelr_123_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0150_relativelr_123_otherparams/final_model" --logging_path "results/CAT_llama3b_0150_relativelr_123_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0300_relativelr_123_otherparams/final_model" --logging_path "results/CAT_llama3b_0300_relativelr_123_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0600_relativelr_123_otherparams/final_model" --logging_path "results/CAT_llama3b_0600_relativelr_123_otherparams" --seed 42
+
+# _456 variants
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_456_otherparams/final_model" --logging_path "results/CAT_llama3b_456_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0075_relativelr_456_otherparams/final_model" --logging_path "results/CAT_llama3b_0075_relativelr_456_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0150_relativelr_456_otherparams/final_model" --logging_path "results/CAT_llama3b_0150_relativelr_456_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0300_relativelr_456_otherparams/final_model" --logging_path "results/CAT_llama3b_0300_relativelr_456_otherparams" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "../experiments/CAT_llama3b_0600_relativelr_456_otherparams/final_model" --logging_path "results/CAT_llama3b_0600_relativelr_456_otherparams" --seed 42
+
+
+## I-GCG
+
+sbatch run_i-gcg.sh --model "HuggingFaceH4/zephyr-7b-beta" --output_dir results/raw_mistral --seed 20
+sbatch run_i-gcg.sh --model "HuggingFaceH4/zephyr-7b-beta" --adapter "ContinuousAT/Zephyr-CAT"  --output_dir results/mistral_CAT_huggingface --seed 20
+
+
+## AdversariaLLM
+
+sbatch run_adversariallm.sh --model "HuggingFaceH4/zephyr-7b-beta" --attack gcg
+sbatch run_adversariallm.sh --model "HuggingFaceH4/zephyr-7b-beta" --attack inpainting
+sbatch run_adversariallm.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --attack inpainting
+sbatch run_adversariallm.sh --model "ContinuousAT/Zephyr-CAT" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_experiment_refait" --attack inpainting
+
+sbatch run_adversariallm.sh --model "CAT_llama3b_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0075_relativelr_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0150_relativelr_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0300_relativelr_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0600_relativelr_otherparams" --attack inpainting
+
+# _123 variants
+sbatch run_adversariallm.sh --model "CAT_llama3b_123_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0075_relativelr_123_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0150_relativelr_123_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0300_relativelr_123_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0600_relativelr_123_otherparams" --attack inpainting
+
+# _456 variants
+sbatch run_adversariallm.sh --model "CAT_llama3b_456_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0075_relativelr_456_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0150_relativelr_456_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0300_relativelr_456_otherparams" --attack inpainting
+sbatch run_adversariallm.sh --model "CAT_llama3b_0600_relativelr_456_otherparams" --attack inpainting
+
+
+============================================================================================================================================================
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' Code/ ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' Code/experiments/RCAT_lambda1 ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/experiments
+
+--- Launch CAT with different epsilons ---
+sbatch train_CAT.sh eps=0.05 logging_path=./CAT_adv_eps005/
+sbatch train_CAT.sh eps=0.1 logging_path=./CAT_adv_eps01/
+sbatch train_CAT.sh eps=0.2 logging_path=./CAT_adv_eps02/
+sbatch train_CAT.sh eps=0.4 logging_path=./CAT_adv_eps04/
+
+sbatch train_CAT.sh --eps 0.05 --relative_lr false --seed 42 --logging_path ./CAT_adv_eps005_42/
+sbatch train_CAT.sh --eps 0.05 --relative_lr false --seed 123 --logging_path ./CAT_adv_eps005_123/
+sbatch train_CAT.sh --eps 0.05 --relative_lr false --seed 456 --logging_path ./CAT_adv_eps005_456/
+
+
+sbatch train_CAT.sh --eps 0.05 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps005_42_relativelr_REFAIT/
+sbatch train_CAT.sh --eps 0.05 --relative_lr false --seed 42 --logging_path ./CAT_llama3b/
+sbatch train_CAT.sh --eps 0.05 --relative_lr true --seed 123 --logging_path ./CAT_llama3b_005_relativelr_123/
+
+sbatch train_CAT.sh --eps 0.05 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps005_42_relativelr_REFAIT_verify_jump/
+sbatch train_CAT.sh --eps 0.1 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps01_42_relativelr_REFAIT_verify_jump/
+sbatch train_CAT.sh --eps 0.2 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps02_42_relativelr_REFAIT_verify_jump/
+sbatch train_CAT.sh --eps 0.4 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps04_42_relativelr_REFAIT_verify_jump/
+
+sbatch train_CAT.sh --eps 0.05 --iters 100 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps005_42_relativelr_REFAIT_100innerloops/
+sbatch train_CAT.sh --eps 0.1 --iters 100 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps01_42_relativelr_REFAIT_100innerloops/
+sbatch train_CAT.sh --eps 0.2 --iters 100 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps02_42_relativelr_REFAIT_100innerloops/
+sbatch train_CAT.sh --eps 0.4 --iters 100 --relative_lr true --seed 42 --logging_path ./CAT_adv_eps04_42_relativelr_REFAIT_100innerloops/
+
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 42 --logging_path ./CAT_llama3b_otherparams/
+sbatch train_CAT.sh --config_name llama_likeZephyr_adv_train_ul --path llama_example_path --eps 0.075 --relative_lr false --seed 42 --logging_path ./CAT_llama3b_otherparams/
+
+sbatch train_CAT.sh --eps 0.075 --relative_lr true --seed 42 --logging_path ./CAT_llama3b_0075_relativelr_otherparams/
+sbatch train_CAT.sh --eps 0.150 --relative_lr true --seed 42 --logging_path ./CAT_llama3b_0150_relativelr_otherparams/
+sbatch train_CAT.sh --eps 0.300 --relative_lr true --seed 42 --logging_path ./CAT_llama3b_0300_relativelr_otherparams/
+sbatch train_CAT.sh --eps 0.600 --relative_lr true --seed 42 --logging_path ./CAT_llama3b_0600_relativelr_otherparams/
+
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 123 --logging_path ./CAT_llama3b_123_otherparams/
+sbatch train_CAT.sh --eps 0.075 --relative_lr true --seed 123 --logging_path ./CAT_llama3b_0075_relativelr_123_otherparams/
+sbatch train_CAT.sh --eps 0.150 --relative_lr true --seed 123 --logging_path ./CAT_llama3b_0150_relativelr_123_otherparams/
+sbatch train_CAT.sh --eps 0.300 --relative_lr true --seed 123 --logging_path ./CAT_llama3b_0300_relativelr_123_otherparams/
+sbatch train_CAT.sh --eps 0.600 --relative_lr true --seed 123 --logging_path ./CAT_llama3b_0600_relativelr_123_otherparams/
+
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 456 --logging_path ./CAT_llama3b_456_otherparams/
+sbatch train_CAT.sh --eps 0.075 --relative_lr true  --seed 456 --logging_path ./CAT_llama3b_0075_relativelr_456_otherparams/
+sbatch train_CAT.sh --eps 0.150 --relative_lr true  --seed 456 --logging_path ./CAT_llama3b_0150_relativelr_456_otherparams/
+sbatch train_CAT.sh --eps 0.300 --relative_lr true  --seed 456 --logging_path ./CAT_llama3b_0300_relativelr_456_otherparams/
+sbatch train_CAT.sh --eps 0.600 --relative_lr true  --seed 456 --logging_path ./CAT_llama3b_0600_relativelr_456_otherparams/
+
+sbatch train_CAT.sh --eps 0.05 --relative_lr false --seed 42 --logging_path ./CAT_llama3b_eps005_42_withoutcorrection/
+sbatch train_CAT.sh --eps 0.1 --relative_lr false --seed 42 --logging_path ./CAT_llama3b_eps01_42_withoutcorrection/
+sbatch train_CAT.sh --eps 0.2 --relative_lr false --seed 42 --logging_path ./CAT_llama3b_eps02_42_withoutcorrection/
+sbatch train_CAT.sh --eps 0.4 --relative_lr false --seed 42 --logging_path ./CAT_llama3b_eps04_42_withoutcorrection/
+
+
+sbatch train_CAT.sh --eps 0.05 --relative_lr false --seed 42 --logging_path ./CAT_zephyr_eps005_42_utility/
+
+sbatch train_CAT.sh --eps 0.05 --relative_lr true --seed 42 --logging_path ./CAT_zephyr_eps005_42_relativelr_utility/
+sbatch train_CAT.sh --eps 0.4 --relative_lr true --seed 42 --logging_path ./CAT_zephyr_eps04_42_relativelr_utility/
+
+sbatch train_CAT.sh --config_name llama_likeZephyr_adv_train_ul --path llama_example_path --eps 0.075 --relative_lr false --seed 42 --logging_path ./CAT_llama3b_likeZephyr_42_utility/
+sbatch train_CAT.sh --config_name llama_likeZephyr_adv_train_ul --path llama_example_path --eps 0.075 --relative_lr false --seed 123 --logging_path ./CAT_llama3b_likeZephyr_123_utility/
+sbatch train_CAT.sh --config_name llama_likeZephyr_adv_train_ul --path llama_example_path --eps 0.075 --relative_lr false --seed 456 --logging_path ./CAT_llama3b_likeZephyr_456_utility/
+
+sbatch train_CAT.sh --config_name llama_likeZephyr_adv_train_ul --path llama_example_path --eps 0.075 --relative_lr true --seed 42 --logging_path ./CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility/
+sbatch train_CAT.sh --config_name llama_likeZephyr_adv_train_ul --path llama_example_path --eps 0.600 --relative_lr true --seed 42 --logging_path ./CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility/
+
+
+sbatch train_CAT.sh --config_name zephyr_adv_train_ul --path zephyr_example_path --eps 0.075 --relative_lr false --seed 42 --logging_path ./CAT_zephyr_github_42/
+
+
+sbatch train_CAT.sh --config_name llama_likeLlama2_adv_train_ul --path llama_example_path --eps 0.075 --relative_lr true --seed 42 --logging_path ./CAT_llama3b_0075_relativelr/
+sbatch train_CAT.sh --config_name llama_likeLlama2_adv_train_ul --path llama_example_path --eps 0.075 --relative_lr true --seed 123 --logging_path ./CAT_llama3b_0075_relativelr_123/
+sbatch train_CAT.sh --config_name llama_likeLlama2_adv_train_ul --path llama_example_path --eps 0.075 --relative_lr true --seed 456 --logging_path ./CAT_llama3b_0075_relativelr_456/
+
+
+CAT_adv_eps005
+CAT_adv_eps01
+CAT_adv_eps02
+CAT_adv_eps04
+CAT_true_eps05
+CAT_true_eps1
+CAT_true_eps2
+
+sbatch train_CAT.sh --eps 0.4 --seed 42 --logging_path ./CAT_adv_eps04_42/
+sbatch train_CAT.sh --eps 0.4 --seed 123 --logging_path ./CAT_adv_eps04_123/
+sbatch train_CAT.sh --eps 0.4 --seed 456 --logging_path ./CAT_adv_eps04_456/
+sbatch train_CAT.sh --eps 0.4 --seed 789 --logging_path ./CAT_adv_eps04_789/
+sbatch train_CAT.sh --eps 0.4 --seed 1337 --logging_path ./CAT_adv_eps04_1337/
+
+
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 42 --logging_path ./CAT_zephyr_github_42/
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 123 --logging_path ./CAT_zephyr_github_123/
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 456 --logging_path ./CAT_zephyr_github_456/
+
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 42 --logging_path ./CAT_zephyr_github_42_REFAIT/
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 123 --logging_path ./CAT_zephyr_github_123_REFAIT/
+sbatch train_CAT.sh --eps 0.075 --relative_lr false --seed 456 --logging_path ./CAT_zephyr_github_456_REFAIT/
+
+
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/Continuous-AdvTrain/CAT_* ./Code/experiments/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/Continuous-AdvTrain/slurm-* ./Code/Continuous-AdvTrain
+
+--- RCAT experiment finished ---
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/Reachable-Continuous-AdvTrain/RCAT_lambda1 ./Transfer/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/Reachable-Continuous-AdvTrain/slurm-81727.* ./Transfer/
+(on oat0) mv RCAT_lambda1 ../experiments
+(on oat0) delete created checkpoints
+
+--- Launch evaluations (on oat0) ---
+sbatch run.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/RCAT_lambda1/final_model" "mistral_RCAT_lambda1" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "HuggingFaceH4/zephyr-7b-beta" "../../experiments/RCAT_lambda1/final_model" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "zephyr_7b_rcat_lambda1" 0
+(NEED 2 GPUs) sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "zephyr_7b_rcat_lambda1" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_rcat_lambda1" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "zephyr_7b_rcat_lambda1" 0
+sbatch xstest_eval.sh --model_path "HuggingFaceH4/zephyr-7b-beta" --adapter "../experiments/RCAT_lambda1/final_model" --output "results/xstest_outputs_RCAT_lambda1.jsonl" (--strict or without)
+
+--- Evaluations done (selectioning) ---
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/eval_harmless/evaluated/mistral_RCAT_lambda1_responses_evaluated.json ./Transfer/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/eval_harmless/slurm-81839.* ./Transfer/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/lm-evaluation-harness/slurm-81841.* ./Transfer/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/harmbench/slurm-?.* ./Transfer/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/robustness_eval_harmbench/results/GCG/zephyr_7b_rcat_lambda1 ./Transfer/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/robustness_eval_harmbench/results/AutoDAN/zephyr_7b_rcat_lambda1 ./Transfer/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/XSTest/results/xstest_outputs_raw_mistral* ./Transfer/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/XSTest/slurm-81968.* ./Transfer/
+
+--- Evaluations done (directly in folder) ---
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/eval_harmless/evaluated/ ./Code/MixAT/eval_harmless/evaluated
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/eval_harmless/slurm-* ./Code/MixAT/eval_harmless
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/lm-evaluation-harness/slurm-* ./Code/MixAT/lm-evaluation-harness
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/harmbench/slurm-* ./Code/MixAT/harmbench/
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/robustness_eval_harmbench/results/GCG/ ./Code/MixAT/robustness_eval_harmbench/results/GCG
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/MixAT/robustness_eval_harmbench/results/AutoDAN/ ./Code/MixAT/robustness_eval_harmbench/results/AutoDAN
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/XSTest/results/ ./Code/XSTest/results
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/XSTest/slurm-* ./Code/XSTest
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/circuit-breakers-eval/results/ ./Code/circuit-breakers-eval/results
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/circuit-breakers-eval/slurm-* ./Code/circuit-breakers-eval
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/AdversariaLLM/outputs/ ./Code/AdversariaLLM/outputs
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/AdversariaLLM/slurm-* ./Code/AdversariaLLM
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/I-GCG/slurm-* ./Code/I-GCG
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/OR-Bench/slurm-* ./Code/OR-Bench
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/OR-Bench/utility* ./Code/OR-Bench
+
+
+(analysing_slurm_metrics) C:\Users\maria\anaconda3\envs\Computer_Vision\python.exe c:/Users/maria/Documents/Oxford/Masters_Thesis/Code/Reachable-Continuous-AdvTrain/analysing_slurm_metrics.py --input ./Reachable-Continuous-AdvTrain/slurm-81727.out
+(analysing_logs) C:\Users\maria\anaconda3\envs\Computer_Vision\python.exe c:/Users/maria/Documents/Oxford/Masters_Thesis/Code/Reachable-Continuous-AdvTrain/analysing_logs.py ./Reachable-Continuous-AdvTrain/slurm-81727.out --lambda_weight 1
+
+
+python compare_cat_logs.py slurm-82432.out slurm-82434.out slurm-82436.out slurm-82793.out slurm-82447.out slurm-82448.out slurm-82449.out --labels CAT_true_eps05 CAT_true_eps1 CAT_true_eps2 CAT_adv_eps005 CAT_adv_eps01 CAT_adv_eps02 CAT_adv_eps04 --outdir cat_compare
+
+python compare_cat_logs.py \
+slurm-85086.out slurm-85087.out slurm-85088.out slurm-85089.out slurm-85090.out \
+slurm-85603.out slurm-85604.out slurm-85613.out slurm-85614.out slurm-85615.out \
+slurm-85179.out slurm-85180.out slurm-85181.out slurm-85182.out slurm-85183.out \
+slurm-85608.out slurm-85616.out slurm-85617.out slurm-85618.out slurm-85619.out \
+--labels \
+CAT_adv_eps005_42 CAT_adv_eps005_123 CAT_adv_eps005_456 CAT_adv_eps005_789 CAT_adv_eps005_1337 \
+CAT_adv_eps01_42 CAT_adv_eps01_123 CAT_adv_eps01_456 CAT_adv_eps01_789 CAT_adv_eps01_1337 \
+CAT_adv_eps02_42 CAT_adv_eps02_123 CAT_adv_eps02_456 CAT_adv_eps02_789 CAT_adv_eps02_1337 \
+CAT_adv_eps04_42 CAT_adv_eps04_123 CAT_adv_eps04_456 CAT_adv_eps04_789 CAT_adv_eps04_1337 \
+--outdir cat_compare
+
+
+========================================================================= ARCHIVE =========================================================================
+
+RCAT_topk10_lambda50_tau20_beta005
+RCAT_topk5_lambda50_tau20_beta0
+RCAT_topk5_lambda50_tau20_beta03
+RCAT_topk5_lambda50_tau5_beta005
+
+--- Launch RCAT experiment finished (on oat0) ---
+sbatch train_RCAT.sh lambda_weight=1 logging_path=./RCAT_lambda1/
+
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=0.5 beta=0 logging_path=./RCAT_topk5_lambda50_tau05_beta0/ => 83133
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=1 beta=0 logging_path=./RCAT_topk5_lambda50_tau1_beta0/ => 83134
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=3 beta=0 logging_path=./RCAT_topk5_lambda50_tau3_beta0/ => 83135
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=5 beta=0 logging_path=./RCAT_topk5_lambda50_tau5_beta0/ => 83136
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=10 beta=0 logging_path=./RCAT_topk5_lambda50_tau10_beta0/ => 83137
+
+beta 0 and 0.3 already done
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=5 beta=0.01 logging_path=./RCAT_topk5_lambda50_tau5_beta001/ => 83138
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=5 beta=0.1 logging_path=./RCAT_topk5_lambda50_tau5_beta01/ => 83139
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=5 beta=1.0 logging_path=./RCAT_topk5_lambda50_tau5_beta1/ => 83140
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=5 beta=1.5 logging_path=./RCAT_topk5_lambda50_tau5_beta1_5/ => 83456
+sbatch train_RCAT.sh top_k=5 lambda_weight=50 tau=5 beta=3.0 logging_path=./RCAT_topk5_lambda50_tau5_beta3/ => 83457
+
+
+
+========================================================================= LAT =========================================================================
+
+# Models for LAT
+
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/latent-adversarial-training/experiments/ ./Code/experiments
+rsync -azP --exclude '.venv' --exclude '__pycache__' --exclude '.git' --exclude 'experiments' --exclude 'archive' ms25mds@oat0.cs.ox.ac.uk:~/MSc_Project/latent-adversarial-training/slurm-* ./Code/latent-adversarial-training
+
+
+# Evaluations for Huggingface models
+
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust1" "lat_llama3_huggingface_1" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust2" "lat_llama3_huggingface_2" 0
+sbatch run.sh "meta-llama/Meta-Llama-3-8B-Instruct" "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust3" "lat_llama3_huggingface_3" 0
+
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust1" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust2" 0
+sbatch ./../utility_eval/lm-evaluation-harness/run_utility_test_peft.sh "meta-llama/Meta-Llama-3-8B-Instruct" "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust3" 0
+
+sbatch xstest_eval.sh --model_path "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust1" --output "results/lat_llama3_huggingface_1.jsonl"
+sbatch xstest_eval.sh --model_path "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust2" --output "results/lat_llama3_huggingface_2.jsonl"
+sbatch xstest_eval.sh --model_path "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust3" --output "results/lat_llama3_huggingface_3.jsonl"
+
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "lat_llama3_huggingface_1" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "lat_llama3_huggingface_2" 0
+sbatch ./../robustness_eval_harmbench/generate_samples.sh "GCG" "lat_llama3_huggingface_3" 0
+
+(NEED 2 GPUs) sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "lat_llama3_huggingface_1" 0
+(NEED 2 GPUs) sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "lat_llama3_huggingface_2" 0
+(NEED 2 GPUs) sbatch ./../robustness_eval_harmbench/generate_samples.sh "AutoDAN" "lat_llama3_huggingface_3" 0
+
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "GCG" "zephyr_7b_rcat_lambda1" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "lat_llama3_huggingface_1" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "lat_llama3_huggingface_2" 0
+sbatch ./../robustness_eval_harmbench/evaluate_samples.sh "AutoDAN" "lat_llama3_huggingface_3" 0
+
+
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust1" --logging_path "results/lat_llama3_huggingface_1_42" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust2" --logging_path "results/lat_llama3_huggingface_2_42" --seed 42
+sbatch run_embedding_attack.sh --model "meta-llama/Meta-Llama-3-8B-Instruct" --adapter "LLM-LAT/llama3-8b-instruct-lat-jailbreak-robust3" --logging_path "results/lat_llama3_huggingface_3_42" --seed 42
+
