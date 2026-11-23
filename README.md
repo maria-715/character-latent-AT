@@ -1,6 +1,6 @@
 # MSc Thesis: Continuous Adversarial Training for LLMs: Robustness, Utility and Over-refusal
 
-Code, results and logs for my Oxford MSc thesis. The thesis studies **continuous (embedding-space) adversarial training (CAT)** and **latent adversarial training (LAT)** of LLMs (Zephyr-7B, Llama-3-8B, Mistral-7B). It looks at robustness to jailbreak attacks, utility, and over-refusal of benign prompts.
+Code, results and logs for my Oxford MSc thesis named _Characterising Latent-Space Adversarial Training for LLM Safety_. The thesis studies **continuous (embedding-space) adversarial training (CAT)** and **latent adversarial training (LAT)** of LLMs (Zephyr-7B, Llama-3-8B, Mistral-7B). It looks at robustness to jailbreak attacks, utility, and over-refusal of benign prompts.
 
 **Trained models (LoRA adapters):** https://huggingface.co/collections/maria715/masters-thesis (also listed at https://huggingface.co/maria715)
 
