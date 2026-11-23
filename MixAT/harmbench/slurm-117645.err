@@ -1,0 +1,24 @@
+./scripts/generate_completions.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+/auto/users/ms25mds/MSc_Project/MixAT/harmbench/api_models.py:7: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s]Loading checkpoint shards:  14%|█▍        | 1/7 [00:04<00:24,  4.11s/it]Loading checkpoint shards:  29%|██▊       | 2/7 [00:09<00:24,  4.95s/it]Loading checkpoint shards:  43%|████▎     | 3/7 [00:16<00:23,  5.91s/it]Loading checkpoint shards:  57%|█████▋    | 4/7 [00:22<00:17,  5.83s/it]Loading checkpoint shards:  71%|███████▏  | 5/7 [00:27<00:11,  5.69s/it]Loading checkpoint shards:  86%|████████▌ | 6/7 [00:33<00:05,  5.69s/it]Loading checkpoint shards: 100%|██████████| 7/7 [00:36<00:00,  4.69s/it]Loading checkpoint shards: 100%|██████████| 7/7 [00:36<00:00,  5.17s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:601: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:606: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+100%|██████████| 1/1 [00:57<00:00, 57.83s/it]100%|██████████| 1/1 [00:57<00:00, 57.83s/it]
+./scripts/evaluate_completions.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+[W socket.cpp:464] [c10d] The server socket cannot be initialized on [::]:57003 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:697] [c10d] The client socket cannot be initialized to connect to [oat15.cs.ox.ac.uk]:57003 (errno: 97 - Address family not supported by protocol).
+  0%|          | 0/39 [00:00<?, ?it/s]  3%|▎         | 1/39 [00:00<00:04,  8.19it/s]  8%|▊         | 3/39 [00:00<00:02, 13.48it/s] 13%|█▎        | 5/39 [00:00<00:02, 15.48it/s] 18%|█▊        | 7/39 [00:00<00:02, 11.82it/s] 23%|██▎       | 9/39 [00:00<00:02, 11.94it/s] 28%|██▊       | 11/39 [00:00<00:02, 12.01it/s] 33%|███▎      | 13/39 [00:01<00:02, 12.06it/s] 38%|███▊      | 15/39 [00:01<00:01, 12.70it/s] 44%|████▎     | 17/39 [00:01<00:01, 13.52it/s] 49%|████▊     | 19/39 [00:01<00:01, 14.69it/s] 54%|█████▍    | 21/39 [00:01<00:01, 15.65it/s] 59%|█████▉    | 23/39 [00:01<00:00, 16.34it/s] 64%|██████▍   | 25/39 [00:01<00:00, 14.51it/s] 69%|██████▉   | 27/39 [00:01<00:00, 15.50it/s] 74%|███████▍  | 29/39 [00:02<00:00, 13.64it/s] 79%|███████▉  | 31/39 [00:02<00:00, 14.76it/s] 85%|████████▍ | 33/39 [00:02<00:00, 12.31it/s] 90%|████████▉ | 35/39 [00:02<00:00, 12.88it/s] 95%|█████████▍| 37/39 [00:02<00:00, 12.44it/s]100%|██████████| 39/39 [00:03<00:00, 10.42it/s]100%|██████████| 39/39 [00:03<00:00, 12.82it/s]
+/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/numpy/lib/function_base.py:520: RuntimeWarning: Mean of empty slice.
+  avg = a.mean(axis, **keepdims_kw)
+/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)

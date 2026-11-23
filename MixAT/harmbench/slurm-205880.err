@@ -1,0 +1,26 @@
+./scripts/generate_completions_newpeft.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+/auto/users/ms25mds/MSc_Project/MixAT/harmbench/api_models.py:7: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.90s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.72s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:06<00:02,  2.28s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.59s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.87s/it]
+/scratch-ssd/ms25mds/conda_envs/env_harmbench_newpeft/lib/python3.11/site-packages/peft/config.py:220: UserWarning: Unexpected keyword arguments ['kasa_config'] for class LoraConfig, these are ignored. This probably means that you're loading a configuration file that was saved using a higher version of the library and additional parameters have been introduced since. It is highly recommended to upgrade the PEFT version before continuing (e.g. by running `pip install -U peft`).
+  warnings.warn(
+  0%|          | 0/1 [00:00<?, ?it/s]/scratch-ssd/ms25mds/conda_envs/env_harmbench_newpeft/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:601: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/scratch-ssd/ms25mds/conda_envs/env_harmbench_newpeft/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:606: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+100%|██████████| 1/1 [01:03<00:00, 63.71s/it]100%|██████████| 1/1 [01:03<00:00, 63.71s/it]
+./scripts/evaluate_completions.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+[W socket.cpp:464] [c10d] The server socket cannot be initialized on [::]:41751 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:697] [c10d] The client socket cannot be initialized to connect to [oat14.cs.ox.ac.uk]:41751 (errno: 97 - Address family not supported by protocol).
+  0%|          | 0/40 [00:00<?, ?it/s]  2%|▎         | 1/40 [00:00<00:04,  8.53it/s]  8%|▊         | 3/40 [00:00<00:02, 12.56it/s] 12%|█▎        | 5/40 [00:00<00:03,  9.16it/s] 18%|█▊        | 7/40 [00:00<00:03,  9.83it/s] 22%|██▎       | 9/40 [00:00<00:03,  9.30it/s] 25%|██▌       | 10/40 [00:01<00:03,  8.09it/s] 28%|██▊       | 11/40 [00:01<00:03,  8.24it/s] 30%|███       | 12/40 [00:01<00:03,  8.34it/s] 32%|███▎      | 13/40 [00:01<00:03,  8.44it/s] 35%|███▌      | 14/40 [00:01<00:03,  8.52it/s] 40%|████      | 16/40 [00:01<00:02, 11.17it/s] 45%|████▌     | 18/40 [00:01<00:02, 10.07it/s] 50%|█████     | 20/40 [00:02<00:02,  7.74it/s] 52%|█████▎    | 21/40 [00:02<00:02,  7.55it/s] 55%|█████▌    | 22/40 [00:02<00:02,  7.77it/s] 57%|█████▊    | 23/40 [00:02<00:02,  7.96it/s] 60%|██████    | 24/40 [00:02<00:02,  6.98it/s] 65%|██████▌   | 26/40 [00:03<00:01,  8.45it/s] 68%|██████▊   | 27/40 [00:03<00:01,  8.28it/s] 72%|███████▎  | 29/40 [00:03<00:01,  9.16it/s] 75%|███████▌  | 30/40 [00:03<00:01,  9.05it/s] 80%|████████  | 32/40 [00:03<00:00,  8.95it/s] 82%|████████▎ | 33/40 [00:03<00:00,  7.81it/s] 85%|████████▌ | 34/40 [00:03<00:00,  7.99it/s] 90%|█████████ | 36/40 [00:04<00:00,  9.86it/s] 95%|█████████▌| 38/40 [00:04<00:00, 10.49it/s]100%|██████████| 40/40 [00:04<00:00,  9.81it/s]100%|██████████| 40/40 [00:04<00:00,  8.86it/s]
+/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/numpy/lib/function_base.py:520: RuntimeWarning: Mean of empty slice.
+  avg = a.mean(axis, **keepdims_kw)
+/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)

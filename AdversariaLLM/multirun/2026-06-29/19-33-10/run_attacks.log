@@ -1,0 +1,119 @@
+[2026-06-29 19:33:10,720][root][INFO] - -------------------
+[2026-06-29 19:33:10,721][root][INFO] - Commencing run at `2026-06-29/19-33-10`
+[2026-06-29 19:33:10,721][root][INFO] - -------------------
+[2026-06-29 19:33:10,721][root][INFO] - -------------------
+[2026-06-29 19:33:10,721][root][INFO] - Commencing run at `2026-06-29/19-33-10`
+[2026-06-29 19:33:10,721][root][INFO] - -------------------
+[2026-06-29 19:33:10,729][root][INFO] - -------------------
+[2026-06-29 19:33:10,729][root][INFO] - Commencing run at `2026-06-29/19-33-10`
+[2026-06-29 19:33:10,729][root][INFO] - -------------------
+[2026-06-29 19:33:12,549][root][INFO] - Target: CAT_experiment_refait
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_experiment_refait
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiment/CAT_experiment_refait/training/ul/None/final_model
+
+[2026-06-29 19:33:12,558][root][INFO] - Target: meta-llama/Meta-Llama-3-8B-Instruct
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: Llama
+developer_name: Meta
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ''
+
+[2026-06-29 19:33:12,619][root][INFO] - Target: ContinuousAT/Zephyr-CAT
+id: ContinuousAT/Zephyr-CAT
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: Zephyr
+developer_name: ContinuousAT
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+
+[2026-06-29 19:33:18,358][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-29 19:33:18,623][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-29 19:33:19,214][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-29 19:33:31,356][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-29 19:33:32,131][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-29 19:33:32,691][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-29 19:33:33,397][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-29 20:03:08,503][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:04:07,835][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:05:07,101][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:06:03,627][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:06:26,390][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-29 20:06:45,840][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-29 20:06:54,495][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:07:05,335][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-29 20:07:24,772][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-29 20:07:44,275][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-29 20:07:46,871][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:08:03,756][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-29 20:08:40,715][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:09:33,292][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:10:25,400][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:11:16,987][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:12:08,099][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:12:58,837][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-29 20:13:33,231][root][INFO] - Early exit after 135/256 tokens.
+[2026-06-29 20:54:14,311][root][INFO] - Inpainting attack run completed. Total Time: 4838.23s, Generation Time: 3477.84s, Loss Calc Time: 1001.98s
+[2026-06-29 20:54:25,869][root][INFO] - Inpainting attack run completed. Total Time: 4850.43s, Generation Time: 3196.19s, Loss Calc Time: 1108.67s
+[2026-06-29 20:55:37,269][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-29/19-33-10/0/run.json
+[2026-06-29 20:55:38,123][root][INFO] - -------------------
+[2026-06-29 20:55:38,125][root][INFO] - Commencing judge run
+[2026-06-29 20:55:38,126][root][INFO] - -------------------
+[2026-06-29 20:55:38,126][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['19-33-10'], 'filter_by': None}
+[2026-06-29 20:55:38,144][root][INFO] - No unjudged paths found
+[2026-06-29 20:56:02,324][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-29/19-33-10/1/run.json
+[2026-06-29 20:56:03,328][root][INFO] - -------------------
+[2026-06-29 20:56:03,329][root][INFO] - Commencing judge run
+[2026-06-29 20:56:03,329][root][INFO] - -------------------
+[2026-06-29 20:56:03,329][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['19-33-10'], 'filter_by': None}
+[2026-06-29 20:56:03,333][root][INFO] - No unjudged paths found

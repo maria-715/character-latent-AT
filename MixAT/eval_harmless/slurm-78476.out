@@ -1,0 +1,512 @@
+Creating conda env env_harmless
+Waiting for lock /tmp/run_locked_ms25mds at Thu  2 Apr 15:09:02 BST 2026
+(will force acquire the lock in 3 minutes)
+Lock acquired at Thu  2 Apr 15:09:02 BST 2026
+Retrieving notices: ...working... done
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /scratch-ssd/ms25mds/conda_envs/env_harmless
+
+  added / updated specs:
+    - pip
+    - python=3.11
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2026.3.19  |       h06a4308_0         126 KB
+    packaging-26.0             |  py311h06a4308_0         197 KB
+    pip-26.0.1                 |     pyhc872135_1         1.1 MB
+    setuptools-82.0.1          |  py311h06a4308_0         1.6 MB
+    ------------------------------------------------------------
+                                           Total:         3.0 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu 
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6 
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2026.3.19-h06a4308_0 
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.44-h9e0c5a2_3 
+  libexpat           pkgs/main/linux-64::libexpat-2.7.5-h7354ed3_0 
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_1 
+  libgcc             pkgs/main/linux-64::libgcc-15.2.0-h69a1729_7 
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-15.2.0-h166f726_7 
+  libgomp            pkgs/main/linux-64::libgomp-15.2.0-h4751f2c_7 
+  libnsl             pkgs/main/linux-64::libnsl-2.0.0-h5eee18b_0 
+  libstdcxx          pkgs/main/linux-64::libstdcxx-15.2.0-h39759b7_7 
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-15.2.0-hc03a8fd_7 
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0 
+  libxcb             pkgs/main/linux-64::libxcb-1.17.0-h9b100fa_0 
+  libzlib            pkgs/main/linux-64::libzlib-1.3.1-hb25bd0a_0 
+  ncurses            pkgs/main/linux-64::ncurses-6.5-h7934f7d_0 
+  openssl            pkgs/main/linux-64::openssl-3.5.5-h1b28b03_0 
+  packaging          pkgs/main/linux-64::packaging-26.0-py311h06a4308_0 
+  pip                pkgs/main/noarch::pip-26.0.1-pyhc872135_1 
+  pthread-stubs      pkgs/main/linux-64::pthread-stubs-0.3-h0ce48e5_1 
+  python             pkgs/main/linux-64::python-3.11.15-h741d88c_0 
+  readline           pkgs/main/linux-64::readline-8.3-hc2a1206_0 
+  setuptools         pkgs/main/linux-64::setuptools-82.0.1-py311h06a4308_0 
+  sqlite             pkgs/main/linux-64::sqlite-3.51.2-h3e8d24a_0 
+  tk                 pkgs/main/linux-64::tk-8.6.15-h54e0aa7_0 
+  tzdata             pkgs/main/noarch::tzdata-2026a-he532380_0 
+  wheel              pkgs/main/linux-64::wheel-0.46.3-py311h06a4308_0 
+  xorg-libx11        pkgs/main/linux-64::xorg-libx11-1.8.12-h9b100fa_1 
+  xorg-libxau        pkgs/main/linux-64::xorg-libxau-1.0.12-h9b100fa_0 
+  xorg-libxdmcp      pkgs/main/linux-64::xorg-libxdmcp-1.1.5-h9b100fa_0 
+  xorg-xorgproto     pkgs/main/linux-64::xorg-xorgproto-2024.1-h5eee18b_1 
+  xz                 pkgs/main/linux-64::xz-5.8.2-h448239c_0 
+  zlib               pkgs/main/linux-64::zlib-1.3.1-hb25bd0a_0 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate env_harmless
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Lock released at Thu  2 Apr 15:09:10 BST 2026
+Waiting for lock /tmp/run_locked_ms25mds at Thu  2 Apr 15:09:10 BST 2026
+(will force acquire the lock in 3 minutes)
+Lock acquired at Thu  2 Apr 15:09:10 BST 2026
+Collecting torch (from -r ../requirements/requirements_utility.txt (line 1))
+  Downloading torch-2.11.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (29 kB)
+Collecting peft (from -r ../requirements/requirements_utility.txt (line 2))
+  Using cached peft-0.18.1-py3-none-any.whl.metadata (14 kB)
+Collecting transformers<=4.45 (from -r ../requirements/requirements_utility.txt (line 3))
+  Using cached transformers-4.45.0-py3-none-any.whl.metadata (44 kB)
+Collecting bitsandbytes (from -r ../requirements/requirements_utility.txt (line 4))
+  Using cached bitsandbytes-0.49.2-py3-none-manylinux_2_24_x86_64.whl.metadata (10 kB)
+Collecting neptune (from -r ../requirements/requirements_utility.txt (line 5))
+  Using cached neptune-1.14.0.post2-py3-none-any.whl.metadata (4.7 kB)
+Collecting pandas (from -r ../requirements/requirements_utility.txt (line 6))
+  Downloading pandas-3.0.2-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+Collecting vllm<=0.5.1,>=0.3.0 (from -r ../requirements/requirements_utility.txt (line 7))
+  Using cached vllm-0.5.1-cp311-cp311-manylinux1_x86_64.whl.metadata (8.2 kB)
+Collecting protobuf (from -r ../requirements/requirements_utility.txt (line 8))
+  Using cached protobuf-7.34.1-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+Collecting accelerate<1.5.0 (from -r ../requirements/requirements_utility.txt (line 9))
+  Using cached accelerate-1.4.0-py3-none-any.whl.metadata (19 kB)
+Collecting sentencepiece (from -r ../requirements/requirements_utility.txt (line 10))
+  Using cached sentencepiece-0.2.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (10 kB)
+Collecting numpy (from -r ../requirements/requirements_utility.txt (line 11))
+  Downloading numpy-2.4.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting filelock (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached filelock-3.25.2-py3-none-any.whl.metadata (2.0 kB)
+Collecting huggingface-hub<1.0,>=0.23.2 (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: packaging>=20.0 in /scratch-ssd/ms25mds/conda_envs/env_harmless/lib/python3.11/site-packages (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3)) (26.0)
+Collecting pyyaml>=5.1 (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting regex!=2019.12.17 (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached regex-2026.3.32-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting requests (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+Collecting tokenizers<0.21,>=0.20 (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached tokenizers-0.20.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Collecting safetensors>=0.4.1 (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting tqdm>=4.27 (from transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+Collecting cmake>=3.21 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Downloading cmake-4.3.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.5 kB)
+Collecting ninja (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached ninja-1.13.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.1 kB)
+Collecting psutil (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+Collecting numpy (from -r ../requirements/requirements_utility.txt (line 11))
+  Using cached numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting py-cpuinfo (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached py_cpuinfo-9.0.0-py3-none-any.whl.metadata (794 bytes)
+Collecting fastapi (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Downloading fastapi-0.135.3-py3-none-any.whl.metadata (28 kB)
+Collecting aiohttp (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Downloading aiohttp-3.13.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+Collecting openai (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Downloading openai-2.30.0-py3-none-any.whl.metadata (29 kB)
+Collecting uvicorn[standard] (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached uvicorn-0.42.0-py3-none-any.whl.metadata (6.7 kB)
+Collecting pydantic>=2.0 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting pillow (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Downloading pillow-12.2.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Collecting prometheus-client>=0.18.0 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached prometheus_client-0.24.1-py3-none-any.whl.metadata (2.1 kB)
+Collecting prometheus-fastapi-instrumentator>=7.0.0 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached prometheus_fastapi_instrumentator-7.1.0-py3-none-any.whl.metadata (13 kB)
+Collecting tiktoken>=0.6.0 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached tiktoken-0.12.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+Collecting lm-format-enforcer==0.10.1 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached lm_format_enforcer-0.10.1-py3-none-any.whl.metadata (16 kB)
+Collecting outlines>=0.0.43 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached outlines-1.2.12-py3-none-any.whl.metadata (28 kB)
+Collecting typing-extensions (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting ray>=2.9 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Downloading ray-2.54.1-cp311-cp311-manylinux2014_x86_64.whl.metadata (21 kB)
+Collecting nvidia-ml-py (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached nvidia_ml_py-13.595.45-py3-none-any.whl.metadata (9.7 kB)
+Collecting torch (from -r ../requirements/requirements_utility.txt (line 1))
+  Using cached torch-2.3.0-cp311-cp311-manylinux1_x86_64.whl.metadata (26 kB)
+Collecting torchvision==0.18.0 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached torchvision-0.18.0-cp311-cp311-manylinux1_x86_64.whl.metadata (6.6 kB)
+Collecting xformers==0.0.26.post1 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached xformers-0.0.26.post1-cp311-cp311-manylinux2014_x86_64.whl.metadata (1.0 kB)
+Collecting vllm-flash-attn==2.5.9 (from vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached vllm_flash_attn-2.5.9-cp311-cp311-manylinux1_x86_64.whl.metadata (476 bytes)
+Collecting sympy (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Downloading fsspec-2026.3.0-py3-none-any.whl.metadata (10 kB)
+Collecting nvidia-cuda-nvrtc-cu12==12.1.105 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-runtime-cu12==12.1.105 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_cuda_runtime_cu12-12.1.105-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-cupti-cu12==12.1.105 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_cuda_cupti_cu12-12.1.105-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cudnn-cu12==8.9.2.26 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_cudnn_cu12-8.9.2.26-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cublas-cu12==12.1.3.1 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_cublas_cu12-12.1.3.1-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cufft-cu12==11.0.2.54 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_cufft_cu12-11.0.2.54-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-curand-cu12==10.3.2.106 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_curand_cu12-10.3.2.106-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cusolver-cu12==11.4.5.107 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_cusolver_cu12-11.4.5.107-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparse-cu12==12.1.0.106 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_cusparse_cu12-12.1.0.106-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-nccl-cu12==2.20.5 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_nccl_cu12-2.20.5-py3-none-manylinux2014_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvtx-cu12==12.1.105 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_nvtx_cu12-12.1.105-py3-none-manylinux1_x86_64.whl.metadata (1.7 kB)
+Collecting triton==2.3.0 (from torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached triton-2.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+Collecting interegular>=0.3.2 (from lm-format-enforcer==0.10.1->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached interegular-0.3.3-py37-none-any.whl.metadata (3.0 kB)
+Collecting nvidia-nvjitlink-cu12 (from nvidia-cusolver-cu12==11.4.5.107->torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached nvidia_nvjitlink_cu12-12.9.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.7 kB)
+Collecting hf-xet<2.0.0,>=1.1.3 (from huggingface-hub<1.0,>=0.23.2->transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Downloading hf_xet-1.4.3-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Collecting GitPython>=2.0.8 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached gitpython-3.1.46-py3-none-any.whl.metadata (13 kB)
+Collecting PyJWT (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached pyjwt-2.12.1-py3-none-any.whl.metadata (4.1 kB)
+Collecting boto3>=1.28.0 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Downloading boto3-1.42.81-py3-none-any.whl.metadata (6.7 kB)
+Collecting bravado<12.0.0,>=11.0.0 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached bravado-11.1.0-py2.py3-none-any.whl.metadata (6.0 kB)
+Collecting click>=7.0 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting future>=0.17.1 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached future-1.0.0-py3-none-any.whl.metadata (4.0 kB)
+Collecting oauthlib>=2.1.0 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+Collecting requests-oauthlib>=1.0.0 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+Collecting six>=1.12.0 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting swagger-spec-validator>=2.7.4 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached swagger_spec_validator-3.0.4-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting urllib3 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting websocket-client!=1.0.0,>=0.35.0 (from neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting bravado-core>=5.16.1 (from bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached bravado_core-6.1.1-py2.py3-none-any.whl
+Collecting monotonic (from bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached monotonic-1.6-py2.py3-none-any.whl.metadata (1.5 kB)
+Collecting msgpack (from bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached msgpack-1.1.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+Collecting python-dateutil (from bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting simplejson (from bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached simplejson-3.20.2-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.2 kB)
+Collecting botocore<1.43.0,>=1.42.81 (from boto3>=1.28.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Downloading botocore-1.42.81-py3-none-any.whl.metadata (5.9 kB)
+Collecting jmespath<2.0.0,>=0.7.1 (from boto3>=1.28.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting s3transfer<0.17.0,>=0.16.0 (from boto3>=1.28.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached s3transfer-0.16.0-py3-none-any.whl.metadata (1.7 kB)
+Collecting jsonref (from bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached jsonref-1.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting jsonschema>=2.5.1 (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting pytz (from bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting gitdb<5,>=4.0.1 (from GitPython>=2.0.8->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached gitdb-4.0.12-py3-none-any.whl.metadata (1.2 kB)
+Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->GitPython>=2.0.8->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached smmap-5.0.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting attrs>=22.2.0 (from jsonschema>=2.5.1->jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=2.5.1->jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema>=2.5.1->jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.25.0 (from jsonschema>=2.5.1->jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached rpds_py-0.30.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting fqdn (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached fqdn-1.5.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting idna (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting isoduration (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached isoduration-20.11.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting jsonpointer>1.13 (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Downloading jsonpointer-3.1.1-py3-none-any.whl.metadata (2.4 kB)
+Collecting rfc3339-validator (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached rfc3339_validator-0.1.4-py2.py3-none-any.whl.metadata (1.5 kB)
+Collecting rfc3986-validator>0.1.0 (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached rfc3986_validator-0.1.1-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting rfc3987-syntax>=1.1.0 (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached rfc3987_syntax-1.1.0-py3-none-any.whl.metadata (7.7 kB)
+Collecting uri-template (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached uri_template-1.3.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting webcolors>=24.6.0 (from jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached webcolors-25.10.0-py3-none-any.whl.metadata (2.2 kB)
+Collecting cloudpickle (from outlines>=0.0.43->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting diskcache (from outlines>=0.0.43->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached diskcache-5.6.3-py3-none-any.whl.metadata (20 kB)
+Collecting outlines_core==0.2.14 (from outlines>=0.0.43->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached outlines_core-0.2.14-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+Collecting genson (from outlines>=0.0.43->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached genson-1.3.0-py3-none-any.whl.metadata (28 kB)
+Collecting jsonpath_ng (from outlines>=0.0.43->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached jsonpath_ng-1.8.0-py3-none-any.whl.metadata (18 kB)
+Collecting starlette<1.0.0,>=0.30.0 (from prometheus-fastapi-instrumentator>=7.0.0->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached starlette-0.52.1-py3-none-any.whl.metadata (6.3 kB)
+Collecting anyio<5,>=3.6.2 (from starlette<1.0.0,>=0.30.0->prometheus-fastapi-instrumentator>=7.0.0->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.0->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic>=2.0->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic>=2.0->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting charset_normalizer<4,>=2 (from requests->transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Downloading charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting certifi>=2023.5.7 (from requests->transformers<=4.45->-r ../requirements/requirements_utility.txt (line 3))
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting lark>=1.2.2 (from rfc3987-syntax>=1.1.0->jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached lark-1.3.1-py3-none-any.whl.metadata (1.8 kB)
+Collecting importlib-resources>=1.3 (from swagger-spec-validator>=2.7.4->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+Collecting propcache>=0.2.0 (from aiohttp->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached yarl-1.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting arrow>=0.15.0 (from isoduration->jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached arrow-1.4.0-py3-none-any.whl.metadata (7.7 kB)
+Collecting tzdata (from arrow>=0.15.0->isoduration->jsonschema[format-nongpl]>=2.5.1->bravado-core>=5.16.1->bravado<12.0.0,>=11.0.0->neptune->-r ../requirements/requirements_utility.txt (line 5))
+  Using cached tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting distro<2,>=1.7.0 (from openai->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting httpx<1,>=0.23.0 (from openai->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jiter<1,>=0.10.0 (from openai->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Collecting sniffio (from openai->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.23.0->openai->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.23.0->openai->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy->torch->-r ../requirements/requirements_utility.txt (line 1))
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting httptools>=0.6.3 (from uvicorn[standard]->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+Collecting python-dotenv>=0.13 (from uvicorn[standard]->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+Collecting uvloop>=0.15.1 (from uvicorn[standard]->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+Collecting watchfiles>=0.20 (from uvicorn[standard]->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting websockets>=10.4 (from uvicorn[standard]->vllm<=0.5.1,>=0.3.0->-r ../requirements/requirements_utility.txt (line 7))
+  Using cached websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+Using cached transformers-4.45.0-py3-none-any.whl (9.9 MB)
+Using cached vllm-0.5.1-cp311-cp311-manylinux1_x86_64.whl (146.9 MB)
+Using cached torch-2.3.0-cp311-cp311-manylinux1_x86_64.whl (779.2 MB)
+Using cached lm_format_enforcer-0.10.1-py3-none-any.whl (42 kB)
+Using cached nvidia_cublas_cu12-12.1.3.1-py3-none-manylinux1_x86_64.whl (410.6 MB)
+Using cached nvidia_cuda_cupti_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (14.1 MB)
+Using cached nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (23.7 MB)
+Using cached nvidia_cuda_runtime_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (823 kB)
+Using cached nvidia_cudnn_cu12-8.9.2.26-py3-none-manylinux1_x86_64.whl (731.7 MB)
+Using cached nvidia_cufft_cu12-11.0.2.54-py3-none-manylinux1_x86_64.whl (121.6 MB)
+Using cached nvidia_curand_cu12-10.3.2.106-py3-none-manylinux1_x86_64.whl (56.5 MB)
+Using cached nvidia_cusolver_cu12-11.4.5.107-py3-none-manylinux1_x86_64.whl (124.2 MB)
+Using cached nvidia_cusparse_cu12-12.1.0.106-py3-none-manylinux1_x86_64.whl (196.0 MB)
+Using cached nvidia_nccl_cu12-2.20.5-py3-none-manylinux2014_x86_64.whl (176.2 MB)
+Using cached nvidia_nvtx_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (99 kB)
+Using cached torchvision-0.18.0-cp311-cp311-manylinux1_x86_64.whl (7.0 MB)
+Using cached triton-2.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (168.1 MB)
+Using cached vllm_flash_attn-2.5.9-cp311-cp311-manylinux1_x86_64.whl (37.1 MB)
+Using cached xformers-0.0.26.post1-cp311-cp311-manylinux2014_x86_64.whl (222.8 MB)
+Using cached accelerate-1.4.0-py3-none-any.whl (342 kB)
+Using cached numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.3 MB)
+Using cached huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+Downloading hf_xet-1.4.3-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 88.7 MB/s  0:00:00
+Using cached tokenizers-0.20.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+Using cached peft-0.18.1-py3-none-any.whl (556 kB)
+Using cached bitsandbytes-0.49.2-py3-none-manylinux_2_24_x86_64.whl (60.7 MB)
+Using cached neptune-1.14.0.post2-py3-none-any.whl (487 kB)
+Using cached bravado-11.1.0-py2.py3-none-any.whl (37 kB)
+Downloading pandas-3.0.2-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (11.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.3/11.3 MB 92.5 MB/s  0:00:00
+Using cached protobuf-7.34.1-cp310-abi3-manylinux2014_x86_64.whl (324 kB)
+Using cached sentencepiece-0.2.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (1.4 MB)
+Downloading boto3-1.42.81-py3-none-any.whl (140 kB)
+Downloading botocore-1.42.81-py3-none-any.whl (14.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.8/14.8 MB 86.2 MB/s  0:00:00
+Using cached jmespath-1.1.0-py3-none-any.whl (20 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached s3transfer-0.16.0-py3-none-any.whl (86 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached click-8.3.1-py3-none-any.whl (108 kB)
+Downloading cmake-4.3.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (29.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 29.5/29.5 MB 99.0 MB/s  0:00:00
+Using cached filelock-3.25.2-py3-none-any.whl (26 kB)
+Downloading fsspec-2026.3.0-py3-none-any.whl (202 kB)
+Using cached future-1.0.0-py3-none-any.whl (491 kB)
+Using cached gitpython-3.1.46-py3-none-any.whl (208 kB)
+Using cached gitdb-4.0.12-py3-none-any.whl (62 kB)
+Using cached smmap-5.0.3-py3-none-any.whl (24 kB)
+Using cached interegular-0.3.3-py37-none-any.whl (23 kB)
+Using cached jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Downloading jsonpointer-3.1.1-py3-none-any.whl (7.7 kB)
+Using cached msgpack-1.1.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (426 kB)
+Using cached oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Using cached outlines-1.2.12-py3-none-any.whl (102 kB)
+Using cached outlines_core-0.2.14-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.3 MB)
+Downloading pillow-12.2.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 91.8 MB/s  0:00:00
+Using cached prometheus_client-0.24.1-py3-none-any.whl (64 kB)
+Using cached prometheus_fastapi_instrumentator-7.1.0-py3-none-any.whl (19 kB)
+Using cached starlette-0.52.1-py3-none-any.whl (74 kB)
+Using cached anyio-4.13.0-py3-none-any.whl (114 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached pydantic-2.12.5-py3-none-any.whl (463 kB)
+Using cached pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+Downloading ray-2.54.1-cp311-cp311-manylinux2014_x86_64.whl (72.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.6/72.6 MB 94.8 MB/s  0:00:00
+Using cached referencing-0.37.0-py3-none-any.whl (26 kB)
+Using cached regex-2026.3.32-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (798 kB)
+Using cached requests-2.33.1-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (214 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Using cached requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Using cached rfc3986_validator-0.1.1-py2.py3-none-any.whl (4.2 kB)
+Using cached rfc3987_syntax-1.1.0-py3-none-any.whl (8.0 kB)
+Using cached lark-1.3.1-py3-none-any.whl (113 kB)
+Using cached rpds_py-0.30.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (390 kB)
+Using cached safetensors-0.7.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (507 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached swagger_spec_validator-3.0.4-py2.py3-none-any.whl (28 kB)
+Using cached importlib_resources-6.5.2-py3-none-any.whl (37 kB)
+Using cached tiktoken-0.12.0-cp311-cp311-manylinux_2_28_x86_64.whl (1.2 MB)
+Using cached tqdm-4.67.3-py3-none-any.whl (78 kB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached webcolors-25.10.0-py3-none-any.whl (14 kB)
+Using cached websocket_client-1.9.0-py3-none-any.whl (82 kB)
+Downloading aiohttp-3.13.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 86.4 MB/s  0:00:00
+Using cached multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+Using cached yarl-1.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (102 kB)
+Using cached aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+Using cached aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Using cached frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+Using cached propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (210 kB)
+Using cached cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Using cached diskcache-5.6.3-py3-none-any.whl (45 kB)
+Downloading fastapi-0.135.3-py3-none-any.whl (117 kB)
+Using cached annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Using cached fqdn-1.5.1-py3-none-any.whl (9.1 kB)
+Using cached genson-1.3.0-py3-none-any.whl (21 kB)
+Using cached isoduration-20.11.0-py3-none-any.whl (11 kB)
+Using cached arrow-1.4.0-py3-none-any.whl (68 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Using cached jsonpath_ng-1.8.0-py3-none-any.whl (67 kB)
+Using cached jsonref-1.1.0-py3-none-any.whl (9.4 kB)
+Using cached monotonic-1.6-py2.py3-none-any.whl (8.2 kB)
+Using cached networkx-3.6.1-py3-none-any.whl (2.1 MB)
+Using cached ninja-1.13.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (180 kB)
+Using cached nvidia_ml_py-13.595.45-py3-none-any.whl (51 kB)
+Using cached nvidia_nvjitlink_cu12-12.9.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (39.7 MB)
+Downloading openai-2.30.0-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 84.7 MB/s  0:00:00
+Using cached distro-1.9.0-py3-none-any.whl (20 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (362 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+Using cached py_cpuinfo-9.0.0-py3-none-any.whl (22 kB)
+Using cached pyjwt-2.12.1-py3-none-any.whl (29 kB)
+Using cached pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+Using cached rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+Using cached simplejson-3.20.2-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (144 kB)
+Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+Using cached uri_template-1.3.0-py3-none-any.whl (11 kB)
+Using cached uvicorn-0.42.0-py3-none-any.whl (68 kB)
+Using cached httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (456 kB)
+Using cached python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+Using cached uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.8 MB)
+Using cached watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+Using cached websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+Installing collected packages: pytz, py-cpuinfo, nvidia-ml-py, mpmath, monotonic, jsonpath_ng, genson, websockets, websocket-client, webcolors, uvloop, urllib3, uri-template, tzdata, typing-extensions, tqdm, sympy, sniffio, smmap, six, simplejson, sentencepiece, safetensors, rpds-py, rfc3986-validator, regex, pyyaml, python-dotenv, PyJWT, psutil, protobuf, propcache, prometheus-client, pillow, outlines_core, oauthlib, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, ninja, networkx, multidict, msgpack, MarkupSafe, lark, jsonref, jsonpointer, jmespath, jiter, interegular, importlib-resources, idna, httptools, hf-xet, h11, future, fsspec, frozenlist, fqdn, filelock, distro, diskcache, cmake, cloudpickle, click, charset_normalizer, certifi, attrs, annotated-types, annotated-doc, aiohappyeyeballs, yarl, uvicorn, typing-inspection, triton, rfc3987-syntax, rfc3339-validator, requests, referencing, python-dateutil, pydantic-core, nvidia-cusparse-cu12, nvidia-cudnn-cu12, jinja2, httpcore, gitdb, anyio, aiosignal, watchfiles, tiktoken, starlette, requests-oauthlib, pydantic, pandas, nvidia-cusolver-cu12, jsonschema-specifications, huggingface-hub, httpx, GitPython, botocore, arrow, aiohttp, torch, tokenizers, s3transfer, prometheus-fastapi-instrumentator, openai, lm-format-enforcer, jsonschema, isoduration, fastapi, xformers, vllm-flash-attn, transformers, torchvision, swagger-spec-validator, ray, outlines, boto3, bitsandbytes, accelerate, vllm, peft, bravado-core, bravado, neptune
+
+Successfully installed GitPython-3.1.46 MarkupSafe-3.0.3 PyJWT-2.12.1 accelerate-1.4.0 aiohappyeyeballs-2.6.1 aiohttp-3.13.5 aiosignal-1.4.0 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.13.0 arrow-1.4.0 attrs-26.1.0 bitsandbytes-0.49.2 boto3-1.42.81 botocore-1.42.81 bravado-11.1.0 bravado-core-6.1.1 certifi-2026.2.25 charset_normalizer-3.4.7 click-8.3.1 cloudpickle-3.1.2 cmake-4.3.1 diskcache-5.6.3 distro-1.9.0 fastapi-0.135.3 filelock-3.25.2 fqdn-1.5.1 frozenlist-1.8.0 fsspec-2026.3.0 future-1.0.0 genson-1.3.0 gitdb-4.0.12 h11-0.16.0 hf-xet-1.4.3 httpcore-1.0.9 httptools-0.7.1 httpx-0.28.1 huggingface-hub-0.36.2 idna-3.11 importlib-resources-6.5.2 interegular-0.3.3 isoduration-20.11.0 jinja2-3.1.6 jiter-0.13.0 jmespath-1.1.0 jsonpath_ng-1.8.0 jsonpointer-3.1.1 jsonref-1.1.0 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 lark-1.3.1 lm-format-enforcer-0.10.1 monotonic-1.6 mpmath-1.3.0 msgpack-1.1.2 multidict-6.7.1 neptune-1.14.0.post2 networkx-3.6.1 ninja-1.13.0 numpy-1.26.4 nvidia-cublas-cu12-12.1.3.1 nvidia-cuda-cupti-cu12-12.1.105 nvidia-cuda-nvrtc-cu12-12.1.105 nvidia-cuda-runtime-cu12-12.1.105 nvidia-cudnn-cu12-8.9.2.26 nvidia-cufft-cu12-11.0.2.54 nvidia-curand-cu12-10.3.2.106 nvidia-cusolver-cu12-11.4.5.107 nvidia-cusparse-cu12-12.1.0.106 nvidia-ml-py-13.595.45 nvidia-nccl-cu12-2.20.5 nvidia-nvjitlink-cu12-12.9.86 nvidia-nvtx-cu12-12.1.105 oauthlib-3.3.1 openai-2.30.0 outlines-1.2.12 outlines_core-0.2.14 pandas-3.0.2 peft-0.18.1 pillow-12.2.0 prometheus-client-0.24.1 prometheus-fastapi-instrumentator-7.1.0 propcache-0.4.1 protobuf-7.34.1 psutil-7.2.2 py-cpuinfo-9.0.0 pydantic-2.12.5 pydantic-core-2.41.5 python-dateutil-2.9.0.post0 python-dotenv-1.2.2 pytz-2026.1.post1 pyyaml-6.0.3 ray-2.54.1 referencing-0.37.0 regex-2026.3.32 requests-2.33.1 requests-oauthlib-2.0.0 rfc3339-validator-0.1.4 rfc3986-validator-0.1.1 rfc3987-syntax-1.1.0 rpds-py-0.30.0 s3transfer-0.16.0 safetensors-0.7.0 sentencepiece-0.2.1 simplejson-3.20.2 six-1.17.0 smmap-5.0.3 sniffio-1.3.1 starlette-0.52.1 swagger-spec-validator-3.0.4 sympy-1.14.0 tiktoken-0.12.0 tokenizers-0.20.3 torch-2.3.0 torchvision-0.18.0 tqdm-4.67.3 transformers-4.45.0 triton-2.3.0 typing-extensions-4.15.0 typing-inspection-0.4.2 tzdata-2025.3 uri-template-1.3.0 urllib3-2.6.3 uvicorn-0.42.0 uvloop-0.22.1 vllm-0.5.1 vllm-flash-attn-2.5.9 watchfiles-1.1.1 webcolors-25.10.0 websocket-client-1.9.0 websockets-16.0 xformers-0.0.26.post1 yarl-1.23.0
+Lock released at Thu  2 Apr 15:10:36 BST 2026
+eos_token
+INFO 04-02 15:12:38 llm_engine.py:169] Initializing an LLM engine (v0.5.1) with config: model='meta-llama/Meta-Llama-3-8B-Instruct', speculative_config=None, tokenizer='meta-llama/Meta-Llama-3-8B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, rope_scaling=None, rope_theta=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=2048, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None), seed=0, served_model_name=meta-llama/Meta-Llama-3-8B-Instruct, use_v2_block_manager=False, enable_prefix_caching=False)
+INFO 04-02 15:12:40 weight_utils.py:218] Using model weights format ['*.safetensors']
+INFO 04-02 15:14:51 model_runner.py:255] Loading model weights took 14.9595 GB
+INFO 04-02 15:14:51 gpu_executor.py:84] # GPU blocks: 28292, # CPU blocks: 2048
+INFO 04-02 15:14:53 model_runner.py:924] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 04-02 15:14:53 model_runner.py:928] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 04-02 15:15:07 model_runner.py:1117] Graph capturing finished in 13 secs.
+Success rate (SR): 0.95
+Number of samples managed to be evaluated:40/40

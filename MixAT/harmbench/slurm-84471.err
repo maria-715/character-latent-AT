@@ -1,0 +1,12 @@
+./scripts/generate_completions.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+/auto/users/ms25mds/MSc_Project/MixAT/harmbench/api_models.py:7: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:00<00:05,  1.29it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:01<00:04,  1.33it/s]Loading checkpoint shards:  38%|███▊      | 3/8 [00:04<00:07,  1.59s/it]Loading checkpoint shards:  50%|█████     | 4/8 [00:06<00:08,  2.03s/it]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:09<00:06,  2.29s/it]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:12<00:04,  2.42s/it]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:14<00:02,  2.52s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:16<00:00,  2.11s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:16<00:00,  2.02s/it]
+slurmstepd-oat11: error: *** JOB 84471 ON oat11 CANCELLED AT 2026-05-07T10:20:13 ***

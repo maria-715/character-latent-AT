@@ -1,0 +1,1199 @@
+attacks:
+  _default:
+    generation_config: ${generation_config}
+    seed: 0
+  actor:
+    name: actor
+    type: discrete
+    placement: multi-turn
+    seed: ${attacks._default.seed}
+    generation_config: ${attacks._default.generation_config}
+    version: 0.1.0
+    attack_model:
+      generation_config:
+        temperature: 0.0
+        top_p: 1.0
+        top_k: 0
+        max_new_tokens: 2048
+        num_return_sequences: 1
+      id: google/gemma-3-12b-it
+      tokenizer_id: google/gemma-3-12b-it
+      short_name: Gemma
+      developer_name: Google
+      compile: false
+      dtype: bfloat16
+      chat_template: null
+      trust_remote_code: true
+      use_api: false
+      api_model_name: null
+    judge_model:
+      generation_config:
+        temperature: 0.0
+        top_p: 1.0
+        top_k: 0
+        max_new_tokens: 512
+        num_return_sequences: 1
+      id: google/gemma-3-12b-it
+      tokenizer_id: google/gemma-3-12b-it
+      short_name: Gemma
+      developer_name: Google
+      compile: false
+      dtype: bfloat16
+      chat_template: null
+      trust_remote_code: true
+      use_api: false
+      api_model_name: null
+    free_gen_repetition_filter:
+      repeat_set_size_max: 5
+      max_repeats: 10
+      penalty_duration: 2048
+      force_eos: true
+    json_repetition_filter:
+      repeat_set_size_max: 5
+      max_repeats: 10
+      penalty_duration: 2048
+      force_eos: false
+    actor_num: 3
+    early_stop: true
+    dynamic_modify: true
+  ample_gcg:
+    name: ample_gcg
+    type: discrete
+    version: 0.0.1
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 200
+    prompter_lm:
+      id: osunlp/AmpleGCG-llama2-sourced-llama2-7b-chat
+      tokenizer_id: osunlp/AmpleGCG-llama2-sourced-llama2-7b-chat
+      chat_template: null
+      short_name: ample_gcg
+      developer_name: osunlp
+      batch_size: 2
+      dtype: bfloat16
+      attn_implementation: null
+      trust_remote_code: true
+      compile: true
+      generation_config:
+        do_sample: false
+        max_new_tokens: 20
+        min_new_tokens: 20
+        diversity_penalty: 1.0
+  autodan:
+    name: autodan
+    type: discrete
+    version: 0.0.1
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 100
+    early_stopping_threshold: 0
+    batch_size: 128
+    eval_steps: 5
+    num_elites: 0.05
+    crossover: 0.5
+    num_points: 5
+    mutation: 0.01
+    mutate_model:
+      id: null
+      tokenizer_id: null
+      short_name: null
+      developer_name: null
+      chat_template: null
+      dtype: bfloat16
+      compile: false
+      trust_remote_code: true
+  beast:
+    name: beast
+    type: discrete
+    version: 0.0.1
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 40
+    optim_str_init: ''
+    k1: 15
+    k2: 15
+    search_temperature: 1.0
+    allow_non_ascii: true
+    allow_special: false
+    use_prefix_cache: true
+    mask_undecided_tokens: false
+  bon:
+    name: bon
+    type: discrete
+    version: 0.0.1
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 1000
+    sigma: 0.4
+    word_scrambling: true
+    random_capitalization: true
+    ascii_perturbation: true
+  claudini:
+    name: claudini
+    type: discrete
+    version: 0.0.1
+    variant: claude_oss_v53
+    placement: suffix
+    seed: ${attacks._default.seed}
+    generation_config: ${attacks._default.generation_config}
+    last_step_num_return_sequences: null
+    num_steps: 250
+    n_tokens_adv: 20
+    init_mode: manual
+    optim_str_init: '! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !'
+    lr: null
+    momentum: null
+    ema_alpha: null
+    num_starts: null
+    lsgm_gamma: null
+    num_candidates: 80
+    topk_per_position: 300
+    dpto_temperature: 0.4
+    n_replace: 2
+    switch_fraction: 0.8
+    allow_non_ascii: null
+    allow_special: false
+    log_progress: true
+    progress_log_step_interval: 100
+  crescendo:
+    name: crescendo
+    type: discrete
+    version: 0.1.0
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    max_rounds: 10
+    max_backtracks: 10
+    judge_temperature: 0.0
+    attack_model:
+      generation_config:
+        temperature: 0.7
+        top_p: 1.0
+        top_k: 0
+        max_new_tokens: 2048
+        num_return_sequences: 1
+      use_api: false
+      api_model_name: null
+      id: google/gemma-3-12b-it
+      tokenizer_id: google/gemma-3-12b-it
+      short_name: Gemma
+      developer_name: Google
+      compile: false
+      dtype: bfloat16
+      chat_template: null
+      trust_remote_code: true
+    free_gen_repetition_filter:
+      repeat_set_size_max: 5
+      max_repeats: 10
+      penalty_duration: 2048
+      force_eos: true
+    json_repetition_filter:
+      repeat_set_size_max: 5
+      max_repeats: 10
+      penalty_duration: 2048
+      force_eos: false
+  direct:
+    name: direct
+    type: discrete
+    version: 0.0.1
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+  gcg:
+    name: gcg
+    type: discrete
+    version: 0.0.1
+    placement: suffix
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 250
+    batch_size: 512
+    optim_str_init: x x x x x x x x x x x x x x x x x x x x
+    search_width: 512
+    topk: 256
+    n_replace: 1
+    buffer_size: 0
+    loss: ce
+    use_constrained_gradient: false
+    mellowmax_alpha: 1.0
+    early_stop: false
+    use_prefix_cache: true
+    allow_non_ascii: false
+    allow_special: false
+    filter_ids: true
+    verbosity: WARNING
+    token_selection: default
+    grow_target: false
+    grad_smoothing: 1
+    grad_momentum: 0.0
+  gcg_refusal:
+    name: gcg_refusal
+    type: discrete
+    version: 0.0.1
+    placement: suffix
+    max_new_tokens: ${attacks._default.generation_config.max_new_tokens}
+    seed: ${attacks._default.seed}
+    num_steps: 250
+    batch_size: 512
+    optim_str_init: x x x x x x x x x x x x x x x x x x x x
+    search_width: 512
+    topk: 256
+    n_replace: 1
+    buffer_size: 0
+    use_mellowmax: false
+    use_constrained_gradient: false
+    mellowmax_alpha: 1.0
+    early_stop: false
+    use_prefix_cache: true
+    allow_non_ascii: false
+    allow_special: false
+    filter_ids: true
+    verbosity: WARNING
+    token_selection: default
+    generate_completions: all
+    max_new_target_tokens: 64
+    grow_target: false
+  gcg_reinforce:
+    name: gcg_reinforce
+    type: discrete
+    version: 0.0.1
+    placement: suffix
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 250
+    optim_str_init: x x x x x x x x x x x x x x x x x x x x
+    search_width: 512
+    topk: 256
+    n_replace: 1
+    mellowmax_alpha: 1.0
+    use_prefix_cache: true
+    allow_non_ascii: false
+    allow_special: false
+    filter_ids: true
+    verbosity: WARNING
+    token_selection: default
+    judge_model_id: harmbench
+    optim_max_new_tokens: 128
+    optim_temperature: 0.7
+    optim_top_p: 1.0
+    optim_top_k: 256
+    reward_baseline: 0.1
+    token_position_weight_type: exponential
+    token_position_weight_ratio: 0.95
+    loss_include_categories:
+    - samples
+    - greedy
+    - affirmative
+    - buffer
+    selection_include_categories:
+    - greedy
+    - affirmative
+    - buffer
+    optim_num_return_sequences: 2
+    elite_buffer_size: 1
+    optim_num_return_sequences_for_grad: 0
+    harmful_threshold: 0.8
+    entropy_losses_weight: 0.0
+  human_jailbreaks:
+    name: human_jailbreaks
+    type: discrete
+    version: 0.0.1
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 1
+  jailbreak_r1:
+    name: jailbreak_r1
+    type: discrete
+    version: 0.0.1
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 20
+    parse_retries: 4
+    attack_condition_prefix: '<think> Sure, let''s think step by step, '
+    parse_pattern: <think>(.*?)</think>|<attack>(.*?)</attack>
+    fallback_token: a
+    allow_untagged_fallback: false
+    prompt_cache_mode: 'off'
+    prompt_cache_path: null
+    prompt_cache_num_steps: null
+    prompt_cache_subset_strategy: first_n
+    prompt_cache_strict_match: true
+    attack_model:
+      id: yukiyounai/Jailbreak-R1
+      tokenizer_id: yukiyounai/Jailbreak-R1
+      short_name: Jailbreak-R1
+      developer_name: Guo et al.
+      compile: false
+      dtype: bfloat16
+      chat_template: null
+      trust_remote_code: true
+    attack_model_generation_config:
+      temperature: 1.0
+      top_p: 0.95
+      top_k: 0
+      max_new_tokens: 512
+  inpainting:
+    name: inpainting
+    type: discrete
+    version: 0.0.2
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    custom_data_path: null
+    num_samples_per_behavior: 1024
+  pair:
+    name: pair
+    type: discrete
+    version: 0.0.2
+    seed: ${attacks._default.seed}
+    generation_config: ${attacks._default.generation_config}
+    num_streams: 30
+    keep_last_num: 3
+    num_steps: 3
+    attack_model:
+      id: lmsys/vicuna-13b-v1.5
+      tokenizer_id: lmsys/vicuna-13b-v1.5
+      dtype: bfloat16
+      compile: false
+      trust_remote_code: true
+      short_name: vicuna
+      developer_name: lmsys
+      max_attempts: 10
+      max_new_tokens: 512
+      temperature: 1
+      chat_template: vicuna
+      top_p: 0.9
+    target_model:
+      max_new_tokens: 256
+      temperature: 0
+      top_p: 1
+    judge_model:
+      id: null
+      tokenizer_id: null
+      dtype: null
+      compile: null
+      trust_remote_code: null
+      short_name: null
+      developer_name: null
+      chat_template: null
+  pgd:
+    name: pgd
+    type: continuous
+    version: 0.0.1
+    placement: suffix
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    num_steps: 100
+    optim_str_init: x x x x x x x x x x x x x x x x x x x x
+    epsilon: 1.0
+    alpha: 0.001
+    embedding_scale: null
+    normalize_alpha: true
+    normalize_gradient: false
+    original_model: null
+    tie_logits: 0.0
+    tie_features: 0.0
+    projection: l2
+    loss: ce
+    attack_space: embedding
+    optimizer: FGSM
+    optimizer_config:
+      weight_decay: 0.0
+      betas:
+      - 0.9
+      - 0.999
+    random_restart_interval: 40
+    random_restart_epsilon: 0.1
+    log_embeddings: true
+  pgd_discrete:
+    name: pgd_discrete
+    type: hybrid
+    version: 0.0.1
+    placement: suffix
+    num_steps: 100
+    generation_config: ${attacks._default.generation_config}
+    seed: ${attacks._default.seed}
+    optim_str_init: x x x x x x x x x x x x x x x x x x x x
+    optimizer: Adam
+    projection: simplex
+    alpha: 0.1
+    restart_every: 100
+    lr_scheduler:
+      type: sequential
+      factor: 1.0
+      eta_min: 0.325
+      T_0: 60
+      total_iters: 100
+    initialization: one_hot
+    entropy_factor: 0.4
+    anneal: true
+    anneal_config:
+      start: 0
+      duration: 250
+      attrs:
+      - entropy_factor
+      mode: uniform
+      init_entropy_factor: 0.0
+      end_entropy_factor: 0.4
+    grad_clip_value: 20.0
+    grad_clip_strategy: token_norm
+    tsallis_q2_proj_config:
+      iter: 1
+      exclude_already_zero: true
+    entropy_factor_scale_by_relaxation_gap: 0.1
+    entropy_factor_alternate_scheduler: true
+    langevin_dynamics_std: null
+  prefilling:
+    name: prefilling
+    type: discrete
+    version: 0.0.1
+    seed: ${attacks._default.seed}
+    num_steps: 1
+    batch_size: 300
+    generation_config: ${attacks._default.generation_config}
+  random_search:
+    name: random_search
+    type: discrete
+    version: 0.0.2
+    placement: suffix
+    seed: ${attacks._default.seed}
+    num_steps: 100
+    neighborhood_radius: 1
+    candidates_per_generation: 8
+    optim_str_init: x x x x x x x x x x x x x x x x x x x x
+    generation_config: ${attacks._default.generation_config}
+datasets:
+  adv_behaviors:
+    name: adv_behaviors
+    messages_path: ${root_dir}/data/behavior_datasets/harmbench_behaviors_text_all.csv
+    targets_path: ${root_dir}/data/optimizer_targets/harmbench_targets_text.json
+    categories:
+    - chemical_biological
+    - illegal
+    - misinformation_disinformation
+    - harmful
+    - harassment_bullying
+    - cybercrime_intrusion
+    seed: 0
+    idx: null
+    shuffle: true
+  alpaca:
+    name: alpaca
+    seed: 0
+    idx: null
+    shuffle: true
+  jbb_behaviors:
+    name: jbb_behaviors
+    seed: 0
+    idx: null
+    shuffle: true
+  mmlu:
+    name: mmlu
+    seed: 0
+    idx: null
+    shuffle: true
+  or_bench:
+    name: or_bench
+    seed: 0
+    idx: null
+    shuffle: true
+  xs_test:
+    name: xs_test
+    seed: 0
+    idx: null
+    shuffle: true
+  refusal_direction:
+    name: refusal_direction
+    path: ${root_dir}/data/refusal_direction/
+    split: train
+    type: harmful
+    seed: 0
+    idx: null
+    shuffle: true
+  strong_reject:
+    name: strong_reject
+    path: ${root_dir}/data/strong_reject/
+    split: train
+    seed: 0
+    idx: null
+    shuffle: true
+    version: full
+    categories:
+    - Disinformation and deception
+    - Hate, harassment and discrimination
+    - Illegal goods and services
+    - Non-violent crimes
+    - Sexual content
+    - Violence
+models:
+  google/gemma-2-2b-it:
+    id: google/gemma-2-2b-it
+    tokenizer_id: google/gemma-2-2b-it
+    short_name: Gemma
+    developer_name: Google
+    compile: false
+    dtype: bfloat16
+    chat_template: gemma-it
+    trust_remote_code: true
+  google/gemma-2-9b-it:
+    id: google/gemma-2-9b-it
+    tokenizer_id: google/gemma-2-9b-it
+    short_name: Gemma
+    developer_name: Google
+    compile: false
+    dtype: bfloat16
+    chat_template: gemma-it
+    trust_remote_code: true
+  google/gemma-3-1b-it:
+    id: google/gemma-3-1b-it
+    tokenizer_id: google/gemma-3-1b-it
+    short_name: Gemma
+    developer_name: Google
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  google/gemma-3-4b-it:
+    id: google/gemma-3-4b-it
+    tokenizer_id: google/gemma-3-4b-it
+    short_name: Gemma
+    developer_name: Google
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  google/gemma-3-12b-it:
+    id: google/gemma-3-12b-it
+    tokenizer_id: google/gemma-3-12b-it
+    short_name: Gemma
+    developer_name: Google
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  google/gemma-3-27b-it:
+    id: google/gemma-3-27b-it
+    tokenizer_id: google/gemma-3-27b-it
+    short_name: Gemma
+    developer_name: Google
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  mistralai/Mistral-7B-Instruct-v0.3:
+    id: mistralai/Mistral-7B-Instruct-v0.3
+    tokenizer_id: mistralai/Mistral-7B-Instruct-v0.3
+    short_name: Mistral
+    developer_name: Mistral AI
+    compile: false
+    dtype: bfloat16
+    chat_template: mistral-instruct
+    trust_remote_code: true
+  berkeley-nest/Starling-LM-7B-alpha:
+    id: berkeley-nest/Starling-LM-7B-alpha
+    tokenizer_id: openchat/openchat_3.5
+    short_name: Mistral
+    developer_name: Mistral AI
+    compile: false
+    dtype: bfloat16
+    chat_template: openchat-3.5
+    trust_remote_code: true
+  meta-llama/Meta-Llama-3.1-8B-Instruct:
+    id: meta-llama/Meta-Llama-3.1-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3.1-8B-Instruct
+    short_name: Llama
+    developer_name: Meta
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+  meta-llama/Meta-Llama-3.1-70B-Instruct:
+    id: meta-llama/Meta-Llama-3.1-70B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3.1-70B-Instruct
+    short_name: Llama
+    developer_name: Meta
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+  meta-llama/Llama-3.2-1B-Instruct:
+    id: meta-llama/Llama-3.2-1B-Instruct
+    tokenizer_id: meta-llama/Llama-3.2-1B-Instruct
+    short_name: Llama
+    developer_name: Meta
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+  meta-llama/Llama-3.2-3B-Instruct:
+    id: meta-llama/Llama-3.2-3B-Instruct
+    tokenizer_id: meta-llama/Llama-3.2-3B-Instruct
+    short_name: Llama
+    developer_name: Meta
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+  NousResearch/Hermes-2-Pro-Llama-3-8B:
+    id: NousResearch/Hermes-2-Pro-Llama-3-8B
+    tokenizer_id: NousResearch/Hermes-2-Pro-Llama-3-8B
+    short_name: Hermes
+    developer_name: NousResearch
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+  allenai/Llama-3.1-Tulu-3-8B-DPO:
+    id: allenai/Llama-3.1-Tulu-3-8B-DPO
+    tokenizer_id: allenai/Llama-3.1-Tulu-3-8B-DPO
+    short_name: Llama
+    developer_name: AllenAI
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  mlabonne/Meta-Llama-3.1-8B-Instruct-abliterated:
+    id: mlabonne/Meta-Llama-3.1-8B-Instruct-abliterated
+    tokenizer_id: meta-llama/Meta-Llama-3.1-8B-Instruct
+    short_name: Llama
+    developer_name: mlabonne
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+  meta-llama/Meta-Llama-3-8B-Instruct:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: Llama
+    developer_name: Meta
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ''
+  LLM-LAT/robust-llama3-8b-instruct:
+    id: LLM-LAT/robust-llama3-8b-instruct
+    tokenizer_id: LLM-LAT/robust-llama3-8b-instruct
+    short_name: Llama
+    developer_name: LLM-LAT
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  qwen/Qwen2-7B-Instruct:
+    id: qwen/Qwen2-7B-Instruct
+    tokenizer_id: qwen/Qwen2-7B-Instruct
+    short_name: Qwen2
+    developer_name: Alibaba
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  HuggingFaceH4/zephyr-7b-beta:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: Zephyr
+    developer_name: Hugging Face
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ''
+  meta-llama/Llama-2-7b-chat-hf:
+    id: meta-llama/Llama-2-7b-chat-hf
+    tokenizer_id: meta-llama/Llama-2-7b-chat-hf
+    short_name: Llama
+    developer_name: Meta
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-2-chat
+    trust_remote_code: true
+  Unispac/Llama2-7B-Chat-Augmented:
+    id: Unispac/Llama2-7B-Chat-Augmented
+    tokenizer_id: Unispac/Llama2-7B-Chat-Augmented
+    short_name: Llama
+    developer_name: Meta
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-2-chat
+    trust_remote_code: true
+  ContinuousAT/Llama-2-7B-CAT:
+    id: ContinuousAT/Llama-2-7B-CAT
+    tokenizer_id: meta-llama/Llama-2-7b-chat-hf
+    short_name: Llama
+    developer_name: ContinuousAT
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-2-chat
+    trust_remote_code: true
+  ContinuousAT/Zephyr-CAT:
+    id: ContinuousAT/Zephyr-CAT
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: Zephyr
+    developer_name: ContinuousAT
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+  ContinuousAT/Phi-CAT:
+    id: ContinuousAT/Phi-CAT
+    tokenizer_id: microsoft/Phi-3-mini-4k-instruct
+    short_name: Phi
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: phi-3
+    trust_remote_code: false
+  microsoft/Phi-3-mini-4k-instruct:
+    id: microsoft/Phi-3-mini-4k-instruct
+    tokenizer_id: microsoft/Phi-3-mini-4k-instruct
+    short_name: Phi
+    developer_name: Microsoft
+    compile: false
+    dtype: bfloat16
+    chat_template: phi-3
+    trust_remote_code: false
+  microsoft/phi-4:
+    id: microsoft/phi-4
+    tokenizer_id: microsoft/phi-4
+    short_name: Phi
+    developer_name: Microsoft
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: false
+  cais/zephyr_7b_r2d2:
+    id: cais/zephyr_7b_r2d2
+    tokenizer_id: cais/zephyr_7b_r2d2
+    short_name: R2D2
+    developer_name: CAIS
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+  GraySwanAI/Llama-3-8B-Instruct-RR:
+    id: GraySwanAI/Llama-3-8B-Instruct-RR
+    tokenizer_id: GraySwanAI/Llama-3-8B-Instruct-RR
+    short_name: Llama
+    developer_name: GraySwanAI
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  GraySwanAI/Mistral-7B-Instruct-RR:
+    id: GraySwanAI/Mistral-7B-Instruct-RR
+    tokenizer_id: GraySwanAI/Mistral-7B-Instruct-RR
+    short_name: Mistral
+    developer_name: GraySwanAI
+    compile: false
+    dtype: bfloat16
+    chat_template: mistral-instruct
+    trust_remote_code: true
+  lmsys/vicuna-13b-v1.5:
+    id: lmsys/vicuna-13b-v1.5
+    tokenizer_id: lmsys/vicuna-13b-v1.5
+    short_name: Vicuna
+    developer_name: lmsys
+    compile: false
+    dtype: bfloat16
+    chat_template: vicuna
+    trust_remote_code: true
+  lmsys/vicuna-7b-v1.5:
+    id: lmsys/vicuna-7b-v1.5
+    tokenizer_id: lmsys/vicuna-7b-v1.5
+    short_name: Vicuna
+    developer_name: lmsys
+    compile: false
+    dtype: bfloat16
+    chat_template: vicuna
+    trust_remote_code: true
+  mistralai/Mistral-Nemo-Instruct-2407:
+    id: mistralai/Mistral-Nemo-Instruct-2407
+    tokenizer_id: mistralai/Mistral-Nemo-Instruct-2407
+    short_name: Mistral
+    developer_name: Mistral AI
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  mistralai/Ministral-8B-Instruct-2410:
+    id: mistralai/Ministral-8B-Instruct-2410
+    tokenizer_id: mistralai/Ministral-8B-Instruct-2410
+    short_name: Mistral
+    developer_name: Mistral AI
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  openai/gpt-oss-20b:
+    id: openai/gpt-oss-20b
+    tokenizer_id: openai/gpt-oss-20b
+    short_name: GPT
+    developer_name: OpenAI
+    compile: false
+    dtype: null
+    chat_template: null
+    trust_remote_code: true
+  openai/gpt-oss-120b:
+    id: openai/gpt-oss-120b
+    tokenizer_id: openai/gpt-oss-120b
+    short_name: GPT
+    developer_name: OpenAI
+    compile: false
+    dtype: null
+    chat_template: null
+    trust_remote_code: true
+  GSAI-ML/LLaDA-8B-Instruct:
+    id: GSAI-ML/LLaDA-8B-Instruct
+    tokenizer_id: GSAI-ML/LLaDA-8B-Instruct
+    short_name: LLaDA
+    developer_name: GSAI-ML
+    compile: false
+    dtype: bfloat16
+    trust_remote_code: true
+  Qwen/Qwen2.5-0.5B-Instruct:
+    id: Qwen/Qwen2.5-0.5B-Instruct
+    tokenizer_id: Qwen/Qwen2.5-0.5B-Instruct
+    short_name: Qwen2.5
+    developer_name: Qwen
+    compile: false
+    dtype: bfloat16
+    chat_template: null
+    trust_remote_code: true
+  CAT_experiment_refait:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_experiment_refait
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_experiment_refait/training/ul/None/final_model
+  CAT_adv_eps005_42_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps005_42_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps005_42_relativelr_REFAIT/final_model
+  CAT_adv_eps005_123_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps005_123_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps005_123_relativelr_REFAIT/final_model
+  CAT_adv_eps005_456_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps005_456_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps005_456_relativelr_REFAIT/final_model
+  CAT_adv_eps01_42_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps01_42_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps01_42_relativelr_REFAIT/final_model
+  CAT_adv_eps01_123_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps01_123_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps01_123_relativelr_REFAIT/final_model
+  CAT_adv_eps01_456_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps01_456_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps01_456_relativelr_REFAIT/final_model
+  CAT_adv_eps02_42_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps02_42_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps02_42_relativelr_REFAIT/final_model
+  CAT_adv_eps02_123_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps02_123_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps02_123_relativelr_REFAIT/final_model
+  CAT_adv_eps02_456_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps02_456_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps02_456_relativelr_REFAIT/final_model
+  CAT_adv_eps04_42_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps04_42_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps04_42_relativelr_REFAIT/final_model
+  CAT_adv_eps04_123_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps04_123_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps04_123_relativelr_REFAIT/final_model
+  CAT_adv_eps04_456_relativelr_REFAIT:
+    id: HuggingFaceH4/zephyr-7b-beta
+    tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+    short_name: CAT_adv_eps04_456_relativelr_REFAIT
+    developer_name: Me
+    attn_implementation: null
+    compile: false
+    dtype: bfloat16
+    chat_template: zephyr
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_adv_eps04_456_relativelr_REFAIT/final_model
+  ContinuousAT/Llama3-8B-IT-CAT:
+    id: ContinuousAT/Llama3-8B-IT-CAT
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: ContinuousAT/Llama3-8B-IT-CAT
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ''
+  CAT_llama3b_005:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_005
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_005/final_model
+  CAT_llama3b_005_123:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_005_123
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_005_123/final_model
+  CAT_llama3b_005_456:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_005_456
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_005_456/final_model
+  CAT_llama3b_005_relativelr:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_005_relativelr
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_005_relativelr/final_model
+  CAT_llama3b_005_relativelr_123:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_005_relativelr_123
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_005_relativelr_123/final_model
+  CAT_llama3b_005_relativelr_456:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_005_relativelr_456
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_005_relativelr_456/final_model
+  CAT_llama3b_01_relativelr:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_01_relativelr
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_01_relativelr/final_model
+  CAT_llama3b_01_relativelr_123:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_01_relativelr_123
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_01_relativelr_123/final_model
+  CAT_llama3b_01_relativelr_456:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_01_relativelr_456
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_01_relativelr_456/final_model
+  CAT_llama3b_02_relativelr:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_02_relativelr
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_02_relativelr/final_model
+  CAT_llama3b_02_relativelr_123:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_02_relativelr_123
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_02_relativelr_123/final_model
+  CAT_llama3b_02_relativelr_456:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_02_relativelr_456
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_02_relativelr_456/final_model
+  CAT_llama3b_04_relativelr:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_04_relativelr
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_04_relativelr/final_model
+  CAT_llama3b_04_relativelr_123:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_04_relativelr_123
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_04_relativelr_123/final_model
+  CAT_llama3b_04_relativelr_456:
+    id: meta-llama/Meta-Llama-3-8B-Instruct
+    tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+    short_name: CAT_llama3b_04_relativelr_456
+    developer_name: ContinuousAT
+    compile: false
+    dtype: bfloat16
+    chat_template: llama-3-instruct
+    trust_remote_code: true
+    adapter_path: ../experiments/CAT_llama3b_04_relativelr_456/final_model
+defenses:
+  none:
+    name: none
+  polyguard:
+    name: polyguard
+    model:
+      id: ToxicityPrompts/PolyGuard-Qwen-Smol
+      tokenizer_id: ToxicityPrompts/PolyGuard-Qwen-Smol
+      short_name: PolyGuard
+      developer_name: ToxicityPrompts
+      compile: false
+      trust_remote_code: true
+      chat_template: null
+      dtype: bfloat16
+    max_new_tokens: 64
+    batch_size: null
+    overwrite_mode: harmful_content
+    refusal_text: Sorry, I can't assist you with that.
+root_dir: ${oc.env:PWD}
+name: testing
+save_dir: ${root_dir}/outputs/
+embed_dir: ${root_dir}/embeddings/
+overwrite: false
+classifiers:
+- strong_reject
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+attack: inpainting
+dataset: jbb_behaviors
+model: CAT_llama3b_02_relativelr
+defense: none

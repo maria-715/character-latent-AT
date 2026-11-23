@@ -1,0 +1,21 @@
+Conda env env_mt_bench already exists
+Conda env env_mt_bench already exists
+Output to data/mt_bench/model_answer/mistral_raw.jsonl
+Stats:
+{
+    "bench_name": "mt_bench",
+    "mode": "single",
+    "judge": "qwen-32b",
+    "baseline": null,
+    "model_list": [
+        "mistral_raw"
+    ],
+    "total_num_questions": 80,
+    "total_num_matches": 160,
+    "output_path": "data/mt_bench/model_judgment/qwen-32b_single2_['mistral_raw'].jsonl"
+}
+question: 87, turn: 2, model: mistral_raw, score: -1, judge: ('qwen-32b', 'single-v1-multi-turn')
+question: 93, turn: 2, model: mistral_raw, score: -1, judge: ('qwen-32b', 'single-v1-multi-turn')
+question: 137, turn: 1, model: mistral_raw, score: 9, judge: ('qwen-32b', 'single-v1')
+Mode: single
+Input file: data/mt_bench/model_judgment/gpt-4o_single2_['mistral_raw'].jsonl

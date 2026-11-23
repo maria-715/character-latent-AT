@@ -1,0 +1,16 @@
+[2026-06-28 23:29:25,435][root][INFO] - -------------------
+[2026-06-28 23:29:25,435][root][INFO] - Commencing run at `2026-06-28/23-29-25`
+[2026-06-28 23:29:25,435][root][INFO] - -------------------
+[2026-06-28 23:29:27,598][root][INFO] - Target: CAT_experiment_refait
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_experiment_refait
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiment/CAT_experiment_refait/training/ul/None/final_model
+
+[2026-06-28 23:29:35,699][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

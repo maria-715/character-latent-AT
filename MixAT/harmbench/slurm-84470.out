@@ -1,0 +1,31 @@
+Conda env env_harmbench already exists
+lora_exp=
+multiple_exp=
+begin_num=
+end_num=
+step_num=
+final_num=
+list_num=
+Namespace(method_name='GCG', save_dir='../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/test_cases', lora_scaling_experiments=False, multiple_checkpoints=False, begin=None, end=None, step=None, final=None, list_num=None)
+Merging test cases
+Saved test_cases.json to ../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/test_cases/test_cases.json
+Saved logs.json to ../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/test_cases/logs.json
+model_name=zephyr_7b_CAT_true_eps1
+behaviors_path=./data/behavior_datasets/harmbench_behaviors_text_test.csv
+test_cases_path=../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/test_cases/test_cases.json
+max_new_tokens=512
+save_path=../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/completions/zephyr_7b_CAT_true_eps1.json
+incremental_update=False
+lora_exp=
+multiple_exp=
+begin_num=
+end_num=
+step_num=
+final_num=
+list_num=
+temp_repeats=
+Executing command: python -u generate_completions.py     --model_name zephyr_7b_CAT_true_eps1     --behaviors_path ./data/behavior_datasets/harmbench_behaviors_text_test.csv     --test_cases_path ../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/test_cases/test_cases.json     --save_path ../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/completions/zephyr_7b_CAT_true_eps1.json     --max_new_tokens 512     --generate_with_vllm
+Namespace(model_name='zephyr_7b_CAT_true_eps1', models_config_file='./configs/model_configs/models.yaml', behaviors_path='./data/behavior_datasets/harmbench_behaviors_text_test.csv', test_cases_path='../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/test_cases/test_cases.json', save_path='../robustness_eval_harmbench/results/GCG/zephyr_7b_CAT_true_eps1/completions/zephyr_7b_CAT_true_eps1.json', max_new_tokens=512, generate_with_vllm=True, incremental_update=False, lora_scaling_experiments=False, temperature_repeats=0, multiple_checkpoints=False, begin=None, end=None, step=None, final=None, list_num=None, filter='all')
+model_config {'model_name_or_path': 'HuggingFaceH4/zephyr-7b-beta', 'use_fast_tokenizer': False, 'dtype': 'bfloat16', 'peft_path': '../../experiments/CAT_true_eps1/final_model', 'num_gpus': 1}
+Generating completions for 40 test cases
+Using HF generation

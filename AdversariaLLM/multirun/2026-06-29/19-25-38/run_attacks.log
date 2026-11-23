@@ -1,0 +1,54 @@
+[2026-06-29 19:25:38,431][root][INFO] - -------------------
+[2026-06-29 19:25:38,432][root][INFO] - Commencing run at `2026-06-29/19-25-38`
+[2026-06-29 19:25:38,432][root][INFO] - -------------------
+[2026-06-29 19:25:41,179][root][INFO] - Target: HuggingFaceH4/zephyr-7b-beta
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: Zephyr
+developer_name: Hugging Face
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ''
+
+[2026-06-29 19:25:47,601][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-29 19:26:03,403][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-29 19:26:04,691][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-29 19:53:06,983][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 19:54:05,628][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 19:55:05,279][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 19:56:05,325][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 19:57:02,394][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 19:58:00,021][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 19:58:55,964][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 19:59:55,328][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 20:00:53,601][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 20:01:58,820][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 20:02:53,555][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 20:03:47,904][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-29 21:28:40,526][root][INFO] - Inpainting attack run completed. Total Time: 7351.48s, Generation Time: 6142.10s, Loss Calc Time: 855.56s
+[2026-06-29 21:30:05,763][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-29/19-25-38/0/run.json
+[2026-06-29 21:30:06,609][root][INFO] - -------------------
+[2026-06-29 21:30:06,615][root][INFO] - Commencing judge run
+[2026-06-29 21:30:06,619][root][INFO] - -------------------
+[2026-06-29 21:30:06,620][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['19-25-38'], 'filter_by': None}
+[2026-06-29 21:30:06,624][root][INFO] - No unjudged paths found

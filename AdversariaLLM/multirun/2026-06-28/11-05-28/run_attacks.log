@@ -1,0 +1,42 @@
+[2026-06-28 11:05:28,246][root][INFO] - -------------------
+[2026-06-28 11:05:28,246][root][INFO] - Commencing run at `2026-06-28/11-05-28`
+[2026-06-28 11:05:28,246][root][INFO] - -------------------
+[2026-06-28 11:05:30,084][root][INFO] - Target: meta-llama/Meta-Llama-3-8B-Instruct
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: Llama
+developer_name: Meta
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ''
+
+[2026-06-28 11:05:36,633][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-28 11:05:52,126][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-28 11:05:53,387][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-28 11:38:03,846][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-28 11:38:22,978][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-28 11:38:42,063][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-28 11:39:01,315][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-28 11:39:20,416][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-28 11:39:39,577][root][INFO] - Early exit after 24/256 tokens.
+[2026-06-28 12:25:50,763][root][INFO] - Inpainting attack run completed. Total Time: 4794.72s, Generation Time: 3174.83s, Loss Calc Time: 1083.12s

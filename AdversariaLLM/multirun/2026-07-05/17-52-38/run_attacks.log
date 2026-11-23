@@ -1,0 +1,54 @@
+[2026-07-05 17:52:39,066][root][INFO] - -------------------
+[2026-07-05 17:52:39,066][root][INFO] - Commencing run at `2026-07-05/17-52-39`
+[2026-07-05 17:52:39,066][root][INFO] - -------------------
+[2026-07-05 17:52:41,026][root][INFO] - Target: HuggingFaceH4/zephyr-7b-beta
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: Zephyr
+developer_name: Hugging Face
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ''
+
+[2026-07-05 17:52:47,095][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-05 17:52:57,349][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-05 17:52:58,671][root][INFO] - Attack: gcg
+name: gcg
+type: discrete
+version: 0.0.1
+placement: suffix
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+num_steps: 250
+batch_size: 512
+optim_str_init: x x x x x x x x x x x x x x x x x x x x
+search_width: 512
+topk: 256
+n_replace: 1
+buffer_size: 0
+loss: ce
+use_constrained_gradient: false
+mellowmax_alpha: 1.0
+early_stop: false
+use_prefix_cache: true
+allow_non_ascii: false
+allow_special: false
+filter_ids: false
+verbosity: WARNING
+token_selection: default
+grow_target: false
+grad_smoothing: 1
+grad_momentum: 0.0
+

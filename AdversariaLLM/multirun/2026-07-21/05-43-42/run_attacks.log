@@ -1,0 +1,58 @@
+[2026-07-21 05:43:42,942][root][INFO] - -------------------
+[2026-07-21 05:43:42,943][root][INFO] - Commencing run at `2026-07-21/05-43-42`
+[2026-07-21 05:43:42,943][root][INFO] - -------------------
+[2026-07-21 05:43:44,771][root][INFO] - Target: CAT_zephyr_eps005_42_utility
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_zephyr_eps005_42_utility
+developer_name: ContinuousAT
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_zephyr_eps005_42_utility/final_model
+
+[2026-07-21 05:43:50,628][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-21 05:44:03,531][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-21 05:44:04,846][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-21 06:17:18,522][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:18:26,750][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:19:35,192][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:20:44,034][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:21:52,976][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:23:01,132][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:24:09,421][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:25:18,086][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:26:26,182][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:27:34,451][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:28:42,692][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:29:50,800][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 06:30:28,422][root][INFO] - Early exit after 137/256 tokens.
+[2026-07-21 07:22:29,555][root][INFO] - Inpainting attack run completed. Total Time: 5902.04s, Generation Time: 4323.27s, Loss Calc Time: 1223.18s
+[2026-07-21 07:23:53,006][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-21/05-43-42/0/run.json
+[2026-07-21 07:23:53,799][root][INFO] - -------------------
+[2026-07-21 07:23:53,801][root][INFO] - Commencing judge run
+[2026-07-21 07:23:53,801][root][INFO] - -------------------
+[2026-07-21 07:23:53,801][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['05-43-42'], 'filter_by': None}
+[2026-07-21 07:23:53,862][root][INFO] - Found 1 paths
+[2026-07-21 07:23:53,862][root][INFO] - Loading judge...
+[2026-07-21 07:23:58,515][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

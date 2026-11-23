@@ -1,0 +1,49 @@
+[2026-06-28 11:07:50,903][root][INFO] - -------------------
+[2026-06-28 11:07:50,904][root][INFO] - Commencing run at `2026-06-28/11-07-50`
+[2026-06-28 11:07:50,904][root][INFO] - -------------------
+[2026-06-28 11:07:52,682][root][INFO] - Target: ContinuousAT/Zephyr-CAT
+id: ContinuousAT/Zephyr-CAT
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: Zephyr
+developer_name: ContinuousAT
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+
+[2026-06-28 11:08:01,623][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-28 11:08:16,019][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-28 11:08:17,354][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-28 11:37:13,531][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:38:04,701][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:38:55,249][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:39:46,053][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:40:35,348][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:41:25,145][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:42:15,725][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:43:07,489][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:43:58,272][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:44:49,264][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:45:39,686][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:46:28,701][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 11:47:04,040][root][INFO] - Early exit after 135/256 tokens.
+[2026-06-28 12:27:40,842][root][INFO] - Inpainting attack run completed. Total Time: 4760.85s, Generation Time: 3419.03s, Loss Calc Time: 986.12s

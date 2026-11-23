@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 114, in main
+    all_run_configs = collect_configs(cfg)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 59, in collect_configs
+    run_config = filter_config(run_config, dset_len, overwrite=cfg.overwrite)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/config.py", line 27, in filter_config
+    db = get_mongodb_connection()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/database.py", line 32, in get_mongodb_connection
+    return client[db_name]
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1347, in __getitem__
+    return database.Database(self, name)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/pymongo/synchronous/database.py", line 125, in __init__
+    raise TypeError(f"name must be an instance of str, not {type(name)}")
+TypeError: name must be an instance of str, not <class 'NoneType'>

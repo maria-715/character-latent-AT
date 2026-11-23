@@ -1,0 +1,49 @@
+[2026-07-09 19:30:22,094][root][INFO] - -------------------
+[2026-07-09 19:30:22,095][root][INFO] - Commencing run at `2026-07-09/19-30-22`
+[2026-07-09 19:30:22,095][root][INFO] - -------------------
+[2026-07-09 19:30:23,861][root][INFO] - Target: CAT_llama3b_0300_relativelr_456_otherparams
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: CAT_llama3b_0300_relativelr_456_otherparams
+developer_name: ContinuousAT
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ../experiments/CAT_llama3b_0300_relativelr_456_otherparams/final_model
+
+[2026-07-09 19:30:30,369][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-09 19:30:44,072][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-09 19:30:45,388][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-09 20:11:53,573][root][INFO] - Early exit after 8/256 tokens.
+[2026-07-09 20:12:15,698][root][INFO] - Early exit after 8/256 tokens.
+[2026-07-09 20:12:37,929][root][INFO] - Early exit after 8/256 tokens.
+[2026-07-09 20:13:00,552][root][INFO] - Early exit after 8/256 tokens.
+[2026-07-09 20:13:22,658][root][INFO] - Early exit after 8/256 tokens.
+[2026-07-09 20:13:44,959][root][INFO] - Early exit after 8/256 tokens.
+[2026-07-09 21:14:53,367][root][INFO] - Inpainting attack run completed. Total Time: 6245.32s, Generation Time: 4094.12s, Loss Calc Time: 1598.14s
+[2026-07-09 21:16:26,027][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/19-30-22/0/run.json
+[2026-07-09 21:16:26,849][root][INFO] - -------------------
+[2026-07-09 21:16:26,849][root][INFO] - Commencing judge run
+[2026-07-09 21:16:26,849][root][INFO] - -------------------
+[2026-07-09 21:16:26,849][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['19-30-22'], 'filter_by': None}
+[2026-07-09 21:16:27,506][root][INFO] - Found 2 paths
+[2026-07-09 21:16:27,506][root][INFO] - Loading judge...

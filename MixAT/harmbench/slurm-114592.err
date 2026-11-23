@@ -1,0 +1,20 @@
+./scripts/generate_completions.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+/auto/users/ms25mds/MSc_Project/MixAT/harmbench/api_models.py:7: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:04<00:28,  4.04s/it]Loading checkpoint shards:  25%|██▌       | 2/8 [00:06<00:18,  3.02s/it]Loading checkpoint shards:  38%|███▊      | 3/8 [00:07<00:09,  2.00s/it]Loading checkpoint shards:  50%|█████     | 4/8 [00:11<00:11,  2.87s/it]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:13<00:07,  2.45s/it]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:17<00:06,  3.06s/it]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:22<00:03,  3.66s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:23<00:00,  2.93s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:23<00:00,  2.95s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [01:15<00:00, 75.32s/it]100%|██████████| 1/1 [01:15<00:00, 75.32s/it]
+./scripts/evaluate_completions.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+[W socket.cpp:464] [c10d] The server socket cannot be initialized on [::]:50933 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:697] [c10d] The client socket cannot be initialized to connect to [oat11.cs.ox.ac.uk]:50933 (errno: 97 - Address family not supported by protocol).
+  0%|          | 0/40 [00:00<?, ?it/s]  2%|▎         | 1/40 [00:00<00:04,  8.66it/s]  8%|▊         | 3/40 [00:00<00:03, 11.13it/s] 12%|█▎        | 5/40 [00:00<00:03,  9.20it/s] 15%|█▌        | 6/40 [00:00<00:03,  8.98it/s] 20%|██        | 8/40 [00:00<00:03,  9.23it/s] 22%|██▎       | 9/40 [00:00<00:03,  9.05it/s] 25%|██▌       | 10/40 [00:01<00:03,  8.26it/s] 28%|██▊       | 11/40 [00:01<00:03,  7.54it/s] 30%|███       | 12/40 [00:01<00:03,  7.78it/s] 35%|███▌      | 14/40 [00:01<00:02, 10.03it/s] 40%|████      | 16/40 [00:01<00:02,  9.90it/s] 45%|████▌     | 18/40 [00:01<00:02,  9.58it/s] 48%|████▊     | 19/40 [00:02<00:02,  8.55it/s] 50%|█████     | 20/40 [00:03<00:06,  3.19it/s] 52%|█████▎    | 21/40 [00:03<00:05,  3.66it/s] 55%|█████▌    | 22/40 [00:03<00:04,  4.34it/s] 60%|██████    | 24/40 [00:03<00:02,  5.37it/s] 65%|██████▌   | 26/40 [00:03<00:02,  6.48it/s] 68%|██████▊   | 27/40 [00:03<00:01,  6.66it/s] 72%|███████▎  | 29/40 [00:04<00:01,  7.59it/s] 75%|███████▌  | 30/40 [00:04<00:01,  7.77it/s] 78%|███████▊  | 31/40 [00:04<00:01,  8.09it/s] 80%|████████  | 32/40 [00:04<00:00,  8.21it/s] 82%|████████▎ | 33/40 [00:04<00:00,  7.71it/s] 88%|████████▊ | 35/40 [00:04<00:00,  9.58it/s] 90%|█████████ | 36/40 [00:04<00:00,  9.46it/s] 92%|█████████▎| 37/40 [00:05<00:00,  8.85it/s] 98%|█████████▊| 39/40 [00:05<00:00, 11.22it/s]100%|██████████| 40/40 [00:05<00:00,  7.67it/s]
+/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/numpy/lib/function_base.py:520: RuntimeWarning: Mean of empty slice.
+  avg = a.mean(axis, **keepdims_kw)
+/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)

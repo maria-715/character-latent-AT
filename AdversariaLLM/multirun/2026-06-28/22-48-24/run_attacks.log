@@ -1,0 +1,54 @@
+[2026-06-28 22:48:24,380][root][INFO] - -------------------
+[2026-06-28 22:48:24,381][root][INFO] - Commencing run at `2026-06-28/22-48-24`
+[2026-06-28 22:48:24,381][root][INFO] - -------------------
+[2026-06-28 22:48:27,011][root][INFO] - Target: ContinuousAT/Zephyr-CAT
+id: ContinuousAT/Zephyr-CAT
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: Zephyr
+developer_name: ContinuousAT
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+
+[2026-06-28 22:48:33,560][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-28 22:48:54,792][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-28 22:48:56,063][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-28 23:19:47,137][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:20:57,870][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:22:09,254][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:23:20,330][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:24:33,258][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:25:45,829][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:26:56,656][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:28:09,865][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:29:23,137][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:30:34,635][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:31:45,111][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:32:53,763][root][INFO] - Early exit after 120/256 tokens.
+[2026-06-28 23:33:36,936][root][INFO] - Early exit after 135/256 tokens.
+[2026-06-29 00:15:07,470][root][INFO] - Inpainting attack run completed. Total Time: 5167.31s, Generation Time: 3794.46s, Loss Calc Time: 1010.99s
+[2026-06-29 00:16:30,314][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-28/22-48-24/0/run.json
+[2026-06-29 00:16:31,524][root][INFO] - -------------------
+[2026-06-29 00:16:31,526][root][INFO] - Commencing judge run
+[2026-06-29 00:16:31,527][root][INFO] - -------------------
+[2026-06-29 00:16:31,527][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['22-48-24'], 'filter_by': None}

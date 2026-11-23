@@ -1,0 +1,45 @@
+[2026-07-02 12:49:19,959][root][INFO] - -------------------
+[2026-07-02 12:49:19,959][root][INFO] - Commencing run at `2026-07-02/12-49-19`
+[2026-07-02 12:49:19,959][root][INFO] - -------------------
+[2026-07-02 12:49:21,861][root][INFO] - Target: CAT_adv_eps01_456_relativelr_REFAIT
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_adv_eps01_456_relativelr_REFAIT
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_adv_eps01_456_relativelr_REFAIT/final_model
+
+[2026-07-02 12:49:27,607][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-02 12:49:47,871][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-02 12:49:49,181][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-02 15:11:59,576][root][INFO] - Inpainting attack run completed. Total Time: 8527.77s, Generation Time: 6942.08s, Loss Calc Time: 1231.75s
+[2026-07-02 15:13:22,835][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-02/12-49-19/0/run.json
+[2026-07-02 15:13:23,597][root][INFO] - -------------------
+[2026-07-02 15:13:23,599][root][INFO] - Commencing judge run
+[2026-07-02 15:13:23,599][root][INFO] - -------------------
+[2026-07-02 15:13:23,599][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['12-49-19'], 'filter_by': None}
+[2026-07-02 15:13:23,688][root][INFO] - Found 1 paths
+[2026-07-02 15:13:23,688][root][INFO] - Loading judge...
+[2026-07-02 15:13:30,147][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

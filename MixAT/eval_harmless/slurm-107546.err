@@ -1,0 +1,11 @@
+[W socket.cpp:464] [c10d] The server socket cannot be initialized on [::]:35711 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:697] [c10d] The client socket cannot be initialized to connect to [oat14.cs.ox.ac.uk]:35711 (errno: 97 - Address family not supported by protocol).
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/auto/users/ms25mds/MSc_Project/MixAT/eval_harmless/evaluation.py", line 334, in <module>
+[rank0]:     peft_local_path = snapshot_download(repo_id=peft_path)
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/scratch-ssd/ms25mds/conda_envs/env_harmless/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+[rank0]:     validate_repo_id(arg_value)
+[rank0]:   File "/scratch-ssd/ms25mds/conda_envs/env_harmless/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+[rank0]:     raise HFValidationError(
+[rank0]: huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '../../experiments/CAT_zephyr_eps01_42_relativelr_utility_TRIMMED/final_model'. Use `repo_type` argument if needed.

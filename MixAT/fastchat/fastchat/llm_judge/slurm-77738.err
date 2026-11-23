@@ -1,0 +1,63 @@
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:00<00:00, 10.46it/s]Loading checkpoint shards:  50%|█████     | 4/8 [00:00<00:00, 11.37it/s]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:00<00:00, 11.73it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:00<00:00, 11.81it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:00<00:00, 11.63it/s]
+Traceback (most recent call last):
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/peft/config.py", line 317, in _get_peft_type
+    config_file = hf_hub_download(
+                  ^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '../../experiments/CAT_experiment_0_1/training/ul/None/final_model'. Use `repo_type` argument if needed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/gen_model_answer.py", line 337, in <module>
+    run_eval(
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/gen_model_answer.py", line 64, in run_eval
+    get_answers_func(
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/gen_model_answer.py", line 116, in get_model_answers
+    model = PeftModel.from_pretrained(model,peft_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/peft/peft_model.py", line 459, in from_pretrained
+    config = PEFT_TYPE_TO_CONFIG_MAPPING[PeftConfig._get_peft_type(model_id, **hf_kwargs)].from_pretrained(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/peft/config.py", line 323, in _get_peft_type
+    raise ValueError(f"Can't find '{CONFIG_NAME}' at '{model_id}'")
+ValueError: Can't find 'adapter_config.json' at '../../experiments/CAT_experiment_0_1/training/ul/None/final_model'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/gen_judgment.py", line 284, in <module>
+    check_data(questions, model_answers, ref_answers, models, judges)
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/common.py", line 776, in check_data
+    assert m in model_answers, f"Missing model answer for {m}"
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: Missing model answer for mistral_CAT_github_eps_0_1
+Traceback (most recent call last):
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/json/_json.py", line 948, in _get_data_from_filepath
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/common.py", line 926, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: "data/mt_bench/model_judgment/gpt-4o_single2_['mistral_CAT_github_eps_0_1'].jsonl"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/show_result.py", line 140, in <module>
+    display_result_func(args)
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/show_result.py", line 20, in display_result_single
+    df_all = pd.read_json(input_file, lines=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/json/_json.py", line 829, in read_json
+    json_reader = JsonReader(
+                  ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/json/_json.py", line 931, in __init__
+    data = self._get_data_from_filepath(filepath_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/json/_json.py", line 957, in _get_data_from_filepath
+    raise FileNotFoundError(
+FileNotFoundError: File data/mt_bench/model_judgment/gpt-4o_single2_['mistral_CAT_github_eps_0_1'].jsonl does not exist

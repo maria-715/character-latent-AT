@@ -1,0 +1,101 @@
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+spacy 3.7.2 requires typer<0.10.0,>=0.3.0, but you have typer 0.25.0 which is incompatible.
+weasel 0.3.4 requires typer<0.10.0,>=0.3.0, but you have typer 0.25.0 which is incompatible.
+./scripts/generate_test_cases.sh: line 36: /opt/rh/devtoolset-10/enable: No such file or directory
+[W socket.cpp:464] [c10d] The server socket cannot be initialized on [::]:48003 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:697] [c10d] The client socket cannot be initialized to connect to [oat11.cs.ox.ac.uk]:48003 (errno: 97 - Address family not supported by protocol).
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Exception in thread Thread-2 (_report_usage_worker):
+Traceback (most recent call last):
+  File "/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/vllm/usage/usage_lib.py", line 140, in _report_usage_worker
+    self._report_usage_once(model_architecture, usage_context, extra_kvs)
+  File "/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/vllm/usage/usage_lib.py", line 179, in _report_usage_once
+    self._write_to_file(data)
+  File "/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/vllm/usage/usage_lib.py", line 205, in _write_to_file
+    with open(_USAGE_STATS_JSON_PATH, "a") as f:
+OSError: [Errno 122] Disk quota exceeded
+Loading checkpoint shards:  12%|█▎        | 1/8 [00:00<00:05,  1.22it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:01<00:04,  1.22it/s]Loading checkpoint shards:  38%|███▊      | 3/8 [00:02<00:04,  1.23it/s]Loading checkpoint shards:  50%|█████     | 4/8 [00:03<00:03,  1.23it/s]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:04<00:02,  1.23it/s]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:04<00:01,  1.23it/s]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:05<00:00,  1.23it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:06<00:00,  1.43it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:06<00:00,  1.30it/s]
+  0%|          | 0/40 [00:00<?, ?it/s]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+  2%|▎         | 1/40 [00:11<07:37, 11.74s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+  5%|▌         | 2/40 [00:23<07:15, 11.47s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+  8%|▊         | 3/40 [00:34<07:02, 11.42s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 10%|█         | 4/40 [00:45<06:50, 11.41s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:14<?, ?it/s]
+ 12%|█▎        | 5/40 [01:00<07:17, 12.51s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 15%|█▌        | 6/40 [01:11<06:53, 12.15s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 18%|█▊        | 7/40 [01:23<06:33, 11.93s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:12<?, ?it/s]
+ 20%|██        | 8/40 [01:36<06:31, 12.24s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 22%|██▎       | 9/40 [01:47<06:12, 12.03s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:15<?, ?it/s]
+ 25%|██▌       | 10/40 [02:03<06:32, 13.09s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:15<?, ?it/s]
+ 28%|██▊       | 11/40 [02:18<06:37, 13.69s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 30%|███       | 12/40 [02:29<06:04, 13.03s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 32%|███▎      | 13/40 [02:41<05:38, 12.53s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 35%|███▌      | 14/40 [02:52<05:17, 12.21s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 38%|███▊      | 15/40 [03:03<04:58, 11.94s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 40%|████      | 16/40 [03:15<04:42, 11.77s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 42%|████▎     | 17/40 [03:26<04:27, 11.64s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 45%|████▌     | 18/40 [03:37<04:13, 11.54s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:16<?, ?it/s]
+ 48%|████▊     | 19/40 [03:54<04:32, 12.97s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:19<?, ?it/s]
+ 50%|█████     | 20/40 [04:13<04:57, 14.85s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:13<?, ?it/s]
+ 52%|█████▎    | 21/40 [04:26<04:34, 14.44s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 55%|█████▌    | 22/40 [04:38<04:03, 13.51s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 57%|█████▊    | 23/40 [04:49<03:38, 12.84s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:16<?, ?it/s]
+ 60%|██████    | 24/40 [05:06<03:43, 13.99s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 62%|██████▎   | 25/40 [05:17<03:17, 13.18s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 65%|██████▌   | 26/40 [05:28<02:56, 12.63s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:16<?, ?it/s]
+ 68%|██████▊   | 27/40 [05:44<02:57, 13.66s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 70%|███████   | 28/40 [05:56<02:36, 13.07s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 72%|███████▎  | 29/40 [06:07<02:17, 12.54s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 75%|███████▌  | 30/40 [06:19<02:01, 12.18s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 78%|███████▊  | 31/40 [06:30<01:47, 11.95s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:14<?, ?it/s]
+ 80%|████████  | 32/40 [06:45<01:42, 12.75s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:15<?, ?it/s]
+ 82%|████████▎ | 33/40 [07:01<01:35, 13.68s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 85%|████████▌ | 34/40 [07:12<01:18, 13.02s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 88%|████████▊ | 35/40 [07:23<01:02, 12.54s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 90%|█████████ | 36/40 [07:35<00:48, 12.19s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:14<?, ?it/s]
+ 92%|█████████▎| 37/40 [07:49<00:38, 12.91s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+ 95%|█████████▌| 38/40 [08:01<00:24, 12.46s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:12<?, ?it/s]
+ 98%|█████████▊| 39/40 [08:13<00:12, 12.46s/it]
+  0%|          | 0/100 [00:00<?, ?it/s][A  0%|          | 0/100 [00:11<?, ?it/s]
+100%|██████████| 40/40 [08:25<00:00, 12.16s/it]100%|██████████| 40/40 [08:25<00:00, 12.63s/it]

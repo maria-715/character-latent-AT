@@ -1,0 +1,26 @@
+./scripts/generate_test_cases.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+[W socket.cpp:464] [c10d] The server socket cannot be initialized on [::]:38937 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:697] [c10d] The client socket cannot be initialized to connect to [oat14.cs.ox.ac.uk]:38937 (errno: 97 - Address family not supported by protocol).
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/generate_test_cases.py", line 250, in <module>
+[rank0]:     main()
+[rank0]:   File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/generate_test_cases.py", line 241, in main
+[rank0]:     method = init_method(method_class, method_config)    
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/baselines/__init__.py", line 50, in init_method
+[rank0]:     output = method_class(**method_config)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/baselines/autodan/AutoDAN.py", line 82, in __init__
+[rank0]:     max_memory = {i: torch.cuda.mem_get_info(i)[0] if i >= allocated_gpus else 0 for i in range(0, allocated_gpus + num_gpus)}
+[rank0]:                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/baselines/autodan/AutoDAN.py", line 82, in <dictcomp>
+[rank0]:     max_memory = {i: torch.cuda.mem_get_info(i)[0] if i >= allocated_gpus else 0 for i in range(0, allocated_gpus + num_gpus)}
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/scratch-ssd/ms25mds/conda_envs/env_harmbench/lib/python3.11/site-packages/torch/cuda/memory.py", line 655, in mem_get_info
+[rank0]:     return torch.cuda.cudart().cudaMemGetInfo(device)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: RuntimeError: CUDA error: invalid device ordinal
+[rank0]: CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[rank0]: For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

@@ -1,0 +1,218 @@
+[2026-06-30 02:24:18,752][root][INFO] - -------------------
+[2026-06-30 02:24:18,753][root][INFO] - Commencing run at `2026-06-30/02-24-18`
+[2026-06-30 02:24:18,753][root][INFO] - -------------------
+[2026-06-30 02:24:18,754][root][INFO] - -------------------
+[2026-06-30 02:24:18,754][root][INFO] - Commencing run at `2026-06-30/02-24-18`
+[2026-06-30 02:24:18,754][root][INFO] - -------------------
+[2026-06-30 02:24:18,763][root][INFO] - -------------------
+[2026-06-30 02:24:18,764][root][INFO] - Commencing run at `2026-06-30/02-24-18`
+[2026-06-30 02:24:18,764][root][INFO] - -------------------
+[2026-06-30 02:24:18,766][root][INFO] - -------------------
+[2026-06-30 02:24:18,766][root][INFO] - Commencing run at `2026-06-30/02-24-18`
+[2026-06-30 02:24:18,766][root][INFO] - -------------------
+[2026-06-30 02:24:20,537][root][INFO] - Target: CAT_adv_eps005_42_relativelr_REFAIT
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_adv_eps005_42_relativelr_REFAIT
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_adv_eps005_42_relativelr_REFAIT/final_model
+
+[2026-06-30 02:24:20,569][root][INFO] - Target: CAT_experiment_refait
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_experiment_refait
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_experiment_refait/training/ul/None/final_model
+
+[2026-06-30 02:24:20,585][root][INFO] - Target: CAT_adv_eps04_42_relativelr_REFAIT
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_adv_eps04_42_relativelr_REFAIT
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_adv_eps04_42_relativelr_REFAIT/final_model
+
+[2026-06-30 02:24:20,637][root][INFO] - Target: HuggingFaceH4/zephyr-7b-beta
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: Zephyr
+developer_name: Hugging Face
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ''
+
+[2026-06-30 02:24:29,790][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-30 02:24:29,791][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-30 02:24:29,792][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-30 02:24:29,805][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-30 02:24:42,192][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-30 02:24:43,594][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-30 02:24:45,742][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-30 02:24:45,760][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-30 02:24:46,998][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-30 02:24:47,066][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-30 02:24:54,802][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-30 02:24:56,122][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-30 02:52:09,407][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 02:53:03,255][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 02:53:56,557][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 02:54:49,539][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 02:55:26,396][root][INFO] - Early exit after 9/256 tokens.
+[2026-06-30 02:55:46,038][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 02:55:50,192][root][INFO] - Early exit after 9/256 tokens.
+[2026-06-30 02:56:13,989][root][INFO] - Early exit after 9/256 tokens.
+[2026-06-30 02:56:42,624][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 02:58:00,133][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 02:58:57,599][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 03:00:09,799][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 03:00:12,548][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:01:20,055][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 03:01:57,126][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:02:33,853][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 03:02:34,531][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:03:33,405][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-30 03:04:45,704][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:06:15,400][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:06:51,116][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:08:55,140][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:10:22,949][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:11:03,233][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:13:05,751][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:14:27,700][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:15:07,296][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:17:08,197][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:18:30,391][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:19:10,133][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:21:12,130][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:22:33,334][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:23:13,920][root][INFO] - Early exit after 165/256 tokens.
+[2026-06-30 03:26:28,905][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:30:16,445][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:34:04,629][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:37:53,195][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:41:39,572][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:44:25,424][root][INFO] - Inpainting attack run completed. Total Time: 4766.32s, Generation Time: 3160.03s, Loss Calc Time: 1245.68s
+[2026-06-30 03:45:26,183][root][INFO] - Early exit after 254/256 tokens.
+[2026-06-30 03:45:48,270][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-30/02-24-18/0/run.json
+[2026-06-30 03:45:49,271][root][INFO] - -------------------
+[2026-06-30 03:45:49,271][root][INFO] - Commencing judge run
+[2026-06-30 03:45:49,271][root][INFO] - -------------------
+[2026-06-30 03:45:49,271][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['02-24-18'], 'filter_by': None}
+[2026-06-30 03:45:49,323][root][INFO] - Found 1 paths
+[2026-06-30 03:45:49,323][root][INFO] - Loading judge...
+[2026-06-30 03:45:55,148][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-30 04:11:23,454][root][INFO] - Inpainting attack run completed. Total Time: 6393.39s, Generation Time: 4776.30s, Loss Calc Time: 1250.70s
+[2026-06-30 04:12:48,504][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-30/02-24-18/1/run.json
+[2026-06-30 04:12:49,625][root][INFO] - -------------------
+[2026-06-30 04:12:49,628][root][INFO] - Commencing judge run
+[2026-06-30 04:12:49,629][root][INFO] - -------------------
+[2026-06-30 04:12:49,629][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['02-24-18'], 'filter_by': None}
+[2026-06-30 04:12:49,673][root][INFO] - Found 2 paths
+[2026-06-30 04:12:49,673][root][INFO] - Loading judge...
+[2026-06-30 04:12:55,655][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-30 04:31:25,069][root][INFO] - Inpainting attack run completed. Total Time: 7598.46s, Generation Time: 6349.97s, Loss Calc Time: 886.82s
+[2026-06-30 04:32:53,263][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-30/02-24-18/2/run.json
+[2026-06-30 04:32:54,341][root][INFO] - -------------------
+[2026-06-30 04:32:54,341][root][INFO] - Commencing judge run
+[2026-06-30 04:32:54,341][root][INFO] - -------------------
+[2026-06-30 04:32:54,341][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['02-24-18'], 'filter_by': None}
+[2026-06-30 04:32:54,395][root][INFO] - Found 3 paths
+[2026-06-30 04:32:54,395][root][INFO] - Loading judge...
+[2026-06-30 04:33:00,478][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-30 04:35:32,337][root][INFO] - Inpainting attack run completed. Total Time: 7842.27s, Generation Time: 6240.76s, Loss Calc Time: 1241.11s
+[2026-06-30 04:36:57,468][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-30/02-24-18/3/run.json
+[2026-06-30 04:36:58,529][root][INFO] - -------------------
+[2026-06-30 04:36:58,532][root][INFO] - Commencing judge run
+[2026-06-30 04:36:58,533][root][INFO] - -------------------
+[2026-06-30 04:36:58,533][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['02-24-18'], 'filter_by': None}
+[2026-06-30 04:36:58,575][root][INFO] - Found 4 paths
+[2026-06-30 04:36:58,575][root][INFO] - Loading judge...
+[2026-06-30 04:37:04,602][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

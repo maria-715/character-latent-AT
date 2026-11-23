@@ -1,0 +1,17 @@
+./scripts/generate_completions_newpeft.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/generate_completions.py", line 9, in <module>
+    from api_models import api_models_map
+  File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/api_models.py", line 4, in <module>
+    from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
+ImportError: cannot import name 'HUMAN_PROMPT' from 'anthropic' (/scratch-ssd/ms25mds/conda_envs/env_harmbench_newpeft/lib/python3.11/site-packages/anthropic/__init__.py)
+./scripts/evaluate_completions.sh: line 35: /opt/rh/devtoolset-10/enable: No such file or directory
+[W socket.cpp:464] [c10d] The server socket cannot be initialized on [::]:53323 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:697] [c10d] The client socket cannot be initialized to connect to [oat15.cs.ox.ac.uk]:53323 (errno: 97 - Address family not supported by protocol).
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/evaluate_completions.py", line 354, in <module>
+[rank0]:     main()
+[rank0]:   File "/auto/users/ms25mds/MSc_Project/MixAT/harmbench/evaluate_completions.py", line 282, in main
+[rank0]:     with open(new_completions_path, 'r') as f:
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: FileNotFoundError: [Errno 2] No such file or directory: '../robustness_eval_harmbench/results/GCG/original_lat_llama3_seed456/completions/original_lat_llama3_seed456.json'

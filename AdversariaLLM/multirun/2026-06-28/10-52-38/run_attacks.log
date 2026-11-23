@@ -1,0 +1,48 @@
+[2026-06-28 10:52:38,842][root][INFO] - -------------------
+[2026-06-28 10:52:38,843][root][INFO] - Commencing run at `2026-06-28/10-52-38`
+[2026-06-28 10:52:38,843][root][INFO] - -------------------
+[2026-06-28 10:52:42,132][root][INFO] - Target: HuggingFaceH4/zephyr-7b-beta
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: Zephyr
+developer_name: Hugging Face
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ''
+
+[2026-06-28 10:52:50,148][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-28 10:53:02,826][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-28 10:53:04,086][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-06-28 11:20:05,411][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:21:03,001][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:22:01,923][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:23:00,882][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:23:59,014][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:24:56,070][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:25:53,241][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:26:52,322][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:27:50,927][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:28:52,322][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:29:51,833][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 11:30:51,787][root][INFO] - Early exit after 126/256 tokens.
+[2026-06-28 12:55:27,988][root][INFO] - Inpainting attack run completed. Total Time: 7341.04s, Generation Time: 6123.37s, Loss Calc Time: 855.87s

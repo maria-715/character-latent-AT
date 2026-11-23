@@ -1,0 +1,90 @@
+[2026-07-01 01:57:06,016][root][INFO] - -------------------
+[2026-07-01 01:57:06,016][root][INFO] - Commencing run at `2026-07-01/01-57-06`
+[2026-07-01 01:57:06,016][root][INFO] - -------------------
+[2026-07-01 01:57:06,036][root][INFO] - -------------------
+[2026-07-01 01:57:06,036][root][INFO] - Commencing run at `2026-07-01/01-57-06`
+[2026-07-01 01:57:06,036][root][INFO] - -------------------
+[2026-07-01 01:57:08,742][root][INFO] - Target: CAT_adv_eps01_42_relativelr_REFAIT
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_adv_eps01_42_relativelr_REFAIT
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_adv_eps01_42_relativelr_REFAIT/final_model
+
+[2026-07-01 01:57:08,742][root][INFO] - Target: CAT_adv_eps02_42_relativelr_REFAIT
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_adv_eps02_42_relativelr_REFAIT
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_adv_eps02_42_relativelr_REFAIT/final_model
+
+[2026-07-01 01:57:15,087][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-01 01:57:15,087][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-01 01:58:07,202][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-01 01:58:07,203][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-01 01:58:08,497][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-01 01:58:08,628][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-01 04:20:43,246][root][INFO] - Inpainting attack run completed. Total Time: 8549.65s, Generation Time: 6870.17s, Loss Calc Time: 1315.17s
+[2026-07-01 04:22:08,655][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-01/01-57-06/0/run.json
+[2026-07-01 04:22:09,461][root][INFO] - -------------------
+[2026-07-01 04:22:09,462][root][INFO] - Commencing judge run
+[2026-07-01 04:22:09,462][root][INFO] - -------------------
+[2026-07-01 04:22:09,462][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['01-57-06'], 'filter_by': None}
+[2026-07-01 04:22:09,566][root][INFO] - Found 1 paths
+[2026-07-01 04:22:09,567][root][INFO] - Loading judge...
+[2026-07-01 04:22:58,094][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-01 04:23:35,561][root][INFO] - Inpainting attack run completed. Total Time: 8722.07s, Generation Time: 7050.94s, Loss Calc Time: 1308.90s
+[2026-07-01 04:24:59,629][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-01/01-57-06/1/run.json
+[2026-07-01 04:25:00,784][root][INFO] - -------------------
+[2026-07-01 04:25:00,786][root][INFO] - Commencing judge run
+[2026-07-01 04:25:00,786][root][INFO] - -------------------
+[2026-07-01 04:25:00,786][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['01-57-06'], 'filter_by': None}
+[2026-07-01 04:25:00,832][root][INFO] - Found 2 paths
+[2026-07-01 04:25:00,833][root][INFO] - Loading judge...
+[2026-07-01 04:25:08,117][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

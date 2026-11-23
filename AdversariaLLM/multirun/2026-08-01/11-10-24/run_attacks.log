@@ -1,0 +1,70 @@
+[2026-08-01 11:10:24,661][root][INFO] - -------------------
+[2026-08-01 11:10:24,662][root][INFO] - Commencing run at `2026-08-01/11-10-24`
+[2026-08-01 11:10:24,662][root][INFO] - -------------------
+[2026-08-01 11:10:24,666][root][INFO] - -------------------
+[2026-08-01 11:10:24,667][root][INFO] - Commencing run at `2026-08-01/11-10-24`
+[2026-08-01 11:10:24,667][root][INFO] - -------------------
+[2026-08-01 11:10:26,519][root][INFO] - Target: CAT_llama3b_likeLlama2_eps0150_42_relativelr_utility_NEW
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: CAT_llama3b_likeLlama2_eps0150_42_relativelr_utility_NEW
+developer_name: ContinuousAT
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0150_42_relativelr_utility_NEW/final_model
+
+[2026-08-01 11:10:26,535][root][INFO] - Target: CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_NEW
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_NEW
+developer_name: ContinuousAT
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_NEW/final_model
+
+[2026-08-01 11:10:33,009][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-08-01 11:10:33,012][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-08-01 11:11:02,514][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-08-01 11:11:02,520][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-08-01 11:11:03,775][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-08-01 11:11:03,806][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+

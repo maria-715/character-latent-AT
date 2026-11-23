@@ -1,0 +1,100 @@
+[2026-07-18 20:40:03,188][root][INFO] - -------------------
+[2026-07-18 20:40:03,188][root][INFO] - Commencing run at `2026-07-18/20-40-03`
+[2026-07-18 20:40:03,188][root][INFO] - -------------------
+[2026-07-18 20:40:03,190][root][INFO] - -------------------
+[2026-07-18 20:40:03,191][root][INFO] - Commencing run at `2026-07-18/20-40-03`
+[2026-07-18 20:40:03,191][root][INFO] - -------------------
+[2026-07-18 20:40:05,282][root][INFO] - Target: CAT_llama3b_likeZephyr_123_utility
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: CAT_llama3b_likeZephyr_123_utility
+developer_name: ContinuousAT
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ../experiments/CAT_llama3b_likeZephyr_123_utility/final_model
+
+[2026-07-18 20:40:05,282][root][INFO] - Target: CAT_llama3b_likeZephyr_42_utility
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: CAT_llama3b_likeZephyr_42_utility
+developer_name: ContinuousAT
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ../experiments/CAT_llama3b_likeZephyr_42_utility/final_model
+
+[2026-07-18 20:40:15,067][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-18 20:40:15,067][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-18 20:40:32,184][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-18 20:40:32,192][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-18 20:40:33,551][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-18 20:40:33,853][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-18 21:23:18,466][root][INFO] - Early exit after 25/256 tokens.
+[2026-07-18 21:23:20,088][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-18 21:23:49,408][root][INFO] - Early exit after 25/256 tokens.
+[2026-07-18 21:23:51,386][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-18 21:24:20,662][root][INFO] - Early exit after 25/256 tokens.
+[2026-07-18 21:24:23,027][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-18 21:24:52,091][root][INFO] - Early exit after 25/256 tokens.
+[2026-07-18 21:24:54,838][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-18 21:25:23,681][root][INFO] - Early exit after 25/256 tokens.
+[2026-07-18 21:25:26,676][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-18 21:25:55,150][root][INFO] - Early exit after 25/256 tokens.
+[2026-07-18 21:25:58,500][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-18 22:28:30,637][root][INFO] - Inpainting attack run completed. Total Time: 6473.77s, Generation Time: 4266.61s, Loss Calc Time: 1627.00s
+[2026-07-18 22:29:56,924][root][INFO] - Inpainting attack run completed. Total Time: 6560.13s, Generation Time: 4352.37s, Loss Calc Time: 1630.57s
+[2026-07-18 22:30:04,232][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-18/20-40-03/0/run.json
+[2026-07-18 22:30:05,254][root][INFO] - -------------------
+[2026-07-18 22:30:05,254][root][INFO] - Commencing judge run
+[2026-07-18 22:30:05,255][root][INFO] - -------------------
+[2026-07-18 22:30:05,255][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['20-40-03'], 'filter_by': None}
+[2026-07-18 22:30:05,268][root][INFO] - Found 1 paths
+[2026-07-18 22:30:05,269][root][INFO] - Loading judge...
+[2026-07-18 22:30:12,417][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-18 22:31:30,767][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-18/20-40-03/1/run.json
+[2026-07-18 22:31:31,671][root][INFO] - -------------------
+[2026-07-18 22:31:31,674][root][INFO] - Commencing judge run
+[2026-07-18 22:31:31,674][root][INFO] - -------------------
+[2026-07-18 22:31:31,674][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['20-40-03'], 'filter_by': None}
+[2026-07-18 22:31:31,689][root][INFO] - Found 2 paths
+[2026-07-18 22:31:31,690][root][INFO] - Loading judge...
+[2026-07-18 22:31:38,542][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

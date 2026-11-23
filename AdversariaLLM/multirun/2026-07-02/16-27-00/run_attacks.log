@@ -1,0 +1,50 @@
+[2026-07-02 16:27:00,384][root][INFO] - -------------------
+[2026-07-02 16:27:00,384][root][INFO] - Commencing run at `2026-07-02/16-27-00`
+[2026-07-02 16:27:00,384][root][INFO] - -------------------
+[2026-07-02 16:27:02,143][root][INFO] - Target: CAT_llama3b_01_relativelr_456
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: CAT_llama3b_01_relativelr_456
+developer_name: ContinuousAT
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ../experiments/CAT_llama3b_01_relativelr_456/final_model
+
+[2026-07-02 16:27:08,504][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-02 16:27:48,032][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-02 16:27:49,322][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-02 17:08:43,998][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-02 17:09:15,395][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-02 17:09:46,770][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-02 17:10:18,162][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-02 17:10:49,527][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-02 17:11:20,938][root][INFO] - Early exit after 26/256 tokens.
+[2026-07-02 18:11:54,733][root][INFO] - Inpainting attack run completed. Total Time: 6242.80s, Generation Time: 4108.38s, Loss Calc Time: 1589.00s
+[2026-07-02 18:13:28,659][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-02/16-27-00/0/run.json
+[2026-07-02 18:13:29,512][root][INFO] - -------------------
+[2026-07-02 18:13:29,514][root][INFO] - Commencing judge run
+[2026-07-02 18:13:29,515][root][INFO] - -------------------
+[2026-07-02 18:13:29,515][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['16-27-00'], 'filter_by': None}
+[2026-07-02 18:13:29,655][root][INFO] - Found 1 paths
+[2026-07-02 18:13:29,656][root][INFO] - Loading judge...
+[2026-07-02 18:13:37,117][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

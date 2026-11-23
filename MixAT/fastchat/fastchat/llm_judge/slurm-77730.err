@@ -1,0 +1,1110 @@
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:00<00:00, 12.75it/s]Loading checkpoint shards:  50%|█████     | 4/8 [00:00<00:00, 13.63it/s]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:00<00:00, 13.80it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:00<00:00, 14.29it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:00<00:00, 13.99it/s]
+  0%|          | 0/80 [00:00<?, ?it/s]/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/transformers/generation/configuration_utils.py:601: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.0` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+  1%|▏         | 1/80 [00:19<25:34, 19.43s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+  2%|▎         | 2/80 [00:30<19:11, 14.76s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+  4%|▍         | 3/80 [00:56<25:17, 19.71s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+  5%|▌         | 4/80 [01:08<21:11, 16.74s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+  6%|▋         | 5/80 [01:15<16:19, 13.05s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+  8%|▊         | 6/80 [01:48<24:26, 19.81s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+  9%|▉         | 7/80 [01:57<19:55, 16.38s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 10%|█         | 8/80 [02:10<18:18, 15.26s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 11%|█▏        | 9/80 [02:49<26:54, 22.74s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 12%|█▎        | 10/80 [03:07<24:54, 21.35s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 14%|█▍        | 11/80 [03:33<26:11, 22.78s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 15%|█▌        | 12/80 [03:38<19:43, 17.41s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 16%|█▋        | 13/80 [03:50<17:23, 15.57s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 18%|█▊        | 14/80 [04:18<21:24, 19.47s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 19%|█▉        | 15/80 [04:57<27:14, 25.14s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 20%|██        | 16/80 [05:25<27:49, 26.09s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 21%|██▏       | 17/80 [05:33<21:45, 20.72s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 22%|██▎       | 18/80 [05:45<18:50, 18.23s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 24%|██▍       | 19/80 [06:00<17:21, 17.07s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 25%|██▌       | 20/80 [06:22<18:42, 18.71s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 26%|██▋       | 21/80 [06:34<16:12, 16.48s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 28%|██▊       | 22/80 [07:25<26:06, 27.01s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 29%|██▉       | 23/80 [07:47<24:11, 25.47s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 30%|███       | 24/80 [08:05<21:39, 23.21s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 31%|███▏      | 25/80 [08:11<16:28, 17.97s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 32%|███▎      | 26/80 [08:37<18:19, 20.37s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 34%|███▍      | 27/80 [08:57<17:58, 20.35s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 35%|███▌      | 28/80 [09:29<20:40, 23.86s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 36%|███▋      | 29/80 [09:55<20:42, 24.37s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 38%|███▊      | 30/80 [09:58<15:05, 18.10s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 39%|███▉      | 31/80 [10:24<16:37, 20.35s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 40%|████      | 32/80 [11:01<20:22, 25.48s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 41%|████▏     | 33/80 [11:08<15:30, 19.80s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 42%|████▎     | 34/80 [11:27<15:03, 19.65s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 44%|████▍     | 35/80 [11:36<12:16, 16.38s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 45%|████▌     | 36/80 [11:58<13:15, 18.09s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 46%|████▋     | 37/80 [12:30<16:02, 22.38s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 48%|████▊     | 38/80 [12:38<12:32, 17.91s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 49%|████▉     | 39/80 [13:00<13:09, 19.27s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 50%|█████     | 40/80 [13:34<15:49, 23.74s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 51%|█████▏    | 41/80 [13:48<13:25, 20.65s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 52%|█████▎    | 42/80 [13:58<11:05, 17.52s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 54%|█████▍    | 43/80 [14:33<14:00, 22.72s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 55%|█████▌    | 44/80 [14:42<11:08, 18.56s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 56%|█████▋    | 45/80 [14:50<09:06, 15.62s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 57%|█████▊    | 46/80 [15:17<10:45, 19.00s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 59%|█████▉    | 47/80 [15:28<09:09, 16.65s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 60%|██████    | 48/80 [15:59<11:03, 20.72s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 61%|██████▏   | 49/80 [16:11<09:28, 18.32s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 62%|██████▎   | 50/80 [16:28<08:50, 17.68s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 64%|██████▍   | 51/80 [16:33<06:42, 13.89s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 65%|██████▌   | 52/80 [16:53<07:22, 15.79s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 66%|██████▋   | 53/80 [17:32<10:12, 22.70s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 68%|██████▊   | 54/80 [18:07<11:26, 26.40s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 69%|██████▉   | 55/80 [18:31<10:41, 25.67s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 70%|███████   | 56/80 [18:37<07:58, 19.92s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 71%|███████▏  | 57/80 [19:24<10:46, 28.12s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 72%|███████▎  | 58/80 [19:28<07:36, 20.76s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 74%|███████▍  | 59/80 [19:51<07:31, 21.52s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 75%|███████▌  | 60/80 [19:59<05:49, 17.45s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 76%|███████▋  | 61/80 [20:05<04:25, 13.96s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 78%|███████▊  | 62/80 [20:11<03:30, 11.67s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 79%|███████▉  | 63/80 [20:16<02:41,  9.51s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 80%|████████  | 64/80 [20:47<04:14, 15.93s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 81%|████████▏ | 65/80 [20:57<03:34, 14.30s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 82%|████████▎ | 66/80 [21:20<03:54, 16.75s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 84%|████████▍ | 67/80 [21:49<04:26, 20.50s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 85%|████████▌ | 68/80 [21:54<03:11, 15.98s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 86%|████████▋ | 69/80 [22:23<03:37, 19.75s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 88%|████████▊ | 70/80 [22:28<02:34, 15.46s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 89%|████████▉ | 71/80 [22:42<02:14, 14.97s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 90%|█████████ | 72/80 [22:57<01:59, 14.98s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 91%|█████████▏| 73/80 [23:19<01:59, 17.09s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 92%|█████████▎| 74/80 [23:40<01:48, 18.15s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 94%|█████████▍| 75/80 [24:11<01:49, 21.87s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 95%|█████████▌| 76/80 [24:28<01:22, 20.60s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 96%|█████████▋| 77/80 [24:44<00:57, 19.06s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 98%|█████████▊| 78/80 [25:11<00:43, 21.64s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+ 99%|█████████▉| 79/80 [25:16<00:16, 16.50s/it]The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:None for open-end generation.
+100%|██████████| 80/80 [25:40<00:00, 18.94s/it]100%|██████████| 80/80 [25:40<00:00, 19.26s/it]
+  0%|          | 0/160 [00:00<?, ?it/s]
+Downloading shards:   0%|          | 0/17 [00:00<?, ?it/s][A
+
+Downloading shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A
+
+
+Downloading shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A
+
+
+
+Downloading shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A[A
+
+
+
+
+Downloading shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A[A[A
+
+
+
+
+
+Downloading shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A[A[A[A
+
+
+
+
+
+
+Downloading shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A[A[A[A[A[A
+Downloading shards:   6%|▌         | 1/17 [00:53<14:15, 53.46s/it][A
+
+
+Downloading shards:   6%|▌         | 1/17 [00:53<14:15, 53.46s/it][A[A[A
+
+
+
+
+
+Downloading shards:   6%|▌         | 1/17 [00:53<14:15, 53.45s/it][A[A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:   6%|▌         | 1/17 [00:53<14:14, 53.42s/it][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+Downloading shards:   6%|▌         | 1/17 [00:53<14:14, 53.43s/it][A[A[A[A[A[A[A
+
+
+
+Downloading shards:   6%|▌         | 1/17 [00:53<14:15, 53.49s/it][A[A[A[A
+
+
+
+
+Downloading shards:   6%|▌         | 1/17 [00:53<14:15, 53.49s/it][A[A[A[A[A
+
+Downloading shards:   6%|▌         | 1/17 [00:53<14:16, 53.52s/it][A[A
+
+
+
+
+
+Downloading shards:  12%|█▏        | 2/17 [01:28<10:41, 42.73s/it][A[A[A[A[A[A
+
+Downloading shards:  12%|█▏        | 2/17 [01:28<10:40, 42.73s/it][A[A
+
+
+
+
+
+
+
+Downloading shards:  12%|█▏        | 2/17 [01:28<10:40, 42.73s/it][A[A[A[A[A[A[A[A
+Downloading shards:  12%|█▏        | 2/17 [01:28<10:41, 42.77s/it][A
+
+
+
+Downloading shards:  12%|█▏        | 2/17 [01:28<10:41, 42.76s/it][A[A[A[A
+
+
+
+
+
+
+Downloading shards:  12%|█▏        | 2/17 [01:28<10:41, 42.75s/it][A[A[A[A[A[A[A
+
+
+Downloading shards:  12%|█▏        | 2/17 [01:28<10:41, 42.77s/it][A[A[A
+
+
+
+
+Downloading shards:  12%|█▏        | 2/17 [01:28<10:41, 42.76s/it][A[A[A[A[A
+
+
+
+
+
+Downloading shards:  18%|█▊        | 3/17 [02:03<09:10, 39.31s/it][A[A[A[A[A[A
+
+
+Downloading shards:  18%|█▊        | 3/17 [02:03<09:10, 39.31s/it][A[A[A
+Downloading shards:  18%|█▊        | 3/17 [02:03<09:10, 39.32s/it][A
+
+
+
+Downloading shards:  18%|█▊        | 3/17 [02:03<09:10, 39.31s/it][A[A[A[A
+
+Downloading shards:  18%|█▊        | 3/17 [02:03<09:10, 39.32s/it][A[A
+
+
+
+
+Downloading shards:  18%|█▊        | 3/17 [02:03<09:10, 39.31s/it][A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:  18%|█▊        | 3/17 [02:03<09:10, 39.31s/it][A[A[A[A[A[A[A[A
+
+
+
+
+
+
+Downloading shards:  18%|█▊        | 3/17 [02:03<09:10, 39.33s/it][A[A[A[A[A[A[A
+Downloading shards:  24%|██▎       | 4/17 [02:37<08:00, 36.99s/it][A
+
+
+
+
+
+
+Downloading shards:  24%|██▎       | 4/17 [02:37<08:00, 36.97s/it][A[A[A[A[A[A[A
+
+Downloading shards:  24%|██▎       | 4/17 [02:37<08:00, 36.99s/it][A[A
+
+
+
+
+
+Downloading shards:  24%|██▎       | 4/17 [02:37<08:00, 36.99s/it][A[A[A[A[A[A
+
+
+Downloading shards:  24%|██▎       | 4/17 [02:37<08:00, 36.99s/it][A[A[A
+
+
+
+Downloading shards:  24%|██▎       | 4/17 [02:37<08:00, 36.99s/it][A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:  24%|██▎       | 4/17 [02:37<08:01, 37.01s/it][A[A[A[A[A[A[A[A
+
+
+
+
+Downloading shards:  24%|██▎       | 4/17 [02:37<08:01, 37.01s/it][A[A[A[A[A
+
+Downloading shards:  29%|██▉       | 5/17 [03:16<07:30, 37.58s/it][A[A
+
+
+
+
+Downloading shards:  29%|██▉       | 5/17 [03:16<07:30, 37.58s/it][A[A[A[A[A
+
+
+
+Downloading shards:  29%|██▉       | 5/17 [03:16<07:31, 37.59s/it][A[A[A[A
+
+
+Downloading shards:  29%|██▉       | 5/17 [03:16<07:31, 37.59s/it][A[A[A
+
+
+
+
+
+
+Downloading shards:  29%|██▉       | 5/17 [03:15<07:31, 37.58s/it][A[A[A[A[A[A[A
+
+
+
+
+
+Downloading shards:  29%|██▉       | 5/17 [03:16<07:31, 37.60s/it][A[A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:  29%|██▉       | 5/17 [03:16<07:31, 37.60s/it][A[A[A[A[A[A[A[A
+Downloading shards:  29%|██▉       | 5/17 [03:16<07:31, 37.61s/it][A
+
+Downloading shards:  35%|███▌      | 6/17 [03:54<06:55, 37.73s/it][A[A
+
+
+
+
+Downloading shards:  35%|███▌      | 6/17 [03:54<06:54, 37.72s/it][A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:  35%|███▌      | 6/17 [03:53<06:54, 37.72s/it][A[A[A[A[A[A[A[A
+
+
+
+Downloading shards:  35%|███▌      | 6/17 [03:54<06:55, 37.73s/it][A[A[A[A
+
+
+
+
+
+
+Downloading shards:  35%|███▌      | 6/17 [03:54<06:55, 37.74s/it][A[A[A[A[A[A[A
+Downloading shards:  35%|███▌      | 6/17 [03:54<06:55, 37.74s/it][A
+
+
+
+
+
+Downloading shards:  35%|███▌      | 6/17 [03:54<06:55, 37.75s/it][A[A[A[A[A[A
+
+
+Downloading shards:  35%|███▌      | 6/17 [03:54<06:55, 37.76s/it][A[A[A
+
+
+
+
+Downloading shards:  41%|████      | 7/17 [04:27<06:02, 36.25s/it][A[A[A[A[A
+
+
+
+
+
+
+Downloading shards:  41%|████      | 7/17 [04:27<06:02, 36.26s/it][A[A[A[A[A[A[A
+Downloading shards:  41%|████      | 7/17 [04:27<06:02, 36.26s/it][A
+
+
+
+Downloading shards:  41%|████      | 7/17 [04:27<06:02, 36.26s/it][A[A[A[A
+
+Downloading shards:  41%|████      | 7/17 [04:27<06:02, 36.27s/it][A[A
+
+
+
+
+
+Downloading shards:  41%|████      | 7/17 [04:27<06:02, 36.26s/it][A[A[A[A[A[A
+
+
+Downloading shards:  41%|████      | 7/17 [04:27<06:02, 36.26s/it][A[A[A
+
+
+
+
+
+
+
+Downloading shards:  41%|████      | 7/17 [04:27<06:02, 36.27s/it][A[A[A[A[A[A[A[A
+
+
+
+
+Downloading shards:  47%|████▋     | 8/17 [05:00<05:18, 35.35s/it][A[A[A[A[A
+
+
+
+Downloading shards:  47%|████▋     | 8/17 [05:00<05:18, 35.36s/it][A[A[A[A
+Downloading shards:  47%|████▋     | 8/17 [05:00<05:18, 35.36s/it][A
+
+
+
+
+
+
+
+Downloading shards:  47%|████▋     | 8/17 [05:00<05:18, 35.35s/it][A[A[A[A[A[A[A[A
+
+Downloading shards:  47%|████▋     | 8/17 [05:00<05:18, 35.37s/it][A[A
+
+
+
+
+
+Downloading shards:  47%|████▋     | 8/17 [05:00<05:18, 35.36s/it][A[A[A[A[A[A
+
+
+
+
+
+
+Downloading shards:  47%|████▋     | 8/17 [05:00<05:18, 35.37s/it][A[A[A[A[A[A[A
+
+
+Downloading shards:  47%|████▋     | 8/17 [05:00<05:18, 35.37s/it][A[A[A
+
+
+
+
+Downloading shards:  53%|█████▎    | 9/17 [05:33<04:36, 34.56s/it][A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:  53%|█████▎    | 9/17 [05:33<04:36, 34.55s/it][A[A[A[A[A[A[A[A
+
+
+Downloading shards:  53%|█████▎    | 9/17 [05:33<04:36, 34.55s/it][A[A[A
+
+
+
+
+
+Downloading shards:  53%|█████▎    | 9/17 [05:33<04:36, 34.57s/it][A[A[A[A[A[A
+
+
+
+
+
+
+Downloading shards:  53%|█████▎    | 9/17 [05:33<04:36, 34.57s/it][A[A[A[A[A[A[A
+
+
+
+Downloading shards:  53%|█████▎    | 9/17 [05:33<04:36, 34.57s/it][A[A[A[A
+
+Downloading shards:  53%|█████▎    | 9/17 [05:33<04:36, 34.58s/it][A[A
+Downloading shards:  53%|█████▎    | 9/17 [05:33<04:36, 34.57s/it][A
+
+
+
+
+
+
+
+Downloading shards:  59%|█████▉    | 10/17 [06:21<04:30, 38.59s/it][A[A[A[A[A[A[A[A
+
+
+
+
+
+Downloading shards:  59%|█████▉    | 10/17 [06:21<04:30, 38.59s/it][A[A[A[A[A[A
+
+
+
+
+
+
+Downloading shards:  59%|█████▉    | 10/17 [06:21<04:30, 38.59s/it][A[A[A[A[A[A[A
+
+Downloading shards:  59%|█████▉    | 10/17 [06:21<04:30, 38.60s/it][A[A
+Downloading shards:  59%|█████▉    | 10/17 [06:21<04:30, 38.60s/it][A
+
+
+
+Downloading shards:  59%|█████▉    | 10/17 [06:21<04:30, 38.60s/it][A[A[A[A
+
+
+
+
+Downloading shards:  59%|█████▉    | 10/17 [06:21<04:30, 38.61s/it][A[A[A[A[A
+
+
+Downloading shards:  59%|█████▉    | 10/17 [06:21<04:30, 38.60s/it][A[A[A
+
+
+
+
+
+
+
+Downloading shards:  65%|██████▍   | 11/17 [07:41<05:09, 51.52s/it][A[A[A[A[A[A[A[A
+
+
+
+Downloading shards:  65%|██████▍   | 11/17 [07:41<05:09, 51.52s/it][A[A[A[A
+
+
+
+
+Downloading shards:  65%|██████▍   | 11/17 [07:41<05:09, 51.52s/it][A[A[A[A[A
+
+
+Downloading shards:  65%|██████▍   | 11/17 [07:41<05:09, 51.52s/it][A[A[A
+
+
+
+
+
+
+Downloading shards:  65%|██████▍   | 11/17 [07:41<05:09, 51.52s/it][A[A[A[A[A[A[A
+
+Downloading shards:  65%|██████▍   | 11/17 [07:42<05:09, 51.53s/it][A[A
+Downloading shards:  65%|██████▍   | 11/17 [07:42<05:09, 51.53s/it][A
+
+
+
+
+
+Downloading shards:  65%|██████▍   | 11/17 [07:42<05:09, 51.54s/it][A[A[A[A[A[A
+
+
+
+Downloading shards:  71%|███████   | 12/17 [08:15<03:50, 46.13s/it][A[A[A[A
+
+
+
+
+
+Downloading shards:  71%|███████   | 12/17 [08:15<03:50, 46.13s/it][A[A[A[A[A[A
+
+
+
+
+Downloading shards:  71%|███████   | 12/17 [08:15<03:50, 46.14s/it][A[A[A[A[A
+Downloading shards:  71%|███████   | 12/17 [08:15<03:50, 46.13s/it][A
+
+
+
+
+
+
+
+Downloading shards:  71%|███████   | 12/17 [08:15<03:50, 46.14s/it][A[A[A[A[A[A[A[A
+
+Downloading shards:  71%|███████   | 12/17 [08:15<03:50, 46.14s/it][A[A
+
+
+
+
+
+
+Downloading shards:  71%|███████   | 12/17 [08:15<03:50, 46.14s/it][A[A[A[A[A[A[A
+
+
+Downloading shards:  71%|███████   | 12/17 [08:15<03:50, 46.14s/it][A[A[A
+
+
+
+Downloading shards:  76%|███████▋  | 13/17 [09:10<03:14, 48.58s/it][A[A[A[A
+Downloading shards:  76%|███████▋  | 13/17 [09:10<03:14, 48.58s/it][A
+
+
+
+
+Downloading shards:  76%|███████▋  | 13/17 [09:10<03:14, 48.59s/it][A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:  76%|███████▋  | 13/17 [09:09<03:14, 48.59s/it][A[A[A[A[A[A[A[A
+
+Downloading shards:  76%|███████▋  | 13/17 [09:10<03:14, 48.59s/it][A[A
+
+
+
+
+
+Downloading shards:  76%|███████▋  | 13/17 [09:10<03:14, 48.59s/it][A[A[A[A[A[A
+
+
+
+
+
+
+Downloading shards:  76%|███████▋  | 13/17 [09:10<03:14, 48.60s/it][A[A[A[A[A[A[A
+
+
+Downloading shards:  76%|███████▋  | 13/17 [09:10<03:14, 48.60s/it][A[A[A
+
+
+
+Downloading shards:  82%|████████▏ | 14/17 [09:43<02:12, 44.12s/it][A[A[A[A
+
+
+
+
+
+Downloading shards:  82%|████████▏ | 14/17 [09:43<02:12, 44.12s/it][A[A[A[A[A[A
+Downloading shards:  82%|████████▏ | 14/17 [09:43<02:12, 44.13s/it][A
+
+
+
+
+
+
+Downloading shards:  82%|████████▏ | 14/17 [09:43<02:12, 44.13s/it][A[A[A[A[A[A[A
+
+
+Downloading shards:  82%|████████▏ | 14/17 [09:43<02:12, 44.13s/it][A[A[A
+
+
+
+
+Downloading shards:  82%|████████▏ | 14/17 [09:43<02:12, 44.14s/it][A[A[A[A[A
+
+Downloading shards:  82%|████████▏ | 14/17 [09:43<02:12, 44.13s/it][A[A
+
+
+
+
+
+
+
+Downloading shards:  82%|████████▏ | 14/17 [09:43<02:12, 44.14s/it][A[A[A[A[A[A[A[A
+
+
+
+Downloading shards:  88%|████████▊ | 15/17 [10:19<01:23, 41.50s/it][A[A[A[A
+
+
+
+
+Downloading shards:  88%|████████▊ | 15/17 [10:19<01:22, 41.50s/it][A[A[A[A[A
+Downloading shards:  88%|████████▊ | 15/17 [10:19<01:22, 41.50s/it][A
+
+
+
+
+
+
+Downloading shards:  88%|████████▊ | 15/17 [10:19<01:22, 41.50s/it][A[A[A[A[A[A[A
+
+
+Downloading shards:  88%|████████▊ | 15/17 [10:19<01:22, 41.49s/it][A[A[A
+
+Downloading shards:  88%|████████▊ | 15/17 [10:19<01:22, 41.50s/it][A[A
+
+
+
+
+
+Downloading shards:  88%|████████▊ | 15/17 [10:19<01:23, 41.50s/it][A[A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:  88%|████████▊ | 15/17 [10:19<01:23, 41.51s/it][A[A[A[A[A[A[A[A
+
+
+
+
+Downloading shards:  94%|█████████▍| 16/17 [10:53<00:39, 39.25s/it][A[A[A[A[A
+
+
+
+
+
+
+
+Downloading shards:  94%|█████████▍| 16/17 [10:53<00:39, 39.25s/it][A[A[A[A[A[A[A[A
+
+Downloading shards:  94%|█████████▍| 16/17 [10:53<00:39, 39.26s/it][A[A
+Downloading shards:  94%|█████████▍| 16/17 [10:53<00:39, 39.26s/it][A
+
+
+
+Downloading shards:  94%|█████████▍| 16/17 [10:53<00:39, 39.27s/it][A[A[A[A
+
+
+
+
+
+
+Downloading shards:  94%|█████████▍| 16/17 [10:53<00:39, 39.26s/it][A[A[A[A[A[A[A
+
+
+Downloading shards:  94%|█████████▍| 16/17 [10:53<00:39, 39.26s/it][A[A[A
+
+
+
+
+
+Downloading shards:  94%|█████████▍| 16/17 [10:53<00:39, 39.27s/it][A[A[A[A[A[A
+
+
+
+Downloading shards: 100%|██████████| 17/17 [11:57<00:00, 46.79s/it][A[A[A[ADownloading shards: 100%|██████████| 17/17 [11:57<00:00, 42.21s/it]
+
+
+
+Downloading shards: 100%|██████████| 17/17 [11:57<00:00, 46.78s/it][A[A[ADownloading shards: 100%|██████████| 17/17 [11:57<00:00, 42.21s/it]
+
+
+Downloading shards: 100%|██████████| 17/17 [11:57<00:00, 46.79s/it][A[ADownloading shards: 100%|██████████| 17/17 [11:57<00:00, 42.21s/it]
+
+
+
+
+
+Downloading shards: 100%|██████████| 17/17 [11:57<00:00, 46.80s/it][A[A[A[A[ADownloading shards: 100%|██████████| 17/17 [11:57<00:00, 42.21s/it]
+
+
+
+
+
+
+Downloading shards: 100%|██████████| 17/17 [11:57<00:00, 46.79s/it][A[A[A[A[A[ADownloading shards: 100%|██████████| 17/17 [11:57<00:00, 42.21s/it]
+
+
+
+
+
+
+
+Downloading shards: 100%|██████████| 17/17 [11:57<00:00, 46.80s/it][A[A[A[A[A[A[ADownloading shards: 100%|██████████| 17/17 [11:57<00:00, 42.21s/it]
+
+
+
+
+
+
+
+
+Downloading shards: 100%|██████████| 17/17 [11:57<00:00, 46.80s/it][A[A[A[A[A[A[A[ADownloading shards: 100%|██████████| 17/17 [11:57<00:00, 42.21s/it]
+
+Downloading shards: 100%|██████████| 17/17 [11:57<00:00, 46.82s/it][ADownloading shards: 100%|██████████| 17/17 [11:57<00:00, 42.22s/it]
+
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A
+Loading checkpoint shards:   6%|▌         | 1/17 [00:01<00:24,  1.53s/it][A
+Loading checkpoint shards:  12%|█▏        | 2/17 [00:03<00:23,  1.54s/it][A
+Loading checkpoint shards:  18%|█▊        | 3/17 [00:04<00:21,  1.54s/it][A
+Loading checkpoint shards:  24%|██▎       | 4/17 [00:06<00:19,  1.53s/it][A
+Loading checkpoint shards:  29%|██▉       | 5/17 [00:08<00:22,  1.91s/it][A
+Loading checkpoint shards:  35%|███▌      | 6/17 [00:10<00:19,  1.78s/it][A
+Loading checkpoint shards:  41%|████      | 7/17 [00:11<00:17,  1.70s/it][A
+Loading checkpoint shards:  47%|████▋     | 8/17 [00:13<00:14,  1.65s/it][A
+Loading checkpoint shards:  53%|█████▎    | 9/17 [00:14<00:12,  1.61s/it][A
+Loading checkpoint shards:  59%|█████▉    | 10/17 [00:16<00:11,  1.59s/it][A
+Loading checkpoint shards:  65%|██████▍   | 11/17 [00:17<00:09,  1.57s/it][A
+Loading checkpoint shards:  71%|███████   | 12/17 [00:19<00:07,  1.56s/it][A
+Loading checkpoint shards:  76%|███████▋  | 13/17 [00:20<00:06,  1.55s/it][A
+Loading checkpoint shards:  82%|████████▏ | 14/17 [00:22<00:04,  1.54s/it][A
+Loading checkpoint shards:  88%|████████▊ | 15/17 [00:24<00:03,  1.54s/it][A
+Loading checkpoint shards:  94%|█████████▍| 16/17 [00:25<00:01,  1.53s/it][A
+Loading checkpoint shards: 100%|██████████| 17/17 [00:26<00:00,  1.45s/it][ALoading checkpoint shards: 100%|██████████| 17/17 [00:26<00:00,  1.58s/it]
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A
+
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A
+
+
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A
+
+Loading checkpoint shards:   6%|▌         | 1/17 [00:03<01:02,  3.89s/it][A[A
+Loading checkpoint shards:   6%|▌         | 1/17 [00:04<01:11,  4.46s/it][A
+
+
+
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A[A
+
+
+Loading checkpoint shards:   6%|▌         | 1/17 [00:05<01:20,  5.02s/it][A[A[A
+
+
+
+
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A[A[A
+
+
+
+
+
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A[A[A[A[A[ALoading checkpoint shards:   6%|▌         | 1/17 [00:06<01:45,  6.56s/it]
+Loading checkpoint shards:   0%|          | 0/17 [00:01<?, ?it/s]
+  0%|          | 0/160 [15:12<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/17 [00:01<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/17 [00:03<?, ?it/s]
+Loading checkpoint shards:   6%|▌         | 1/17 [00:08<02:19,  8.70s/it]
+/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/accelerate/utils/modeling.py:1536: UserWarning: Current model requires 8320 bytes of buffer for offloaded layers, which seems does not fit any GPU's remaining memory. If you are experiencing a OOM later, please consider using offload_buffers=True.
+  warnings.warn(
+Loading checkpoint shards:   6%|▌         | 1/17 [00:08<02:16,  8.55s/it]
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▌         | 1/17 [00:00<00:03,  4.60it/s]Loading checkpoint shards:  12%|█▏        | 2/17 [00:00<00:03,  4.77it/s]Loading checkpoint shards:  18%|█▊        | 3/17 [00:00<00:02,  4.85it/s]Loading checkpoint shards:  24%|██▎       | 4/17 [00:00<00:02,  4.88it/s]Loading checkpoint shards:  29%|██▉       | 5/17 [00:01<00:02,  4.92it/s]Loading checkpoint shards:  35%|███▌      | 6/17 [00:01<00:02,  4.92it/s]Loading checkpoint shards:  41%|████      | 7/17 [00:01<00:02,  4.91it/s]Loading checkpoint shards:  47%|████▋     | 8/17 [00:01<00:01,  4.89it/s]Loading checkpoint shards:  53%|█████▎    | 9/17 [00:01<00:01,  4.88it/s]Loading checkpoint shards:  59%|█████▉    | 10/17 [00:02<00:01,  4.88it/s]Loading checkpoint shards:  65%|██████▍   | 11/17 [00:02<00:01,  4.87it/s]Loading checkpoint shards:  71%|███████   | 12/17 [00:02<00:01,  4.88it/s]Loading checkpoint shards:  76%|███████▋  | 13/17 [00:02<00:00,  4.87it/s]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:02<00:00,  4.86it/s]Loading checkpoint shards:  88%|████████▊ | 15/17 [00:03<00:00,  4.87it/s]Loading checkpoint shards:  94%|█████████▍| 16/17 [00:03<00:00,  2.45it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:05<00:00,  1.26it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:05<00:00,  3.01it/s]
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/gen_judgment.py", line 348, in <module>
+    for match in tqdm(
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/gen_judgment.py", line 342, in play_a_match_wrapper
+    play_a_match_func(match, output_file=output_file)
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/common.py", line 283, in play_a_match_single
+    score, user_prompt, judgment = run_judge_single(
+                                   ^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/common.py", line 243, in run_judge_single
+    judgment = chat_completion_hf_qwen(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/common.py", line 112, in chat_completion_hf_qwen
+    model = AutoModelForCausalLM.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/transformers/models/auto/auto_factory.py", line 564, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/transformers/modeling_utils.py", line 4008, in from_pretrained
+    ) = cls._load_pretrained_model(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/transformers/modeling_utils.py", line 4496, in _load_pretrained_model
+    new_error_msgs, offload_index, state_dict_index = _load_state_dict_into_meta_model(
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/transformers/modeling_utils.py", line 973, in _load_state_dict_into_meta_model
+    set_module_tensor_to_device(model, param_name, param_device, **set_module_kwargs)
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/accelerate/utils/modeling.py", line 330, in set_module_tensor_to_device
+    new_value = value.to(device)
+                ^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB. GPU 
+Traceback (most recent call last):
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/json/_json.py", line 948, in _get_data_from_filepath
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/common.py", line 926, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: "data/mt_bench/model_judgment/gpt-4o_single2_['mistral_raw'].jsonl"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/show_result.py", line 140, in <module>
+    display_result_func(args)
+  File "/auto/users/ms25mds/MSc_Project/MixAT/fastchat/fastchat/llm_judge/show_result.py", line 20, in display_result_single
+    df_all = pd.read_json(input_file, lines=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/json/_json.py", line 829, in read_json
+    json_reader = JsonReader(
+                  ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/json/_json.py", line 931, in __init__
+    data = self._get_data_from_filepath(filepath_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_mt_bench/lib/python3.11/site-packages/pandas/io/json/_json.py", line 957, in _get_data_from_filepath
+    raise FileNotFoundError(
+FileNotFoundError: File data/mt_bench/model_judgment/gpt-4o_single2_['mistral_raw'].jsonl does not exist

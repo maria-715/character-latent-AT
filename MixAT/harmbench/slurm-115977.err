@@ -1,0 +1,8 @@
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+spacy 3.7.2 requires typer<0.10.0,>=0.3.0, but you have typer 0.25.0 which is incompatible.
+weasel 0.3.4 requires typer<0.10.0,>=0.3.0, but you have typer 0.25.0 which is incompatible.
+./scripts/generate_test_cases.sh: line 36: /opt/rh/devtoolset-10/enable: No such file or directory
+[W socket.cpp:464] [c10d] The server socket cannot be initialized on [::]:57887 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:697] [c10d] The client socket cannot be initialized to connect to [oat13.cs.ox.ac.uk]:57887 (errno: 97 - Address family not supported by protocol).
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.68s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.61s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.50s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.08s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.26s/it]
+0it [00:00, ?it/s]0it [00:00, ?it/s]

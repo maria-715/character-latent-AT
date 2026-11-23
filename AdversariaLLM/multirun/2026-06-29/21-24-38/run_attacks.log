@@ -1,0 +1,35 @@
+[2026-06-29 21:24:38,308][root][INFO] - -------------------
+[2026-06-29 21:24:38,308][root][INFO] - Commencing run at `2026-06-29/21-24-38`
+[2026-06-29 21:24:38,308][root][INFO] - -------------------
+[2026-06-29 21:24:40,068][root][INFO] - Target: meta-llama/Meta-Llama-3-8B-Instruct
+id: meta-llama/Meta-Llama-3-8B-Instruct
+tokenizer_id: meta-llama/Meta-Llama-3-8B-Instruct
+short_name: Llama
+developer_name: Meta
+compile: false
+dtype: bfloat16
+chat_template: llama-3-instruct
+trust_remote_code: true
+adapter_path: ''
+
+[2026-06-29 21:24:46,146][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-29 21:24:57,544][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-29 21:24:58,855][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+

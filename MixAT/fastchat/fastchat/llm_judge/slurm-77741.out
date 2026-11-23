@@ -1,0 +1,17 @@
+Conda env env_mt_bench already exists
+Conda env env_mt_bench already exists
+Output to data/mt_bench/model_answer/mistral_CAT_github_refait.jsonl
+LAM: 1.0
+Stats:
+{
+    "bench_name": "mt_bench",
+    "mode": "single",
+    "judge": "qwen-32b",
+    "baseline": null,
+    "model_list": [
+        "mistral_CAT_github_refait"
+    ],
+    "total_num_questions": 80,
+    "total_num_matches": 160,
+    "output_path": "data/mt_bench/model_judgment/qwen-32b_single2_['mistral_CAT_github_refait'].jsonl"
+}

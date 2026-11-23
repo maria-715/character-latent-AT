@@ -1,0 +1,37 @@
+[2026-07-25 04:00:41,312][root][INFO] - -------------------
+[2026-07-25 04:00:41,312][root][INFO] - Commencing run at `2026-07-25/04-00-41`
+[2026-07-25 04:00:41,312][root][INFO] - -------------------
+[2026-07-25 04:00:43,137][root][INFO] - Target: CAT_zephyr_github_1337
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_zephyr_github_1337
+developer_name: ContinuousAT
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_zephyr_github_1337/final_model
+
+[2026-07-25 04:00:49,028][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-07-25 04:01:02,075][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-07-25 04:01:03,569][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+[2026-07-25 05:53:31,023][root][ERROR] - LocalTextGenerator error on attempt 1/1: [Errno 122] Disk quota exceeded
