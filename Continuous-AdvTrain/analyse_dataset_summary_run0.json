@@ -1,0 +1,30 @@
+{
+  "data_path": "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/data",
+  "utility": {
+    "train_rows_after_preprocessing": 154032,
+    "eval_rows_after_preprocessing": 17019
+  },
+  "probabilities": [
+    0.125,
+    0.875
+  ],
+  "stopping_strategy": "first_exhausted",
+  "adversarial_training": {
+    "raw_csv_rows": 100,
+    "matched_behavior_ids": 100,
+    "expanded_rows": 1200,
+    "target_count_mean": 12.0,
+    "target_count_min": 12,
+    "target_count_max": 12
+  },
+  "adversarial_validation": {
+    "raw_csv_rows": 80,
+    "matched_behavior_ids": 79,
+    "expanded_rows": 948
+  },
+  "adversarial_test": {
+    "raw_csv_rows": 400,
+    "matched_behavior_ids": 400,
+    "expanded_rows": 400
+  }
+}

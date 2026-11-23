@@ -1,0 +1,8 @@
+# Embedding nearest-neighbour distance report
+
+For each model, this reports the L2 distance from every vocab embedding to its nearest other vocab embedding. Use the percentiles here as a reference scale when interpreting an attack epsilon defined in the same embedding space (e.g. src/embedding_attack.py, preproj_norm.py).
+
+                                     vocab_size  nn_distance_mean  nn_distance_std  nn_distance_min  nn_distance_max  embed_norm_mean  embed_norm_std  nn_distance_p1  nn_distance_p5  nn_distance_p10  nn_distance_p25  nn_distance_p50  nn_distance_p75  nn_distance_p90  nn_distance_p95  nn_distance_p99
+model_path                                                                                                                                                                                                                                                                                                  
+HuggingFaceH4/zephyr-7b-beta              32000          0.175256         0.021872     0.000000e+00         0.240254         0.176785        0.020887        0.108537        0.142285         0.153594         0.167275         0.178881         0.187953         0.195035         0.199096         0.206507
+meta-llama/Meta-Llama-3-8B-Instruct      128256          0.581011         0.080387     2.262818e-21         0.854659         0.591123        0.073135        0.287887        0.445596         0.494895         0.552878         0.595862         0.626123         0.656477         0.677920         0.710879

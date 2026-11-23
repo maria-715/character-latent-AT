@@ -1,6 +1,9 @@
 import torch
 from torch.optim.optimizer import Optimizer
 import logging
+import uuid
+from typing import Any, Dict, List, Optional, Tuple
+import math
 
 INIT_TYPES = ["instruction", "suffix"]
 
@@ -87,6 +90,7 @@ class EmbeddingSpaceAttack:
         suffix_tokens=10,
         relative_lr=False,
         debug=0,
+        tracking_config: Optional[Dict[str, Any]] = None,
         *args,
         **kwargs,
     ) -> None:
@@ -112,15 +116,18 @@ class EmbeddingSpaceAttack:
         self.tokenizer = tokenizer
         self.vocab_size = self.embed_weights.shape[0]
         self.embedding_size = self.embed_weights.shape[1]
-        self.embedding_norm = torch.norm(embed_weights, p=2, dim=-1).mean()
+        self.embedding_norm = float(torch.norm(embed_weights, p=2, dim=-1).mean().item())
         self.iters = iters
         self.opt_config = opt_config
+        self.raw_eps_multiplier = eps
+        self.eps = float(eps) * self.embedding_norm
         if relative_lr:
-            self.opt_config["lr"] = self.opt_config["lr"] * self.eps
-        self.eps = eps * self.embedding_norm
+            self.opt_config["lr"] = float(self.opt_config["lr"]) * self.eps / math.sqrt(self.embedding_size) # ADDED division for SignSGD
 
         logging.info(
-            f"L2 norm of embedding weights equals {self.embedding_norm} eps multiplier is: {eps} using eps: {self.eps}"
+            f"L2 norm of embedding weights equals {self.embedding_norm}. "
+            f"eps multiplier is: {eps}. using eps: {self.eps}. "
+            f"the learning rate is: {self.opt_config['lr']} (relative_lr={relative_lr})."
         )
 
         if init_type not in INIT_TYPES:
@@ -131,18 +138,58 @@ class EmbeddingSpaceAttack:
         self.debug = debug
         self.loss_fct = torch.nn.CrossEntropyLoss()
 
+        self.tracking_config = {
+            "enabled": True,
+            "top_k": 5,
+            "store_step_summaries": True,
+            "store_token_records": True,
+            "store_topk_neighbours": True,
+            "nearest_neighbor_chunk_size": 128,
+        }
+        if tracking_config is not None:
+            self.tracking_config.update(tracking_config)
+
+        self.best_adv_perturbation = None
+        self.last_attack_trace = None
+
+        # ================ Test ================
+        print("eps =", self.eps)
+        print("embedding_size =", self.embedding_size)
+        print("lr =", self.opt_config["lr"])
+        print("lr*sqrt(d) =", self.opt_config["lr"] * math.sqrt(self.embedding_size))
+        # ======================================
+
+
     def attack(self, model, input_ids, target_ids, attention_mask):
         disable_model_gradients(model)
+
+        attack_id = str(uuid.uuid4())
         
         # save losses and responses
-        best_loss = torch.inf
+        best_loss = float("inf")
         best_iter = -1
-        best_mean_l2 = None
-        best_max_l2 = None
-        best_mean_nearest = None
-        best_min_nearest = None
         all_losses = []
         affirmative_responses = []
+
+        attack_trace = {
+            "attack_id": attack_id,
+            "attack_type": "embedding_space",
+            "config": {
+                "iters": int(self.iters),
+                "eps": float(self.eps),
+                "raw_eps_multiplier": float(self.raw_eps_multiplier),
+                "embedding_norm": float(self.embedding_norm),
+                "init_type": self.init_type,
+                "optimizer": self.opt_config,
+                "tracking": self.tracking_config,
+                "batch_size": int(input_ids.shape[0]),
+                "seq_len": int(input_ids.shape[1]),
+            },
+            "step_summaries": [],
+            "token_records": [],
+            "best": {},
+            "final": {},
+        }
 
         # init embeddings of input instruction and target and initialize adversarial perturbation
         adv_perturbation, adv_perturbation_mask = self.init_perturbation(
@@ -152,7 +199,7 @@ class EmbeddingSpaceAttack:
         input_embeds = self.get_embeddings(input_ids)
         target_one_hot = self.get_one_hot(target_ids)
 
-        # get attention mask. If we add an adversarial suffic we need to adapt it
+        # get attention mask. If we add an adversarial suffix we need to adapt it
         attention_mask = self.get_attention_mask(input_ids, attention_mask)
 
         # loss targets
@@ -171,13 +218,84 @@ class EmbeddingSpaceAttack:
                 loss_mask,
             )
 
+        logits = None
+
+
+        # before the loop
+        prev_update = None
+        prev_delta = None
         for i in range(self.iters):
             opt.zero_grad()
+
+            prev_adv_perturbation = adv_perturbation.detach().clone()
+
             adv_embeds = self.get_adv_embeddings(input_embeds, adv_perturbation, adv_perturbation_mask)
             logits, loss = self.calc_loss(i, model, adv_embeds, target_one_hot, attention_mask, loss_mask)
             loss.backward()
-            all_losses.append(loss.item())
+            loss_value = float(loss.item())
+            all_losses.append(loss_value)
             opt.step()
+
+            # ============ For test ============
+            with torch.no_grad():
+                update = (adv_perturbation - prev_adv_perturbation) * adv_perturbation_mask
+                mask_to_remove_unperturbed = adv_perturbation_mask.squeeze(-1).bool()
+                masked = adv_perturbation * adv_perturbation_mask
+
+                update_norm = torch.norm(update, p=2, dim=-1)
+                masked_update_norm = update_norm[mask_to_remove_unperturbed]
+                mean_norm = torch.norm(masked, p=2, dim=-1).mean()
+                max_norm = torch.norm(masked, p=2, dim=-1).max()
+
+                print(
+                    f"step={i} before_proj "
+                    f"update_mean={masked_update_norm.mean().item():.6f} "
+                    f"update_max={masked_update_norm.max().item():.6f} "
+                    f"preproj_mean_norm={mean_norm:.6f} "
+                    f"preproj_max_norm={max_norm:.6f} "
+                    f"update_wrt_eps={(masked_update_norm.mean().item() / self.eps):.6f} "
+                    f"eps={self.eps:.6f}"
+                )
+
+                # Analyse the rotation
+                if i > 0:
+                    update_flat = update[mask_to_remove_unperturbed]
+                    prev_update_flat = prev_update[mask_to_remove_unperturbed]
+
+                    # step-to-step direction change
+                    cos_step = torch.nn.functional.cosine_similarity(
+                        update_flat, prev_update_flat, dim=-1, eps=1e-12
+                    )
+                    angle_step_deg = torch.rad2deg(
+                        torch.acos(torch.clamp(cos_step, -1.0, 1.0))
+                    )
+
+                    # radial direction change: is the update still pushing away from the origin?
+                    delta_flat = masked[mask_to_remove_unperturbed]
+                    delta_norm = torch.norm(delta_flat, p=2, dim=-1, keepdim=True)
+                    radial_dir = delta_flat / (delta_norm + 1e-12)
+
+                    cos_radial = torch.nn.functional.cosine_similarity(
+                        update_flat, radial_dir, dim=-1, eps=1e-12
+                    )
+                    angle_radial_deg = torch.rad2deg(
+                        torch.acos(torch.clamp(cos_radial, -1.0, 1.0))
+                    )
+
+                    print(
+                        f"step={i} rotation "
+                        f"step_cos_mean={cos_step.mean().item():.6f} "
+                        f"step_angle_mean_deg={angle_step_deg.mean().item():.2f} "
+                        f"radial_cos_mean={cos_radial.mean().item():.6f} "
+                        f"radial_angle_mean_deg={angle_radial_deg.mean().item():.2f}"
+                    )
+
+                    prev_update = update.detach().clone()
+                else:
+                    prev_update = update.detach().clone()
+
+
+            # ==================================
 
             # perturbations that are applied directly to the instruction are constraint to a small lp ball
             if self.init_type == "instruction":
@@ -189,74 +307,87 @@ class EmbeddingSpaceAttack:
             num_affirmative_responses = self.get_num_affirmative_responses(target_ids, logits)
             affirmative_responses.append(num_affirmative_responses)
 
+            if self.tracking_config["enabled"]:
+                step_summary, token_records = self.collect_embedding_space_records(
+                    attack_id=attack_id,
+                    step=i,
+                    loss=loss_value,
+                    affirmative_responses=num_affirmative_responses,
+                    input_ids=input_ids,
+                    input_embeds=input_embeds,
+                    adv_perturbation=adv_perturbation,
+                    adv_perturbation_mask=adv_perturbation_mask,
+                    top_k=int(self.tracking_config["top_k"]),
+                    store_token_records=bool(self.tracking_config["store_token_records"]),
+                    store_topk_neighbours=bool(self.tracking_config["store_topk_neighbours"]),
+                    nearest_neighbor_chunk_size=int(
+                        self.tracking_config["nearest_neighbor_chunk_size"]
+                    ),
+                )
+
+                if self.tracking_config["store_step_summaries"]:
+                    attack_trace["step_summaries"].append(step_summary)
+
+                if self.tracking_config["store_token_records"]:
+                    attack_trace["token_records"].extend(token_records)
+
+                self.log_step_summary(i, step_summary)
+
+          
+            # save best perturbation
+            if loss < best_loss:
+                best_loss = loss_value
+                best_iter = i
+                self.best_adv_perturbation = adv_perturbation.detach().clone()
+
             # debug
             if self.debug > 2:
                 self.debug_norm(adv_perturbation)
 
-            # L2 distance to original embeddings (to measure attack strength, should be bounded by epsilon)
-            delta = adv_embeds - input_embeds
-            l2_to_orig = torch.norm(delta, p=2, dim=-1)  # (B, T)
+            if self.tracking_config["enabled"]:
+                attack_trace["best"] = self.summarize_attack_trace(
+                    attack_trace["step_summaries"]
+                )
 
-            mask = adv_perturbation_mask
-            mask_flat = mask.view(-1).bool()
-            l2_flat = l2_to_orig.view(-1)
+                final_summary, final_token_records = self.collect_embedding_space_records(
+                    attack_id=attack_id,
+                    step=self.iters - 1,
+                    loss=all_losses[-1] if len(all_losses) > 0 else None,
+                    affirmative_responses=(
+                        affirmative_responses[-1] if len(affirmative_responses) > 0 else 0
+                    ),
+                    input_ids=input_ids,
+                    input_embeds=input_embeds,
+                    adv_perturbation=adv_perturbation,
+                    adv_perturbation_mask=adv_perturbation_mask,
+                    top_k=int(self.tracking_config["top_k"]),
+                    store_token_records=True,
+                    store_topk_neighbours=bool(self.tracking_config["store_topk_neighbours"]),
+                    nearest_neighbor_chunk_size=int(
+                        self.tracking_config["nearest_neighbor_chunk_size"]
+                    ),
+                )
 
-            mean_l2_to_orig = l2_flat[mask_flat].mean()
-            max_l2_to_orig = l2_flat[mask_flat].max()
+                attack_trace["final"] = {
+                    "summary": final_summary,
+                    "token_records": final_token_records,
+                }
 
+                attack_trace["best"]["best_loss_manual"] = {
+                    "step": int(best_iter),
+                    "value": float(best_loss),
+                }
 
-            # L2 distance to nearest embedding
-            # adv_embeds: (B,T,D), embed_weights: (V,D)
+                logging.info(f"[BEST] {attack_trace['best']}")
+                self.log_final_summary(final_summary)
 
-            adv_flat = adv_embeds.view(-1, self.embedding_size) # (B*T, D)
-            embed_norms = self.embed_norms # (V,)
-            adv_norms = (adv_flat ** 2).sum(dim=1, keepdim=True) # (B*T, 1)
-
-            # distances^2 = ||a||^2 + ||b||^2 - 2ab
-            dist_sq = adv_norms + embed_norms.unsqueeze(0) - 2 * adv_flat @ self.embed_weights.T
-            dist_sq = torch.clamp(dist_sq, min=0.0) # for numerical stability
-
-            min_dist_sq, nearest_idx = dist_sq.min(dim=1)
-            min_dist = torch.sqrt(min_dist_sq)
-
-            # reshape back
-            min_dist = min_dist.view(adv_embeds.shape[:2]) # (B, T)
-
-            # masked nearest metrics
-            min_dist_flat = min_dist.view(-1)
-            mean_nearest = min_dist_flat[mask_flat].mean()
-            min_nearest = min_dist_flat[mask_flat].min()
-
-            # save best perturbation
-            if loss < best_loss:
-                best_loss = loss
-                self.best_adv_perturbation = adv_perturbation.detach().clone()
-
-                best_iter = i
-                best_mean_l2 = mean_l2_to_orig.item()
-                best_max_l2 = max_l2_to_orig.item()
-                best_mean_nearest = mean_nearest.item()
-                best_min_nearest = min_nearest.item()
-
-            # print(f"[Iter {i}] "
-            #     f"L2(orig): mean={mean_l2_to_orig:.4f}, max={max_l2_to_orig:.4f} | "
-            #     f"L2(nearest): mean={mean_nearest:.4f}, min={min_nearest:.4f}")
-
-            logging.info(f"[Iter {i}] "
-                f"L2(orig): mean={mean_l2_to_orig:.4f}, max={max_l2_to_orig:.4f} | "
-                f"L2(nearest): mean={mean_nearest:.4f}, min={min_nearest:.4f}")
+        self.last_attack_trace = attack_trace
 
 
         if self.debug > 0:
-            self.debug_loss(best_loss)
+            self.debug_loss(torch.tensor(best_loss))
         if self.debug > 2:
             self.debug_output(target_ids, logits, attention_mask)
-
-        logging.info(
-            f"[BEST @ Iter {best_iter}] "
-            f"L2(orig): mean={best_mean_l2:.4f}, max={best_max_l2:.4f} | "
-            f"L2(nearest): mean={best_mean_nearest:.4f}, min={best_min_nearest:.4f}"
-        )
 
         enable_model_gradients(model)
         
@@ -322,6 +453,334 @@ class EmbeddingSpaceAttack:
         masked_perturbation = adv_perturbation * adv_perturbation_mask
         adv_embeds = input_embeds + masked_perturbation
         return adv_embeds
+    
+
+    # ============================ Helper functions to collect stats ============================
+
+    @torch.no_grad()
+    def collect_embedding_space_records(
+        self,
+        *,
+        attack_id,
+        step,
+        loss,
+        affirmative_responses,
+        input_ids,
+        input_embeds,
+        adv_perturbation,
+        adv_perturbation_mask,
+        top_k=5,
+        store_token_records=True,
+        store_topk_neighbours=True,
+        nearest_neighbor_chunk_size=128,
+    ) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
+        """
+        Returns:
+            step_summary:
+                Compact statistics for this inner attack step.
+
+            token_records:
+                Flat per-token records. Each row corresponds to:
+                one attack x one inner step x one perturbed token position.
+        """
+
+        adv_embeds = self.get_adv_embeddings(
+            input_embeds,
+            adv_perturbation,
+            adv_perturbation_mask,
+        )
+
+        mask = adv_perturbation_mask.squeeze(-1).bool()
+
+        if mask.sum().item() == 0:
+            step_summary = {
+                "attack_id": attack_id,
+                "step": int(step),
+                "loss": None if loss is None else float(loss),
+                "affirmative_responses": int(affirmative_responses),
+                "num_perturbed_tokens": 0,
+            }
+            return step_summary, []
+
+        batch_idx, token_pos = torch.where(mask)
+
+        original_token_ids = input_ids[batch_idx, token_pos]
+        original_embeds = input_embeds[batch_idx, token_pos]
+        perturbed_embeds = adv_embeds[batch_idx, token_pos]
+
+        l2_to_original = torch.norm(
+            perturbed_embeds - original_embeds,
+            p=2,
+            dim=-1,
+        )
+
+        (
+            topk_dist,
+            topk_ids,
+            nearest_dist,
+            nearest_ids,
+            original_dist,
+            original_rank,
+        ) = self.compute_nearest_neighbour_info_chunked(
+            perturbed_embeds=perturbed_embeds,
+            original_token_ids=original_token_ids,
+            top_k=top_k,
+            chunk_size=nearest_neighbor_chunk_size,
+        )
+
+        nearest_is_original = nearest_ids.eq(original_token_ids)
+        original_in_topk = topk_ids.eq(original_token_ids.unsqueeze(1)).any(dim=1)
+
+        l2_float = l2_to_original.float()
+        nearest_float = nearest_dist.float()
+        original_rank_float = original_rank.float()
+
+        step_summary = {
+            "attack_id": attack_id,
+            "step": int(step),
+            "loss": None if loss is None else float(loss),
+            "affirmative_responses": int(affirmative_responses),
+            "num_perturbed_tokens": int(mask.sum().item()),
+
+            "mean_l2_to_original": float(l2_float.mean().item()),
+            "median_l2_to_original": float(l2_float.median().item()),
+            "p90_l2_to_original": float(torch.quantile(l2_float, 0.90).item()),
+            "p99_l2_to_original": float(torch.quantile(l2_float, 0.99).item()),
+            "min_l2_to_original": float(l2_float.min().item()),
+            "max_l2_to_original": float(l2_float.max().item()),
+
+            "mean_dist_to_nearest": float(nearest_float.mean().item()),
+            "median_dist_to_nearest": float(nearest_float.median().item()),
+            "p90_dist_to_nearest": float(torch.quantile(nearest_float, 0.90).item()),
+            "p99_dist_to_nearest": float(torch.quantile(nearest_float, 0.99).item()),
+            "min_dist_to_nearest": float(nearest_float.min().item()),
+            "max_dist_to_nearest": float(nearest_float.max().item()),
+
+            "mean_original_rank": float(original_rank_float.mean().item()),
+            "median_original_rank": float(original_rank_float.median().item()),
+            "max_original_rank": int(original_rank.max().item()),
+
+            "frac_original_is_nearest": float(nearest_is_original.float().mean().item()),
+            "frac_original_in_topk": float(original_in_topk.float().mean().item()),
+            "frac_nearest_changed": float((~nearest_is_original).float().mean().item()),
+
+            "mean_eps_fraction": float((l2_float / float(self.eps)).mean().item()),
+            "max_eps_fraction": float((l2_float / float(self.eps)).max().item()),
+        }
+
+        if not store_token_records:
+            return step_summary, []
+
+        token_records = []
+
+        for n in range(len(batch_idx)):
+            orig_id = int(original_token_ids[n].item())
+            nn_id = int(nearest_ids[n].item())
+
+            row = {
+                "attack_id": attack_id,
+                "step": int(step),
+                "loss": None if loss is None else float(loss),
+                "affirmative_responses": int(affirmative_responses),
+
+                "batch_index": int(batch_idx[n].item()),
+                "token_position": int(token_pos[n].item()),
+
+                "original_token_id": orig_id,
+                "original_token": self.safe_decode_token(orig_id),
+
+                "l2_to_original": float(l2_to_original[n].item()),
+
+                "nearest_token_id": nn_id,
+                "nearest_token": self.safe_decode_token(nn_id),
+                "dist_to_nearest": float(nearest_dist[n].item()),
+
+                "nearest_is_original": bool(nearest_is_original[n].item()),
+                "original_in_topk": bool(original_in_topk[n].item()),
+                "original_rank": int(original_rank[n].item()),
+                "original_dist_from_vocab_matrix": float(original_dist[n].item()),
+            }
+
+            if store_topk_neighbours:
+                topk_token_ids = [int(x.item()) for x in topk_ids[n]]
+                topk_distances = [float(x.item()) for x in topk_dist[n]]
+
+                row["topk_token_ids"] = topk_token_ids
+                row["topk_tokens"] = [
+                    self.safe_decode_token(token_id) for token_id in topk_token_ids
+                ]
+                row["topk_distances"] = topk_distances
+                row["original_topk_rank"] = None
+
+                for k, token_id in enumerate(topk_token_ids):
+                    if token_id == orig_id:
+                        row["original_topk_rank"] = int(k + 1)
+                        break
+
+            token_records.append(row)
+
+        return step_summary, token_records
+
+    @torch.no_grad()
+    def compute_nearest_neighbour_info_chunked(
+        self,
+        *,
+        perturbed_embeds,
+        original_token_ids,
+        top_k=5,
+        chunk_size=128,
+    ):
+        """
+        Computes top-k nearest vocab embeddings and original-token rank.
+
+        This is chunked over perturbed token positions to avoid creating a giant
+        [num_perturbed_tokens, vocab_size] distance matrix all at once.
+        """
+
+        topk_dist_chunks = []
+        topk_id_chunks = []
+        nearest_dist_chunks = []
+        nearest_id_chunks = []
+        original_dist_chunks = []
+        original_rank_chunks = []
+
+        num_positions = perturbed_embeds.shape[0]
+
+        for start in range(0, num_positions, chunk_size):
+            end = min(start + chunk_size, num_positions)
+
+            chunk = perturbed_embeds[start:end]
+            orig_ids = original_token_ids[start:end]
+
+            chunk_norms = (chunk ** 2).sum(dim=1, keepdim=True)
+
+            dist_sq = (
+                chunk_norms
+                + self.embed_norms.unsqueeze(0)
+                - 2 * chunk @ self.embed_weights.T
+            )
+            dist_sq = torch.clamp(dist_sq, min=0.0)
+            dists = torch.sqrt(dist_sq)
+
+            k = min(top_k, dists.shape[1])
+            topk_dist, topk_ids = torch.topk(
+                dists,
+                k=k,
+                dim=1,
+                largest=False,
+            )
+
+            row_idx = torch.arange(dists.shape[0], device=dists.device)
+            original_dist = dists[row_idx, orig_ids]
+
+            original_rank = (dists < original_dist.unsqueeze(1)).sum(dim=1) + 1
+
+            topk_dist_chunks.append(topk_dist)
+            topk_id_chunks.append(topk_ids)
+            nearest_dist_chunks.append(topk_dist[:, 0])
+            nearest_id_chunks.append(topk_ids[:, 0])
+            original_dist_chunks.append(original_dist)
+            original_rank_chunks.append(original_rank)
+
+        topk_dist = torch.cat(topk_dist_chunks, dim=0)
+        topk_ids = torch.cat(topk_id_chunks, dim=0)
+        nearest_dist = torch.cat(nearest_dist_chunks, dim=0)
+        nearest_ids = torch.cat(nearest_id_chunks, dim=0)
+        original_dist = torch.cat(original_dist_chunks, dim=0)
+        original_rank = torch.cat(original_rank_chunks, dim=0)
+
+        return (
+            topk_dist,
+            topk_ids,
+            nearest_dist,
+            nearest_ids,
+            original_dist,
+            original_rank,
+        )
+
+    def safe_decode_token(self, token_id):
+        try:
+            return self.tokenizer.decode([int(token_id)], skip_special_tokens=False)
+        except Exception:
+            return str(token_id)
+
+    def summarize_attack_trace(self, step_summaries):
+        if len(step_summaries) == 0:
+            return {}
+
+        valid = [
+            row for row in step_summaries
+            if row.get("loss") is not None and row.get("num_perturbed_tokens", 0) > 0
+        ]
+
+        if len(valid) == 0:
+            return {}
+
+        def best_min(key):
+            row = min(valid, key=lambda x: x[key])
+            return {"step": int(row["step"]), "value": float(row[key])}
+
+        def best_max(key):
+            row = max(valid, key=lambda x: x[key])
+            return {"step": int(row["step"]), "value": float(row[key])}
+
+        return {
+            "best_loss": best_min("loss"),
+            "max_mean_l2_to_original": best_max("mean_l2_to_original"),
+            "max_p90_l2_to_original": best_max("p90_l2_to_original"),
+            "max_frac_nearest_changed": best_max("frac_nearest_changed"),
+            "min_mean_dist_to_nearest": best_min("mean_dist_to_nearest"),
+            "min_median_dist_to_nearest": best_min("median_dist_to_nearest"),
+            "max_mean_original_rank": best_max("mean_original_rank"),
+            "max_affirmative_responses": best_max("affirmative_responses"),
+        }
+
+    def log_step_summary(self, step, summary):
+        if summary.get("num_perturbed_tokens", 0) == 0:
+            logging.info(f"[Inner step {step}] no perturbed tokens")
+            return
+
+        logging.info(
+            f"[Inner step {step}] "
+            f"loss={summary['loss']:.4f} | "
+            f"L2(orig): mean={summary['mean_l2_to_original']:.4f}, "
+            f"median={summary['median_l2_to_original']:.4f}, "
+            f"p90={summary['p90_l2_to_original']:.4f}, "
+            f"max={summary['max_l2_to_original']:.4f} | "
+            f"L2(nearest): mean={summary['mean_dist_to_nearest']:.4f}, "
+            f"median={summary['median_dist_to_nearest']:.4f}, "
+            f"min={summary['min_dist_to_nearest']:.4f} | "
+            f"orig_is_nn={summary['frac_original_is_nearest']:.3f}, "
+            f"orig_in_topk={summary['frac_original_in_topk']:.3f}, "
+            f"mean_orig_rank={summary['mean_original_rank']:.2f}"
+        )
+
+    def log_final_summary(self, summary):
+        if summary.get("num_perturbed_tokens", 0) == 0:
+            logging.info("[FINAL] no perturbed tokens")
+            return
+
+        logging.info(
+            f"[FINAL] "
+            f"L2(orig): mean={summary['mean_l2_to_original']:.4f}, "
+            f"median={summary['median_l2_to_original']:.4f}, "
+            f"p90={summary['p90_l2_to_original']:.4f}, "
+            f"max={summary['max_l2_to_original']:.4f} | "
+            f"L2(nearest): mean={summary['mean_dist_to_nearest']:.4f}, "
+            f"median={summary['median_dist_to_nearest']:.4f}, "
+            f"min={summary['min_dist_to_nearest']:.4f} | "
+            f"orig_is_nn={summary['frac_original_is_nearest']:.3f}, "
+            f"orig_in_topk={summary['frac_original_in_topk']:.3f}, "
+            f"mean_orig_rank={summary['mean_original_rank']:.2f}"
+        )
+
+        # ===========================================================================================
+
+
+
+
+
+
 
     def get_loss_slice_start_and_end(self, input_embeds):
         input_len = input_embeds.shape[1]

@@ -1,6 +1,7 @@
 from omegaconf import OmegaConf
 from typing import List, Optional, Any
 from dataclasses import dataclass, field
+from typing import Optional, Any, Dict
 import hydra
 from hydra.core.config_store import ConfigStore
 import os
@@ -73,6 +74,17 @@ def seed_everything(seed: int) -> None:
     torch.cuda.manual_seed_all(seed)
     hf_set_seed(seed)
 
+@dataclass
+class AttackTrackingConfig:
+    enabled: bool = True
+    top_k: int = 5
+    store_step_summaries: bool = True
+    store_token_records: bool = True
+    store_topk_neighbours: bool = True
+    nearest_neighbor_chunk_size: int = 128
+    save_every_n_attack_calls: int = 1
+    save_final_records: bool = True
+
 
 @dataclass
 class AdversarialTrainingConfig:
@@ -82,6 +94,8 @@ class AdversarialTrainingConfig:
     debug: int = 3
     init_type: str = "instruction"
     attack_type: str = "embedding"
+    relative_lr: bool = False
+    tracking: AttackTrackingConfig = field(default_factory=AttackTrackingConfig)
 
 
 @dataclass
@@ -89,6 +103,7 @@ class TrainerHyperParams:
     away_weight: float = 1
     toward_weight: float = 1
     utility_weight: float = 1
+    or_weight: float = 1
     ema_weight: float = 0
     padding_side: str = "left"
     away_cutoff: float = -5
@@ -115,6 +130,7 @@ class DatasetConfig:
     restricted_trainingset_size: Optional[int] = None
     diverse_safe_answers: bool = False
     subset_ids: List = field(default_factory=lambda: [])
+    or_replace_n: int = 1000
 
 
 @dataclass
@@ -156,6 +172,7 @@ class GlobalConfig:
 cs = ConfigStore.instance()
 cs.store(group="path", name="base_path", node=PathConfig)
 cs.store(group="adversarial", name="base_adversarial", node=AdversarialTrainingConfig)
+cs.store(group="adversarial.tracking", name="base_tracking", node=AttackTrackingConfig)
 cs.store(group="dataset", name="base_dataset", node=DatasetConfig)
 cs.store(group="eval_dataset", name="base_eval_dataset", node=eval_config.EvalDatasetConfig)
 cs.store(group="training", name="base_training", node=MyTrainingConfig)

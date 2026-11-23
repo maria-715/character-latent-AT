@@ -55,13 +55,29 @@ fi
 
 # Output folder
 LOGGING_PATH=""
-EPS=0.5
+EPS=0.05
+ITERS=10
 SEED=42
+RELATIVE_LR=false
+CONFIG_NAME="adv_train_ul"
+PATH_ARG="example_path"
+ADVERSARIAL_OPT_CONFIG_LR=0.1
+MAX_STEPS=-1
+OR_REPLACE_N=1000
+OR_WEIGHT=0.0595
 
 while [[ $# -gt 0 ]]; do
   case $1 in
+    --max_steps)
+      MAX_STEPS="$2"
+      shift 2
+      ;;
     --eps)
       EPS="$2"
+      shift 2
+      ;;
+    --iters)
+      ITERS="$2"
       shift 2
       ;;
     --logging_path)
@@ -72,6 +88,31 @@ while [[ $# -gt 0 ]]; do
       SEED="$2"
       shift 2
       ;;
+    --relative_lr)
+      RELATIVE_LR="$2"
+      shift 2
+      ;;
+    --config_name)
+      CONFIG_NAME="$2"
+      shift 2
+      ;;
+    --path)
+      PATH_ARG="$2"
+      shift 2
+      ;;
+    --adversarial_opt_config_lr)
+      ADVERSARIAL_OPT_CONFIG_LR="$2"
+      shift 2
+      ;;
+    --or_replace_n)
+      OR_REPLACE_N="$2"
+      shift 2
+      ;;
+    --or_weight)
+      OR_WEIGHT="$2"
+      shift 2
+      ;;
+
     *)
       echo "Unknown argument: $1"
       exit 1
@@ -86,11 +127,61 @@ if [ -z "$LOGGING_PATH" ]; then
 fi
 mkdir -p "$LOGGING_PATH"
 
+# HF token in .env file
+ENV_FILE="../.env"
+if [ -f "$ENV_FILE" ]; then
+  export HF_TOKEN=$(grep -E '^HF_TOKEN=' "$ENV_FILE" | cut -d '=' -f2-)
+else
+  echo ".env file not found"
+  exit 1
+fi
+export HF_HOME=/scratch-ssd/$USER/.cache/huggingface
+mkdir -p "$HF_HOME"
 
-srun python src/run_experiments.py --config-name=adv_train_ul path=example_path \
-     adversarial.eps=$EPS \
-     hydra.run.dir=$LOGGING_PATH \
-     path.logging_path=$LOGGING_PATH \
-     training.seed=$SEED
+# srun python src/run_experiments.py --config-name=adv_train_ul_utility path=example_path \
+#      adversarial.eps=$EPS \
+#      adversarial.iters=$ITERS \
+#      adversarial.relative_lr=$RELATIVE_LR \
+#      adversarial.opt_config.lr=0.1 \
+#      hydra.run.dir=$LOGGING_PATH \
+#      path.logging_path=$LOGGING_PATH \
+#      training.seed=$SEED
+
+# srun python src/run_experiments.py --config-name=adv_train_ul_utility path=example_path \
+#      adversarial.eps=$EPS \
+#      adversarial.iters=$ITERS \
+#      adversarial.relative_lr=$RELATIVE_LR \
+#      hydra.run.dir=$LOGGING_PATH \
+#      path.logging_path=$LOGGING_PATH \
+#      training.seed=$SEED
 
 #srun python src/run_experiments.py --config-name=adv_train_ul path=example_path
+
+CMD=(
+    srun
+    python src/run_experiments.py
+    --config-name="$CONFIG_NAME"
+    "path=$PATH_ARG"
+    "adversarial.eps=$EPS"
+    "adversarial.iters=$ITERS"
+    "adversarial.relative_lr=$RELATIVE_LR"
+    "hydra.run.dir=$LOGGING_PATH"
+    "path.logging_path=$LOGGING_PATH"
+    "training.seed=$SEED"
+    "dataset.or_replace_n=$OR_REPLACE_N"
+    "trainer_hparams.or_weight=$OR_WEIGHT"
+)
+
+if [ "$RELATIVE_LR" = "true" ]; then
+    CMD+=(
+        "adversarial.opt_config.lr=$ADVERSARIAL_OPT_CONFIG_LR"
+    )
+fi
+
+if [ "$MAX_STEPS" -ne -1 ]; then
+    CMD+=(
+        "training.max_steps=$MAX_STEPS"
+    )
+fi
+
+"${CMD[@]}"

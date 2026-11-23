@@ -1,9 +1,10 @@
 import os
+import logging
 from typing import Any, List, Union, Dict
 import torch
 import pandas as pd
 from trl import DataCollatorForCompletionOnlyLM
-from datasets import Dataset, interleave_datasets, load_dataset, load_from_disk
+from datasets import Dataset, interleave_datasets, concatenate_datasets, load_dataset, load_from_disk
 import model_utils
 
 
@@ -40,11 +41,11 @@ class MultiDatasetDataCollatorCompletion(DataCollatorForCompletionOnlyLM):
 
 
 def get_dataset_ids():
-    return [0, 1, 2]
+    return [0, 1, 2, 3]
 
 
 def get_dataset_id(key):
-    dataset_ids = {"away": 0, "toward": 1, "utility": 2}
+    dataset_ids = {"away": 0, "toward": 1, "utility": 2, "or80k": 3}
     return dataset_ids[key]
 
 
@@ -52,6 +53,9 @@ def get_prompt_formatting_func_and_collator(model_name, tokenizer, collator_type
     first_user_msg, user_chat_template, response_template, response_key = model_utils.get_chat_template(
         model_name
     )
+
+    print("====== response_key ======")
+    print(tokenizer.encode(response_key, add_special_tokens=False))
 
     dataset_text_field, dataset_target_field = get_dataset_text_and_target_field()
 
@@ -62,7 +66,13 @@ def get_prompt_formatting_func_and_collator(model_name, tokenizer, collator_type
 
             formatted_instruction = first_user_msg.format(instruction=sample[dataset_text_field][i][0])
             if input_only:
-                formatted_prompt = formatted_instruction + response_key
+                if model_name == "llama-3":
+                    # For Llama-3, build the attack prefix from the full response template
+                    # with an empty target. This keeps the attack prefix aligned with the
+                    # collator's response boundary.
+                    formatted_prompt = formatted_instruction + response_template.format(target="")
+                else:
+                    formatted_prompt = formatted_instruction + response_key
             else:
                 formatted_target = response_template.format(target=sample[dataset_target_field][i][0])
                 formatted_prompt += formatted_instruction + formatted_target
@@ -73,6 +83,18 @@ def get_prompt_formatting_func_and_collator(model_name, tokenizer, collator_type
                     formatted_target = response_template.format(target=target)
                     formatted_prompt += formatted_instruction + formatted_target
 
+            # if model_name == "llama-3" and i == 0:
+            #     print("=" * 80)
+            #     print("LLAMA-3 PROMPT DEBUG")
+            #     print("input_only:", input_only)
+            #     print("instruction:", repr(sample[dataset_text_field][i][0]))
+            #     if not input_only:
+            #         print("target:", repr(sample[dataset_target_field][i][0]))
+            #         print("formatted_target:", repr(formatted_target))
+            #     print("formatted_prompt:", repr(formatted_prompt))
+            #     print("last_80_chars:", repr(formatted_prompt[-80:]))
+            #     print("=" * 80)
+
             all_formatted_prompts.append(formatted_prompt)
 
         return all_formatted_prompts
@@ -80,6 +102,11 @@ def get_prompt_formatting_func_and_collator(model_name, tokenizer, collator_type
     # NOTE the phi-3 tokenizer adds the SPIECE_UNDERLINE token (29871) to an encoded <|assistant|> token if not other token is present except for \n, which messes with the matching
     if model_name == "phi-3":
         response_key = [13, 32001, 13]
+
+    # NOTE Llama-3 response key must be tokenized without automatic BOS/EOS.
+    # Otherwise DataCollatorForCompletionOnlyLM may search for the wrong boundary.
+    if model_name == "llama-3":
+        response_key = tokenizer.encode(response_key, add_special_tokens=False)
 
     if collator_type == "multi":
         collator = MultiDatasetDataCollatorCompletion(response_key, tokenizer=tokenizer)
@@ -98,10 +125,12 @@ DATASETS = [
     "adv_val_behaviors",
     "adv_test_behaviors",
     "adv_training_safe_prompts",
+    "utility_zephyr_7b_beta_from80kto1k",
+    "utility_llama3_8b_instruct_from80kto1k",
 ]
 
 
-def load_specific_dataset(data_path, dataset_name, split=None, multiple_targets=False):
+def load_specific_dataset(data_path, dataset_name, split=None, multiple_targets=False, or_replace_n=1000):
     if dataset_name not in DATASETS:
         raise NotImplementedError(f"Dataset {dataset_name} not supported, choose from: {DATASETS}")
 
@@ -214,6 +243,24 @@ def load_specific_dataset(data_path, dataset_name, split=None, multiple_targets=
         df = df.rename(columns={"Behavior": "User", "Target": "Model", "Safe_Response": "Safe_Model"})
         dataset = Dataset.from_pandas(df)
 
+    elif dataset_name == "utility_zephyr_7b_beta_from80kto1k" or dataset_name == "utility_llama3_8b_instruct_from80kto1k":
+        suffix = "" if or_replace_n == 1000 else f"_{or_replace_n}"
+        train_df = pd.read_csv(os.path.join(data_path, f"utility/{dataset_name}_train{suffix}.csv"))
+        eval_df = pd.read_csv(os.path.join(data_path, f"utility/{dataset_name}_eval{suffix}.csv"))
+
+        train_df = train_df.rename(columns={"prompt": "User", "response": "Model"})
+        eval_df = eval_df.rename(columns={"prompt": "User", "response": "Model"})
+
+        train_df["User"] = train_df["User"].apply(lambda x: [x])
+        train_df["Model"] = train_df["Model"].apply(lambda x: [x])
+        eval_df["User"] = eval_df["User"].apply(lambda x: [x])
+        eval_df["Model"] = eval_df["Model"].apply(lambda x: [x])
+
+        train_dataset = Dataset.from_pandas(train_df)
+        eval_dataset = Dataset.from_pandas(eval_df)
+
+        dataset = train_dataset, eval_dataset
+
     return dataset
 
 
@@ -231,6 +278,17 @@ def create_df_from_behavior_and_target(behavior_path, target_path):
     return df
 
 
+
+def replace_utility_with_or(train_data, or80k_train_data, replace_n=1000):
+    utility_data = train_data.filter(lambda ex: ex["dataset_id"] == 2)
+    other_data = train_data.filter(lambda ex: ex["dataset_id"] != 2)
+
+    keep_n = max(0, len(utility_data) - replace_n)
+    utility_data = utility_data.select(range(keep_n))
+
+    return concatenate_datasets([other_data, utility_data, or80k_train_data])
+
+
 def load_adversarial_training_data(
     data_path,
     utility_data,
@@ -240,7 +298,12 @@ def load_adversarial_training_data(
     stopping_strategy="first_exhausted",
     diverse_safe_answers=False,
     restricted_trainingset_size=None,
+    or_replace_n=1000,
 ):
+    print(f"[load_adversarial_training_data] model_name={model_name}")
+    print(f"[load_adversarial_training_data] utility_data={utility_data}")
+    print(f"[load_adversarial_training_data] restricted_trainingset_size={restricted_trainingset_size}")
+
     train_behavior_filename = (
         data_path + "behavior_datasets/extra_behavior_datasets/adv_training_behaviors.csv"
     )
@@ -292,28 +355,49 @@ def load_adversarial_training_data(
 
     # format and tokenize safe response
     first_user_msg, user_chat_template, response_template, _ = model_utils.get_chat_template(model_name)
-    ## train
-    train_data = train_data.map(
-        lambda example: {
-            "Safe_Model": tokenizer(
-                first_user_msg.format(instruction=example["User"][0])
-                + response_template.format(target=example["Safe_Model"][0])
-            ),
-        }
-    )
-    ## eval
-    eval_data = eval_data.map(
-        lambda example: {
-            "Safe_Model": tokenizer(
-                first_user_msg.format(instruction=example["User"][0])
-                + response_template.format(target=example["Safe_Model"][0])
-            ),
-        }
-    )
+    # ## train
+    # train_data = train_data.map(
+    #     lambda example: {
+    #         "Safe_Model": tokenizer(
+    #             first_user_msg.format(instruction=example["User"][0])
+    #             + response_template.format(target=example["Safe_Model"][0])
+    #         ),
+    #     }
+    # )
+    # ## eval
+    # eval_data = eval_data.map(
+    #     lambda example: {
+    #         "Safe_Model": tokenizer(
+    #             first_user_msg.format(instruction=example["User"][0])
+    #             + response_template.format(target=example["Safe_Model"][0])
+    #         ),
+    #     }
+    # )
 
+    def tokenize_safe_model(example):
+        text = (
+            first_user_msg.format(instruction=example["User"][0])
+            + response_template.format(target=example["Safe_Model"][0])
+        )
+
+        if model_name == "llama-3":
+            return {"Safe_Model": tokenizer(text)}
+
+        return {"Safe_Model": tokenizer(text)}
+
+    train_data = train_data.map(tokenize_safe_model)
+    eval_data = eval_data.map(tokenize_safe_model)
+
+    
     # add utility data
+    print("[utility] before merge")
+    print(f"[utility] train size={len(train_data)}, eval size={len(eval_data)}")
+    print(f"[utility] selected utility dataset name={utility_data}")
     if utility_data is not None and utility_data != "None":
         utility_train_data, utility_eval_data = load_specific_dataset(data_path, utility_data)
+        print(f"[utility] loaded train size={len(utility_train_data)}, eval size={len(utility_eval_data)}")
+        print(f"[utility] train columns={utility_train_data.column_names}")
+        print(f"[utility] eval columns={utility_eval_data.column_names}")
         #### Format train data ####
         utility_train_data = utility_train_data.map(
             lambda example: {"dataset_id": 2, "Safe_Model": None, **example}, num_proc=16
@@ -332,16 +416,83 @@ def load_adversarial_training_data(
             probabilities=probabilities,
             stopping_strategy=stopping_strategy,
         )
+
         eval_data = interleave_datasets(
             [eval_data, utility_eval_data],
             probabilities=probabilities,
             stopping_strategy=stopping_strategy,
         )
         eval_data = eval_data.select(range(256))
+        print(f"[utility] after merge train size={len(train_data)}, eval size={len(eval_data)}")
+        print(f"[utility] after merge train columns={train_data.column_names}")
+        print(f"[utility] after merge eval columns={eval_data.column_names}")
 
     if restricted_trainingset_size is not None:
         train_data = train_data.select(range(restricted_trainingset_size))
 
+
+    # Adding OR data
+    if "mistral" in model_name.lower():
+        or80k_data = "utility_zephyr_7b_beta_from80kto1k"
+    elif "llama-3" in model_name.lower():
+        or80k_data = "utility_llama3_8b_instruct_from80kto1k"
+    else:
+        or80k_data = None
+    print("[OR] selecting OR dataset")
+    print(f"[OR] model_name={model_name}")
+    print(f"[OR] chosen OR dataset={or80k_data}")
+    
+    if or80k_data is not None:
+        or80k_train_data, or80k_eval_data = load_specific_dataset(data_path, or80k_data, or_replace_n=or_replace_n)
+
+        # [or-length-check] confirm which OR-Bench data actually got loaded --
+        # trimmed responses should be a few hundred chars; the untrimmed
+        # originals run 2000+ (600+ tokens).
+        or_lens = sorted(len(r[0]) for r in or80k_train_data["Model"])
+        n = len(or_lens)
+        logging.info(
+            f"[or-length-check] dataset={or80k_data} n={n} "
+            f"min_chars={or_lens[0]} median_chars={or_lens[n // 2]} max_chars={or_lens[-1]}"
+        )
+
+        or80k_train_data = or80k_train_data.map(
+            lambda example: {"dataset_id": 3, "Safe_Model": None, **example},
+            num_proc=16,
+        )
+        or80k_eval_data = or80k_eval_data.map(
+            lambda example: {"dataset_id": 3, "Safe_Model": None, **example},
+            num_proc=16,
+        )
+
+        train_cols = [k for k in or80k_train_data.column_names if k not in train_data.column_names]
+        eval_cols = [k for k in or80k_eval_data.column_names if k not in eval_data.column_names]
+
+        or80k_train_data = or80k_train_data.remove_columns(train_cols)
+        or80k_eval_data = or80k_eval_data.remove_columns(eval_cols)
+
+        print(f"[OR] loaded train size={len(or80k_train_data)}, eval size={len(or80k_eval_data)}")
+        print(f"[OR] train columns={or80k_train_data.column_names}")
+        print(f"[OR] eval columns={or80k_eval_data.column_names}")
+        print("or80k_train_data[0]:", or80k_train_data[0])
+        print("or80k_eval_data[0]:", or80k_eval_data[0])
+
+        #train_data = concatenate_datasets([train_data, or80k_train_data])
+        train_data = replace_utility_with_or(train_data, or80k_train_data, replace_n=or_replace_n)
+        eval_data = concatenate_datasets([eval_data, or80k_eval_data])
+        print(f"[OR] after concat train size={len(train_data)}, eval size={len(eval_data)}")
+        print(f"[OR] after concat train columns={train_data.column_names}")
+        print(f"[OR] after concat eval columns={eval_data.column_names}")
+    
+
+    print("[done]")
+    print(f"final train size={len(train_data)}")
+    print(f"final eval size={len(eval_data)}")
+    print(f"final train columns={train_data.column_names}")
+    print(f"final eval columns={eval_data.column_names}")
+
+    print("train_data[0]:", train_data[0])
+    print("eval_data[0]:", eval_data[0])
+    
     return train_data, eval_data
 
 

@@ -1,0 +1,116 @@
+Conda env env_CAT already exists
+Starting program
+[2026-06-17 01:55:17,320][root][INFO] - Seeding everything with seed 42
+[2026-06-17 01:55:17,322][root][INFO] - Running experiment: adversarial_training
+[2026-06-17 01:55:17,322][root][INFO] - Results will be saved to /auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/CAT_llama3b_04_relativelr
+[2026-06-17 01:55:17,326][root][INFO] - Config:
+experiment: adversarial_training
+experiment_id: null
+skip_existing_experiment: false
+finished_experiment: false
+model_name: llama-3
+debug: false
+peft:
+  lora_alpha: 16
+  lora_dropout: 0.1
+  r: 64
+  bias: none
+  task_type: CAUSAL_LM
+  target_modules: all-linear
+bnb:
+  load_in_4bit: true
+  bnb_4bit_use_double_quant: false
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: bfloat16
+training:
+  num_train_epochs: 2
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 8
+  optim: paged_adamw_32bit
+  save_steps: 50
+  save_total_limit: 1
+  save_strategy: steps
+  logging_steps: 25
+  learning_rate: 0.0002
+  weight_decay: 0.001
+  fp16: true
+  bf16: false
+  max_grad_norm: 0.3
+  max_steps: -1
+  group_by_length: false
+  lr_scheduler_type: cosine
+  do_eval: false
+  evaluation_strategy: 'no'
+  eval_steps: null
+  remove_unused_columns: false
+  seed: 42
+adversarial:
+  iters: 10
+  opt_config:
+    type: sign
+    lr: 0.1
+  eps: 0.4
+  debug: 0
+  init_type: instruction
+  attack_type: embedding
+  relative_lr: true
+  tracking:
+    enabled: true
+    top_k: 5
+    store_step_summaries: true
+    store_token_records: true
+    store_topk_neighbours: true
+    nearest_neighbor_chunk_size: 128
+    save_every_n_attack_calls: 1
+    save_final_records: true
+dataset:
+  data_path: ../Reachable-Continuous-AdvTrain/data/
+  dataset_name: adv_training_behaviors
+  utility_data: ultrachat_200k
+  probabilities:
+  - 0.125
+  - 0.875
+  stopping_strategy: first_exhausted
+  restricted_trainingset_size: null
+  diverse_safe_answers: false
+  subset_ids: []
+eval_dataset:
+  data_path: ../../../../Reachable-Continuous-AdvTrain/data/
+sfttrainer:
+  packing: false
+  max_seq_length: 256
+trainer_hparams:
+  away_weight: 0.5
+  toward_weight: 0.5
+  utility_weight: 1.0
+  ema_weight: 0.0
+  padding_side: left
+  away_cutoff: -7.5
+  toward_cutoff: 0.5
+  away_loss_type: negative_cross_entropy
+  restart_count: 0
+  trainer_type: ul
+  dtype: auto
+  dpo_loss_type: ipo
+  dpo_beta: 0.1
+  dpo_weight: 1.0
+  do_online_dpo: false
+  dpo_label_smoothing: 0.25
+path:
+  experiments_path: ./CAT_llama3b_04_relativelr/experiments_db/
+  logging_path: /auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/CAT_llama3b_04_relativelr
+  model_path: meta-llama/Meta-Llama-3-8B-Instruct
+  model_name: llama-3
+  checkpoint_path: /auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/CAT_llama3b_04_relativelr
+  load_checkpoint_path: null
+  load_checkpoint: false
+
+[2026-06-17 01:55:19,862][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-17 01:55:28,076][root][INFO] - Loaded training data with 9658 samples
+====== response_key ======
+[128000, 128006, 78191, 128007, 271]
+[2026-06-17 01:55:28,143][root][INFO] - L2 norm of embedding weights equals 0.58984375. eps multiplier is: 0.4. using eps: 0.23593750000000002. the learning rate is: 0.00036865234375000006 (relative_lr=True).
+eps = 0.23593750000000002
+embedding_size = 4096
+lr = 0.00036865234375000006
+lr*sqrt(d) = 0.023593750000000004

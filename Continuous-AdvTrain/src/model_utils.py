@@ -13,7 +13,7 @@ import torch
 from peft import PeftModel
 
 
-def load_model_and_tokenizer(model_path, bnb_config=None, padding_side="left", dtype="bf16"):
+def load_model_and_tokenizer(model_path, bnb_config=None, padding_side="left", dtype="bf16", use_left=False):
     if dtype == "bf16":
         torch_dtype = torch.bfloat16
     elif dtype == "fp16":
@@ -34,11 +34,38 @@ def load_model_and_tokenizer(model_path, bnb_config=None, padding_side="left", d
     model.config.use_cache = False  # Last attention and keys not needed
     model.config.pretraining_tp = 1  # Fast but inaccurate computation for llama2
 
-    tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
-    if isinstance(tokenizer, LlamaTokenizer) or isinstance(tokenizer, LlamaTokenizerFast):
-        tokenizer.pad_token = tokenizer.eos_token
+    if model_path == "ContinuousAT/Llama3-8B-IT-CAT":
+        tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct", use_fast=False)
+    else:
+        tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
 
-    tokenizer.padding_side = padding_side
+    if "llama-3" in model_path.lower() or "llama3" in model_path.lower():
+        tokenizer.add_bos_token = False
+        tokenizer.add_eos_token = False
+
+        tokenizer.pad_token = "<|reserved_special_token_0|>"
+        tokenizer.pad_token_id = tokenizer.convert_tokens_to_ids("<|reserved_special_token_0|>")
+        tokenizer.padding_side = "right"
+        tokenizer.truncation_side = "right"
+    
+    else:
+        if isinstance(tokenizer, LlamaTokenizer) or isinstance(tokenizer, LlamaTokenizerFast):
+            tokenizer.pad_token = tokenizer.eos_token
+            tokenizer.pad_token_id = tokenizer.eos_token_id
+
+        tokenizer.padding_side = padding_side
+
+    print("vocab_size:", len(tokenizer))
+    print("embed_size:", model.get_input_embeddings().weight.shape[0])
+
+    print("=" * 50)
+    print("TOKENIZER DEBUG")
+    print("eos_token:", repr(tokenizer.eos_token))
+    print("eos_token_id:", tokenizer.eos_token_id)
+    print("pad_token:", repr(tokenizer.pad_token))
+    print("pad_token_id:", tokenizer.pad_token_id)
+    print("padding_side:", tokenizer.padding_side)
+    print("=" * 50)
 
     return model, tokenizer
 
@@ -61,6 +88,25 @@ def get_chat_template(model_name):
         user_chat_template = "<start_of_turn>user\n{instruction}<end_of_turn>\n"
         response_key = "<start_of_turn>model\n"
         response_template = response_key + "{target}<end_of_turn>\n"
+
+    elif model_name == "llama-3": # Added this on top of CAT's code
+        found += 1
+        first_user_msg = (
+            "<|start_header_id|>user<|end_header_id|>\n\n"
+            "{instruction}<|eot_id|>"
+        )
+
+        user_chat_template = (
+            "<|start_header_id|>user<|end_header_id|>\n\n"
+            "{instruction}<|eot_id|>"
+        )
+
+        response_key = (
+            "<|start_header_id|>assistant<|end_header_id|>\n\n"
+        )
+
+        response_template = response_key + "{target}<|eot_id|>"
+
     elif "llama2" == model_name or "llama-2" == model_name:
         found += 1
         first_user_msg = """[INST] <<SYS>>
@@ -138,6 +184,8 @@ def get_model_name(model_path):
         return "gemma-2b"
     elif "harmbench" in model_name:  # NOTE also has llama-2 in the name so order is important
         return "harmbench"
+    elif "llama-3" in model_name: # Added it on top of CAT's code
+        return "llama-3"
     elif "llama-2" in model_name:
         return "llama-2"
     elif "phi-3" in model_name:

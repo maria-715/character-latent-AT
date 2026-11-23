@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/posthoc_bridging/posthoc_bridging_D.py", line 659, in <module>
+    main()
+  File "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/posthoc_bridging/posthoc_bridging_D.py", line 655, in main
+    {"list": mode_list, "plan": mode_plan, "attack": mode_attack, "summarize": mode_summarize}[args.mode](args)
+  File "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/posthoc_bridging/posthoc_bridging_D.py", line 217, in mode_list
+    runs = resolve_runs(args.manifest, args.experiments_dir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/posthoc_bridging/posthoc_bridging_D.py", line 128, in resolve_runs
+    raise FileNotFoundError(f"{run_dir}/.hydra/config.yaml not found -- pass --experiments_dir pointing at "
+FileNotFoundError: ../experiments/CAT_llama3b_0075_relativelr_otherparams/.hydra/config.yaml not found -- pass --experiments_dir pointing at the directory that contains the CAT run folders
+srun: error: oat14: task 0: Exited with exit code 1

@@ -1,0 +1,13 @@
+In 'llama_adv_train_ul': Could not find 'path/llama_example_path'
+
+Available options in 'path':
+	base_path
+	example_path
+	llama_path
+Config search path:
+	provider=hydra, path=pkg://hydra.conf
+	provider=main, path=file:///auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/config
+	provider=schema, path=structured://
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+srun: error: oat13: task 0: Exited with exit code 1

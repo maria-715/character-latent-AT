@@ -1,0 +1,32 @@
+Conda env env_CAT already exists
+[INFO] Loading HuggingFaceH4/zephyr-7b-beta
+vocab_size: 32000
+embed_size: 32000
+==================================================
+TOKENIZER DEBUG
+eos_token: '</s>'
+eos_token_id: 2
+pad_token: '</s>'
+pad_token_id: 2
+padding_side: left
+==================================================
+[INFO] embedding matrix: vocab_size=32000, dim=4096
+[OK] Saved embedding_nn_analysis/zephyr-7b-beta/per_token_nn_distances.csv
+[OK] Saved embedding_nn_analysis/zephyr-7b-beta/summary.json
+[INFO] Loading meta-llama/Meta-Llama-3-8B-Instruct
+vocab_size: 128256
+embed_size: 128256
+==================================================
+TOKENIZER DEBUG
+eos_token: '<|eot_id|>'
+eos_token_id: 128009
+pad_token: '<|reserved_special_token_0|>'
+pad_token_id: 128002
+padding_side: right
+==================================================
+[INFO] embedding matrix: vocab_size=128256, dim=4096
+[OK] Saved embedding_nn_analysis/Meta-Llama-3-8B-Instruct/per_token_nn_distances.csv
+[OK] Saved embedding_nn_analysis/Meta-Llama-3-8B-Instruct/summary.json
+[OK] Saved embedding_nn_analysis/report.txt
+[OK] Saved embedding_nn_analysis/combined_summary.csv
+[DONE]

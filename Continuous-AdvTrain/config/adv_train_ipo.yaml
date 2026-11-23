@@ -11,7 +11,7 @@ experiment: adversarial_training
 
 dataset:
   data_path: ../Reachable-Continuous-AdvTrain/data/
-  utility_data: null 
+  utility_data: null
   probabilities:
   - 0.5 # adv
   - 0.5 # utility

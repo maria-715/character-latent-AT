@@ -15,33 +15,43 @@ dataset:
   probabilities:
   - 0.125 # adv
   - 0.875 # utility
+  or_replace_n: 1000
 
 adversarial:
   iters: 10
   opt_config:
     type: sign
-    lr: 1.0e-04
-  eps: 0.05
+    lr: 1.0e-04 # Changing # If relative_lr=True, lr becomes 10% of what real eps is
+  eps: 0.075 # Changing
   debug: 0
   init_type: instruction
+  relative_lr: False # Changing # Added
+  tracking: # Added
+    enabled: true
+    top_k: 5
+    store_step_summaries: true
+    store_token_records: true
+    store_topk_neighbours: true
+    nearest_neighbor_chunk_size: 128
 
 sfttrainer:
   packing: false
   max_seq_length: 256
 
 training:
-  num_train_epochs: 5
+  num_train_epochs: 5 # Changing
   per_device_train_batch_size: 8
   gradient_accumulation_steps: 8
   fp16: True
   bf16: False
-  seed: 42 # I added seed
+  seed: 42 # Added
 
 trainer_hparams:
   utility_weight: 1.0
+  or_weight: 1.0 # Changing # weight on the separate OR (over-refusal) loss term
   away_weight: 0.5
   toward_weight: 0.5
-  away_cutoff: -5.0
+  away_cutoff: -5.0 # Changing
   toward_cutoff: 0.5
   away_loss_type: negative_cross_entropy
   trainer_type: ul
