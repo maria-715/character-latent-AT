@@ -1,0 +1,13 @@
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+✔ The default environment has been installed.
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Generating harmful split: 0 examples [00:00, ? examples/s]Generating harmful split: 100 examples [00:00, 515.86 examples/s]Generating harmful split: 100 examples [00:00, 514.52 examples/s]
+Generating benign split: 0 examples [00:00, ? examples/s]Generating benign split: 100 examples [00:00, 15199.51 examples/s]
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Could not override 'judge'.
+To append to your config use +judge=strong_reject
+Key 'judge' is not in struct
+    full_key: judge
+    object_type=dict
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

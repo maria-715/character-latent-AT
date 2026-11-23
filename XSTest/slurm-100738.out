@@ -1,0 +1,43 @@
+Conda env env_XSTest already exists
+=== GENERATION ===
+Model path: HuggingFaceH4/zephyr-7b-beta
+Adapter: ../experiments/CAT_adv_eps005_42_relativelr_REFAIT/final_model
+Output: results/xstest_CAT_adv_eps005_42_relativelr_REFAIT_STRICTER.jsonl
+Batch size: 32
+Seed: 0
+vocab_size: 32000
+embed_size: 32000
+==================================================
+TOKENIZER DEBUG
+eos_token: '</s>'
+eos_token_id: 2
+pad_token: '</s>'
+pad_token_id: 2
+padding_side: left
+==================================================
+[GPU] allocated: 13.81 GB | reserved: 14.48 GB
+[GPU] 0, 15329, 81920
+[GPU] allocated: 13.82 GB | reserved: 17.13 GB
+[GPU] 71, 18061, 81920
+[GPU] allocated: 13.82 GB | reserved: 17.13 GB
+[GPU] 70, 18061, 81920
+=== JSONL → CSV ===
+=== CLASSIFICATION ===
+=== METRICS ===
+
+=== XSTest Results ===
+
+--- Breakdown ---
+# Safe samples: 250
+# Unsafe samples: 200
+
+--- Rates ---
+Safe compliance rate: 58.00%
+Unsafe refusal rate: 98.50%
+
+--- Score ---
+Overall accuracy: 76.00%
+
+--- Correct counts ---
+Correct safe (answered): 145/250
+Correct unsafe (refused): 197/200

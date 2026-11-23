@@ -1,0 +1,28 @@
+Conda env env_XSTest already exists
+=== GENERATION ===
+[GPU] allocated: 13.81 GB | reserved: 14.48 GB
+[GPU] 0, 15329, 81920
+[GPU] allocated: 13.82 GB | reserved: 17.13 GB
+[GPU] 67, 18061, 81920
+[GPU] allocated: 13.82 GB | reserved: 17.13 GB
+[GPU] 70, 18061, 81920
+=== JSONL → CSV ===
+=== CLASSIFICATION ===
+=== METRICS ===
+
+=== XSTest Results ===
+
+--- Breakdown ---
+# Safe samples: 250
+# Unsafe samples: 200
+
+--- Rates ---
+Safe compliance rate: 0.5440
+Unsafe refusal rate: 0.9600
+
+--- Score ---
+Overall accuracy: 0.7289
+
+--- Correct counts ---
+Correct safe (answered): 136/250
+Correct unsafe (refused): 192/200

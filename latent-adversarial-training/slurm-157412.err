@@ -1,0 +1,51 @@
+HEAD is now at 6ed4f42 Renamed files
+WARNING: HUGGINGFACE_API_KEY not found in ../.env (LAT's own convention).
+         Falling back to HF_TOKEN (Continuous-AdvTrain's convention) if present.
+2026-09-14 22:24:02,916 INFO Seeding everything with seed 42
+2026-09-14 22:24:03,097 INFO HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+2026-09-14 22:24:03,219 INFO HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 6416.34it/s]
+2026-09-14 22:24:03,747 INFO HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-09-14 22:24:09,268 INFO HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-09-14 22:24:09,373 INFO HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-14 22:24:09,477 INFO HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-14 22:24:09,586 INFO HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-14 22:24:10,719 INFO HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct "HTTP/1.1 200 OK"
+2026-09-14 22:24:10,896 INFO HTTP Request: HEAD https://huggingface.co/datasets/LLM-LAT/harmful-dataset/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-09-14 22:24:10,907 INFO HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/LLM-LAT/harmful-dataset/8bfba31bc6d93a5b71808fee5275ef4b6330ed91/README.md?%2Fdatasets%2FLLM-LAT%2Fharmful-dataset%2Fresolve%2Fmain%2FREADME.md=&etag=%2252482ca438cd8f3a07af47d80838d3b6fcc9e2f9%22 "HTTP/1.1 200 OK"
+2026-09-14 22:24:11,015 INFO HTTP Request: HEAD https://huggingface.co/datasets/LLM-LAT/harmful-dataset/resolve/8bfba31bc6d93a5b71808fee5275ef4b6330ed91/harmful-dataset.py "HTTP/1.1 404 Not Found"
+2026-09-14 22:24:11,304 INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/LLM-LAT/harmful-dataset/LLM-LAT/harmful-dataset.py "HTTP/1.1 404 Not Found"
+2026-09-14 22:24:11,417 INFO HTTP Request: GET https://huggingface.co/api/datasets/LLM-LAT/harmful-dataset/revision/8bfba31bc6d93a5b71808fee5275ef4b6330ed91 "HTTP/1.1 200 OK"
+2026-09-14 22:24:11,516 INFO HTTP Request: HEAD https://huggingface.co/datasets/LLM-LAT/harmful-dataset/resolve/8bfba31bc6d93a5b71808fee5275ef4b6330ed91/.huggingface.yaml "HTTP/1.1 404 Not Found"
+2026-09-14 22:24:11,683 INFO HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=LLM-LAT/harmful-dataset "HTTP/1.1 200 OK"
+2026-09-14 22:24:11,796 INFO HTTP Request: GET https://huggingface.co/api/datasets/LLM-LAT/harmful-dataset/tree/8bfba31bc6d93a5b71808fee5275ef4b6330ed91/data?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-14 22:24:11,895 INFO HTTP Request: GET https://huggingface.co/api/datasets/LLM-LAT/harmful-dataset/tree/8bfba31bc6d93a5b71808fee5275ef4b6330ed91?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-09-14 22:24:12,012 INFO HTTP Request: HEAD https://huggingface.co/datasets/LLM-LAT/harmful-dataset/resolve/8bfba31bc6d93a5b71808fee5275ef4b6330ed91/dataset_infos.json "HTTP/1.1 404 Not Found"
+2026-09-14 22:24:12,626 INFO HTTP Request: HEAD https://huggingface.co/datasets/LLM-LAT/benign-dataset/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-09-14 22:24:12,636 INFO HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/LLM-LAT/benign-dataset/799694027732ac7b5633639690a2ea8ed8597f3e/README.md?%2Fdatasets%2FLLM-LAT%2Fbenign-dataset%2Fresolve%2Fmain%2FREADME.md=&etag=%22bb58576d94ac9f3bdce2498452dac82a616ca62a%22 "HTTP/1.1 200 OK"
+2026-09-14 22:24:12,734 INFO HTTP Request: HEAD https://huggingface.co/datasets/LLM-LAT/benign-dataset/resolve/799694027732ac7b5633639690a2ea8ed8597f3e/benign-dataset.py "HTTP/1.1 404 Not Found"
+2026-09-14 22:24:12,832 INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/LLM-LAT/benign-dataset/LLM-LAT/benign-dataset.py "HTTP/1.1 404 Not Found"
+2026-09-14 22:24:12,937 INFO HTTP Request: GET https://huggingface.co/api/datasets/LLM-LAT/benign-dataset/revision/799694027732ac7b5633639690a2ea8ed8597f3e "HTTP/1.1 200 OK"
+2026-09-14 22:24:13,041 INFO HTTP Request: HEAD https://huggingface.co/datasets/LLM-LAT/benign-dataset/resolve/799694027732ac7b5633639690a2ea8ed8597f3e/.huggingface.yaml "HTTP/1.1 404 Not Found"
+2026-09-14 22:24:13,160 INFO HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=LLM-LAT/benign-dataset "HTTP/1.1 200 OK"
+2026-09-14 22:24:13,268 INFO HTTP Request: GET https://huggingface.co/api/datasets/LLM-LAT/benign-dataset/tree/799694027732ac7b5633639690a2ea8ed8597f3e/data?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-14 22:24:13,374 INFO HTTP Request: GET https://huggingface.co/api/datasets/LLM-LAT/benign-dataset/tree/799694027732ac7b5633639690a2ea8ed8597f3e?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-09-14 22:24:13,480 INFO HTTP Request: HEAD https://huggingface.co/datasets/LLM-LAT/benign-dataset/resolve/799694027732ac7b5633639690a2ea8ed8597f3e/dataset_infos.json "HTTP/1.1 404 Not Found"
+wandb: WARNING config_exclude_keys is deprecated. Use `config=wandb.helper.parse_config(config_object, exclude=('key',))` instead.
+wandb: Tracking run with wandb version 0.30.0
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in experiments/diag_activation_eps6_lr001/wandb/wandb/offline-run-20260914_222422-141206et
+wandb: View this run in the terminal with `wandb leet`
+wandb: Detected [openai] in use.
+wandb: Use W&B Weave for improved LLM call tracing. Install Weave with `pip install weave` then add `import weave` to the top of your script.
+wandb: For more information, check out the docs at: https://weave-docs.wandb.ai
+  0%|          | 0/1 [00:00<?, ?it/s]/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/torch/nn/functional.py:3369: UserWarning: reduction: 'mean' divides the total loss by both the batch size and the support size.'batchmean' divides only by the batch size, and aligns with the KL div math definition.'mean' will be changed to behave the same as 'batchmean' in the next major release.
+  warnings.warn(
+100%|██████████| 1/1 [01:46<00:00, 106.73s/it]100%|██████████| 1/1 [01:46<00:00, 106.73s/it]
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync experiments/diag_activation_eps6_lr001/wandb/wandb/offline-run-20260914_222422-141206et
+wandb: Find logs at: experiments/diag_activation_eps6_lr001/wandb/wandb/offline-run-20260914_222422-141206et/logs
+2026-09-14 22:26:09,987 INFO HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-09-14 22:26:10,088 INFO HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-09-14 22:26:16,100 INFO Saved final LAT adapter to ./experiments/diag_activation_eps6_lr001/final_model

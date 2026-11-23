@@ -230,6 +230,7 @@ def adversarial_training_loop(
                 tokenizer=tokenizer,
                 model_path = path_config["model_path"],
                 is_zero_a_valid_index=is_zero_a_valid_index,
+                logging_path=path_config["logging_path"],
                 **adversarial_training_config,
             )
         elif attack_type == "mixed_perturbed_qwen_with_GCG":
@@ -312,13 +313,14 @@ def adversarial_training_loop(
                 is_zero_a_valid_index=is_zero_a_valid_index,
                 **adversarial_training_config,
                 )
-        elif attack_type == "mixed_perturbed_llama": 
+        elif attack_type == "mixed_perturbed_llama":
             adversarial_attack = embedding_attack.MixedAttackPerturbedLLAMA(
                 embed_weights,
                 response_key=response_key,
                 tokenizer=tokenizer,
                 model_path = path_config["model_path"],
                 is_zero_a_valid_index=is_zero_a_valid_index,
+                logging_path=path_config["logging_path"],
                 **adversarial_training_config,
             )
         elif attack_type == "mixed_perturbed_no_attack_llama3": 

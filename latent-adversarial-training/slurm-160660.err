@@ -1,0 +1,44 @@
+HEAD is now at 6ed4f42 Renamed files
+WARNING: HUGGINGFACE_API_KEY not found in ../.env (LAT's own convention).
+         Falling back to HF_TOKEN (Continuous-AdvTrain's convention) if present.
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/latent-adversarial-training/train_lat.py", line 46, in <module>
+    from latent_at import (
+  File "/auto/users/ms25mds/MSc_Project/latent-adversarial-training/latent_at/__init__.py", line 4, in <module>
+    from .lat_methods import *
+  File "/auto/users/ms25mds/MSc_Project/latent-adversarial-training/latent_at/lat_methods.py", line 27, in <module>
+    import deepspeed
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/__init__.py", line 37, in <module>
+    from . import module_inject
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/module_inject/__init__.py", line 6, in <module>
+    from .replace_module import replace_transformer_layer, revert_transformer_layer, ReplaceWithTensorSlicing, GroupQuantizer, generic_injection
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/module_inject/replace_module.py", line 669, in <module>
+    from ..pipe import PipelineModule
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/pipe/__init__.py", line 6, in <module>
+    from ..runtime.pipe import PipelineModule, LayerSpec, TiedLayerSpec
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/runtime/pipe/__init__.py", line 6, in <module>
+    from .module import PipelineModule, LayerSpec, TiedLayerSpec
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/runtime/pipe/module.py", line 19, in <module>
+    from ..activation_checkpointing import checkpointing
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/runtime/activation_checkpointing/checkpointing.py", line 26, in <module>
+    from deepspeed.runtime.config import DeepSpeedConfig
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/runtime/config.py", line 28, in <module>
+    from ..compile.config import CompileConfig
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/compile/__init__.py", line 6, in <module>
+    from .util import pad_tensors
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/compile/util.py", line 28, in <module>
+    from .custom_ops import sp_dp_registry
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/compile/custom_ops/__init__.py", line 7, in <module>
+    from .tp_collectives import copy_to_tp_region, gather_from_tp_region, reduce_from_tp_region
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/deepspeed/compile/custom_ops/tp_collectives.py", line 49, in <module>
+    @torch.library.custom_op("autotp::gather_from_tp_region", mutates_args=())
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/torch/_library/custom_ops.py", line 133, in inner
+    schema_str = torch.library.infer_schema(fn, mutates_args=mutates_args)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/torch/_library/infer_schema.py", line 106, in infer_schema
+    error_fn(
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/torch/_library/infer_schema.py", line 58, in error_fn
+    raise ValueError(
+ValueError: infer_schema(func): Parameter partition_sizes has unsupported type list[int]. The valid types are: dict_keys([<class 'torch.Tensor'>, typing.Optional[torch.Tensor], typing.Sequence[torch.Tensor], typing.List[torch.Tensor], typing.Sequence[typing.Optional[torch.Tensor]], typing.List[typing.Optional[torch.Tensor]], <class 'int'>, typing.Optional[int], typing.Sequence[int], typing.List[int], typing.Optional[typing.Sequence[int]], typing.Optional[typing.List[int]], <class 'float'>, typing.Optional[float], typing.Sequence[float], typing.List[float], typing.Optional[typing.Sequence[float]], typing.Optional[typing.List[float]], <class 'bool'>, typing.Optional[bool], typing.Sequence[bool], typing.List[bool], typing.Optional[typing.Sequence[bool]], typing.Optional[typing.List[bool]], <class 'str'>, typing.Optional[str], typing.Union[int, float, bool], typing.Union[int, float, bool, NoneType], typing.Sequence[typing.Union[int, float, bool]], typing.List[typing.Union[int, float, bool]], <class 'torch.dtype'>, typing.Optional[torch.dtype], <class 'torch.device'>, typing.Optional[torch.device]]). Got func with signature (input: torch.Tensor, partition_sizes: list[int]) -> torch.Tensor)
+srun: error: oat15: task 0: Exited with exit code 1

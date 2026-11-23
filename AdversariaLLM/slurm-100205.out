@@ -1,0 +1,19 @@
+Conda env env_adversariallm already exists
+[2026-06-29 00:18:23,546][root][INFO] - -------------------
+[2026-06-29 00:18:23,547][root][INFO] - Commencing run at `2026-06-29/00-18-23`
+[2026-06-29 00:18:23,547][root][INFO] - -------------------
+[2026-06-29 00:20:25,168][datasets.load][WARNING] - Using the latest cached version of the dataset since dedeswim/JBB-Behaviors couldn't be found on the Hugging Face Hub
+[2026-06-29 00:20:25,173][datasets.packaged_modules.cache.cache][WARNING] - Found the latest cached dataset configuration 'behaviors' at /scratch-ssd/ms25mds/.cache/huggingface/datasets/dedeswim___jbb-behaviors/behaviors/0.0.0/886acc352a31533ffbcf4ef22c744658688086fc (last modified on Sun Jun 28 22:48:26 2026).
+[2026-06-29 00:20:25,250][root][INFO] - Target: CAT_adv_eps_005_42_relativelr_REFAIT
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_adv_eps_005_42_relativelr_REFAIT
+developer_name: Me
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_adv_eps_005_42_relativelr_REFAIT/final_model
+
+[2026-06-29 00:20:32,866][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

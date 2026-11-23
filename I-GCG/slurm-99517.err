@@ -1,0 +1,8 @@
+/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:01<00:10,  1.49s/it]Loading checkpoint shards:  25%|██▌       | 2/8 [00:02<00:08,  1.49s/it]Loading checkpoint shards:  38%|███▊      | 3/8 [00:04<00:07,  1.51s/it]Loading checkpoint shards:  50%|█████     | 4/8 [00:06<00:06,  1.50s/it]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:07<00:04,  1.50s/it]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:08<00:02,  1.50s/it]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:10<00:01,  1.50s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:11<00:00,  1.24s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:11<00:00,  1.40s/it]
+/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/torch/nested/__init__.py:166: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. (Triggered internally at ../aten/src/ATen/NestedTensorImpl.cpp:177.)
+  return _nested.nested_tensor(
+slurmstepd-oat13: error: *** JOB 99517 ON oat13 CANCELLED AT 2026-06-27T16:16:06 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd-oat13: error: *** STEP 99517.0 ON oat13 CANCELLED AT 2026-06-27T16:16:06 ***

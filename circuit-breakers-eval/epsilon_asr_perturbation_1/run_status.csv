@@ -1,0 +1,41 @@
+slurm_log,status,skip_reason,run_id,base_model,eps_multiplier,embedding_norm,eps_raw,eps_note,asr,perturbation_l2_mean,perturbation_l2_std,num_solutions
+slurm-108809.out,ok,,raw_mistral_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7433962264150943,0.5465471698113208,0.14105971920267732,1590.0
+slurm-108810.out,ok,,raw_mistral_123_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7484276729559748,0.5467572327044026,0.14092542630187854,1590.0
+slurm-108811.out,ok,,raw_mistral_456_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7465408805031446,0.5468419496855346,0.14099035194096793,1590.0
+slurm-108812.out,ok,,raw_llama3b_42_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7540880503144655,0.5436058490566038,0.10432897385869815,1590.0
+slurm-108813.out,ok,,raw_llama3b_123_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7540880503144655,0.5436058490566038,0.10432897385869815,1590.0
+slurm-108814.out,ok,,raw_llama3b_456_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7540880503144655,0.5436058490566038,0.10432897385869815,1590.0
+slurm-108815.out,ok,,llama3b_huggingface_42_GETTINGEPS,ContinuousAT/Llama3-8B-IT-CAT,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7,0.5128583647798742,0.06469756412818878,1590.0
+slurm-108816.out,skipped,slurm log file does not exist,,,,,,,,,,
+slurm-108817.out,skipped,slurm log file does not exist,,,,,,,,,,
+slurm-108818.out,ok,,CAT_adv_eps005_42_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.05,0.1767578125,0.008837890625,,0.4911949685534591,0.5942177987421383,0.14433546109000794,1590.0
+slurm-108819.out,ok,,CAT_adv_eps005_123_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.05,0.1767578125,0.008837890625,,0.39245283018867927,0.62423,0.20876249286223356,1590.0
+slurm-108820.out,ok,,CAT_adv_eps005_456_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.05,0.1767578125,0.008837890625,,0.4327044025157233,0.601161572327044,0.1810997209416781,1590.0
+slurm-108821.out,ok,,CAT_adv_eps04_42_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.4,0.1767578125,0.070703125,,0.47861635220125787,0.5233169182389937,0.06924563539100821,1590.0
+slurm-108822.out,skipped,slurm log file does not exist,,,,,,,,,,
+slurm-108823.out,ok,,CAT_adv_eps04_123_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.4,0.1767578125,0.070703125,,0.5025157232704403,0.5367946540880504,0.0985513279055359,1590.0
+slurm-108824.out,ok,,CAT_adv_eps04_456_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.4,0.1767578125,0.070703125,,0.5477987421383648,0.5261555974842768,0.08192537935059223,1590.0
+slurm-108825.out,ok,,CAT_llama3b_otherparams_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.075,0.58984375,0.04423828125,,0.45157232704402517,0.6762984905660379,0.3017977220462957,1590.0
+slurm-108826.out,ok,,CAT_llama3b_123_otherparams_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.075,0.58984375,0.04423828125,,0.46037735849056605,0.5508906918238995,0.13525734803144823,1590.0
+slurm-108827.out,ok,,CAT_llama3b_456_otherparams_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.075,0.58984375,0.04423828125,,0.6012578616352201,0.595615283018868,0.23037125067914407,1590.0
+slurm-108828.out,skipped,slurm log file does not exist,,,,,,,,,,
+slurm-108829.out,ok,,CAT_llama3b_0075_relativelr_otherparams_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.075,0.58984375,0.04423828125,,0.5415094339622641,0.5837617610062893,0.19269068855794425,1590.0
+slurm-108830.out,ok,,CAT_llama3b_0150_relativelr_otherparams_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.15,0.58984375,0.0884765625,,0.4628930817610063,0.5704220125786164,0.16121929939727941,1590.0
+slurm-108831.out,ok,,CAT_llama3b_0300_relativelr_otherparams_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.3,0.58984375,0.176953125,,0.6371069182389937,0.5604306289308176,0.06661047282693038,1590.0
+slurm-108832.out,ok,,CAT_llama3b_0600_relativelr_otherparams_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.6,0.58984375,0.35390625,,0.6685534591194968,0.5332609433962264,0.06313221805817186,1590.0
+slurm-108833.out,skipped,no 'Evaluation score' line found (run incomplete?),CAT_adv_eps01_42_relativelr_REFAIT_42_GETTINGEPS,,0.1,0.1767578125,0.01767578125,,,,,
+slurm-108834.out,ok,,CAT_adv_eps01_123_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.1,0.1767578125,0.01767578125,,0.38301886792452833,0.6111574842767296,0.18700770762147972,1590.0
+slurm-108835.out,ok,,CAT_adv_eps01_456_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.1,0.1767578125,0.01767578125,,0.4289308176100629,0.5654024528301886,0.1018282431430234,1590.0
+slurm-108836.out,ok,,CAT_adv_eps02_42_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.2,0.1767578125,0.0353515625,,0.43522012578616354,0.5777469182389937,0.1541563405494299,1590.0
+slurm-108837.out,ok,,CAT_adv_eps02_123_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.2,0.1767578125,0.0353515625,,0.5578616352201258,0.5564483018867924,0.1573649099108479,1590.0
+slurm-108838.out,ok,,CAT_adv_eps02_456_relativelr_REFAIT_42_GETTINGEPS,HuggingFaceH4/zephyr-7b-beta,0.2,0.1767578125,0.0353515625,,0.2811320754716981,0.6066002515723271,0.1773140737294761,1590.0
+slurm-108839.out,ok,,CAT_llama3b_005_42_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.05,0.58984375,0.029492187500000003,,0.5836477987421383,0.5355616352201258,0.06860026347152583,1590.0
+slurm-108840.out,ok,,CAT_llama3b_005_123_42_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.05,0.58984375,0.029492187500000003,,0.5559748427672956,0.5600174213836479,0.16522674967738685,1590.0
+slurm-108841.out,ok,,CAT_llama3b_005_456_42_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.05,0.58984375,0.029492187500000003,,0.7094339622641509,0.5284931446540881,0.07032599616419451,1590.0
+slurm-108842.out,ok,,CAT_llama3b_005_relativelr_42_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.05,0.58984375,0.029492187500000003,,0.6874213836477987,0.5371838364779874,0.13566199875881113,1590.0
+slurm-108843.out,ok,,CAT_llama3b_01_relativelr_42_GETTINGEPS,meta-llama/Meta-Llama-3-8B-Instruct,0.1,0.58984375,0.058984375000000006,,0.4037735849056604,0.5634509433962265,0.07551685558468171,1590.0
+slurm-108844.out,skipped,no 'Evaluation score' line found (run incomplete?),CAT_llama3b_02_relativelr_42_GETTINGEPS,,0.2,0.58984375,0.11796875000000001,,,,,
+slurm-108845.out,skipped,no 'Evaluation score' line found (run incomplete?),CAT_llama3b_04_relativelr_42_GETTINGEPS,,0.4,0.58984375,0.23593750000000002,,,,,
+slurm-108846.out,ok,,llama3b_huggingface_42_GETTINGEPS,ContinuousAT/Llama3-8B-IT-CAT,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7,0.5128583647798742,0.06469756412818878,1590.0
+slurm-108847.out,ok,,llama3b_huggingface_123_GETTINGEPS,ContinuousAT/Llama3-8B-IT-CAT,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7,0.5128583647798742,0.06469756412818878,1590.0
+slurm-108848.out,ok,,llama3b_huggingface_456_GETTINGEPS,ContinuousAT/Llama3-8B-IT-CAT,,,,"no adapter (raw/baseline model, not CAT-trained)",0.7,0.5128583647798742,0.06469756412818878,1590.0

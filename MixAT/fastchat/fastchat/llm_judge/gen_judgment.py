@@ -86,7 +86,9 @@ def make_match_all_pairs(
                 m_2 = models[j]
                 a_1 = model_answers[m_1][q_id]
                 a_2 = model_answers[m_2][q_id]
-                if ref_answers is not None:
+
+                # ATTENTION MODIFIED FOR QWEN-32B
+                if judge.ref_based and ref_answers is not None:
                     ref = ref_answers[judge.model_name][q_id]
                     match = MatchPair(
                         dict(q),
@@ -123,7 +125,9 @@ def make_match_single(
             q_id = q["question_id"]
             m = models[i]
             a = model_answers[m][q_id]
-            if ref_answers is not None:
+
+            # ATTENTION MODIFIED FOR QWEN-32B
+            if judge.ref_based and ref_answers is not None:
                 ref = ref_answers[judge.model_name][q_id]
                 matches.append(
                     MatchSingle(
@@ -138,32 +142,56 @@ def make_match_single(
 def make_judge_pairwise(judge_model, judge_prompts):
     judges = {}
     judges["default"] = Judge(judge_model, judge_prompts["pair-v2"])
-    judges["math"] = Judge(judge_model, judge_prompts["pair-math-v1"], ref_based=True)
+
+    # ATTENTION MODIFIED FOR QWEN-32B
+    # judges["math"] = Judge(judge_model, judge_prompts["pair-math-v1"], ref_based=True)
+    judges["math"] = Judge(judge_model, judge_prompts["pair-math-v1"])
+
     judges["default-mt"] = Judge(
         judge_model, judge_prompts["pair-v2-multi-turn"], multi_turn=True
     )
+
+    # ATTENTION MODIFIED FOR QWEN-32B
+    # judges["math-mt"] = Judge(
+    #     judge_model,
+    #     judge_prompts["pair-math-v1-multi-turn"],
+    #     ref_based=True,
+    #     multi_turn=True,
+    # )
     judges["math-mt"] = Judge(
         judge_model,
         judge_prompts["pair-math-v1-multi-turn"],
-        ref_based=True,
         multi_turn=True,
     )
+
     return judges
 
 
 def make_judge_single(judge_model, judge_prompts):
     judges = {}
     judges["default"] = Judge(judge_model, judge_prompts["single-v1"])
-    judges["math"] = Judge(judge_model, judge_prompts["single-math-v1"], ref_based=True)
+
+    # ATTENTION MODIFIED FOR QWEN-32B
+    # judges["math"] = Judge(judge_model, judge_prompts["single-math-v1"], ref_based=True)
+    judges["math"] = Judge(judge_model, judge_prompts["single-math-v1"])
+
     judges["default-mt"] = Judge(
         judge_model, judge_prompts["single-v1-multi-turn"], multi_turn=True
     )
+
+    # ATTENTION MODIFIED FOR QWEN-32B
+    # judges["math-mt"] = Judge(
+    #     judge_model,
+    #     judge_prompts["single-math-v1-multi-turn"],
+    #     ref_based=True,
+    #     multi_turn=True,
+    # )
     judges["math-mt"] = Judge(
         judge_model,
         judge_prompts["single-math-v1-multi-turn"],
-        ref_based=True,
         multi_turn=True,
     )
+
     return judges
 
 

@@ -1,0 +1,21 @@
+HEAD is now at 6ed4f42 Renamed files
+WARNING: HUGGINGFACE_API_KEY not found in ../.env (LAT's own convention).
+         Falling back to HF_TOKEN (Continuous-AdvTrain's convention) if present.
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/latent-adversarial-training/train_lat.py", line 35, in <module>
+    from latent_at import (
+  File "/auto/users/ms25mds/MSc_Project/latent-adversarial-training/latent_at/__init__.py", line 1, in <module>
+    from .laa import clear_hooks
+  File "/auto/users/ms25mds/MSc_Project/latent-adversarial-training/latent_at/laa/__init__.py", line 6, in <module>
+    from transformer_lens import HookedTransformer
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/transformer_lens/__init__.py", line 1, in <module>
+    from . import hook_points
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/transformer_lens/hook_points.py", line 29, in <module>
+    from transformer_lens.utils import Slice, SliceInput
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/transformer_lens/utils.py", line 31, in <module>
+    CACHE_DIR = transformers.TRANSFORMERS_CACHE
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_LAT/lib/python3.11/site-packages/transformers/utils/import_utils.py", line 2785, in __getattr__
+    raise AttributeError(f"module {self.__name__} has no attribute {name}")
+AttributeError: module transformers has no attribute TRANSFORMERS_CACHE
+srun: error: oat11: task 0: Exited with exit code 1

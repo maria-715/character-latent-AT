@@ -1,0 +1,22 @@
+Conda env env_XSTest already exists
+=== GENERATION ===
+=== JSONL → CSV ===
+=== CLASSIFICATION ===
+=== METRICS ===
+
+=== XSTest Results ===
+
+--- Breakdown ---
+# Safe samples: 250
+# Unsafe samples: 200
+
+--- Rates ---
+Safe compliance rate: 0.5760
+Unsafe refusal rate: 0.9950
+
+--- Score ---
+Overall accuracy (MIXAT-style): 0.7622
+
+--- Correct counts ---
+Correct safe (answered): 144/250
+Correct unsafe (refused): 199/200

@@ -1,0 +1,31 @@
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 133, in run_judges
+    attack_run = json.load(open(path))
+FileNotFoundError: [Errno 2] No such file or directory: '/auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/19-34-50/0/run.json'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 171, in run_judges
+    raise Exception(f"Error in {path}. Original exception: {e}") from e
+Exception: Error in /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/19-34-50/0/run.json. Original exception: [Errno 2] No such file or directory: '/auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/19-34-50/0/run.json'
+Error executing job with overrides: ['classifier=strong_reject', 'run_paths=["outputs/2026-07-09/19-34-50/0/run.json"]']
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 133, in run_judges
+    attack_run = json.load(open(path))
+FileNotFoundError: [Errno 2] No such file or directory: '/auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/19-34-50/0/run.json'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 171, in run_judges
+    raise Exception(f"Error in {path}. Original exception: {e}") from e
+Exception: Error in /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/19-34-50/0/run.json. Original exception: [Errno 2] No such file or directory: '/auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/19-34-50/0/run.json'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

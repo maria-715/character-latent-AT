@@ -1,0 +1,33 @@
+Conda env env_XSTest already exists
+=== GENERATION ===
+Model path: HuggingFaceH4/zephyr-7b-beta
+Adapter: ../experiments/CAT_adv_eps005_42/final_model
+Output: results/xstest_outputs_CAT_adv_eps005_42_TEST.jsonl
+Batch size: 32
+Seed: 0
+[GPU] allocated: 14.32 GB | reserved: 15.00 GB
+[GPU] 0, 15857, 81920
+[GPU] allocated: 14.33 GB | reserved: 18.10 GB
+[GPU] 64, 19051, 81920
+[GPU] allocated: 14.33 GB | reserved: 18.24 GB
+[GPU] 54, 19197, 81920
+=== JSONL → CSV ===
+=== CLASSIFICATION ===
+=== METRICS ===
+
+=== XSTest Results ===
+
+--- Breakdown ---
+# Safe samples: 250
+# Unsafe samples: 200
+
+--- Rates ---
+Safe compliance rate: 56.80%
+Unsafe refusal rate: 99.00%
+
+--- Score ---
+Overall accuracy: 75.56%
+
+--- Correct counts ---
+Correct safe (answered): 142/250
+Correct unsafe (refused): 198/200

@@ -1,0 +1,188 @@
+Creating conda env env_adversariallm
+Waiting for lock /tmp/run_locked_ms25mds at Mon 29 Jun 19:23:10 BST 2026
+(will force acquire the lock in 3 minutes)
+Lock acquired at Mon 29 Jun 19:23:10 BST 2026
+Retrieving notices: ...working... done
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /scratch-ssd/ms25mds/conda_envs/env_adversariallm
+
+  added / updated specs:
+    - pip
+    - python=3.11
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    libexpat-2.8.1             |       h7354ed3_1         124 KB
+    libffi-3.4.8               |       h06d3fd0_3         137 KB
+    pip-26.1.2                 |     pyhc872135_0         1.1 MB
+    wheel-0.47.0               |  py311h06a4308_0          75 KB
+    xorg-xorgproto-2024.1      |       h47b2149_2         550 KB
+    ------------------------------------------------------------
+                                           Total:         2.0 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-52_gnu 
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6 
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2026.5.14-h06a4308_0 
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.44-h9e0c5a2_3 
+  libexpat           pkgs/main/linux-64::libexpat-2.8.1-h7354ed3_1 
+  libffi             pkgs/main/linux-64::libffi-3.4.8-h06d3fd0_3 
+  libgcc             pkgs/main/linux-64::libgcc-15.2.0-h69a1729_8 
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-15.2.0-h166f726_8 
+  libnsl             pkgs/main/linux-64::libnsl-2.0.0-h5eee18b_0 
+  libstdcxx          pkgs/main/linux-64::libstdcxx-15.2.0-h39759b7_8 
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0 
+  libxcb             pkgs/main/linux-64::libxcb-1.17.0-h9b100fa_0 
+  libzlib            pkgs/main/linux-64::libzlib-1.3.2-h47b2149_0 
+  ncurses            pkgs/main/linux-64::ncurses-6.5-h7934f7d_0 
+  openssl            pkgs/main/linux-64::openssl-3.5.7-h1b28b03_0 
+  packaging          pkgs/main/linux-64::packaging-26.0-py311h06a4308_0 
+  pip                pkgs/main/noarch::pip-26.1.2-pyhc872135_0 
+  pthread-stubs      pkgs/main/linux-64::pthread-stubs-0.3-h0ce48e5_1 
+  python             pkgs/main/linux-64::python-3.11.15-h17756b0_1 
+  readline           pkgs/main/linux-64::readline-8.3-hc2a1206_0 
+  setuptools         pkgs/main/linux-64::setuptools-82.0.1-py311h06a4308_0 
+  sqlite             pkgs/main/linux-64::sqlite-3.53.2-h795bf6d_0 
+  tk                 pkgs/main/linux-64::tk-8.6.15-h54e0aa7_0 
+  tzdata             pkgs/main/noarch::tzdata-2026b-he532380_0 
+  wheel              pkgs/main/linux-64::wheel-0.47.0-py311h06a4308_0 
+  xorg-libx11        pkgs/main/linux-64::xorg-libx11-1.8.12-h9b100fa_1 
+  xorg-libxau        pkgs/main/linux-64::xorg-libxau-1.0.12-h9b100fa_0 
+  xorg-libxdmcp      pkgs/main/linux-64::xorg-libxdmcp-1.1.5-h9b100fa_0 
+  xorg-xorgproto     pkgs/main/linux-64::xorg-xorgproto-2024.1-h47b2149_2 
+  xz                 pkgs/main/linux-64::xz-5.8.2-h448239c_0 
+  zlib               pkgs/main/linux-64::zlib-1.3.2-h47b2149_0 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate env_adversariallm
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Lock released at Mon 29 Jun 19:23:19 BST 2026
+Installing pixi into env_adversariallm
+Waiting for lock /tmp/run_locked_ms25mds at Mon 29 Jun 19:23:19 BST 2026
+(will force acquire the lock in 3 minutes)
+Lock acquired at Mon 29 Jun 19:23:19 BST 2026
+Channels:
+ - conda-forge
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /scratch-ssd/ms25mds/conda_envs/env_adversariallm
+
+  added / updated specs:
+    - pixi
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2026.6.17  |       hbd8a1cb_0         126 KB  conda-forge
+    openssl-3.6.3              |       h35e630c_0         3.0 MB  conda-forge
+    pixi-0.71.2                |       ha759004_0        31.2 MB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        34.3 MB
+
+The following NEW packages will be INSTALLED:
+
+  pixi               conda-forge/linux-64::pixi-0.71.2-ha759004_0 
+
+The following packages will be UPDATED:
+
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2~ --> conda-forge/noarch::ca-certificates-2026.6.17-hbd8a1cb_0 
+  openssl               pkgs/main::openssl-3.5.7-h1b28b03_0 --> conda-forge::openssl-3.6.3-h35e630c_0 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Lock released at Mon 29 Jun 19:23:49 BST 2026
+Waiting for lock /tmp/run_locked_ms25mds at Mon 29 Jun 19:23:49 BST 2026
+(will force acquire the lock in 3 minutes)
+Lock acquired at Mon 29 Jun 19:23:49 BST 2026
+Lock released at Mon 29 Jun 19:23:55 BST 2026
+[2026-06-29 19:25:38,431][root][INFO] - -------------------
+[2026-06-29 19:25:38,432][root][INFO] - Commencing run at `2026-06-29/19-25-38`
+[2026-06-29 19:25:38,432][root][INFO] - -------------------
+[2026-06-29 19:25:41,179][root][INFO] - Target: HuggingFaceH4/zephyr-7b-beta
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: Zephyr
+developer_name: Hugging Face
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ''
+
+[2026-06-29 19:25:47,601][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-06-29 19:26:03,403][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-06-29 19:26:04,691][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+
+Running function b=102400:   0%|          | 0/102400 [00:00<?, ?it/s]Running function b=51200:   0%|          | 0/102400 [00:04<?, ?it/s] Running function b=25600:   0%|          | 0/102400 [00:06<?, ?it/s]Running function b=12800:   0%|          | 0/102400 [00:09<?, ?it/s]Running function b=6400:   0%|          | 0/102400 [00:13<?, ?it/s] Running function b=6400:   6%|▋         | 6400/102400 [00:34<08:42, 183.74it/s]Running function b=6400:   6%|▋         | 6400/102400 [00:46<08:42, 183.74it/s]Running function b=3200:   6%|▋         | 6400/102400 [00:53<08:42, 183.74it/s]Running function b=3200:   9%|▉         | 9600/102400 [00:57<09:33, 161.94it/s]Running function b=3200:  12%|█▎        | 12800/102400 [01:07<07:26, 200.67it/s]Running function b=3200:  16%|█▌        | 16000/102400 [01:17<06:13, 231.12it/s]Running function b=3200:  19%|█▉        | 19200/102400 [01:27<05:30, 251.96it/s]Running function b=3200:  19%|█▉        | 19200/102400 [01:38<05:30, 251.96it/s]Running function b=3200:  22%|██▏       | 22400/102400 [01:40<05:16, 252.67it/s]Running function b=3200:  22%|██▏       | 22400/102400 [01:56<05:16, 252.67it/s]Running function b=3200:  25%|██▌       | 25600/102400 [02:02<06:16, 203.91it/s]Running function b=1600:  25%|██▌       | 25600/102400 [02:08<06:16, 203.91it/s]Running function b=1600:  25%|██▌       | 25600/102400 [02:16<06:16, 203.91it/s]Running function b=1600:  27%|██▋       | 27200/102400 [02:19<07:28, 167.56it/s]Running function b=1600:  27%|██▋       | 27200/102400 [02:30<07:28, 167.56it/s]Running function b=1600:  28%|██▊       | 28800/102400 [02:32<07:45, 157.95it/s]Running function b=1600:  30%|██▉       | 30400/102400 [02:44<07:58, 150.36it/s]Running function b=1600:  30%|██▉       | 30400/102400 [02:56<07:58, 150.36it/s]Running function b=1600:  31%|███▏      | 32000/102400 [02:57<08:15, 142.13it/s]Running function b=1600:  31%|███▏      | 32000/102400 [03:08<08:15, 142.13it/s]Running function b=1600:  33%|███▎      | 33600/102400 [03:10<08:23, 136.54it/s]Running function b=1600:  34%|███▍      | 35200/102400 [03:23<08:26, 132.69it/s]Running function b=1600:  36%|███▌      | 36800/102400 [03:36<08:25, 129.89it/s]Running function b=1600:  36%|███▌      | 36800/102400 [03:46<08:25, 129.89it/s]Running function b=1600:  38%|███▊      | 38400/102400 [03:49<08:23, 127.15it/s]Running function b=1600:  38%|███▊      | 38400/102400 [04:00<08:23, 127.15it/s]Running function b=1600:  39%|███▉      | 40000/102400 [04:03<08:19, 124.81it/s]Running function b=1600:  41%|████      | 41600/102400 [04:16<08:11, 123.60it/s]Running function b=1600:  41%|████      | 41600/102400 [04:26<08:11, 123.60it/s]Running function b=1600:  42%|████▏     | 43200/102400 [04:37<09:24, 104.90it/s]Running function b=1600:  42%|████▏     | 43200/102400 [04:48<09:24, 104.90it/s]Running function b=1600:  44%|████▍     | 44800/102400 [04:51<08:57, 107.18it/s]Running function b=1600:  45%|████▌     | 46400/102400 [05:05<08:34, 108.81it/s]Running function b=1600:  45%|████▌     | 46400/102400 [05:16<08:34, 108.81it/s]Running function b=1600:  47%|████▋     | 48000/102400 [05:19<08:15, 109.70it/s]Running function b=1600:  47%|████▋     | 48000/102400 [05:30<08:15, 109.70it/s]Running function b=1600:  48%|████▊     | 49600/102400 [05:34<07:58, 110.35it/s]Running function b=1600:  48%|████▊     | 49600/102400 [05:46<07:58, 110.35it/s]Running function b=1600:  50%|█████     | 51200/102400 [05:48<07:43, 110.55it/s]Running function b=1600:  50%|█████     | 51200/102400 [06:00<07:43, 110.55it/s]Running function b=1600:  52%|█████▏    | 52800/102400 [06:02<07:28, 110.69it/s]Running function b=1600:  52%|█████▏    | 52800/102400 [06:16<07:28, 110.69it/s]Running function b=1600:  53%|█████▎    | 54400/102400 [06:17<07:09, 111.64it/s]Running function b=1600:  53%|█████▎    | 54400/102400 [06:28<07:09, 111.64it/s]Running function b=1600:  55%|█████▍    | 56000/102400 [06:31<06:57, 111.18it/s]Running function b=1600:  56%|█████▋    | 57600/102400 [06:46<06:44, 110.77it/s]Running function b=1600:  56%|█████▋    | 57600/102400 [06:56<06:44, 110.77it/s]Running function b=1600:  58%|█████▊    | 59200/102400 [07:00<06:31, 110.26it/s]Running function b=1600:  59%|█████▉    | 60800/102400 [07:15<06:15, 110.79it/s]Running function b=1600:  59%|█████▉    | 60800/102400 [07:26<06:15, 110.79it/s]Running function b=1600:  61%|██████    | 62400/102400 [07:29<06:02, 110.29it/s]Running function b=1600:  61%|██████    | 62400/102400 [07:40<06:02, 110.29it/s]Running function b=1600:  62%|██████▎   | 64000/102400 [07:45<05:55, 107.98it/s]Running function b=1600:  62%|██████▎   | 64000/102400 [07:56<05:55, 107.98it/s]Running function b=1600:  64%|██████▍   | 65600/102400 [08:00<05:40, 108.07it/s]Running function b=1600:  64%|██████▍   | 65600/102400 [08:10<05:40, 108.07it/s]Running function b=1600:  66%|██████▌   | 67200/102400 [08:14<05:23, 108.90it/s]Running function b=1600:  66%|██████▌   | 67200/102400 [08:26<05:23, 108.90it/s]Running function b=1600:  67%|██████▋   | 68800/102400 [08:29<05:10, 108.30it/s]Running function b=1600:  67%|██████▋   | 68800/102400 [08:40<05:10, 108.30it/s]Running function b=1600:  69%|██████▉   | 70400/102400 [08:44<04:56, 107.93it/s]Running function b=1600:  69%|██████▉   | 70400/102400 [08:56<04:56, 107.93it/s]Running function b=1600:  70%|███████   | 72000/102400 [08:59<04:43, 107.42it/s]Running function b=1600:  70%|███████   | 72000/102400 [09:10<04:43, 107.42it/s]Running function b=1600:  72%|███████▏  | 73600/102400 [09:14<04:29, 107.02it/s]Running function b=1600:  72%|███████▏  | 73600/102400 [09:26<04:29, 107.02it/s]Running function b=1600:  73%|███████▎  | 75200/102400 [09:29<04:15, 106.42it/s]Running function b=1600:  73%|███████▎  | 75200/102400 [09:40<04:15, 106.42it/s]Running function b=1600:  75%|███████▌  | 76800/102400 [09:44<04:01, 106.10it/s]Running function b=1600:  75%|███████▌  | 76800/102400 [09:56<04:01, 106.10it/s]Running function b=1600:  77%|███████▋  | 78400/102400 [10:00<03:47, 105.68it/s]Running function b=1600:  77%|███████▋  | 78400/102400 [10:10<03:47, 105.68it/s]Running function b=1600:  78%|███████▊  | 80000/102400 [10:15<03:32, 105.35it/s]Running function b=1600:  78%|███████▊  | 80000/102400 [10:26<03:32, 105.35it/s]Running function b=1600:  80%|███████▉  | 81600/102400 [10:30<03:18, 104.92it/s]Running function b=1600:  80%|███████▉  | 81600/102400 [10:41<03:18, 104.92it/s]Running function b=1600:  81%|████████▏ | 83200/102400 [10:46<03:03, 104.58it/s]Running function b=1600:  81%|████████▏ | 83200/102400 [10:57<03:03, 104.58it/s]Running function b=1600:  83%|████████▎ | 84800/102400 [11:02<02:49, 103.79it/s]Running function b=1600:  83%|████████▎ | 84800/102400 [11:17<02:49, 103.79it/s]Running function b=1600:  84%|████████▍ | 86400/102400 [11:17<02:35, 103.05it/s]Running function b=1600:  84%|████████▍ | 86400/102400 [11:28<02:35, 103.05it/s]Running function b=1600:  86%|████████▌ | 88000/102400 [11:33<02:19, 102.95it/s]Running function b=1600:  86%|████████▌ | 88000/102400 [11:47<02:19, 102.95it/s]Running function b=1600:  88%|████████▊ | 89600/102400 [11:49<02:04, 102.73it/s]Running function b=1600:  88%|████████▊ | 89600/102400 [12:01<02:04, 102.73it/s]Running function b=1600:  89%|████████▉ | 91200/102400 [12:04<01:49, 102.23it/s]Running function b=1600:  89%|████████▉ | 91200/102400 [12:17<01:49, 102.23it/s]Running function b=1600:  91%|█████████ | 92800/102400 [12:20<01:34, 101.57it/s]Running function b=1600:  91%|█████████ | 92800/102400 [12:31<01:34, 101.57it/s]Running function b=1600:  92%|█████████▏| 94400/102400 [12:36<01:19, 101.10it/s]Running function b=1600:  92%|█████████▏| 94400/102400 [12:47<01:19, 101.10it/s]Running function b=1600:  94%|█████████▍| 96000/102400 [12:53<01:04, 99.91it/s] Running function b=1600:  94%|█████████▍| 96000/102400 [13:07<01:04, 99.91it/s]Running function b=1600:  95%|█████████▌| 97600/102400 [13:09<00:48, 99.98it/s]Running function b=1600:  95%|█████████▌| 97600/102400 [13:21<00:48, 99.98it/s]Running function b=1600:  97%|█████████▋| 99200/102400 [13:25<00:32, 99.15it/s]Running function b=1600:  97%|█████████▋| 99200/102400 [13:37<00:32, 99.15it/s]Running function b=1600:  98%|█████████▊| 100800/102400 [13:42<00:16, 97.16it/s]Running function b=800:  98%|█████████▊| 100800/102400 [13:45<00:16, 97.16it/s] Running function b=800:  99%|█████████▉| 101600/102400 [13:52<00:08, 95.01it/s]Running function b=800:  99%|█████████▉| 101600/102400 [14:07<00:08, 95.01it/s]Running function b=800: 100%|██████████| 102400/102400 [14:11<00:00, 75.36it/s]Running function b=800: 100%|██████████| 102400/102400 [14:11<00:00, 120.25it/s]
+Running function b=102400:   0%|          | 0/102400 [00:00<?, ?it/s]Running function b=51200:   0%|          | 0/102400 [00:02<?, ?it/s] Running function b=25600:   0%|          | 0/102400 [00:04<?, ?it/s]Running function b=12800:   0%|          | 0/102400 [00:06<?, ?it/s]Running function b=6400:   0%|          | 0/102400 [00:12<?, ?it/s] Running function b=3200:   0%|          | 0/102400 [00:57<?, ?it/s]Running function b=1600:   0%|          | 0/102400 [02:48<?, ?it/s][2026-06-29 19:53:06,983][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:   2%|▏         | 1600/102400 [03:48<3:59:34,  7.01it/s][2026-06-29 19:54:05,628][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:   3%|▎         | 3200/102400 [04:46<2:12:44, 12.45it/s]Running function b=1600:   3%|▎         | 3200/102400 [05:00<2:12:44, 12.45it/s][2026-06-29 19:55:05,279][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:   5%|▍         | 4800/102400 [05:46<1:38:38, 16.49it/s]Running function b=1600:   5%|▍         | 4800/102400 [06:00<1:38:38, 16.49it/s][2026-06-29 19:56:05,325][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:   6%|▋         | 6400/102400 [06:46<1:22:25, 19.41it/s]Running function b=1600:   6%|▋         | 6400/102400 [07:00<1:22:25, 19.41it/s][2026-06-29 19:57:02,394][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:   8%|▊         | 8000/102400 [07:43<1:12:03, 21.83it/s]Running function b=1600:   8%|▊         | 8000/102400 [07:54<1:12:03, 21.83it/s][2026-06-29 19:58:00,021][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:   9%|▉         | 9600/102400 [08:41<1:05:41, 23.54it/s]Running function b=1600:   9%|▉         | 9600/102400 [08:51<1:05:41, 23.54it/s][2026-06-29 19:58:55,964][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:  11%|█         | 11200/102400 [09:37<1:00:49, 24.99it/s]Running function b=1600:  11%|█         | 11200/102400 [09:50<1:00:49, 24.99it/s][2026-06-29 19:59:55,328][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:  12%|█▎        | 12800/102400 [10:36<58:22, 25.58it/s]  Running function b=1600:  12%|█▎        | 12800/102400 [10:50<58:22, 25.58it/s][2026-06-29 20:00:53,601][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:  14%|█▍        | 14400/102400 [11:34<56:07, 26.14it/s]Running function b=1600:  14%|█▍        | 14400/102400 [11:50<56:07, 26.14it/s][2026-06-29 20:01:58,820][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:  16%|█▌        | 16000/102400 [12:40<56:12, 25.62it/s]Running function b=1600:  16%|█▌        | 16000/102400 [12:50<56:12, 25.62it/s][2026-06-29 20:02:53,555][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:  17%|█▋        | 17600/102400 [13:34<53:04, 26.63it/s]Running function b=1600:  17%|█▋        | 17600/102400 [13:50<53:04, 26.63it/s][2026-06-29 20:03:47,904][root][INFO] - Early exit after 126/256 tokens.
+Running function b=1600:  19%|█▉        | 19200/102400 [14:29<50:33, 27.43it/s]Running function b=1600:  19%|█▉        | 19200/102400 [14:40<50:33, 27.43it/s]Running function b=1600:  20%|██        | 20800/102400 [15:31<50:37, 26.87it/s]Running function b=1600:  20%|██        | 20800/102400 [15:41<50:37, 26.87it/s]Running function b=1600:  22%|██▏       | 22400/102400 [16:33<50:18, 26.50it/s]Running function b=1600:  22%|██▏       | 22400/102400 [16:44<50:18, 26.50it/s]Running function b=1600:  23%|██▎       | 24000/102400 [17:53<54:05, 24.16it/s]Running function b=1600:  23%|██▎       | 24000/102400 [18:04<54:05, 24.16it/s]Running function b=1600:  25%|██▌       | 25600/102400 [19:44<1:03:51, 20.04it/s]Running function b=1600:  25%|██▌       | 25600/102400 [20:00<1:03:51, 20.04it/s]Running function b=1600:  27%|██▋       | 27200/102400 [20:59<1:01:23, 20.41it/s]Running function b=1600:  27%|██▋       | 27200/102400 [21:10<1:01:23, 20.41it/s]Running function b=1600:  28%|██▊       | 28800/102400 [22:18<1:00:10, 20.39it/s]Running function b=1600:  28%|██▊       | 28800/102400 [22:30<1:00:10, 20.39it/s]Running function b=1600:  30%|██▉       | 30400/102400 [23:37<58:54, 20.37it/s]  Running function b=1600:  30%|██▉       | 30400/102400 [23:50<58:54, 20.37it/s]Running function b=1600:  31%|███▏      | 32000/102400 [24:47<55:40, 21.08it/s]Running function b=1600:  31%|███▏      | 32000/102400 [25:00<55:40, 21.08it/s]Running function b=1600:  33%|███▎      | 33600/102400 [26:18<57:44, 19.86it/s]Running function b=1600:  33%|███▎      | 33600/102400 [26:30<57:44, 19.86it/s]Running function b=1600:  34%|███▍      | 35200/102400 [27:51<59:04, 18.96it/s]Running function b=1600:  34%|███▍      | 35200/102400 [28:02<59:04, 18.96it/s]Running function b=1600:  36%|███▌      | 36800/102400 [29:15<57:33, 19.00it/s]Running function b=1600:  36%|███▌      | 36800/102400 [29:30<57:33, 19.00it/s]Running function b=1600:  38%|███▊      | 38400/102400 [30:45<57:21, 18.60it/s]Running function b=1600:  38%|███▊      | 38400/102400 [31:00<57:21, 18.60it/s]Running function b=1600:  39%|███▉      | 40000/102400 [32:18<57:06, 18.21it/s]Running function b=1600:  39%|███▉      | 40000/102400 [32:30<57:06, 18.21it/s]Running function b=1600:  41%|████      | 41600/102400 [33:39<54:31, 18.59it/s]Running function b=1600:  41%|████      | 41600/102400 [33:50<54:31, 18.59it/s]Running function b=1600:  42%|████▏     | 43200/102400 [35:10<53:51, 18.32it/s]Running function b=1600:  42%|████▏     | 43200/102400 [35:21<53:51, 18.32it/s]Running function b=1600:  44%|████▍     | 44800/102400 [36:40<52:55, 18.14it/s]Running function b=1600:  44%|████▍     | 44800/102400 [36:51<52:55, 18.14it/s]Running function b=1600:  45%|████▌     | 46400/102400 [38:15<52:43, 17.70it/s]Running function b=1600:  45%|████▌     | 46400/102400 [38:31<52:43, 17.70it/s]Running function b=1600:  47%|████▋     | 48000/102400 [39:47<51:27, 17.62it/s]Running function b=1600:  47%|████▋     | 48000/102400 [40:01<51:27, 17.62it/s]Running function b=1600:  48%|████▊     | 49600/102400 [41:17<49:47, 17.67it/s]Running function b=1600:  48%|████▊     | 49600/102400 [41:31<49:47, 17.67it/s]Running function b=1600:  50%|█████     | 51200/102400 [42:47<48:11, 17.71it/s]Running function b=1600:  50%|█████     | 51200/102400 [43:01<48:11, 17.71it/s]Running function b=1600:  52%|█████▏    | 52800/102400 [44:24<47:41, 17.33it/s]Running function b=1600:  52%|█████▏    | 52800/102400 [44:34<47:41, 17.33it/s]Running function b=1600:  53%|█████▎    | 54400/102400 [46:06<47:34, 16.81it/s]Running function b=1600:  53%|█████▎    | 54400/102400 [46:21<47:34, 16.81it/s]Running function b=1600:  55%|█████▍    | 56000/102400 [47:41<46:02, 16.80it/s]Running function b=1600:  55%|█████▍    | 56000/102400 [47:52<46:02, 16.80it/s]Running function b=1600:  56%|█████▋    | 57600/102400 [49:13<43:57, 16.99it/s]Running function b=1600:  56%|█████▋    | 57600/102400 [49:24<43:57, 16.99it/s]Running function b=1600:  58%|█████▊    | 59200/102400 [50:47<42:23, 16.99it/s]Running function b=1600:  58%|█████▊    | 59200/102400 [51:01<42:23, 16.99it/s]Running function b=1600:  59%|█████▉    | 60800/102400 [52:36<42:44, 16.22it/s]Running function b=1600:  59%|█████▉    | 60800/102400 [52:51<42:44, 16.22it/s]Running function b=1600:  61%|██████    | 62400/102400 [54:13<40:50, 16.32it/s]Running function b=1600:  61%|██████    | 62400/102400 [54:24<40:50, 16.32it/s]Running function b=1600:  62%|██████▎   | 64000/102400 [55:47<38:49, 16.49it/s]Running function b=1600:  62%|██████▎   | 64000/102400 [56:01<38:49, 16.49it/s]Running function b=1600:  64%|██████▍   | 65600/102400 [57:23<37:02, 16.56it/s]Running function b=1600:  64%|██████▍   | 65600/102400 [57:34<37:02, 16.56it/s]Running function b=1600:  66%|██████▌   | 67200/102400 [59:10<36:32, 16.06it/s]Running function b=1600:  66%|██████▌   | 67200/102400 [59:21<36:32, 16.06it/s]Running function b=1600:  67%|██████▋   | 68800/102400 [1:00:55<35:28, 15.79it/s]Running function b=1600:  67%|██████▋   | 68800/102400 [1:01:11<35:28, 15.79it/s]Running function b=1600:  69%|██████▉   | 70400/102400 [1:02:30<33:06, 16.11it/s]Running function b=1600:  69%|██████▉   | 70400/102400 [1:02:41<33:06, 16.11it/s]Running function b=1600:  70%|███████   | 72000/102400 [1:04:05<31:04, 16.30it/s]Running function b=1600:  70%|███████   | 72000/102400 [1:04:21<31:04, 16.30it/s]Running function b=1600:  72%|███████▏  | 73600/102400 [1:05:52<30:11, 15.90it/s]Running function b=1600:  72%|███████▏  | 73600/102400 [1:06:02<30:11, 15.90it/s]Running function b=1600:  73%|███████▎  | 75200/102400 [1:07:37<28:55, 15.67it/s]Running function b=1600:  73%|███████▎  | 75200/102400 [1:07:51<28:55, 15.67it/s]Running function b=1600:  75%|███████▌  | 76800/102400 [1:09:14<26:51, 15.89it/s]Running function b=1600:  75%|███████▌  | 76800/102400 [1:09:31<26:51, 15.89it/s]Running function b=1600:  77%|███████▋  | 78400/102400 [1:10:59<25:25, 15.73it/s]Running function b=1600:  77%|███████▋  | 78400/102400 [1:11:11<25:25, 15.73it/s]Running function b=1600:  78%|███████▊  | 80000/102400 [1:12:50<24:23, 15.31it/s]Running function b=1600:  78%|███████▊  | 80000/102400 [1:13:01<24:23, 15.31it/s]Running function b=1600:  80%|███████▉  | 81600/102400 [1:14:32<22:31, 15.39it/s]Running function b=1600:  80%|███████▉  | 81600/102400 [1:14:44<22:31, 15.39it/s]Running function b=1600:  81%|████████▏ | 83200/102400 [1:16:17<20:49, 15.37it/s]Running function b=1600:  81%|████████▏ | 83200/102400 [1:16:31<20:49, 15.37it/s]Running function b=1600:  83%|████████▎ | 84800/102400 [1:18:11<19:39, 14.93it/s]Running function b=1600:  83%|████████▎ | 84800/102400 [1:18:22<19:39, 14.93it/s]Running function b=1600:  84%|████████▍ | 86400/102400 [1:19:57<17:47, 14.99it/s]Running function b=1600:  84%|████████▍ | 86400/102400 [1:20:11<17:47, 14.99it/s]Running function b=1600:  86%|████████▌ | 88000/102400 [1:21:50<16:17, 14.73it/s]Running function b=1600:  86%|████████▌ | 88000/102400 [1:22:01<16:17, 14.73it/s]Running function b=1600:  88%|████████▊ | 89600/102400 [1:23:37<14:26, 14.78it/s]Running function b=1600:  88%|████████▊ | 89600/102400 [1:23:51<14:26, 14.78it/s]Running function b=1600:  89%|████████▉ | 91200/102400 [1:25:30<12:47, 14.59it/s]Running function b=1600:  89%|████████▉ | 91200/102400 [1:25:41<12:47, 14.59it/s]Running function b=1600:  91%|█████████ | 92800/102400 [1:27:20<10:58, 14.57it/s]Running function b=1600:  91%|█████████ | 92800/102400 [1:27:31<10:58, 14.57it/s]Running function b=1600:  92%|█████████▏| 94400/102400 [1:29:10<09:09, 14.56it/s]Running function b=1600:  92%|█████████▏| 94400/102400 [1:29:21<09:09, 14.56it/s]Running function b=1600:  94%|█████████▍| 96000/102400 [1:31:06<07:26, 14.32it/s]Running function b=1600:  94%|█████████▍| 96000/102400 [1:31:21<07:26, 14.32it/s]Running function b=1600:  95%|█████████▌| 97600/102400 [1:33:04<05:40, 14.09it/s]Running function b=1600:  95%|█████████▌| 97600/102400 [1:33:15<05:40, 14.09it/s]Running function b=1600:  97%|█████████▋| 99200/102400 [1:35:04<03:50, 13.86it/s]Running function b=1600:  97%|█████████▋| 99200/102400 [1:35:15<03:50, 13.86it/s]Running function b=1600:  98%|█████████▊| 100800/102400 [1:37:09<01:58, 13.52it/s]Running function b=1600:  98%|█████████▊| 100800/102400 [1:37:21<01:58, 13.52it/s]Increasing batch size to b=3200:  98%|█████████▊| 100800/102400 [1:39:17<01:58, 13.52it/s]Increasing batch size to b=3200: : 104000it [1:39:17, 17.18it/s]                          Increasing batch size to b=3200: : 104000it [1:39:17, 17.46it/s]
+[2026-06-29 21:28:40,526][root][INFO] - Inpainting attack run completed. Total Time: 7351.48s, Generation Time: 6142.10s, Loss Calc Time: 855.56s
+[2026-06-29 21:30:05,763][root][INFO] - Attack logged to /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-06-29/19-25-38/0/run.json
+[2026-06-29 21:30:06,609][root][INFO] - -------------------
+[2026-06-29 21:30:06,615][root][INFO] - Commencing judge run
+[2026-06-29 21:30:06,619][root][INFO] - -------------------
+[2026-06-29 21:30:06,620][root][INFO] - {'classifier': 'strong_reject', 'suffixes': ['19-25-38'], 'filter_by': None}
+[2026-06-29 21:30:06,624][root][INFO] - No unjudged paths found

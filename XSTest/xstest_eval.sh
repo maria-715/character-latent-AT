@@ -56,6 +56,8 @@ fi
 
 # ======================================================
 
+echo "Running command: $0 $*"
+
 # Defaults
 MODEL_PATH="HuggingFaceH4/zephyr-7b-beta"
 ADAPTER=""
@@ -119,6 +121,7 @@ export HF_HOME=/scratch-ssd/$USER/.cache/huggingface
 mkdir -p "$HF_HOME"
 
 echo "=== GENERATION ==="
+echo "Running command: python generate_xstest_outputs.py --model_path $MODEL_PATH $ADAPTER_ARG --output $OUTPUT --seed $SEED"
 python generate_xstest_outputs.py \
     --model_path "$MODEL_PATH" \
     $ADAPTER_ARG \
@@ -126,16 +129,19 @@ python generate_xstest_outputs.py \
     --seed "$SEED"
 
 echo "=== JSONL → CSV ==="
+echo "Running command: python jsonl_to_csv.py --input $OUTPUT --output $CSV_OUTPUT"
 python jsonl_to_csv.py \
     --input "$OUTPUT" \
     --output "$CSV_OUTPUT"
 
 echo "=== CLASSIFICATION ==="
+echo "Running command: python evaluation/classify_completions_strmatch.py --input $CSV_OUTPUT --output $CLASSIFIED_OUTPUT $STRICT_ARG"
 python evaluation/classify_completions_strmatch.py \
     --input "$CSV_OUTPUT" \
     --output "$CLASSIFIED_OUTPUT" \
     $STRICT_ARG
 
 echo "=== METRICS ==="
+echo "Running command: python compute_metrics.py --input $CLASSIFIED_OUTPUT"
 python compute_metrics.py \
     --input "$CLASSIFIED_OUTPUT"

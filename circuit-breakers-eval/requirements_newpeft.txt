@@ -1,0 +1,32 @@
+# From CAT
+
+# accelerate==0.27.2 COMMENTED because peft==0.20.0 needs accelerate.utils.memory.clear_device_cache, added later
+accelerate>=0.34.0
+datasets==2.17.1
+evaluate==0.4.1
+fastchat==0.1.0
+fschat==0.2.36
+# huggingface_hub==0.21.3 COMMENTED because conflicts with the new transformers version
+# huggingface_hub==0.23.2 COMMENTED because peft==0.20.0 requires huggingface_hub>=0.25.0
+huggingface_hub>=0.25.0
+hydra-core==1.3.2
+nltk==3.8.1
+numpy==1.26.4
+omegaconf==2.3.0
+pandas==2.2.2
+peft==0.20.0
+tinydb==4.8.0
+# torch #==2.1.2 COMMENTED because doesn't exist
+# FOR REACHABILITY BC TOO RECENT VERSION INSTALLED torch #==2.1.2 COMMENTED because doesn't exist
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.3.0
+tqdm==4.66.2
+# transformers==4.41.3 COMMENTED because doesn't exist/can't find it
+transformers>=4.42.0,<4.46 # CHANGED w.r.t. CAT's adaptation
+trl==0.8.3
+
+# From harmbench
+vllm==0.5.1
+bitsandbytes
+
+sentencepiece

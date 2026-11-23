@@ -14,6 +14,18 @@ import model_utils
 import eval_config
 
 import random
+import numpy as np
+import torch
+from transformers import set_seed as hf_set_seed
+
+
+def seed_everything(seed: int) -> None:
+    logging.info(f"Seeding everything with seed {seed}")
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    hf_set_seed(seed)
 
 
 @dataclass
@@ -64,7 +76,8 @@ class MyTrainingConfig:
     with_kl_loss: bool = False
     kl_constant: float = 0.5
     is_static_training: bool = False
-    
+    seed: int = 42
+
 
 
 
@@ -184,6 +197,8 @@ def releaseLock(locked_file_descriptor):
 
 @hydra.main(version_base=None, config_path="../config", config_name="config")
 def main(cfg: GlobalConfig) -> None:
+    seed_everything(cfg.training.seed)
+
     if cfg.random_seed_for_random_library is not None:
         random.seed(cfg.random_seed_for_random_library)
 
@@ -195,11 +210,17 @@ def main(cfg: GlobalConfig) -> None:
     else:
         cfg.model_name = cfg.path.model_name
     hydra_dir = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
+
+    # cfg.path.logging_path as passed from the CLI (train_MixAT.sh's --logging_path)
+    # is this run's unique root; experiments_db must live under it too, or
+    # concurrent runs collide on the same tracking JSON/lockfile.
+    root_dir = cfg.path.logging_path
     cfg.path.logging_path = hydra_dir
     if hydra.core.hydra_config.HydraConfig.get().mode == RunMode.MULTIRUN:
         cfg.path.checkpoint_path = cfg.path.checkpoint_path + "/" + hydra_dir.strip().split("/")[-1]
     else:
         cfg.path.checkpoint_path = cfg.path.logging_path
+    cfg.path.experiments_path = os.path.join(root_dir, "experiments_db/")
 
     logging.info(f"Running experiment: {cfg.experiment}")
     logging.info(f"Results will be saved to {cfg.path.logging_path}")

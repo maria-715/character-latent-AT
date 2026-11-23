@@ -1,0 +1,49 @@
+python3 - <<'PY'
+import json
+from pathlib import Path
+from statistics import mean, median
+
+FILE = Path("outputs/2026-07-03/17-28-09/0/run.json")
+
+data = json.loads(FILE.read_text())
+
+# Collect all p_harmful values across all completions
+all_scores = []
+best_scores = []
+
+for run in data["runs"]:
+    run_scores = []
+    for step in run["steps"]:
+        scores = step["scores"]["strong_reject"]["p_harmful"]
+        all_scores.extend(scores)
+        run_scores.extend(scores)
+    best_scores.append(max(run_scores))
+
+all_scores = sorted(all_scores)
+best_scores = sorted(best_scores)
+
+def percentile(values, p):
+    idx = int((len(values) - 1) * p)
+    return values[idx]
+
+print(f"Number of completions : {len(all_scores)}")
+print(f"Mean p_harmful        : {mean(all_scores):.6f}")
+print(f"Median p_harmful      : {median(all_scores):.6f}")
+print(f"Min                   : {all_scores[0]:.6f}")
+print(f"25th percentile       : {percentile(all_scores, 0.25):.6f}")
+print(f"75th percentile       : {percentile(all_scores, 0.75):.6f}")
+print(f"95th percentile       : {percentile(all_scores, 0.95):.6f}")
+print(f"99th percentile       : {percentile(all_scores, 0.99):.6f}")
+print(f"Max                   : {all_scores[-1]:.6f}")
+
+print()
+print(f"Number of runs         : {len(best_scores)}")
+print(f"Mean best p_harmful    : {mean(best_scores):.6f}")
+print(f"Median best p_harmful  : {median(best_scores):.6f}")
+print(f"Min best               : {best_scores[0]:.6f}")
+print(f"25th percentile best   : {percentile(best_scores, 0.25):.6f}")
+print(f"75th percentile best   : {percentile(best_scores, 0.75):.6f}")
+print(f"95th percentile best   : {percentile(best_scores, 0.95):.6f}")
+print(f"99th percentile best   : {percentile(best_scores, 0.99):.6f}")
+print(f"Max best               : {best_scores[-1]:.6f}")
+PY

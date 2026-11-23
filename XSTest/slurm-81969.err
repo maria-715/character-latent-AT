@@ -1,0 +1,27 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:31,  9.32it/s]Loading weights:   2%|▏         | 6/291 [00:00<00:08, 32.11it/s]Loading weights:   5%|▌         | 15/291 [00:00<00:05, 52.17it/s]Loading weights:   8%|▊         | 24/291 [00:00<00:04, 60.11it/s]Loading weights:  11%|█▏        | 33/291 [00:00<00:04, 64.37it/s]Loading weights:  14%|█▍        | 42/291 [00:00<00:03, 67.06it/s]Loading weights:  18%|█▊        | 51/291 [00:00<00:03, 68.58it/s]Loading weights:  21%|██        | 60/291 [00:00<00:03, 69.91it/s]Loading weights:  24%|██▎       | 69/291 [00:01<00:03, 70.72it/s]Loading weights:  27%|██▋       | 78/291 [00:01<00:03, 70.81it/s]Loading weights:  30%|██▉       | 87/291 [00:01<00:02, 71.38it/s]Loading weights:  33%|███▎      | 96/291 [00:01<00:02, 71.19it/s]Loading weights:  36%|███▌      | 105/291 [00:01<00:02, 71.04it/s]Loading weights:  39%|███▉      | 114/291 [00:01<00:02, 71.48it/s]Loading weights:  42%|████▏     | 123/291 [00:01<00:02, 71.83it/s]Loading weights:  45%|████▌     | 132/291 [00:01<00:02, 71.90it/s]Loading weights:  48%|████▊     | 141/291 [00:02<00:02, 71.25it/s]Loading weights:  52%|█████▏    | 150/291 [00:02<00:01, 71.61it/s]Loading weights:  55%|█████▍    | 159/291 [00:02<00:01, 71.15it/s]Loading weights:  58%|█████▊    | 168/291 [00:02<00:01, 70.91it/s]Loading weights:  61%|██████    | 177/291 [00:02<00:01, 70.81it/s]Loading weights:  64%|██████▍   | 186/291 [00:02<00:01, 70.34it/s]Loading weights:  67%|██████▋   | 195/291 [00:02<00:01, 70.23it/s]Loading weights:  70%|███████   | 204/291 [00:02<00:01, 70.70it/s]Loading weights:  73%|███████▎  | 213/291 [00:03<00:01, 70.93it/s]Loading weights:  76%|███████▋  | 222/291 [00:03<00:00, 70.50it/s]Loading weights:  79%|███████▉  | 231/291 [00:03<00:00, 70.95it/s]Loading weights:  82%|████████▏ | 240/291 [00:03<00:00, 70.76it/s]Loading weights:  86%|████████▌ | 249/291 [00:03<00:00, 71.45it/s]Loading weights:  89%|████████▊ | 258/291 [00:03<00:00, 71.22it/s]Loading weights:  92%|█████████▏| 267/291 [00:03<00:00, 71.31it/s]Loading weights:  95%|█████████▍| 276/291 [00:03<00:00, 71.27it/s]Loading weights:  98%|█████████▊| 285/291 [00:04<00:00, 71.72it/s]Loading weights: 100%|██████████| 291/291 [00:04<00:00, 70.26it/s]
+Traceback (most recent call last):
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/peft/config.py", line 197, in _get_peft_type
+    config_file = hf_hub_download(
+                  ^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+TypeError: hf_hub_download() got an unexpected keyword argument 'use_auth_token'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/generate_xstest_outputs.py", line 135, in <module>
+    main(args)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/generate_xstest_outputs.py", line 85, in main
+    model = load_checkpoint(model, {"load_checkpoint_path": args.adapter})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/src/model_utils.py", line 51, in load_checkpoint
+    model = PeftModel.from_pretrained(model, checkpoint_path, is_trainable=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/peft/peft_model.py", line 325, in from_pretrained
+    PeftConfig._get_peft_type(
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/peft/config.py", line 203, in _get_peft_type
+    raise ValueError(f"Can't find '{CONFIG_NAME}' at '{model_id}'")
+ValueError: Can't find 'adapter_config.json' at 'ContinuousAT/Zephyr-CAT'

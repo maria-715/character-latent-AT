@@ -1,0 +1,43 @@
+Conda env env_XSTest already exists
+=== GENERATION ===
+Model path: meta-llama/Meta-Llama-3-8B-Instruct
+Adapter: ../experiments/CAT_llama3b_02_relativelr_123/final_model
+Output: results/xstest_CAT_llama3b_02_relativelr_123_STRICTER.jsonl
+Batch size: 32
+Seed: 0
+vocab_size: 128256
+embed_size: 128256
+==================================================
+TOKENIZER DEBUG
+eos_token: '<|eot_id|>'
+eos_token_id: 128009
+pad_token: '<|reserved_special_token_0|>'
+pad_token_id: 128002
+padding_side: left
+==================================================
+[GPU] allocated: 15.28 GB | reserved: 15.95 GB
+[GPU] 0, 16833, 81920
+[GPU] allocated: 15.28 GB | reserved: 18.34 GB
+[GPU] 49, 19297, 81920
+[GPU] allocated: 15.28 GB | reserved: 18.48 GB
+[GPU] 77, 19441, 81920
+=== JSONL → CSV ===
+=== CLASSIFICATION ===
+=== METRICS ===
+
+=== XSTest Results ===
+
+--- Breakdown ---
+# Safe samples: 250
+# Unsafe samples: 200
+
+--- Rates ---
+Safe compliance rate: 54.00%
+Unsafe refusal rate: 99.00%
+
+--- Score ---
+Overall accuracy: 74.00%
+
+--- Correct counts ---
+Correct safe (answered): 135/250
+Correct unsafe (refused): 198/200

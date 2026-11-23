@@ -1,0 +1,37 @@
+Conda env env_adversariallm already exists
+[2026-08-01 11:04:24,365][root][INFO] - -------------------
+[2026-08-01 11:04:24,365][root][INFO] - Commencing run at `2026-08-01/11-04-24`
+[2026-08-01 11:04:24,365][root][INFO] - -------------------
+[2026-08-01 11:04:26,210][root][INFO] - Target: CAT_zephyr_eps02_42_relativelr_utility_NEW
+id: HuggingFaceH4/zephyr-7b-beta
+tokenizer_id: HuggingFaceH4/zephyr-7b-beta
+short_name: CAT_zephyr_eps02_42_relativelr_utility_NEW
+developer_name: ContinuousAT
+attn_implementation: null
+compile: false
+dtype: bfloat16
+chat_template: zephyr
+trust_remote_code: true
+adapter_path: ../experiments/CAT_zephyr_eps02_42_relativelr_utility_NEW/final_model
+
+[2026-08-01 11:04:31,977][accelerate.utils.modeling][INFO] - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+[2026-08-01 11:05:02,150][root][INFO] - Dataset: jbb_behaviors
+name: jbb_behaviors
+seed: 0
+idx: null
+shuffle: true
+
+[2026-08-01 11:05:03,396][root][INFO] - Attack: inpainting
+name: inpainting
+type: discrete
+version: 0.0.2
+generation_config:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 256
+  num_return_sequences: 1
+seed: 0
+custom_data_path: null
+num_samples_per_behavior: 1024
+

@@ -5,6 +5,11 @@ import argparse
 
 def strmatch_label(completion, strict=False):
 
+    if pd.isna(completion):
+        completion = ""
+    else:
+        completion = str(completion)
+
     completion = completion.lower().strip()
 
     if strict:

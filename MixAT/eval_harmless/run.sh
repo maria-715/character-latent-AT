@@ -5,7 +5,8 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat13
+#SBATCH --nodelist=oat[11-18]
+#SBATCH --nodes=1
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -48,6 +49,7 @@ fi
 
 # ======================================================
 
+echo "Running command: $0 $*"
 
 if [ $# -ne 4 ]; then
     echo "Usage: $0  <model> <peft>(None if no) <model_name> <seed>"
@@ -64,5 +66,6 @@ else
 fi
 export HF_HOME=/scratch-ssd/$USER/.cache/huggingface
 mkdir -p "$HF_HOME"
+echo "Running command: python evaluation.py $1 $2 $3 None True False $4"
 python evaluation.py $1 $2 $3 None True False $4
 

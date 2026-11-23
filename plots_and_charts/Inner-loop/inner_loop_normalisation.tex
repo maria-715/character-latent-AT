@@ -1,0 +1,172 @@
+\begin{figure}[tbp]
+    \centering
+
+    \begin{tikzpicture}[
+        >=Latex,
+        font=\small,
+        update/.style={
+            -{Latex[length=2.5mm]},
+            very thick
+        }
+    ]
+
+    % ================================================================
+    % TOP: geometric schematic
+    % ================================================================
+
+    \coordinate (x) at (0,0);
+    \def\R{1.7}
+
+    % L2 ball
+    \draw[thick] (x) circle (\R);
+
+    % Starting point
+    \fill (x) circle (2pt);
+    \node[below left=2pt] at (x) {$x$};
+
+
+    % ----------------------------------------------------------------
+    % Radius epsilon
+    % ----------------------------------------------------------------
+    \draw[
+        {Latex[length=1.7mm]}-{Latex[length=1.7mm]}
+    ]
+        (x) -- ++(0,-\R)
+        node[midway, left=4pt] {$\epsilon$};
+
+    \node[below=5pt] at (0,-\R)
+        {$L_2$ ball};
+
+
+    % ----------------------------------------------------------------
+    % Normalised update
+    %
+    % Deliberately exaggerated so that it remains visible.
+    % ----------------------------------------------------------------
+    \draw[update]
+        (x) -- ++(0.85,0.85)
+        coordinate (normalend);
+
+    % Put the label ABOVE the endpoint rather than on the arrow.
+    \node[
+        above=5pt of normalend,
+        align=center
+    ] {
+        \textbf{normalised}\\[-1pt]
+        $\|u\|_2=0.1\epsilon$
+    };
+
+
+    % ----------------------------------------------------------------
+    % Released update
+    % ----------------------------------------------------------------
+    \draw[update]
+        (x) -- ++(4.5,0)
+        coordinate (releaseend);
+
+    % Put this label well above the horizontal arrow.
+    \node[
+        above=6pt of releaseend,
+        anchor=south east,
+        align=center
+    ] {
+        \textbf{released}\\[-1pt]
+        $\|u\|_2=6.4\epsilon$
+    };
+
+    % Not-to-scale note BELOW the long arrow.
+    \node[
+        below=6pt of releaseend,
+        anchor=north east,
+        font=\scriptsize,
+        text=gray
+    ] {
+        arrow lengths not to scale
+    };
+
+
+    % ================================================================
+    % BOTTOM: algebra
+    %
+    % Crucially, this is BELOW the entire geometric diagram.
+    % Nothing is competing for space around the circle.
+    % ================================================================
+
+    \coordinate (eqtop) at (2.25,-2.65);
+
+
+    % ----------------------------------------------------------------
+    % Normalised equation
+    % ----------------------------------------------------------------
+    \node[
+        anchor=north east,
+        align=center,
+        text width=5.2cm
+    ] (normalbox) at ($(eqtop)+(-0.35,0)$) {
+        \textbf{Dimension-normalised}\\[5pt]
+        $\displaystyle
+        \eta=\frac{\lambda\epsilon}{\sqrt d}
+        $\\[5pt]
+        $\displaystyle
+        \|u\|_2
+        =\eta\sqrt d
+        =\lambda\epsilon
+        =0.1\epsilon
+        $
+    };
+
+
+    % ----------------------------------------------------------------
+    % Released equation
+    % ----------------------------------------------------------------
+    \node[
+        anchor=north west,
+        align=center,
+        text width=5.2cm
+    ] (releasebox) at ($(eqtop)+(0.35,0)$) {
+        \textbf{Released}\\[5pt]
+        $\displaystyle
+        \eta=\lambda\epsilon
+        $\\[5pt]
+        $\displaystyle
+        \|u\|_2
+        =\eta\sqrt d
+        =\lambda\epsilon\sqrt d
+        =6.4\epsilon
+        $
+    };
+
+
+    % ----------------------------------------------------------------
+    % 64x punchline
+    %
+    % Positioned BELOW both derivations, so it cannot overlap either.
+    % ----------------------------------------------------------------
+    \node[
+        draw,
+        rounded corners=2pt,
+        thick,
+        inner xsep=12pt,
+        inner ysep=6pt,
+        below=9mm of normalbox.south east,
+        anchor=north,
+        align=center
+    ] {
+        $\sqrt d=\sqrt{4096}=64$
+        \qquad $\Longrightarrow$ \qquad
+        \textbf{$64\times$ larger update}
+    };
+
+    \end{tikzpicture}
+
+    \caption{
+        Effect of step-size normalisation on the unprojected update.
+        With $\lambda=0.1$ and $d=4096$, dimension normalisation gives
+        an update norm of $\lambda\epsilon=0.1\epsilon$.
+        The released step size omits the $1/\sqrt d$ factor, increasing
+        the unprojected update norm by $\sqrt d=64$ to
+        $\lambda\epsilon\sqrt d=6.4\epsilon$.
+        Arrow lengths are not to scale.
+    }
+    \label{fig:step-size-schematic}
+\end{figure}

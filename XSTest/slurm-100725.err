@@ -1,0 +1,78 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:02<09:49,  2.03s/it]Loading weights:   1%|          | 2/291 [00:02<04:44,  1.01it/s]Loading weights:  11%|█         | 31/291 [00:02<00:12, 20.82it/s]Loading weights:  14%|█▎        | 40/291 [00:02<00:11, 22.65it/s]Loading weights:  15%|█▌        | 45/291 [00:03<00:09, 24.61it/s]Loading weights:  17%|█▋        | 50/291 [00:03<00:09, 24.64it/s]Loading weights:  20%|█▉        | 58/291 [00:03<00:08, 25.93it/s]Loading weights:  23%|██▎       | 67/291 [00:03<00:08, 27.01it/s]Loading weights:  24%|██▍       | 71/291 [00:03<00:08, 26.22it/s]Loading weights:  26%|██▌       | 76/291 [00:04<00:07, 27.28it/s]Loading weights:  29%|██▉       | 85/291 [00:04<00:07, 26.39it/s]Loading weights:  32%|███▏      | 94/291 [00:04<00:06, 30.54it/s]Loading weights:  34%|███▎      | 98/291 [00:04<00:06, 27.83it/s]Loading weights:  36%|███▌      | 104/291 [00:05<00:06, 31.03it/s]Loading weights:  38%|███▊      | 112/291 [00:05<00:06, 28.24it/s]Loading weights:  42%|████▏     | 121/291 [00:05<00:05, 29.77it/s]Loading weights:  45%|████▍     | 130/291 [00:05<00:05, 29.54it/s]Loading weights:  48%|████▊     | 139/291 [00:06<00:05, 28.58it/s]Loading weights:  51%|█████     | 148/291 [00:06<00:05, 25.90it/s]Loading weights:  54%|█████▍    | 157/291 [00:06<00:04, 33.25it/s]Loading weights:  56%|█████▌    | 162/291 [00:06<00:03, 32.48it/s]Loading weights:  57%|█████▋    | 167/291 [00:07<00:04, 28.85it/s]Loading weights:  60%|██████    | 175/291 [00:07<00:03, 29.79it/s]Loading weights:  63%|██████▎   | 184/291 [00:07<00:03, 28.89it/s]Loading weights:  65%|██████▍   | 188/291 [00:07<00:03, 30.32it/s]Loading weights:  66%|██████▋   | 193/291 [00:08<00:03, 31.52it/s]Loading weights:  68%|██████▊   | 197/291 [00:08<00:03, 24.74it/s]Loading weights:  70%|███████   | 204/291 [00:08<00:02, 30.89it/s]Loading weights:  73%|███████▎  | 211/291 [00:08<00:03, 22.94it/s]Loading weights:  76%|███████▌  | 221/291 [00:09<00:02, 32.74it/s]Loading weights:  79%|███████▊  | 229/291 [00:09<00:02, 28.70it/s]Loading weights:  82%|████████▏ | 238/291 [00:09<00:01, 30.49it/s]Loading weights:  85%|████████▍ | 247/291 [00:09<00:01, 30.17it/s]Loading weights:  86%|████████▋ | 251/291 [00:10<00:01, 30.73it/s]Loading weights:  88%|████████▊ | 256/291 [00:10<00:01, 32.64it/s]Loading weights:  89%|████████▉ | 260/291 [00:10<00:01, 25.58it/s]Loading weights:  92%|█████████▏| 267/291 [00:10<00:00, 31.63it/s]Loading weights:  94%|█████████▍| 274/291 [00:10<00:00, 28.38it/s]Loading weights:  97%|█████████▋| 283/291 [00:11<00:00, 30.17it/s]Loading weights: 100%|██████████| 291/291 [00:11<00:00, 25.97it/s]
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/generate_xstest_outputs.py", line 169, in <module>
+    main(args)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/generate_xstest_outputs.py", line 104, in main
+    model, tokenizer = load_model_and_tokenizer(args.model_path, use_left=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/src/model_utils.py", line 37, in load_model_and_tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/transformers/models/auto/tokenization_auto.py", line 827, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 1743, in from_pretrained
+    return cls._from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 1933, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/transformers/tokenization_utils_tokenizers.py", line 376, in __init__
+    raise ValueError(
+ValueError: Couldn't instantiate the backend tokenizer from one of: 
+(1) a `tokenizers` library serialization file, 
+(2) a slow tokenizer instance to convert or 
+(3) an equivalent slow tokenizer class to instantiate and convert. 
+You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/jsonl_to_csv.py", line 20, in <module>
+    main(args.input, args.output)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/jsonl_to_csv.py", line 7, in main
+    with open(input_path) as f:
+         ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/xstest_llama3_cat.jsonl'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 77, in <module>
+    main(args.input, None, None, args.output, args.strict)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 56, in main
+    df = pd.read_csv(COMPLETIONS_PATH)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/xstest_llama3_cat.csv'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/compute_metrics.py", line 52, in <module>
+    main(args.input)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/compute_metrics.py", line 8, in main
+    df = pd.read_csv(path)
+         ^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/xstest_llama3_cat_classified.csv'

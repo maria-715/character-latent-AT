@@ -89,12 +89,18 @@ class GCG(SingleBehaviorRedTeamingMethod):
         :return: a test case and logs
         """
 
+        for k, v in self.__dict__.items():
+            if isinstance(v, (str, dict)):
+                print(k, v)
+        # print("MODEL NAME:", self.model_name)
+
         # starting search_batch_size, will auto reduce batch_size later if go OOM (resets for every new behavior)
         self.search_batch_size = self.starting_search_batch_size if self.starting_search_batch_size else self.search_width
 
 
 
         # ========== Behavior and Target str ==========
+        # print("A")
         behavior = behavior_dict['Behavior']
         context_str = behavior_dict['ContextString']
         behavior_id = behavior_dict['BehaviorID']
@@ -108,6 +114,7 @@ class GCG(SingleBehaviorRedTeamingMethod):
             behavior = f"{context_str}\n\n---\n\n{behavior}"
 
         print(f'Behavior: {behavior_id} || Target: {target}')
+        # print("B")
         ### Targeted Model and Tokenier ###
         model = self.model
         device = model.device
@@ -188,26 +195,42 @@ class GCG(SingleBehaviorRedTeamingMethod):
             # ========== Sample a batch of new tokens based on the coordinate gradient. ========== #
             sampled_top_indices = sample_control(optim_ids.squeeze(0), token_grad.squeeze(0), search_width, topk=256, temp=1, not_allowed_tokens=not_allowed_tokens)
 
+            is_llama3 = (
+                self.model.config._name_or_path is not None
+                and (("llama-3" in self.model.config._name_or_path.lower()) or ("llama3" in self.model.config._name_or_path.lower()) or ("llama_3" in self.model.config._name_or_path.lower()))
+            )
+
             # ========= Filter sampled_top_indices that aren't the same after detokenize->retokenize ========= #
-            sampled_top_indices_text = tokenizer.batch_decode(sampled_top_indices)
-            new_sampled_top_indices = []
-            count = 0
-            for j in range(len(sampled_top_indices_text)):
-                # tokenize again
-                tmp = tokenizer(sampled_top_indices_text[j], return_tensors="pt", add_special_tokens=False).to(device)['input_ids'][0]
-                # if the tokenized text is different, then set the sampled_top_indices to padding_top_indices
-                if not torch.equal(tmp, sampled_top_indices[j]):
-                    count += 1
-                    continue
-                else:
-                    new_sampled_top_indices.append(sampled_top_indices[j])
-            
-            if len(new_sampled_top_indices) == 0:
-                print('All removals; defaulting to keeping all')
+            if not is_llama3:
+                sampled_top_indices_text = tokenizer.batch_decode(sampled_top_indices)
+                new_sampled_top_indices = []
                 count = 0
-            else:
-                sampled_top_indices = torch.stack(new_sampled_top_indices)
+                for j in range(len(sampled_top_indices_text)):
+                    # tokenize again
+                    tmp = tokenizer(sampled_top_indices_text[j], return_tensors="pt", add_special_tokens=False).to(device)['input_ids'][0]
+                    # if the tokenized text is different, then set the sampled_top_indices to padding_top_indices
+                    if not torch.equal(tmp, sampled_top_indices[j]):
+                        count += 1
+                        continue
+                    else:
+                        new_sampled_top_indices.append(sampled_top_indices[j])
+                
+                print(
+                    f"kept={len(new_sampled_top_indices)} "
+                    f"removed={count} "
+                    f"search_width={search_width}"
+                )
+                if len(new_sampled_top_indices) == 0:
+                    print('All removals; defaulting to keeping all')
+                    count = 0
+                else:
+                    sampled_top_indices = torch.stack(new_sampled_top_indices)
             
+            else:
+                # Skip round-trip tokenization filtering for Llama-3
+                count = 0
+
+
             if count >= search_width // 2:
                 print('\nLots of removals:', count)
             
@@ -228,7 +251,9 @@ class GCG(SingleBehaviorRedTeamingMethod):
                                         target_embeds.repeat(new_search_width, 1, 1)], dim=1)
             
             # Auto Find Batch Size for foward candidates (each time go OOM will decay search_batch_size // 2)
+            # print("STARTING candidate loss evaluation")
             loss = find_executable_batch_size(self.compute_candidates_loss, self.search_batch_size)(input_embeds, target_ids)
+            # print("FINISHED candidate loss evaluation")
 
             # ========== Update the optim_ids with the best candidate ========== #
             optim_ids = sampled_top_indices[loss.argmin()].unsqueeze(0)

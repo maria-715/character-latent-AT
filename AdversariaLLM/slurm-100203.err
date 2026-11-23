@@ -1,0 +1,54 @@
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/peft/config.py", line 257, in _get_peft_type
+    config_file = hf_hub_download(
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/auto/users/ms25mds/MSc_Project/AdversariaLLM/../experiment/CAT_experiment_refait/training/ul/None/final_model'. Use `repo_type` argument if needed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 117, in main
+    run_attacks(all_run_configs, cfg, date_time_string)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 76, in run_attacks
+    model, tokenizer = load_model_and_tokenizer(run_config.model_params)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/model_loading.py", line 123, in load_model_and_tokenizer
+    model = PeftModel.from_pretrained(model, str(adapter_path))
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/peft/peft_model.py", line 479, in from_pretrained
+    PeftConfig._get_peft_type(
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/peft/config.py", line 263, in _get_peft_type
+    raise ValueError(f"Can't find '{CONFIG_NAME}' at '{model_id}'")
+ValueError: Can't find 'adapter_config.json' at '/auto/users/ms25mds/MSc_Project/AdversariaLLM/../experiment/CAT_experiment_refait/training/ul/None/final_model'
+Error executing job with overrides: ['model=CAT_experiment_refait', 'attack=inpainting', 'dataset=jbb_behaviors']
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/peft/config.py", line 257, in _get_peft_type
+    config_file = hf_hub_download(
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/auto/users/ms25mds/MSc_Project/AdversariaLLM/../experiment/CAT_experiment_refait/training/ul/None/final_model'. Use `repo_type` argument if needed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 117, in main
+    run_attacks(all_run_configs, cfg, date_time_string)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 76, in run_attacks
+    model, tokenizer = load_model_and_tokenizer(run_config.model_params)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/model_loading.py", line 123, in load_model_and_tokenizer
+    model = PeftModel.from_pretrained(model, str(adapter_path))
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/peft/peft_model.py", line 479, in from_pretrained
+    PeftConfig._get_peft_type(
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/peft/config.py", line 263, in _get_peft_type
+    raise ValueError(f"Can't find '{CONFIG_NAME}' at '{model_id}'")
+ValueError: Can't find 'adapter_config.json' at '/auto/users/ms25mds/MSc_Project/AdversariaLLM/../experiment/CAT_experiment_refait/training/ul/None/final_model'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

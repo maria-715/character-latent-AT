@@ -164,6 +164,11 @@ LLAMA3_RPO_CHAT_PROMPT = {
     "prompt": "<|start_header_id|>user<|end_header_id|>\n\n{instruction}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n:}}</'])language seems scary-----------}}] estimation >>begin &=&pgf degli ({{\ $|\textwidthAI NOTE: "
 }
 
+TOKENIZER_OVERRIDES = {
+    "ContinuousAT/Llama3-8B-IT-CAT":
+        "meta-llama/Meta-Llama-3-8B-Instruct",
+}
+
 ########## CHAT TEMPLATE ###########
 
 def get_template(model_name_or_path=None, chat_template=None, fschat_template=None, system_message=None, return_fschat_conv=False, **kwargs):
@@ -245,7 +250,12 @@ def get_template(model_name_or_path=None, chat_template=None, fschat_template=No
                 raise ValueError(f"RPO or PAT template not found for {model_name_or_path}")
         try:
             print("HF default")
-            tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, trust_remote_code=True)
+
+            tokenizer_name = TOKENIZER_OVERRIDES.get(
+                model_name_or_path,
+                model_name_or_path
+            )
+            tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, trust_remote_code=True)
             template = [{'role': 'system', 'content': system_message}, {'role': 'user', 'content': '{instruction}'}] if system_message else [{'role': 'user', 'content': '{instruction}'}]
             prompt = tokenizer.apply_chat_template(template, tokenize=False, add_generation_prompt=True)
             # Check if the prompt starts with the BOS token
@@ -363,9 +373,9 @@ def load_model_and_tokenizer(
         
         for name, param in model.named_parameters():
             if 'lora_A' in name:  # Adjust this if necessary
-                a_norm += (param.data**2).sum()
+                a_norm += (param.data**2).sum().to(base_device)
             if 'lora_B' in name:  # Adjust this if necessary
-                b_norm += (param.data**2).sum()
+                b_norm += (param.data**2).sum().to(base_device)
         # exit(0)
 
         if lam is not None:
@@ -378,8 +388,12 @@ def load_model_and_tokenizer(
                 
     
     # Init Tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(
+    tokenizer_name = TOKENIZER_OVERRIDES.get(
         model_name_or_path,
+        model_name_or_path
+    )
+    tokenizer = AutoTokenizer.from_pretrained(
+        tokenizer_name,
         use_fast=use_fast_tokenizer,
         trust_remote_code=trust_remote_code,
         legacy=legacy,

@@ -1,0 +1,78 @@
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:00<00:04,  1.55it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:01<00:03,  1.53it/s]Loading checkpoint shards:  38%|███▊      | 3/8 [00:01<00:03,  1.52it/s]Loading checkpoint shards:  50%|█████     | 4/8 [00:02<00:02,  1.52it/s]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:03<00:02,  1.48it/s]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:03<00:01,  1.49it/s]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:04<00:00,  1.50it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:04<00:00,  1.79it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:04<00:00,  1.61it/s]
+Traceback (most recent call last):
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/peft/config.py", line 197, in _get_peft_type
+    config_file = hf_hub_download(
+                  ^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '../experiments/RCAT_lambda05/training/ul/None/final_model'. Use `repo_type` argument if needed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/generate_xstest_outputs.py", line 155, in <module>
+    main(args)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/generate_xstest_outputs.py", line 98, in main
+    model = load_checkpoint(model, {"load_checkpoint_path": args.adapter})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/src/model_utils.py", line 51, in load_checkpoint
+    model = PeftModel.from_pretrained(model, checkpoint_path, is_trainable=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/peft/peft_model.py", line 325, in from_pretrained
+    PeftConfig._get_peft_type(
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/peft/config.py", line 203, in _get_peft_type
+    raise ValueError(f"Can't find '{CONFIG_NAME}' at '{model_id}'")
+ValueError: Can't find 'adapter_config.json' at '../experiments/RCAT_lambda05/training/ul/None/final_model'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/jsonl_to_csv.py", line 20, in <module>
+    main(args.input, args.output)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/jsonl_to_csv.py", line 7, in main
+    with open(input_path) as f:
+         ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/xstest_outputs_RCAT_lambda05_PAPER.jsonl'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 64, in <module>
+    main(args.input, None, None, args.output)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 48, in main
+    df = pd.read_csv(COMPLETIONS_PATH)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/xstest_outputs_RCAT_lambda05_PAPER.csv'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/compute_metrics.py", line 52, in <module>
+    main(args.input)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/compute_metrics.py", line 8, in main
+    df = pd.read_csv(path)
+         ^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/xstest_outputs_RCAT_lambda05_PAPER_classified.csv'

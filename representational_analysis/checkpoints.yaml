@@ -1,0 +1,894 @@
+# Checkpoint manifest -- source of truth for extract_representations.py and analysis.py.
+# Add/remove/edit rows here; no code changes needed to compare arbitrary groups.
+#
+# `id` is always identical to the experiment folder name under ../experiments/
+# (i.e. `id: X` implies `adapter_path: ../experiments/X/final_model`), except for
+# the two `base_*` rows, which have no experiment folder at all (raw pretrained
+# model, no adapter).
+#
+# trajectory values in use:
+#   base            -- untrained pretrained model, no adapter
+#   ultrachat_only  -- UltraChat-only utility data, no OR-Bench mixed in
+#   or_untrimmed    -- UltraChat + OR-Bench, untrimmed answers ("_NEW" folders --
+#                      verified via the "[OR] selecting OR dataset" print marker
+#                      in each run's slurm-<jobid>.out; that diagnostic uses
+#                      print(), not logging.info(), so it never appears in
+#                      run_experiments.log)
+#   or_trimmed      -- UltraChat + OR-Bench, trimmed answers ("_TRIMMED" folders)
+#
+# hyperparam_config identifies which named CAT config/hyperparameter profile a
+# checkpoint uses, independent of which base model it's trained on. For the two
+# Llama-3 "no like-prefix" families below, the mapping to likeZephyr/likeLlama2
+# is via `trainer_hparams.away_cutoff` (-5.0 vs -7.5), which is the field that
+# actually discriminates the two profiles -- not eps, which is set per-run via
+# --eps at sbatch time and varies independently of which profile is used.
+#   zephyr      -- zephyr-7b-beta's own native hyperparameter profile
+#   likeZephyr  -- Llama-3 trained with the profile matching zephyr's defaults
+#                  (away_cutoff=-5.0)
+#   likeLlama2  -- Llama-3 trained with the profile matching llama2's defaults
+#                  (away_cutoff=-7.5)
+#
+# All eps/relative_lr/seed values below are taken directly from each folder's
+# .hydra/config.yaml or overrides.yaml, not inferred from the folder name --
+# folder-name guessing has repeatedly turned out wrong in this investigation
+# (see the two flagged anomalies below).
+
+checkpoints:
+  # ===================== base (untrained) =====================
+  - id: base_llama3
+    trajectory: base
+    adapter_path: null
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: null
+    eps: 0.0
+    relative_lr: null
+    seed: null
+    or_variant: null
+
+  - id: base_zephyr
+    trajectory: base
+    adapter_path: null
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: null
+    eps: 0.0
+    relative_lr: null
+    seed: null
+    or_variant: null
+
+  # ===================== Trajectory A: ultrachat_only / zephyr =====================
+  - id: CAT_zephyr_github_42
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_zephyr_github_42/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 42
+    or_variant: null
+
+  - id: CAT_zephyr_github_123
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_zephyr_github_123/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 123
+    or_variant: null
+
+  - id: CAT_zephyr_github_456
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_zephyr_github_456/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 456
+    or_variant: null
+
+  - id: CAT_zephyr_github_789
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_zephyr_github_789/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 789
+    or_variant: null
+
+  - id: CAT_zephyr_github_1337
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_zephyr_github_1337/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 1337
+    or_variant: null
+
+  - id: CAT_adv_eps005_42_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps005_42_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.05
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_adv_eps005_123_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps005_123_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.05
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_adv_eps005_456_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps005_456_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.05
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  - id: CAT_adv_eps01_42_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps01_42_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.1
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_adv_eps01_123_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps01_123_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.1
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_adv_eps01_456_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps01_456_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.1
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  - id: CAT_adv_eps02_42_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps02_42_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.2
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_adv_eps02_123_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps02_123_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.2
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_adv_eps02_456_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps02_456_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.2
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  - id: CAT_adv_eps04_42_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps04_42_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.4
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_adv_eps04_123_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps04_123_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.4
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_adv_eps04_456_relativelr_REFAIT
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_adv_eps04_456_relativelr_REFAIT/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.4
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  # ===================== Trajectory A: ultrachat_only / likeLlama2 (llama3b "005" family, away_cutoff=-7.5) =====================
+  - id: CAT_llama3b_005
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_005/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.05
+    relative_lr: false
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_005_123
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_005_123/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.05
+    relative_lr: false
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_005_456
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_005_456/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.05
+    relative_lr: false
+    seed: 456
+    or_variant: null
+
+  - id: CAT_llama3b_0075_relativelr
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0075_relativelr/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.075
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_0075_relativelr_123
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0075_relativelr_123/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.075
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_0075_relativelr_456
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0075_relativelr_456/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.075
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  # RESOLVED (2026-08-01 rerun): previously off-spec (relative_lr=false due to a
+  # resubmission where the completed attempt used the wrong flag). Fully
+  # relaunched; the new run is clean (single "Results will be saved to", no
+  # resubmission) and every source -- overrides.yaml, config.yaml, log config
+  # dump, log runtime line, experiments_db -- agrees: relative_lr=true, matching
+  # _123/_456 siblings and the intended design.
+  - id: CAT_llama3b_0150_relativelr
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0150_relativelr/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.15
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_0150_relativelr_123
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0150_relativelr_123/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.15
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_0150_relativelr_456
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0150_relativelr_456/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.15
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  - id: CAT_llama3b_0300_relativelr
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0300_relativelr/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.3
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_0300_relativelr_123
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0300_relativelr_123/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.3
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_0300_relativelr_456
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0300_relativelr_456/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.3
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  - id: CAT_llama3b_0600_relativelr
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0600_relativelr/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_0600_relativelr_123
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0600_relativelr_123/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_0600_relativelr_456
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0600_relativelr_456/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  # ===================== Trajectory A: ultrachat_only / likeZephyr (llama3b "otherparams" family, away_cutoff=-5.0) =====================
+  # RESOLVED via attack-trace telemetry: overrides.yaml/config.yaml/experiments_db
+  # all claim relative_lr=true, but that's contradicted by what actually happened
+  # during training. The printed optimizer lr is the raw unscaled default (0.0001,
+  # not the relative_lr=true-scaled 6.91e-05 its confirmed-true sibling
+  # eps0075_relativelr_otherparams shows), and step-0 attack movement (L2(orig)
+  # mean=0.0064) exactly matches its confirmed-false siblings _123/_456 below
+  # (also 0.0064) rather than the confirmed-true sibling (0.0044). Since the
+  # optimizer lr transformation is a deterministic function of relative_lr, not
+  # just a label, this is treated as authoritative over the (seemingly
+  # contradicted) config files. Recorded as actually behaving relative_lr=false --
+  # matches its siblings and the intended likeZephyr baseline design, despite
+  # what the config files claim.
+  - id: CAT_llama3b_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_123_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_123_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_456_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_456_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 456
+    or_variant: null
+
+  - id: CAT_llama3b_0075_relativelr_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0075_relativelr_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_0075_relativelr_123_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0075_relativelr_123_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_0075_relativelr_456_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0075_relativelr_456_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  - id: CAT_llama3b_0150_relativelr_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0150_relativelr_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.15
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_0150_relativelr_123_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0150_relativelr_123_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.15
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_0150_relativelr_456_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0150_relativelr_456_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.15
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  - id: CAT_llama3b_0300_relativelr_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0300_relativelr_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.3
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_0300_relativelr_123_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0300_relativelr_123_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.3
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_0300_relativelr_456_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0300_relativelr_456_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.3
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  - id: CAT_llama3b_0600_relativelr_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0600_relativelr_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 42
+    or_variant: null
+
+  - id: CAT_llama3b_0600_relativelr_123_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0600_relativelr_123_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 123
+    or_variant: null
+
+  - id: CAT_llama3b_0600_relativelr_456_otherparams
+    trajectory: ultrachat_only
+    adapter_path: ../experiments/CAT_llama3b_0600_relativelr_456_otherparams/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 456
+    or_variant: null
+
+  # ===================== Trajectory B1: or_untrimmed / zephyr =====================
+  # MISSING BASELINE: per intended design, this trajectory's baseline should be
+  # eps=0.075, relative_lr=false (matching Trajectory A's CAT_zephyr_github_*).
+  # CAT_zephyr_eps0075_42_utility_NEW would be it, but is intentionally excluded:
+  # no final_model/ (training incomplete, ends mid-attack-step with no completion
+  # marker), and no slurm-*.out exists anywhere in the repo for its job, so
+  # OR-mixing can't be verified either way for it. There is currently no complete,
+  # verifiable baseline checkpoint for zephyr/or_untrimmed.
+  #
+  # OFF-SPEC (confirmed against intended design): the entry below (eps=0.05,
+  # relative_lr=false) does not correspond to anything in the intended sweep --
+  # design says eps=0.05 should be relative_lr=true (matching its sibling
+  # CAT_zephyr_eps005_42_relativelr_utility_NEW just after it). Looks like an
+  # extra/exploratory run outside the intended design, not a manifest error.
+  - id: CAT_zephyr_eps005_42_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_zephyr_eps005_42_utility_NEW/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.05
+    relative_lr: false
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_zephyr_eps005_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_zephyr_eps005_42_relativelr_utility_NEW/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.05
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_zephyr_eps01_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_zephyr_eps01_42_relativelr_utility_NEW/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.1
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_zephyr_eps02_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_zephyr_eps02_42_relativelr_utility_NEW/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.2
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_zephyr_eps04_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_zephyr_eps04_42_relativelr_utility_NEW/final_model
+    base_model: HuggingFaceH4/zephyr-7b-beta
+    hyperparam_config: zephyr
+    eps: 0.4
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  # ===================== Trajectory B1: or_untrimmed / likeZephyr =====================
+  - id: CAT_llama3b_likeZephyr_42_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_42_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeZephyr_123_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_123_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 123
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeZephyr_456_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_456_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: false
+    seed: 456
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.075
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.15
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.3
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 123
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 456
+    or_variant: untrimmed
+
+  # ===================== Trajectory B1: or_untrimmed / likeLlama2 =====================
+  # OFF-SPEC (confirmed against intended design): per intended design, this
+  # trajectory's baseline should be eps=0.05, relative_lr=false (matching
+  # Trajectory A's CAT_llama3b_005*). All three seeds below (42/123/456) were
+  # actually launched at eps=0.075 instead -- verified via .hydra/config.yaml --
+  # which duplicates the eps value of their own eps0075_relativelr sibling
+  # further down (that one correctly has relative_lr=true; these three have
+  # relative_lr=false at the same eps). Genuine off-spec training runs, not a
+  # manifest error -- recorded as actually run. There is no complete,
+  # correctly-spec'd eps=0.05 baseline checkpoint for likeLlama2/or_untrimmed.
+  - id: CAT_llama3b_likeLlama2_42_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_42_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.075
+    relative_lr: false
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeLlama2_123_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_123_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.075
+    relative_lr: false
+    seed: 123
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeLlama2_456_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_456_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.075
+    relative_lr: false
+    seed: 456
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0075_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0075_42_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.075
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0150_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0150_42_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.15
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.3
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0600_42_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0600_42_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 42
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0600_123_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0600_123_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 123
+    or_variant: untrimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0600_456_relativelr_utility_NEW
+    trajectory: or_untrimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0600_456_relativelr_utility_NEW/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 456
+    or_variant: untrimmed
+
+  # ===================== Trajectory B2: or_trimmed / likeZephyr =====================
+  # eps=0075-default TRIMMED (seeds 42/123/456) intentionally omitted: training
+  # was interrupted, no final_model/adapter_model.safetensors exists yet.
+  #   CAT_llama3b_likeZephyr_42_utility_TRIMMED   -- status: incomplete
+  #   CAT_llama3b_likeZephyr_123_utility_TRIMMED  -- status: incomplete
+  #   CAT_llama3b_likeZephyr_456_utility_TRIMMED  -- status: incomplete
+  - id: CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_TRIMMED
+    trajectory: or_trimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_TRIMMED/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.3
+    relative_lr: true
+    seed: 42
+    or_variant: trimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_TRIMMED
+    trajectory: or_trimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_TRIMMED/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 42
+    or_variant: trimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_TRIMMED
+    trajectory: or_trimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_TRIMMED/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 123
+    or_variant: trimmed
+
+  - id: CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_TRIMMED
+    trajectory: or_trimmed
+    adapter_path: ../experiments/CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_TRIMMED/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeZephyr
+    eps: 0.6
+    relative_lr: true
+    seed: 456
+    or_variant: trimmed
+
+  # ===================== Trajectory B2: or_trimmed / likeLlama2 =====================
+  # eps=0075-default TRIMMED (seeds 42/123/456) intentionally omitted: training
+  # was interrupted, no final_model/adapter_model.safetensors exists yet.
+  #   CAT_llama3b_likeLlama2_42_utility_TRIMMED   -- status: incomplete
+  #   CAT_llama3b_likeLlama2_123_utility_TRIMMED  -- status: incomplete
+  #   CAT_llama3b_likeLlama2_456_utility_TRIMMED  -- status: incomplete
+  - id: CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_TRIMMED
+    trajectory: or_trimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_TRIMMED/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.3
+    relative_lr: true
+    seed: 42
+    or_variant: trimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0600_42_relativelr_utility_TRIMMED
+    trajectory: or_trimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0600_42_relativelr_utility_TRIMMED/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 42
+    or_variant: trimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0600_123_relativelr_utility_TRIMMED
+    trajectory: or_trimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0600_123_relativelr_utility_TRIMMED/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 123
+    or_variant: trimmed
+
+  - id: CAT_llama3b_likeLlama2_eps0600_456_relativelr_utility_TRIMMED
+    trajectory: or_trimmed
+    adapter_path: ../experiments/CAT_llama3b_likeLlama2_eps0600_456_relativelr_utility_TRIMMED/final_model
+    base_model: meta-llama/Meta-Llama-3-8B-Instruct
+    hyperparam_config: likeLlama2
+    eps: 0.6
+    relative_lr: true
+    seed: 456
+    or_variant: trimmed

@@ -1,0 +1,32 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:11,  3.84s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:07<00:07,  3.61s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:09<00:02,  2.89s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  1.99s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.48s/it]
+WARNING:root:Some parameters are on the meta device device because they were offloaded to the cpu.
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/circuit-breakers-eval/evaluation/evaluate.py", line 276, in <module>
+    main()
+  File "/auto/users/ms25mds/MSc_Project/circuit-breakers-eval/evaluation/evaluate.py", line 232, in main
+    score, instances = evaluate(
+                       ^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/circuit-breakers-eval/evaluation/evaluate.py", line 138, in evaluate
+    softopt_results = softopt.run(model, tokenizer, behavior, target, softopt_config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/circuit-breakers-eval/evaluation/softopt.py", line 76, in run
+    model = model.to(config.device)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1173, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/torch/nn/modules/module.py", line 779, in _apply
+    module._apply(fn)
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/torch/nn/modules/module.py", line 779, in _apply
+    module._apply(fn)
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/torch/nn/modules/module.py", line 779, in _apply
+    module._apply(fn)
+  [Previous line repeated 5 more times]
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/torch/nn/modules/module.py", line 804, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1159, in convert
+    return t.to(
+           ^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 112.00 MiB. GPU 
+srun: error: oat11: task 0: Exited with exit code 1

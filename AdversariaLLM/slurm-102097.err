@@ -1,0 +1,79 @@
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 133, in run_judges
+    attack_run = json.load(open(path))
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 171, in run_judges
+    raise Exception(f"Error in {path}. Original exception: {e}") from e
+Exception: Error in /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/12-09-07/2/run.json. Original exception: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 133, in run_judges
+    attack_run = json.load(open(path))
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 130, in main
+    run_judges(judge_cfg)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/hydra/main.py", line 83, in decorated_main
+    return task_function(cfg_passthrough)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 171, in run_judges
+    raise Exception(f"Error in {path}. Original exception: {e}") from e
+Exception: Error in /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/12-09-07/2/run.json. Original exception: Expecting value: line 1 column 1 (char 0)
+Error executing job with overrides: ['model=CAT_llama3b_0075_relativelr_123_otherparams', 'attack=inpainting', 'dataset=jbb_behaviors']
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 133, in run_judges
+    attack_run = json.load(open(path))
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 130, in main
+    run_judges(judge_cfg)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/hydra/main.py", line 83, in decorated_main
+    return task_function(cfg_passthrough)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 171, in run_judges
+    raise Exception(f"Error in {path}. Original exception: {e}") from e
+Exception: Error in /auto/users/ms25mds/MSc_Project/AdversariaLLM/outputs/2026-07-09/12-09-07/2/run.json. Original exception: Expecting value: line 1 column 1 (char 0)
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

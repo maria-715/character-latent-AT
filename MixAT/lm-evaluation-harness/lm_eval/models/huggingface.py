@@ -653,12 +653,21 @@ class HFLM(TemplateLM):
                 ) or isinstance(tokenizer, transformers.PreTrainedTokenizerFast)
                 self.tokenizer = tokenizer
         else:
+            # Improved to be able to handle Llama 3
+
+            TOKENIZER_OVERRIDES = {
+                "ContinuousAT/Llama3-8B-IT-CAT": "meta-llama/Meta-Llama-3-8B-Instruct",
+            }
+
             # Get tokenizer based on 'pretrained'
             if isinstance(pretrained, str):
                 model_name = pretrained
             else:
                 # get the HF hub name via accessor on model
                 model_name = self.model.name_or_path
+
+            model_name = TOKENIZER_OVERRIDES.get(model_name, model_name)
+
             self.tokenizer = transformers.AutoTokenizer.from_pretrained(
                 model_name,
                 revision=revision,

@@ -5,7 +5,8 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1 # 2 for AutoDAN
-#SBATCH --nodelist=oat13
+#SBATCH --nodelist=oat[11-18]
+#SBATCH --nodes=1
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err

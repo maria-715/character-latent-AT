@@ -97,6 +97,69 @@ class MatchPair:
     multi_turn: bool = False
 
 
+# =================================== ADDED ===================================
+
+# fastchat/llm_judge/common.py
+
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch
+
+_QWEN_CACHE = {}
+
+def chat_completion_hf_qwen(model_id, conv, temperature=0.0, max_tokens=2048):
+    if model_id not in _QWEN_CACHE:
+        tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
+        model = AutoModelForCausalLM.from_pretrained(
+            model_id,
+            torch_dtype="auto",
+            device_map="auto",
+            trust_remote_code=True,
+        )
+        _QWEN_CACHE[model_id] = (tokenizer, model)
+
+    tokenizer, model = _QWEN_CACHE[model_id]
+
+    messages = []
+    if conv.system_message:
+        messages.append({"role": "system", "content": conv.system_message})
+    for role, content in conv.messages:
+        if content is not None:
+            messages.append({"role": "user" if role == conv.roles[0] else "assistant", "content": content})
+
+    text = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True,
+    )
+    
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token = tokenizer.eos_token
+
+    tokenizer.padding_side = "left"
+
+    inputs = tokenizer(
+        [text],
+        return_tensors="pt",
+        padding=True,
+    ).to(model.device)
+
+    with torch.inference_mode():
+        output_ids = model.generate(
+            **inputs,
+            do_sample=False,
+            max_new_tokens=max_tokens,
+            pad_token_id=tokenizer.pad_token_id,
+            eos_token_id=tokenizer.eos_token_id,
+        )
+
+    generated_ids = [
+        out[len(inp):] for inp, out in zip(inputs.input_ids, output_ids)
+    ]
+    return tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0].strip()
+
+# =============================================================================
+
+
 def load_questions(question_file: str, begin: Optional[int], end: Optional[int]):
     """Load questions from a file."""
     questions = []
@@ -175,7 +238,12 @@ def run_judge_single(question, answer, judge, ref_answer, multi_turn=False):
     conv.append_message(conv.roles[0], user_prompt)
     conv.append_message(conv.roles[1], None)
 
-    if model in OPENAI_MODEL_LIST:
+    # ============ ADDED ============
+    if model == "qwen-32b":
+        judgment = chat_completion_hf_qwen(
+            "Qwen/Qwen2.5-32B", conv, temperature=0, max_tokens=2048
+        )
+    elif model in OPENAI_MODEL_LIST:
         judgment = chat_completion_openai(model, conv, temperature=0, max_tokens=2048)
     elif model in ANTHROPIC_MODEL_LIST:
         judgment = chat_completion_anthropic(
@@ -278,7 +346,13 @@ def run_judge_pair(question, answer_a, answer_b, judge, ref_answer, multi_turn=F
     conv.append_message(conv.roles[0], user_prompt)
     conv.append_message(conv.roles[1], None)
 
-    if model in OPENAI_MODEL_LIST:
+
+    # ============ ADDED ============
+    if model == "qwen-32b":
+        judgment = chat_completion_hf_qwen(
+            "Qwen/Qwen2.5-32B", conv, temperature=0, max_tokens=2048
+        )
+    elif model in OPENAI_MODEL_LIST:
         conv.set_system_message(system_prompt)
         judgment = chat_completion_openai(model, conv, temperature=0, max_tokens=2048)
     elif model in ANTHROPIC_MODEL_LIST:

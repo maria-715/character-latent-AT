@@ -1,0 +1,7 @@
+Conda env env_prompting_llms already exists
+Running:
+  model_id   = meta-llama/Meta-Llama-3-8B-Instruct
+  input_csv  = datasets/or-bench_train_and_eval/or-bench-from80kto1k_train.csv
+  output_csv = utility_llama3_8b_instruct_from80kto1k_train_SHORTER.csv
+  batch_size = 64
+  precision  = bf16

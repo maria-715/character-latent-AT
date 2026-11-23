@@ -1,0 +1,8 @@
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Could not override 'run_ids'.
+To append to your config use +run_ids=[0]
+Key 'run_ids' is not in struct
+    full_key: run_ids
+    object_type=dict
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

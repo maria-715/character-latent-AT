@@ -5,7 +5,8 @@
 #SBATCH --partition=msc
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH --nodelist=oat13
+#SBATCH --nodelist=oat[11-18]
+#SBATCH --nodes=1
 
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
@@ -49,6 +50,8 @@ fi
 
 # ======================================================
 
+echo "Running command: $0 $*"
+
 # I added the seed
 if [ $# -ne 2 ]; then
     echo "Usage: $0 <model> <seed>"
@@ -66,6 +69,7 @@ else
 fi
 export HF_HOME=/scratch-ssd/$USER/.cache/huggingface
 mkdir -p "$HF_HOME"
+echo "Running command: lm_eval --model hf --model_args pretrained=$1,parallelize=True,dtype=bfloat16,load_in_4bit=True --tasks arc_easy,arc_challenge,mmlu --device cuda:0 --batch_size auto:12 --output_path ../utility_eval/results/{$1}_{$2} --log_samples --cache_requests true --seed $2"
 lm_eval --model hf \
     --model_args pretrained=$1,parallelize=True,dtype=bfloat16,load_in_4bit=True \
     --tasks arc_easy,arc_challenge,mmlu \

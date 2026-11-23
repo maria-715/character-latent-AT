@@ -1,0 +1,27 @@
+# Prompt-set registry -- add new sets here without touching extract_representations.py,
+# as long as the source is one of the supported `format` types.
+#
+# format: plain_txt   -- one prompt per line
+# format: csv_column  -- a CSV with a column of prompt text; optionally subsampled
+#                        (sample_size omitted or null = use every row)
+
+prompt_sets:
+  harmless_40:
+    format: plain_txt
+    source: ../MixAT/eval_harmless/prompts_initial.txt
+
+  or_bench_sample:
+    format: plain_txt
+    source: ../MixAT/eval_harmless/prompts_remaining.txt
+
+  harmbench_sample:
+    format: csv_column
+    source: ../MixAT/harmbench/data/behavior_datasets/harmbench_behaviors_text_all.csv
+    column: Behavior
+    sample_size: 500
+    sample_seed: 0
+    # Note: some rows in this file are "contextual" behaviors that also have a
+    # non-empty ContextString meant to precede the Behavior text. This registry
+    # entry samples from the Behavior column alone (matches the "standard"
+    # functional category, the majority of rows) -- revisit if you specifically
+    # want contextual behaviors included with their context.

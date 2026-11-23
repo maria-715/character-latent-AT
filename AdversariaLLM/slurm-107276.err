@@ -1,0 +1,35 @@
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/_monitor.py", line 84, in run
+    instance.refresh(nolock=True)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/std.py", line 1347, in refresh
+    self.display()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/std.py", line 1495, in display
+    self.sp(self.__str__() if msg is None else msg)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/std.py", line 459, in print_status
+    fp_write('\r' + s + (' ' * max(last_len[0] - len_s, 0)))
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/std.py", line 453, in fp_write
+    fp_flush()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/utils.py", line 196, in inner
+    return func(*args, **kwargs)
+OSError: [Errno 122] Disk quota exceeded
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/_monitor.py", line 84, in run
+    instance.refresh(nolock=True)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/std.py", line 1347, in refresh
+    self.display()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/std.py", line 1495, in display
+    self.sp(self.__str__() if msg is None else msg)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/std.py", line 459, in print_status
+    fp_write('\r' + s + (' ' * max(last_len[0] - len_s, 0)))
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/std.py", line 453, in fp_write
+    fp_flush()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/tqdm/utils.py", line 196, in inner
+    return func(*args, **kwargs)
+OSError: [Errno 122] Disk quota exceeded

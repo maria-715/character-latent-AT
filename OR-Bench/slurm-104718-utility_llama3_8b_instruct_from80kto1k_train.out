@@ -1,0 +1,21 @@
+GPU detected: NVIDIA A100 80GB PCIe
+Loading tokenizer and model: meta-llama/Meta-Llama-3-8B-Instruct (bf16)
+Model loaded in 7.4s
+Total prompts: 1000 | already done: 0 | remaining: 1000
+[64/1000] batch took 69.5s (1.1s/prompt) | ETA 17 min
+[128/1000] batch took 65.0s (1.0s/prompt) | ETA 15 min
+[192/1000] batch took 69.7s (1.1s/prompt) | ETA 14 min
+[256/1000] batch took 69.7s (1.1s/prompt) | ETA 13 min
+[320/1000] batch took 68.9s (1.1s/prompt) | ETA 12 min
+[384/1000] batch took 63.9s (1.0s/prompt) | ETA 11 min
+[448/1000] batch took 68.9s (1.1s/prompt) | ETA 10 min
+[512/1000] batch took 67.6s (1.1s/prompt) | ETA 9 min
+[576/1000] batch took 66.7s (1.0s/prompt) | ETA 7 min
+[640/1000] batch took 69.0s (1.1s/prompt) | ETA 6 min
+[704/1000] batch took 54.4s (0.8s/prompt) | ETA 5 min
+[768/1000] batch took 68.8s (1.1s/prompt) | ETA 4 min
+[832/1000] batch took 69.3s (1.1s/prompt) | ETA 3 min
+[896/1000] batch took 58.8s (0.9s/prompt) | ETA 2 min
+[960/1000] batch took 69.7s (1.1s/prompt) | ETA 1 min
+[1000/1000] batch took 47.9s (1.2s/prompt) | ETA 0 min
+Done. Output written to utility_llama3_8b_instruct_from80kto1k_train.csv

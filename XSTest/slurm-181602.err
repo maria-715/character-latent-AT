@@ -1,0 +1,79 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.15s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.96s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.82s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.30s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.54s/it]
+Traceback (most recent call last):
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/peft/config.py", line 317, in _get_peft_type
+    config_file = hf_hub_download(
+                  ^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '../experiments/lat_rel10_eps48_seed123/final_model'. Use `repo_type` argument if needed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/generate_xstest_outputs.py", line 169, in <module>
+    main(args)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/generate_xstest_outputs.py", line 110, in main
+    model = load_checkpoint(model, {"load_checkpoint_path": args.adapter})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/Continuous-AdvTrain/src/model_utils.py", line 78, in load_checkpoint
+    model = PeftModel.from_pretrained(model, checkpoint_path, is_trainable=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/peft/peft_model.py", line 510, in from_pretrained
+    config = PEFT_TYPE_TO_CONFIG_MAPPING[PeftConfig._get_peft_type(model_id, **hf_kwargs)].from_pretrained(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/peft/config.py", line 323, in _get_peft_type
+    raise ValueError(f"Can't find '{CONFIG_NAME}' at '{model_id}'")
+ValueError: Can't find 'adapter_config.json' at '../experiments/lat_rel10_eps48_seed123/final_model'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/jsonl_to_csv.py", line 20, in <module>
+    main(args.input, args.output)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/jsonl_to_csv.py", line 7, in main
+    with open(input_path) as f:
+         ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/lat_rel10_eps48_seed123_utility.jsonl'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 77, in <module>
+    main(args.input, None, None, args.output, args.strict)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 56, in main
+    df = pd.read_csv(COMPLETIONS_PATH)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/lat_rel10_eps48_seed123_utility.csv'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/compute_metrics.py", line 52, in <module>
+    main(args.input)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/compute_metrics.py", line 8, in main
+    df = pd.read_csv(path)
+         ^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest_newpeft/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/lat_rel10_eps48_seed123_utility_classified.csv'

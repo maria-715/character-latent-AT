@@ -1,0 +1,24 @@
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 117, in main
+    run_attacks(all_run_configs, cfg, date_time_string)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 96, in run_attacks
+    log_attack(run_config, results, cfg, date_time_string)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/logging.py", line 49, in log_attack
+    subrun_config.dataset_params["idx"] = [run_config.dataset_params["idx"][idx]]
+TypeError: 'NoneType' object is not subscriptable
+Error executing job with overrides: ['model=meta-llama/Meta-Llama-3-8B-Instruct', 'attack=inpainting', 'dataset=jbb_behaviors']
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 117, in main
+    run_attacks(all_run_configs, cfg, date_time_string)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 96, in run_attacks
+    log_attack(run_config, results, cfg, date_time_string)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/logging.py", line 49, in log_attack
+    subrun_config.dataset_params["idx"] = [run_config.dataset_params["idx"][idx]]
+TypeError: 'NoneType' object is not subscriptable
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

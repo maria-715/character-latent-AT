@@ -182,7 +182,52 @@ zephyr_7b_CAT_adv_eps005_42_4:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
 
+zephyr_7b_CAT_adv_eps005_42_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps005_42_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps005_42_relativelr_REFAIT_100innerloops:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
 zephyr_7b_CAT_adv_eps005_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps005_123_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps005_123_relativelr_REFAIT:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
     use_fast_tokenizer: False
@@ -237,6 +282,24 @@ zephyr_7b_CAT_adv_eps005_123_4:
     peft_path: <model_name1>['model']['peft_path']
 
 zephyr_7b_CAT_adv_eps005_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps005_456_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps005_456_relativelr_REFAIT:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
     use_fast_tokenizer: False
@@ -407,6 +470,33 @@ zephyr_7b_CAT_adv_eps01_42:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
 
+zephyr_7b_CAT_adv_eps01_42_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps01_42_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps01_42_relativelr_REFAIT_100innerloops:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
 zephyr_7b_CAT_adv_eps01_123:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
@@ -416,7 +506,43 @@ zephyr_7b_CAT_adv_eps01_123:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
 
+zephyr_7b_CAT_adv_eps01_123_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps01_123_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
 zephyr_7b_CAT_adv_eps01_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps01_456_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps01_456_relativelr_REFAIT:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
     use_fast_tokenizer: False
@@ -452,6 +578,33 @@ zephyr_7b_CAT_adv_eps02_42:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
 
+zephyr_7b_CAT_adv_eps02_42_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps02_42_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps02_42_relativelr_REFAIT_100innerloops:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
 zephyr_7b_CAT_adv_eps02_123:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
@@ -461,7 +614,43 @@ zephyr_7b_CAT_adv_eps02_123:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
 
+zephyr_7b_CAT_adv_eps02_123_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps02_123_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
 zephyr_7b_CAT_adv_eps02_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps02_456_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps02_456_relativelr_REFAIT:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
     use_fast_tokenizer: False
@@ -497,6 +686,33 @@ zephyr_7b_CAT_adv_eps04_42:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
 
+zephyr_7b_CAT_adv_eps04_42_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps04_42_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps04_42_relativelr_REFAIT_100innerloops:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
 zephyr_7b_CAT_adv_eps04_123:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
@@ -506,7 +722,43 @@ zephyr_7b_CAT_adv_eps04_123:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
 
+zephyr_7b_CAT_adv_eps04_123_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps04_123_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
 zephyr_7b_CAT_adv_eps04_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps04_456_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    use_flash_attention_2: True
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+
+zephyr_7b_CAT_adv_eps04_456_relativelr_REFAIT:
   target_model:
     model_name_or_path: <model_name1>['model']['model_name_or_path']
     use_fast_tokenizer: False
@@ -944,6 +1196,1920 @@ llama3_mixat:
     developer_name: Hugging Face
     peft_path: <model_name1>['model']['peft_path']
     chat_template: llama-3
+
+llama3_CAT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    load_in_4bit: True
+    dtype: bfloat16
+    chat_template: llama-3
+
+CAT_llama3b_005:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_REFAIT_TEST:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_123_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_123_REFAIT_TEST:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_456_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_relativelr_REFAIT_TEST:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_relativelr_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_005_relativelr_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_01_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_01_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_01_relativelr_REFAIT_TEST:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_01_relativelr_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_01_relativelr_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_02_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_02_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_02_relativelr_REFAIT_TEST:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_02_relativelr_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_02_relativelr_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_04_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_04_relativelr_REFAIT:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_04_relativelr_REFAIT_TEST:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_04_relativelr_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_04_relativelr_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0075_relativelr_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0150_relativelr_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0300_relativelr_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0600_relativelr_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_123_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0075_relativelr_123_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0150_relativelr_123_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0300_relativelr_123_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0600_relativelr_123_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_456_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0075_relativelr_456_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0150_relativelr_456_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0300_relativelr_456_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0600_relativelr_456_otherparams:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_42_utility:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_123_utility:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_456_utility:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_zephyr_eps005_42_utility:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: zephyr
+
+CAT_zephyr_eps005_42_relativelr_utility:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: zephyr
+
+CAT_zephyr_eps04_42_relativelr_utility:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: zephyr
+
+CAT_zephyr_github_42:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_github_42/final_model
+    chat_template: zephyr
+
+CAT_zephyr_github_123:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_github_123/final_model
+    chat_template: zephyr
+
+CAT_zephyr_github_456:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_github_456/final_model
+    chat_template: zephyr
+
+CAT_zephyr_github_789:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_github_789/final_model
+    chat_template: zephyr
+
+CAT_zephyr_github_1337:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_github_1337/final_model
+    chat_template: zephyr
+
+CAT_zephyr_eps005_42_utility_NEW:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_eps005_42_utility_NEW/final_model
+    chat_template: zephyr
+
+CAT_zephyr_eps0075_42_utility_NEW:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_eps0075_42_utility_NEW/final_model
+    chat_template: zephyr
+
+CAT_zephyr_eps005_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_eps005_42_relativelr_utility_NEW/final_model
+    chat_template: zephyr
+
+CAT_zephyr_eps01_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_eps01_42_relativelr_utility_NEW/final_model
+    chat_template: zephyr
+
+CAT_zephyr_eps02_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_eps02_42_relativelr_utility_NEW/final_model
+    chat_template: zephyr
+
+CAT_zephyr_eps04_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: HuggingFaceH4/zephyr-7b-beta
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Zephyr
+    developer_name: Hugging Face
+    peft_path: ../../experiments/CAT_zephyr_eps04_42_relativelr_utility_NEW/final_model
+    chat_template: zephyr
+
+CAT_llama3b_likeZephyr_42_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_42_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeZephyr_123_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_123_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeZephyr_456_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_456_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_42_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_42_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_123_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_123_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_456_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_456_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_eps0075_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_eps0075_42_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_eps0150_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_eps0150_42_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_eps0600_42_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_eps0600_42_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_eps0600_123_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_eps0600_123_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+CAT_llama3b_likeLlama2_eps0600_456_relativelr_utility_NEW:
+  target_model:
+    model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama-3-8B-Instruct
+    developer_name: Meta
+    peft_path: ../../experiments/CAT_llama3b_likeLlama2_eps0600_456_relativelr_utility_NEW/final_model
+    chat_template: llama-3-instruct
+
+
+CAT_llama3b_0075_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0075_relativelr_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0075_relativelr_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0150_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0150_relativelr_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0150_relativelr_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0300_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0300_relativelr_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0300_relativelr_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0600_relativelr:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0600_relativelr_123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_0600_relativelr_456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_TRIMMED:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeLlama2_eps0600_42_relativelr_utility_TRIMMED:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeLlama2_eps0600_123_relativelr_utility_TRIMMED:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeLlama2_eps0600_456_relativelr_utility_TRIMMED:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_TRIMMED:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_TRIMMED:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_TRIMMED:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_TRIMMED:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_42_utility_NEW_correcteps:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_123_utility_NEW_correcteps:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_456_utility_NEW_correcteps:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_42_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_123_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_456_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_100_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_42_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_123_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_456_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0300_123_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0300_456_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_500_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_42_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_123_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_456_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_3000_NEW:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight00595:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight00595:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight00595:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0238:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0952:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0014875:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight0014875:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight0014875:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight000371875:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight000371875:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight000371875:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_llama3_huggingface:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    chat_template: llama-3
+
+lat_llama3_huggingface_1:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_llama3_huggingface_2:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_llama3_huggingface_3:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+original_lat_llama3_seed42:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+original_lat_llama3_seed123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+original_lat_llama3_seed456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps12_seed42:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps12_seed123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps12_seed456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps24_seed42:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps24_seed123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps24_seed456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps48_seed42:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps48_seed123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_eps48_seed456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps6_seed42:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps6_seed123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps6_seed456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps12_seed42:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps12_seed123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps12_seed456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps24_seed42:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps24_seed123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps24_seed456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps48_seed42:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps48_seed123:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
+lat_rel10_eps48_seed456:
+  target_model:
+    model_name_or_path: <model_name1>['model']['model_name_or_path']
+    use_fast_tokenizer: False
+    load_in_4bit: True
+    dtype: bfloat16
+    model_short_name: Llama3
+    developer_name: Hugging Face
+    peft_path: <model_name1>['model']['peft_path']
+    chat_template: llama-3
+
 #Models of MixAT paper end
 koala_7b:
   target_model:

@@ -1,0 +1,32 @@
+Conda env env_XSTest already exists
+=== GENERATION ===
+Model path: HuggingFaceH4/zephyr-7b-beta
+Adapter: ../experiments/RCAT_topk5_lambda50_tau5_beta001/final_model
+Output: results/xstest_outputs_RCAT_topk5_lambda50_tau5_beta001.jsonl
+Batch size: 32
+[GPU] allocated: 13.81 GB | reserved: 14.48 GB
+[GPU] 0, 15329, 81920
+[GPU] allocated: 13.82 GB | reserved: 17.13 GB
+[GPU] 71, 18061, 81920
+[GPU] allocated: 13.82 GB | reserved: 17.13 GB
+[GPU] 77, 18061, 81920
+=== JSONL → CSV ===
+=== CLASSIFICATION ===
+=== METRICS ===
+
+=== XSTest Results ===
+
+--- Breakdown ---
+# Safe samples: 250
+# Unsafe samples: 200
+
+--- Rates ---
+Safe compliance rate: 0.5360
+Unsafe refusal rate: 0.9800
+
+--- Score ---
+Overall accuracy: 0.7333
+
+--- Correct counts ---
+Correct safe (answered): 134/250
+Correct unsafe (refused): 196/200

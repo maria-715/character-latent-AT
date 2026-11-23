@@ -57,8 +57,13 @@ def get_quantization_config(model_args) -> BitsAndBytesConfig | None:
 
 def get_tokenizer(model_args: ModelArguments, data_args: DataArguments) -> PreTrainedTokenizer:
     """Get the tokenizer for the model."""
+
+    tokenizer_name = model_args.model_name_or_path
+    if tokenizer_name == "ContinuousAT/Llama3-8B-IT-CAT":
+        tokenizer_name = "meta-llama/Meta-Llama-3-8B-Instruct"
+    
     tokenizer = AutoTokenizer.from_pretrained(
-        model_args.model_name_or_path,
+        tokenizer_name,
         revision=model_args.model_revision,
     )
     if tokenizer.pad_token_id is None:

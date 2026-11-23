@@ -1,0 +1,28 @@
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.5.1+cu124
+transformers
+peft
+python-dotenv
+wandb
+datasets
+omegaconf
+lm_eval
+sentencepiece
+jupyter
+# transformer-lens: optional in latent_at (laa/__init__.py, utils.py both wrap its import in
+# try/except ImportError). Not used by jailbreaks.ipynb's plain AutoModelForCausalLM training
+# path. Commented out because the version pip resolves does `transformers.TRANSFORMERS_CACHE`
+# at import time, which raises AttributeError (not ImportError) against the pinned transformers
+# above -- a type latent_at's existing guard does not catch, crashing the script even though
+# transformer-lens is never actually needed here.
+# transformer-lens
+matplotlib
+Levenshtein
+openai
+fastchat
+# deepspeed: optional in latent_at (lat_methods.py wraps `import deepspeed` in
+# try/except ImportError). Not used by jailbreaks.ipynb's single-GPU LoRA training path.
+# Commented out because the version pip resolves raises ValueError (not ImportError) while
+# importing its own module tree against torch==2.5.1+cu124 -- a type latent_at's existing
+# guard does not catch, crashing the script even though DeepSpeed is never actually needed.
+# deepspeed

@@ -101,7 +101,7 @@ def main(args):
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
 
-    model, tokenizer = load_model_and_tokenizer(args.model_path)
+    model, tokenizer = load_model_and_tokenizer(args.model_path, use_left=True)
     model.eval()
 
     # print("\nCHAT TEMPLATE:\n", tokenizer.chat_template)

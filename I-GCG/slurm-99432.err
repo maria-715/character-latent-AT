@@ -1,0 +1,38 @@
+/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:11,  3.78s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:07<00:07,  3.80s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:11<00:03,  3.77s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:12<00:00,  2.65s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:12<00:00,  3.07s/it]
+/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/torch/nested/__init__.py:166: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. (Triggered internally at ../aten/src/ATen/NestedTensorImpl.cpp:177.)
+  return _nested.nested_tensor(
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/I-GCG/attack_llm_core_best_update_our_target.py", line 222, in <module>
+    logits, ids = get_logits(model=model,
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/I-GCG/llm_attacks/minimal_gcg/opt_utils.py", line 183, in get_logits
+    return forward(model=model, input_ids=ids, attention_mask=attn_mask, batch_size=batch_size), ids
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/I-GCG/llm_attacks/minimal_gcg/opt_utils.py", line 202, in forward
+    logits.append(model(input_ids=batch_input_ids, attention_mask=batch_attention_mask).logits)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/transformers/models/llama/modeling_llama.py", line 1176, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/transformers/models/llama/modeling_llama.py", line 993, in forward
+    causal_mask = self._update_causal_mask(attention_mask, inputs_embeds)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_i-gcg/lib/python3.11/site-packages/transformers/models/llama/modeling_llama.py", line 1074, in _update_causal_mask
+    causal_mask = self.causal_mask[None, None, :, :].repeat(batch_size, 1, 1, 1).to(dtype) * min_dtype
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 32.00 GiB. GPU 0 has a total capacity of 79.26 GiB of which 16.02 GiB is free. Including non-PyTorch memory, this process has 63.22 GiB memory in use. Of the allocated memory 62.45 GiB is allocated by PyTorch, and 272.28 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+srun: error: oat14: task 0: Exited with exit code 1

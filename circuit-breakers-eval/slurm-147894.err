@@ -1,0 +1,24 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:10,  3.38s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:06<00:06,  3.45s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:10<00:03,  3.43s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:11<00:00,  2.44s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:11<00:00,  2.80s/it]
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/circuit-breakers-eval/evaluation/evaluate.py", line 276, in <module>
+    main()
+  File "/auto/users/ms25mds/MSc_Project/circuit-breakers-eval/evaluation/evaluate.py", line 232, in main
+    score, instances = evaluate(
+                       ^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/circuit-breakers-eval/evaluation/evaluate.py", line 97, in evaluate
+    model, tokenizer = load_model_and_tokenizer(model_name_or_path, adapter_name_or_path=adapter_name_or_path)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/circuit-breakers-eval/evaluation/utils.py", line 58, in load_model_and_tokenizer
+    model = PeftModel.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/peft/peft_model.py", line 324, in from_pretrained
+    config = PEFT_TYPE_TO_CONFIG_MAPPING[
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/peft/config.py", line 151, in from_pretrained
+    return cls.from_peft_type(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_run_embedding_attack/lib/python3.11/site-packages/peft/config.py", line 118, in from_peft_type
+    return config_cls(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+TypeError: LoraConfig.__init__() got an unexpected keyword argument 'layer_replication'
+srun: error: oat15: task 0: Exited with exit code 1

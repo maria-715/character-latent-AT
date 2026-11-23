@@ -1,0 +1,20 @@
+GPU detected: NVIDIA A100 80GB PCIe
+Loading tokenizer and model: HuggingFaceH4/zephyr-7b-beta (bf16)
+Model loaded in 6.0s
+Total prompts: 1000 | already done: 64 | remaining: 936
+[64/936] batch took 72.6s (1.1s/prompt) | ETA 16 min
+[128/936] batch took 70.7s (1.1s/prompt) | ETA 15 min
+[192/936] batch took 70.8s (1.1s/prompt) | ETA 14 min
+[256/936] batch took 70.1s (1.1s/prompt) | ETA 13 min
+[320/936] batch took 70.5s (1.1s/prompt) | ETA 11 min
+[384/936] batch took 70.0s (1.1s/prompt) | ETA 10 min
+[448/936] batch took 70.4s (1.1s/prompt) | ETA 9 min
+[512/936] batch took 69.9s (1.1s/prompt) | ETA 8 min
+[576/936] batch took 70.1s (1.1s/prompt) | ETA 7 min
+[640/936] batch took 65.9s (1.0s/prompt) | ETA 5 min
+[704/936] batch took 70.1s (1.1s/prompt) | ETA 4 min
+[768/936] batch took 70.2s (1.1s/prompt) | ETA 3 min
+[832/936] batch took 70.1s (1.1s/prompt) | ETA 2 min
+[896/936] batch took 70.8s (1.1s/prompt) | ETA 1 min
+[936/936] batch took 48.3s (1.2s/prompt) | ETA 0 min
+Done. Output written to utility_zephyr_7b_beta_from80kto1k_train.csv

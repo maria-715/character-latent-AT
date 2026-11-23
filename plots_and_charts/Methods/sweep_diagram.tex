@@ -1,0 +1,193 @@
+\begin{figure}[tbp]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tikzpicture}[
+        font=\small,
+        >=Latex,
+        node distance=5mm and 7mm,
+        config/.style={
+            draw,
+            rounded corners=2pt,
+            align=center,
+            minimum height=10mm,
+            text width=29mm,
+            inner sep=4pt
+        },
+        stage/.style={
+            draw,
+            rounded corners=2pt,
+            align=center,
+            minimum height=12mm,
+            text width=27mm,
+            inner sep=4pt
+        },
+        eval/.style={
+            draw,
+            rounded corners=2pt,
+            align=center,
+            minimum height=9mm,
+            text width=28mm,
+            inner sep=3pt
+        },
+        reference/.style={
+            draw=gray,
+            text=gray!80!black,
+            dashed,
+            rounded corners=2pt,
+            align=center,
+            minimum height=8mm,
+            text width=31mm,
+            inner sep=3pt
+        },
+        flow/.style={
+            ->,
+            thick
+        },
+        refflow/.style={
+            ->,
+            dashed,
+            gray,
+            thick
+        },
+        group/.style={
+            draw=gray!60,
+            rounded corners=3pt,
+            inner sep=5pt
+        }
+    ]
+
+    % -------------------------------------------------------------------------
+    % Controlled sweep: configurations
+    % -------------------------------------------------------------------------
+    \node[config] (zephyr) {
+        \textbf{Zephyr}\\
+        Zephyr recipe\\
+        \footnotesize 4 radii
+    };
+
+    \node[config, below=of zephyr] (llama2) {
+        \textbf{Llama~3}\\
+        Llama~2 recipe\\
+        \footnotesize 8 radii
+    };
+
+    \node[config, below=of llama2] (mixat) {
+        \textbf{Llama~3}\\
+        MixAT recipe\\
+        \footnotesize 4 radii
+    };
+
+    % Sweep and replication stages
+    \node[stage, right=12mm of llama2] (sweep) {
+        \textbf{Perturbation sweep}\\[1mm]
+        vary $\epsilon$\\
+        \footnotesize
+        (other settings fixed\\
+        within configuration)
+    };
+
+    \node[stage, right=of sweep] (seeds) {
+        \textbf{Replication}\\[1mm]
+        3 independent\\
+        training seeds\\
+        \footnotesize per radius
+    };
+
+    \node[stage, right=of seeds] (checkpoints) {
+        \textbf{Sweep checkpoints}\\[1mm]
+        16 radius settings\\
+        $\times$ 3 seeds\\
+        \footnotesize $=$ 48 checkpoints
+    };
+
+    % Evaluation axes
+    \node[eval, right=11mm of checkpoints] (utility) {
+        \textbf{Benign utility}\\
+        \footnotesize Harmless, XSTest
+    };
+    
+    \node[eval, above=6mm of utility] (capability) {
+        \textbf{Capability}\\
+        \footnotesize MMLU, ARC-E, ARC-C
+    };
+    
+    \node[eval, below=6mm of utility] (robustness) {
+        \textbf{Robustness}\\
+        \footnotesize GCG, AutoDAN,\\
+        Soft-Prompts, Inpainting
+    };
+
+    % Main flow
+    \draw[flow] (zephyr.east) -- (sweep.west);
+    \draw[flow] (llama2.east) -- (sweep.west);
+    \draw[flow] (mixat.east) -- (sweep.west);
+
+    \draw[flow] (sweep) -- (seeds);
+    \draw[flow] (seeds) -- (checkpoints);
+
+    \draw[flow] (checkpoints.east) -- ++(4mm,0)
+        |- (capability.west);
+    \draw[flow] (checkpoints.east) -- (utility.west);
+    \draw[flow] (checkpoints.east) -- ++(4mm,0)
+        |- (robustness.west);
+
+    % % -------------------------------------------------------------------------
+    % % Contextual reference conditions
+    % % -------------------------------------------------------------------------
+    % \node[reference, below=40mm of llama2] (released) {
+    %     Released \gls{cat} checkpoints
+    %     \footnotesize published reference
+    % };
+    
+    % \node[reference, above=of released] (original) {
+    %     Original models
+    %     \footnotesize pre-CAT reference
+    % };
+    
+    % \node[reference, below=of released] (github) {
+    %     GitHub reproductions
+    %     \footnotesize implementation check
+    % };
+    
+    % \node[
+    %     reference,
+    %     right=15mm of released,
+    %     text width=29mm
+    % ] (refeval) {
+    %     Same evaluation\\
+    %     protocols
+    % };
+    
+    % \draw[refflow] (original.east) -- ++(5mm,0) |- (refeval.west);
+    % \draw[refflow] (released.east) -- (refeval.west);
+    % \draw[refflow] (github.east) -- ++(5mm,0) |- (refeval.west);
+
+    % Labels for the two methodological roles
+    \begin{scope}[on background layer]
+        \node[
+            group,
+            fit=(zephyr)(mixat)(sweep)(seeds)(checkpoints)
+                (capability)(robustness),
+            label={[font=\small\bfseries]above:Controlled radius sweeps}
+        ] {};
+
+        % \node[
+        %     group,
+        %     dashed,
+        %     fit=(original)(released)(github)(refeval),
+        %     label={
+        %         [text=gray!80!black,font=\small\bfseries]
+        %         above:Contextual references --- not part of controlled $\epsilon$ sweep
+        %     }
+        % ] {};
+
+    \end{scope}
+
+    \end{tikzpicture}%
+    }
+
+    \caption{Overview of the controlled perturbation sweeps. Within each model--recipe configuration, the perturbation radius $\epsilon$ is varied while the remaining training settings are kept fixed. Each radius is trained with three independent seeds, giving 48 checkpoints across the controlled sweeps, which are evaluated on task capability, benign behavioural utility, and adversarial robustness. 
+    % Original models, released \gls{cat} checkpoints, and GitHub reproductions are evaluated under the same protocols but serve as contextual reference conditions; they are not part of the controlled radius sweeps.
+    }
+    \label{fig:sweep_diagram}
+\end{figure}

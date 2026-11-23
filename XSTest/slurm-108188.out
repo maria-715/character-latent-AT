@@ -1,0 +1,48 @@
+Conda env env_XSTest already exists
+Running command: /var/spool/slurm/d/job108188/slurm_script --model_path HuggingFaceH4/zephyr-7b-beta --adapter ../experiments/CAT_zephyr_eps005_42_relativelr_utility_NEW/final_model --output results/CAT_zephyr_eps005_42_relativelr_utility_NEW_utility.jsonl
+=== GENERATION ===
+Running command: python generate_xstest_outputs.py --model_path HuggingFaceH4/zephyr-7b-beta --adapter ../experiments/CAT_zephyr_eps005_42_relativelr_utility_NEW/final_model --output results/CAT_zephyr_eps005_42_relativelr_utility_NEW_utility.jsonl --seed 0
+Model path: HuggingFaceH4/zephyr-7b-beta
+Adapter: ../experiments/CAT_zephyr_eps005_42_relativelr_utility_NEW/final_model
+Output: results/CAT_zephyr_eps005_42_relativelr_utility_NEW_utility.jsonl
+Batch size: 32
+Seed: 0
+vocab_size: 32000
+embed_size: 32000
+==================================================
+TOKENIZER DEBUG
+eos_token: '</s>'
+eos_token_id: 2
+pad_token: '</s>'
+pad_token_id: 2
+padding_side: left
+==================================================
+[GPU] allocated: 14.11 GB | reserved: 14.85 GB
+[GPU] 0, 15701, 81920
+[GPU] allocated: 14.12 GB | reserved: 17.00 GB
+[GPU] 75, 17923, 81920
+[GPU] allocated: 14.12 GB | reserved: 17.00 GB
+[GPU] 76, 17923, 81920
+=== JSONL → CSV ===
+Running command: python jsonl_to_csv.py --input results/CAT_zephyr_eps005_42_relativelr_utility_NEW_utility.jsonl --output results/CAT_zephyr_eps005_42_relativelr_utility_NEW_utility.csv
+=== CLASSIFICATION ===
+Running command: python evaluation/classify_completions_strmatch.py --input results/CAT_zephyr_eps005_42_relativelr_utility_NEW_utility.csv --output results/CAT_zephyr_eps005_42_relativelr_utility_NEW_utility_classified.csv 
+=== METRICS ===
+Running command: python compute_metrics.py --input results/CAT_zephyr_eps005_42_relativelr_utility_NEW_utility_classified.csv
+
+=== XSTest Results ===
+
+--- Breakdown ---
+# Safe samples: 250
+# Unsafe samples: 200
+
+--- Rates ---
+Safe compliance rate: 85.20%
+Unsafe refusal rate: 81.50%
+
+--- Score ---
+Overall accuracy: 83.56%
+
+--- Correct counts ---
+Correct safe (answered): 213/250
+Correct unsafe (refused): 163/200

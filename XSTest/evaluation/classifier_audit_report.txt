@@ -1,0 +1,232 @@
+Resolved 126 of 126 requested runs to a non-strict classified.csv file.
+
+==========================================================================================
+OVERALL (per-completion, across all 126 non-strict runs)
+==========================================================================================
+  completions scanned : 56700
+  false negatives     : 2088
+  false positives     : 447
+  lower-bound error   : 4.47%
+  runs with 0 error   : 20
+  runs with >5% error : 33
+
+==========================================================================================
+SEED-GROUPING SANITY CHECK (expect 3 seeds/config, 5 for zephyr_github, or 1 for a single-seed config)
+==========================================================================================
+  4 base config(s) do NOT match the expected seed count:
+
+  - CAT_llama3b_02_relativelr
+      got 2 run(s) (seeds: 123,456), expected [1, 3]
+      runs in this group: ['CAT_llama3b_02_relativelr_123', 'CAT_llama3b_02_relativelr_456']
+  - CAT_llama3b_005_relativelr
+      got 2 run(s) (seeds: 123,456), expected [1, 3]
+      runs in this group: ['CAT_llama3b_005_relativelr_123', 'CAT_llama3b_005_relativelr_456']
+  - CAT_llama3b_01_relativelr
+      got 2 run(s) (seeds: 123,456), expected [1, 3]
+      runs in this group: ['CAT_llama3b_01_relativelr_456', 'CAT_llama3b_01_relativelr_123']
+  - CAT_llama3b_04_relativelr
+      got 2 run(s) (seeds: 123,456), expected [1, 3]
+      runs in this group: ['CAT_llama3b_04_relativelr_456', 'CAT_llama3b_04_relativelr_123']
+
+  NOTE: this only checks internal consistency of REQUESTED_RUNS as given -
+  it does not add or guess any run that wasn't explicitly requested.
+
+==========================================================================================
+PER-RUN (sorted by error rate, worst first)
+==========================================================================================
+                                                                         name   n  n_compliance  n_refusal  false_negatives  false_positives  error_rate_pct
+                 CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW 450           273        177              134                0           29.78
+                     CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_NEW 450           233        217              128                1           28.67
+                                    CAT_llama3b_likeZephyr_42_utility_100_NEW 450           256        194              110                1           24.67
+                CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_500_NEW 450           114        336              107                0           23.78
+                                              CAT_llama3b_0150_relativelr_456 450           185        265               96                0           21.33
+                     CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_NEW 450           160        290               87                0           19.33
+CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight000371875 450           210        240               84                0           18.67
+                                                  CAT_llama3b_0075_relativelr 450           201        249               81                1           18.22
+                CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW 450           236        214               68               11           17.56
+                                   CAT_llama3b_likeZephyr_123_utility_500_NEW 450            62        388                7               69           16.89
+   CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0014875 450           233        217               71                0           15.78
+                                                  CAT_llama3b_0150_relativelr 450           179        271               65                2           14.89
+                 CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_100_NEW 450            17        433                0               61           13.56
+                                              CAT_llama3b_0300_relativelr_456 450           117        333               42               13           12.22
+                CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW 450           147        303               39               12           11.33
+CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight000371875 450           116        334               47                0           10.44
+                                   CAT_llama3b_likeZephyr_456_utility_500_NEW 450           190        260               36               10           10.22
+                     CAT_llama3b_likeLlama2_eps0300_42_relativelr_utility_NEW 450           313        137               42                0            9.33
+                 CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_100_NEW 450           187        263               38                4            9.33
+    CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight00595 450           195        255               25               14            8.67
+                                  CAT_llama3b_likeZephyr_456_utility_3000_NEW 450           137        313               18               21            8.67
+                     CAT_llama3b_likeLlama2_eps0150_42_relativelr_utility_NEW 450           230        220               13               22            7.78
+                                   CAT_llama3b_likeZephyr_42_utility_3000_NEW 450           276        174               33                0            7.33
+                                                        CAT_zephyr_github_123 450           148        302               22               10            7.11
+  CAT_llama3b_likeZephyr_eps0150_123_relativelr_utility_500_NEW_weight0014875 450           221        229               28                4            7.11
+                 CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_500_NEW 450            66        384               29                0            6.44
+                                        CAT_llama3b_likeLlama2_42_utility_NEW 450           148        302                4               25            6.44
+                    CAT_llama3b_likeLlama2_eps0600_456_relativelr_utility_NEW 450            85        365               27                0            6.00
+    CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight00595 450           149        301               19                7            5.78
+                                          CAT_adv_eps04_456_relativelr_REFAIT 450           256        194               25                0            5.56
+                             CAT_llama3b_likeZephyr_42_utility_NEW_correcteps 450           158        292               24                0            5.33
+                                       CAT_llama3b_likeLlama2_123_utility_NEW 450            10        440                1               22            5.11
+                                   CAT_llama3b_likeZephyr_456_utility_100_NEW 450           159        291                9               14            5.11
+                                           CAT_adv_eps02_42_relativelr_REFAIT 450           130        320               22                0            4.89
+                                    CAT_llama3b_likeZephyr_42_utility_500_NEW 450           158        292               16                6            4.89
+      CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0238 450           163        287               22                0            4.89
+                                   CAT_zephyr_eps04_42_relativelr_utility_NEW 450           297        153               20                1            4.67
+                                              CAT_llama3b_0075_relativelr_123 450           133        317               21                0            4.67
+                                          CAT_adv_eps005_42_relativelr_REFAIT 450           167        283               19                1            4.44
+                            CAT_llama3b_likeZephyr_456_utility_NEW_correcteps 450           143        307                9               11            4.44
+                                         CAT_adv_eps005_123_relativelr_REFAIT 450           172        278               19                0            4.22
+                     CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_NEW 450           213        237                7               12            4.22
+                                                        CAT_zephyr_github_456 450           138        312               18                0            4.00
+                                          CAT_adv_eps01_456_relativelr_REFAIT 450           136        314               17                1            4.00
+                                           CAT_adv_eps01_42_relativelr_REFAIT 450           123        327               16                0            3.56
+                                          CAT_adv_eps04_123_relativelr_REFAIT 450           156        294               16                0            3.56
+      CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight0952 450           159        291               11                4            3.33
+                CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_3000_NEW 450           192        258               11                4            3.33
+     CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight00595 450           168        282               12                2            3.11
+                                                        CAT_zephyr_github_789 450           124        326               13                0            2.89
+                                  CAT_llama3b_likeZephyr_123_utility_3000_NEW 450           167        283               13                0            2.89
+                                             CAT_llama3b_01_relativelr_REFAIT 450            78        372               13                0            2.89
+                                          CAT_adv_eps01_123_relativelr_REFAIT 450           158        292               12                1            2.89
+                                              CAT_llama3b_0300_relativelr_123 450            41        409               13                0            2.89
+                                         CAT_adv_eps005_456_relativelr_REFAIT 450           136        314               13                0            2.89
+                                       CAT_llama3b_likeLlama2_456_utility_NEW 450           176        274                2               11            2.89
+                                       CAT_llama3b_005_relativelr_REFAIT_TEST 450           141        309               11                2            2.89
+                     CAT_llama3b_likeLlama2_eps0075_42_relativelr_utility_NEW 450            80        370               12                0            2.67
+                                                 HuggingFaceH4/zephyr-7b-beta 450           418         32                0               12            2.67
+                                                   CAT_llama3b_005_456_REFAIT 450           116        334               11                0            2.44
+                            CAT_llama3b_likeZephyr_123_utility_NEW_correcteps 450           121        329               10                1            2.44
+                 CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_500_NEW 450            13        437                0               11            2.44
+                                                CAT_llama3b_02_relativelr_123 450           130        320               11                0            2.44
+                                   CAT_zephyr_eps01_42_relativelr_utility_NEW 450           231        219                2                9            2.44
+                                   CAT_llama3b_likeZephyr_123_utility_100_NEW 450           127        323                7                3            2.22
+                                          CAT_adv_eps02_123_relativelr_REFAIT 450           132        318               10                0            2.22
+                                                CAT_llama3b_02_relativelr_456 450           112        338                9                0            2.00
+                                               CAT_llama3b_005_relativelr_123 450           168        282                5                3            1.78
+                                            CAT_zephyr_eps0075_42_utility_NEW 450           235        215                7                1            1.78
+                                                         CAT_zephyr_github_42 450           130        320                8                0            1.78
+                                  CAT_zephyr_eps005_42_relativelr_utility_NEW 450           250        200                6                1            1.56
+                                  CAT_llama3b_0300_relativelr_123_otherparams 450           159        291                6                1            1.56
+                                              CAT_llama3b_0150_relativelr_123 450            46        404                6                1            1.56
+                                                  CAT_llama3b_005_REFAIT_TEST 450            36        414                4                3            1.56
+                 CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_100_NEW 450            18        432                4                3            1.56
+                                           CAT_adv_eps04_42_relativelr_REFAIT 450           186        264                7                0            1.56
+                                        CAT_llama3b_04_relativelr_REFAIT_TEST 450             4        446                2                4            1.33
+                                   CAT_zephyr_eps02_42_relativelr_utility_NEW 450           252        198                6                0            1.33
+  CAT_llama3b_likeZephyr_eps0150_456_relativelr_utility_500_NEW_weight0014875 450           154        296                5                0            1.11
+                                  CAT_llama3b_0075_relativelr_456_otherparams 450           174        276                4                1            1.11
+                CAT_llama3b_likeZephyr_eps0300_42_relativelr_utility_3000_NEW 450             8        442                0                4            0.89
+                                          CAT_adv_eps02_456_relativelr_REFAIT 450           145        305                4                0            0.89
+                                               CAT_llama3b_005_relativelr_456 450           159        291                4                0            0.89
+                                                       CAT_zephyr_github_1337 450           167        283                4                0            0.89
+                                  CAT_llama3b_0150_relativelr_456_otherparams 450           163        287                3                0            0.67
+                                                          CAT_llama3b_005_123 450           163        287                3                0            0.67
+                                                  CAT_llama3b_123_otherparams 450           142        308                3                0            0.67
+                CAT_llama3b_likeZephyr_eps0075_42_relativelr_utility_3000_NEW 450            13        437                0                3            0.67
+                                  CAT_llama3b_0150_relativelr_123_otherparams 450           114        336                3                0            0.67
+                                                CAT_llama3b_01_relativelr_456 450           143        307                2                0            0.44
+                                                  CAT_llama3b_0300_relativelr 450             6        444                2                0            0.44
+                                             CAT_llama3b_02_relativelr_REFAIT 450             6        444                2                0            0.44
+                                      CAT_llama3b_0150_relativelr_otherparams 450           115        335                1                1            0.44
+                                                CAT_llama3b_04_relativelr_456 450           153        297                1                1            0.44
+                    CAT_llama3b_likeLlama2_eps0600_123_relativelr_utility_NEW 450            11        439                2                0            0.44
+                                                  CAT_llama3b_0600_relativelr 450             2        448                0                1            0.22
+                                  CAT_llama3b_0600_relativelr_456_otherparams 450           127        323                1                0            0.22
+                                      CAT_llama3b_0075_relativelr_otherparams 450           119        331                1                0            0.22
+                                                CAT_llama3b_01_relativelr_123 450           137        313                1                0            0.22
+                CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_100_NEW 450            27        423                1                0            0.22
+                                                  CAT_llama3b_456_otherparams 450           102        348                1                0            0.22
+ CAT_llama3b_likeZephyr_eps0150_42_relativelr_utility_500_NEW_weight000371875 450             5        445                1                0            0.22
+                                                ContinuousAT/Llama3-8B-IT-CAT 450            71        379                0                1            0.22
+                                          meta-llama/Meta-Llama-3-8B-Instruct 450           260        190                0                1            0.22
+                                      CAT_llama3b_0300_relativelr_otherparams 450           127        323                1                0            0.22
+                                      CAT_llama3b_0600_relativelr_otherparams 450            77        373                0                1            0.22
+               CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_3000_NEW 450             1        449                0                0            0.00
+               CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_3000_NEW 450             3        447                0                0            0.00
+                CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_3000_NEW 450             1        449                0                0            0.00
+                                  CAT_llama3b_0300_relativelr_456_otherparams 450           184        266                0                0            0.00
+                                              CAT_llama3b_0075_relativelr_456 450            71        379                0                0            0.00
+                CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_500_NEW 450             5        445                0                0            0.00
+                 CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_500_NEW 450             3        447                0                0            0.00
+                                              CAT_llama3b_0600_relativelr_123 450             1        449                0                0            0.00
+                                              CAT_llama3b_0600_relativelr_456 450             3        447                0                0            0.00
+                CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_100_NEW 450            11        439                0                0            0.00
+                                                CAT_llama3b_04_relativelr_123 450            90        360                0                0            0.00
+                    CAT_llama3b_likeZephyr_eps0600_456_relativelr_utility_NEW 450             1        449                0                0            0.00
+                    CAT_llama3b_likeZephyr_eps0600_123_relativelr_utility_NEW 450             0        450                0                0            0.00
+                     CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_NEW 450             3        447                0                0            0.00
+                                                      CAT_llama3b_otherparams 450           133        317                0                0            0.00
+                     CAT_llama3b_likeLlama2_eps0600_42_relativelr_utility_NEW 450            10        440                0                0            0.00
+                                  CAT_llama3b_0075_relativelr_123_otherparams 450            98        352                0                0            0.00
+                    HuggingFaceH4/zephyr-7b-beta with ContinuousAT/Zephyr-CAT 450           137        313                0                0            0.00
+                                  CAT_llama3b_0600_relativelr_123_otherparams 450            79        371                0                0            0.00
+                 CAT_llama3b_likeZephyr_eps0600_42_relativelr_utility_100_NEW 450             6        444                0                0            0.00
+
+==========================================================================================
+AGGREGATED BY CONFIG (seeds merged: mean +/- sample std dev)
+==========================================================================================
+                                                              base_config  n_runs               seeds  matches_expectation  error_rate_pct_mean  error_rate_pct_std  false_negatives_mean  false_negatives_std  false_positives_mean  false_positives_std
+                    CAT_llama3b_likeZephyr_eps0150_relativelr_utility_NEW       1                  42                 True               28.670               0.000               128.000                0.000                 1.000                0.000
+                CAT_llama3b_likeZephyr_eps0150_relativelr_utility_500_NEW       3          42,123,456                 True               19.557               9.386                80.333               48.686                 7.667                6.658
+                    CAT_llama3b_likeZephyr_eps0300_relativelr_utility_NEW       1                  42                 True               19.330               0.000                87.000                0.000                 0.000                0.000
+                CAT_llama3b_likeZephyr_eps0075_relativelr_utility_100_NEW       1                  42                 True               13.560               0.000                 0.000                0.000                61.000                0.000
+                                              CAT_llama3b_0150_relativelr       3             123,456                 True               12.593              10.083                55.667               45.720                 1.000                1.000
+                                   CAT_llama3b_likeZephyr_utility_100_NEW       3          42,123,456                 True               10.667              12.213                42.000               58.898                 6.000                7.000
+                                   CAT_llama3b_likeZephyr_utility_500_NEW       3          42,123,456                 True               10.667               6.012                19.667               14.844                28.333               35.275
+CAT_llama3b_likeZephyr_eps0150_relativelr_utility_500_NEW_weight000371875       3          42,123,456                 True                9.777               9.243                44.000               41.581                 0.000                0.000
+                    CAT_llama3b_likeLlama2_eps0300_relativelr_utility_NEW       1                  42                 True                9.330               0.000                42.000                0.000                 0.000                0.000
+                CAT_llama3b_likeZephyr_eps0150_relativelr_utility_100_NEW       1                  42                 True                9.330               0.000                38.000                0.000                 4.000                0.000
+  CAT_llama3b_likeZephyr_eps0150_relativelr_utility_500_NEW_weight0014875       3          42,123,456                 True                8.000               7.375                34.667               33.501                 1.333                2.309
+                CAT_llama3b_likeZephyr_eps0600_relativelr_utility_500_NEW       3          42,123,456                 True                7.927              13.729                35.667               61.776                 0.000                0.000
+                    CAT_llama3b_likeLlama2_eps0150_relativelr_utility_NEW       1                  42                 True                7.780               0.000                13.000                0.000                22.000                0.000
+                                              CAT_llama3b_0075_relativelr       3             123,456                 True                7.630               9.464                34.000               42.036                 0.333                0.577
+                CAT_llama3b_likeZephyr_eps0300_relativelr_utility_500_NEW       1                  42                 True                6.440               0.000                29.000                0.000                 0.000                0.000
+                                  CAT_llama3b_likeZephyr_utility_3000_NEW       3          42,123,456                 True                6.297               3.025                21.333               10.408                 7.000               12.124
+    CAT_llama3b_likeZephyr_eps0150_relativelr_utility_500_NEW_weight00595       3          42,123,456                 True                5.853               2.781                18.667                6.506                 7.667                6.028
+                                              CAT_llama3b_0300_relativelr       3             123,456                 True                5.183               6.216                19.000               20.664                 4.333                7.506
+     CAT_llama3b_likeZephyr_eps0150_relativelr_utility_500_NEW_weight0238       1                  42                 True                4.890               0.000                22.000                0.000                 0.000                0.000
+                                       CAT_llama3b_likeLlama2_utility_NEW       3          42,123,456                 True                4.813               1.793                 2.333                1.528                19.333                7.371
+                                  CAT_zephyr_eps04_relativelr_utility_NEW       1                  42                 True                4.670               0.000                20.000                0.000                 1.000                0.000
+                    CAT_llama3b_likeZephyr_eps0075_relativelr_utility_NEW       1                  42                 True                4.220               0.000                 7.000                0.000                12.000                0.000
+                            CAT_llama3b_likeZephyr_utility_NEW_correcteps       3          42,123,456                 True                4.070               1.480                14.333                8.386                 4.000                6.083
+                                         CAT_adv_eps005_relativelr_REFAIT       3          42,123,456                 True                3.850               0.839                17.000                3.464                 0.333                0.577
+                                          CAT_adv_eps04_relativelr_REFAIT       3          42,123,456                 True                3.560               2.000                16.000                9.000                 0.000                0.000
+                                          CAT_adv_eps01_relativelr_REFAIT       3          42,123,456                 True                3.483               0.559                15.000                2.646                 0.667                0.577
+                                                        CAT_zephyr_github       5 42,123,456,789,1337                 True                3.334               2.413                13.000                7.280                 2.000                4.472
+               CAT_llama3b_likeZephyr_eps0150_relativelr_utility_3000_NEW       1                  42                 True                3.330               0.000                11.000                0.000                 4.000                0.000
+     CAT_llama3b_likeZephyr_eps0150_relativelr_utility_500_NEW_weight0952       1                  42                 True                3.330               0.000                11.000                0.000                 4.000                0.000
+                                         CAT_llama3b_01_relativelr_REFAIT       1                                     True                2.890               0.000                13.000                0.000                 0.000                0.000
+                                   CAT_llama3b_005_relativelr_REFAIT_TEST       1                                     True                2.890               0.000                11.000                0.000                 2.000                0.000
+                    CAT_llama3b_likeLlama2_eps0075_relativelr_utility_NEW       1                  42                 True                2.670               0.000                12.000                0.000                 0.000                0.000
+                                             HuggingFaceH4/zephyr-7b-beta       1                                     True                2.670               0.000                 0.000                0.000                12.000                0.000
+                                          CAT_adv_eps02_relativelr_REFAIT       3          42,123,456                 True                2.667               2.037                12.000                9.165                 0.000                0.000
+                                                   CAT_llama3b_005_REFAIT       1                 456                 True                2.440               0.000                11.000                0.000                 0.000                0.000
+                CAT_llama3b_likeZephyr_eps0075_relativelr_utility_500_NEW       1                  42                 True                2.440               0.000                 0.000                0.000                11.000                0.000
+                                  CAT_zephyr_eps01_relativelr_utility_NEW       1                  42                 True                2.440               0.000                 2.000                0.000                 9.000                0.000
+                                                CAT_llama3b_02_relativelr       2             123,456                False                2.220               0.311                10.000                1.414                 0.000                0.000
+                    CAT_llama3b_likeLlama2_eps0600_relativelr_utility_NEW       3          42,123,456                 True                2.147               3.344                 9.667               15.044                 0.000                0.000
+                                           CAT_zephyr_eps0075_utility_NEW       1                  42                 True                1.780               0.000                 7.000                0.000                 1.000                0.000
+                                              CAT_llama3b_005_REFAIT_TEST       1                                     True                1.560               0.000                 4.000                0.000                 3.000                0.000
+                CAT_llama3b_likeZephyr_eps0300_relativelr_utility_100_NEW       1                  42                 True                1.560               0.000                 4.000                0.000                 3.000                0.000
+                                 CAT_zephyr_eps005_relativelr_utility_NEW       1                  42                 True                1.560               0.000                 6.000                0.000                 1.000                0.000
+                                               CAT_llama3b_005_relativelr       2             123,456                False                1.335               0.629                 4.500                0.707                 1.500                2.121
+                                    CAT_llama3b_04_relativelr_REFAIT_TEST       1                                     True                1.330               0.000                 2.000                0.000                 4.000                0.000
+                                  CAT_zephyr_eps02_relativelr_utility_NEW       1                  42                 True                1.330               0.000                 6.000                0.000                 0.000                0.000
+               CAT_llama3b_likeZephyr_eps0300_relativelr_utility_3000_NEW       1                  42                 True                0.890               0.000                 0.000                0.000                 4.000                0.000
+               CAT_llama3b_likeZephyr_eps0075_relativelr_utility_3000_NEW       1                  42                 True                0.670               0.000                 0.000                0.000                 3.000                0.000
+                                                          CAT_llama3b_005       1                 123                 True                0.670               0.000                 3.000                0.000                 0.000                0.000
+                                  CAT_llama3b_0300_relativelr_otherparams       3             123,456                 True                0.593               0.844                 2.333                3.215                 0.333                0.577
+                                  CAT_llama3b_0150_relativelr_otherparams       3             123,456                 True                0.593               0.133                 2.333                1.155                 0.333                0.577
+                                  CAT_llama3b_0075_relativelr_otherparams       3             123,456                 True                0.443               0.588                 1.667                2.082                 0.333                0.577
+                                         CAT_llama3b_02_relativelr_REFAIT       1                                     True                0.440               0.000                 2.000                0.000                 0.000                0.000
+                                                CAT_llama3b_01_relativelr       2             123,456                False                0.330               0.156                 1.500                0.707                 0.000                0.000
+                                                  CAT_llama3b_otherparams       3             123,456                 True                0.297               0.342                 1.333                1.528                 0.000                0.000
+                                                CAT_llama3b_04_relativelr       2             123,456                False                0.220               0.311                 0.500                0.707                 0.500                0.707
+                                            ContinuousAT/Llama3-8B-IT-CAT       1                                     True                0.220               0.000                 0.000                0.000                 1.000                0.000
+                                      meta-llama/Meta-Llama-3-8B-Instruct       1                                     True                0.220               0.000                 0.000                0.000                 1.000                0.000
+                                  CAT_llama3b_0600_relativelr_otherparams       3             123,456                 True                0.147               0.127                 0.333                0.577                 0.333                0.577
+                                              CAT_llama3b_0600_relativelr       3             123,456                 True                0.073               0.127                 0.000                0.000                 0.333                0.577
+                CAT_llama3b_likeZephyr_eps0600_relativelr_utility_100_NEW       3          42,123,456                 True                0.073               0.127                 0.333                0.577                 0.000                0.000
+               CAT_llama3b_likeZephyr_eps0600_relativelr_utility_3000_NEW       3          42,123,456                 True                0.000               0.000                 0.000                0.000                 0.000                0.000
+                    CAT_llama3b_likeZephyr_eps0600_relativelr_utility_NEW       3          42,123,456                 True                0.000               0.000                 0.000                0.000                 0.000                0.000
+                HuggingFaceH4/zephyr-7b-beta with ContinuousAT/Zephyr-CAT       1                                     True                0.000               0.000                 0.000                0.000                 0.000                0.000

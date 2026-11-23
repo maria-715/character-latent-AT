@@ -1,0 +1,66 @@
+ WARN the lock file is up-to-date but uses an older format (v6), run `pixi lock` to upgrade to v7 for improved reproducibility
+Generating harmful split: 0 examples [00:00, ? examples/s]Generating harmful split: 100 examples [00:00, 885.85 examples/s]Generating harmful split: 100 examples [00:00, 881.75 examples/s]
+Generating benign split: 0 examples [00:00, ? examples/s]Generating benign split: 100 examples [00:00, 15164.89 examples/s]
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 72, in run_judges
+    paths = collect_run_paths(cfg.suffixes, cfg.classifier, cfg.filter_by)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 42, in collect_run_paths
+    delete_orphaned_runs()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/database.py", line 70, in delete_orphaned_runs
+    db = get_mongodb_connection()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/database.py", line 32, in get_mongodb_connection
+    return client[db_name]
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1347, in __getitem__
+    return database.Database(self, name)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/pymongo/synchronous/database.py", line 125, in __init__
+    raise TypeError(f"name must be an instance of str, not {type(name)}")
+TypeError: name must be an instance of str, not <class 'NoneType'>
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 130, in main
+    run_judges(judge_cfg)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/hydra/main.py", line 83, in decorated_main
+    return task_function(cfg_passthrough)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 72, in run_judges
+    paths = collect_run_paths(cfg.suffixes, cfg.classifier, cfg.filter_by)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 42, in collect_run_paths
+    delete_orphaned_runs()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/database.py", line 70, in delete_orphaned_runs
+    db = get_mongodb_connection()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/database.py", line 32, in get_mongodb_connection
+    return client[db_name]
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1347, in __getitem__
+    return database.Database(self, name)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/pymongo/synchronous/database.py", line 125, in __init__
+    raise TypeError(f"name must be an instance of str, not {type(name)}")
+TypeError: name must be an instance of str, not <class 'NoneType'>
+Error executing job with overrides: ['model=ContinuousAT/Zephyr-CAT', 'attack=inpainting', 'dataset=jbb_behaviors']
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_attacks.py", line 130, in main
+    run_judges(judge_cfg)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/hydra/main.py", line 83, in decorated_main
+    return task_function(cfg_passthrough)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/errors.py", line 20, in __call__
+    return self.f(*args, **kwargs)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 72, in run_judges
+    paths = collect_run_paths(cfg.suffixes, cfg.classifier, cfg.filter_by)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/run_judges.py", line 42, in collect_run_paths
+    delete_orphaned_runs()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/database.py", line 70, in delete_orphaned_runs
+    db = get_mongodb_connection()
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/adversariallm/io_utils/database.py", line 32, in get_mongodb_connection
+    return client[db_name]
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1347, in __getitem__
+    return database.Database(self, name)
+  File "/auto/users/ms25mds/MSc_Project/AdversariaLLM/.pixi/envs/default/lib/python3.10/site-packages/pymongo/synchronous/database.py", line 125, in __init__
+    raise TypeError(f"name must be an instance of str, not {type(name)}")
+TypeError: name must be an instance of str, not <class 'NoneType'>
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

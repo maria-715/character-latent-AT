@@ -1,0 +1,85 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<01:04,  4.48it/s]Loading weights:   1%|          | 2/291 [00:00<01:11,  4.02it/s]Loading weights:   3%|▎         | 9/291 [00:00<00:13, 20.62it/s]Loading weights:   5%|▌         | 15/291 [00:00<00:08, 30.85it/s]Loading weights:   8%|▊         | 24/291 [00:00<00:05, 45.53it/s]Loading weights:  11%|█▏        | 33/291 [00:00<00:04, 55.80it/s]Loading weights:  14%|█▍        | 42/291 [00:01<00:03, 62.55it/s]Loading weights:  18%|█▊        | 51/291 [00:01<00:03, 68.17it/s]Loading weights:  21%|██        | 60/291 [00:01<00:03, 71.62it/s]Loading weights:  24%|██▎       | 69/291 [00:01<00:03, 73.78it/s]Loading weights:  27%|██▋       | 78/291 [00:01<00:02, 75.22it/s]Loading weights:  30%|██▉       | 87/291 [00:01<00:02, 76.68it/s]Loading weights:  33%|███▎      | 95/291 [00:01<00:02, 74.16it/s]Loading weights:  36%|███▌      | 105/291 [00:01<00:02, 78.18it/s]Loading weights:  39%|███▉      | 114/291 [00:01<00:02, 78.66it/s]Loading weights:  42%|████▏     | 123/291 [00:02<00:02, 78.75it/s]Loading weights:  45%|████▌     | 132/291 [00:02<00:02, 78.99it/s]Loading weights:  48%|████▊     | 141/291 [00:02<00:01, 77.81it/s]Loading weights:  52%|█████▏    | 150/291 [00:02<00:01, 78.76it/s]Loading weights:  55%|█████▍    | 159/291 [00:02<00:01, 78.58it/s]Loading weights:  58%|█████▊    | 168/291 [00:02<00:01, 78.80it/s]Loading weights:  61%|██████    | 177/291 [00:02<00:01, 77.74it/s]Loading weights:  64%|██████▍   | 186/291 [00:02<00:01, 78.10it/s]Loading weights:  67%|██████▋   | 195/291 [00:02<00:01, 78.65it/s]Loading weights:  70%|███████   | 204/291 [00:03<00:01, 78.62it/s]Loading weights:  73%|███████▎  | 213/291 [00:03<00:00, 79.03it/s]Loading weights:  76%|███████▋  | 222/291 [00:03<00:00, 78.77it/s]Loading weights:  79%|███████▉  | 230/291 [00:03<00:00, 75.79it/s]Loading weights:  82%|████████▏ | 240/291 [00:03<00:00, 79.91it/s]Loading weights:  86%|████████▌ | 249/291 [00:03<00:00, 79.39it/s]Loading weights:  89%|████████▊ | 258/291 [00:03<00:00, 79.66it/s]Loading weights:  91%|█████████▏| 266/291 [00:03<00:00, 76.71it/s]Loading weights:  95%|█████████▍| 276/291 [00:03<00:00, 81.05it/s]Loading weights:  98%|█████████▊| 285/291 [00:04<00:00, 80.41it/s]Loading weights: 100%|██████████| 291/291 [00:04<00:00, 70.46it/s]
+Generating XSTest responses:   0%|          | 0/15 [00:00<?, ?it/s][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Generating XSTest responses:   7%|▋         | 1/15 [00:08<02:00,  8.63s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  13%|█▎        | 2/15 [00:16<01:48,  8.35s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  20%|██        | 3/15 [00:24<01:39,  8.25s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  27%|██▋       | 4/15 [00:33<01:30,  8.22s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  33%|███▎      | 5/15 [00:41<01:22,  8.20s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  40%|████      | 6/15 [00:49<01:13,  8.21s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  47%|████▋     | 7/15 [00:57<01:05,  8.18s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  53%|█████▎    | 8/15 [01:05<00:57,  8.17s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  60%|██████    | 9/15 [01:13<00:49,  8.17s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  67%|██████▋   | 10/15 [01:22<00:40,  8.18s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  73%|███████▎  | 11/15 [01:30<00:32,  8.19s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  80%|████████  | 12/15 [01:38<00:24,  8.19s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  87%|████████▋ | 13/15 [01:46<00:16,  8.19s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses:  93%|█████████▎| 14/15 [01:54<00:08,  8.17s/it][transformers] A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=4096) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating XSTest responses: 100%|██████████| 15/15 [01:57<00:00,  6.45s/it]Generating XSTest responses: 100%|██████████| 15/15 [01:57<00:00,  7.82s/it]
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 72, in <module>
+    main(args.input, None, None, args.output, args.strict)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 54, in main
+    df["strmatch_label"] = df.completion.apply(lambda x: strmatch_label(x, strict=STRICT))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/core/series.py", line 4924, in apply
+    ).apply()
+      ^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/core/apply.py", line 1427, in apply
+    return self.apply_standard()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/core/apply.py", line 1507, in apply_standard
+    mapped = obj._map_values(
+             ^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/core/base.py", line 921, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/core/algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "lib.pyx", line 2972, in pandas._libs.lib.map_infer
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 54, in <lambda>
+    df["strmatch_label"] = df.completion.apply(lambda x: strmatch_label(x, strict=STRICT))
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/auto/users/ms25mds/MSc_Project/XSTest/evaluation/classify_completions_strmatch.py", line 8, in strmatch_label
+    completion = completion.lower().strip()
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'lower'
+Traceback (most recent call last):
+  File "/auto/users/ms25mds/MSc_Project/XSTest/compute_metrics.py", line 52, in <module>
+    main(args.input)
+  File "/auto/users/ms25mds/MSc_Project/XSTest/compute_metrics.py", line 8, in main
+    df = pd.read_csv(path)
+         ^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/scratch-ssd/ms25mds/conda_envs/env_XSTest/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/xstest_llama3_classified.csv'

@@ -526,6 +526,7 @@ class MixedAttackPAP:
 
 class MixedAttackPerturbedLLAMA:
     def __init__(self, embed_weights, response_key, model_path, tokenizer,ratio=1.0,is_zero_a_valid_index=False,
+        logging_path=None,
         *args,
         **kwargs,
         ) -> None:
@@ -536,8 +537,12 @@ class MixedAttackPerturbedLLAMA:
         self.model_path = model_path
         self.counter = 0
         self.is_zero_a_valid_index = is_zero_a_valid_index
+        # Per-run root for PAP-generated samples, so concurrent runs don't share
+        # the same on-disk samples/ directory. Falls back to the previous
+        # hardcoded location if not supplied (keeps other callers working).
+        self.logging_path = logging_path if logging_path is not None else "../Continuous-AdvTrain"
 
-     
+
     def generate_pap_examples(self,model,behaviors,targets,save_dir):
 
         config_file = "config/harmbench/PAP_config_mixat.yaml"
@@ -555,7 +560,7 @@ class MixedAttackPerturbedLLAMA:
         test_cases, logs =  method.generate_test_cases(behaviors=behaviors, verbose=False,save_dir=save_dir,method_config=method_config)
         method.save_test_cases(save_dir, test_cases, logs, method_config=method_config)
         return test_cases
-    
+
     def attack(self, model, input_ids, target_ids, attention_mask,ratio=None):
         if ratio is not None:
             self.ratio = ratio
@@ -589,7 +594,7 @@ class MixedAttackPerturbedLLAMA:
                 target_temp_detokenized = self.tokenizer.decode(target_temp,skip_special_tokens = True)
                 targets[f"adv_training{i}"] = target_temp_detokenized
             self.counter = self.counter+1
-            output_path = f"../Continuous-AdvTrain/samples/samples_id_{self.counter}"
+            output_path = f"{self.logging_path}/samples/samples_id_{self.counter}"
             if not os.path.exists(output_path):
                os.makedirs(output_path)
             generated = self.generate_pap_examples(model,behaviours,targets,output_path)
@@ -625,6 +630,7 @@ class MixedAttackPerturbedLLAMA:
         return adv_embeds
 class MixedAttackPerturbedLLAMAPAPGCG:
     def __init__(self, embed_weights, response_key, model_path, tokenizer,ratio=1.0,is_zero_a_valid_index=False,
+        logging_path=None,
         *args,
         **kwargs,
         ) -> None:
@@ -635,8 +641,12 @@ class MixedAttackPerturbedLLAMAPAPGCG:
         self.model_path = model_path
         self.counter = 0
         self.is_zero_a_valid_index = is_zero_a_valid_index
+        # Per-run root for PAP/GCG-generated samples, so concurrent runs don't
+        # share the same on-disk samples/ directory. Falls back to the
+        # previous hardcoded location if not supplied.
+        self.logging_path = logging_path if logging_path is not None else "../Continuous-AdvTrain"
 
-     
+
 
     def generate_gcg_examples(self,model,behaviors,targets,save_dir):
         config_file = "config/harmbench/GCG_config_mixat.yaml"
@@ -670,7 +680,7 @@ class MixedAttackPerturbedLLAMAPAPGCG:
         test_cases, logs =  method.generate_test_cases(behaviors=behaviors, verbose=False,save_dir=save_dir,method_config=method_config)
         method.save_test_cases(save_dir, test_cases, logs, method_config=method_config)
         return test_cases
-    
+
     def attack(self, model, input_ids, target_ids, attention_mask,ratio=None):
         if ratio is not None:
             self.ratio = ratio
@@ -694,7 +704,7 @@ class MixedAttackPerturbedLLAMAPAPGCG:
             for i in range(input_ids.shape[0]):
                 input_temp =  input_ids[i]
                 input_temp = input_temp[input_mask[i]]
-            
+
                 input_temp = input_temp[5:-5] #Important
                 input_temp_detokenized = self.tokenizer.decode(input_temp,skip_special_tokens = True)
                 new_row = {'Behavior': input_temp_detokenized,"Category": None,"Tags": None,"ContextString":None, "BehaviorID": f"adv_training{i}"}
@@ -704,7 +714,7 @@ class MixedAttackPerturbedLLAMAPAPGCG:
                 target_temp_detokenized = self.tokenizer.decode(target_temp,skip_special_tokens = True)
                 targets[f"adv_training{i}"] = target_temp_detokenized
             self.counter = self.counter+1
-            output_path = f"../Continuous-AdvTrain/samples/samples_id_{self.counter}"
+            output_path = f"{self.logging_path}/samples/samples_id_{self.counter}"
             if not os.path.exists(output_path):
                os.makedirs(output_path)
             if self.ratio == 1:
