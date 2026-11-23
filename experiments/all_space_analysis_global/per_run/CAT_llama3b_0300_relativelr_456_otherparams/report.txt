@@ -1,0 +1,83 @@
+# Compact attack-space analysis report
+
+Run ID: CAT_llama3b_0300_relativelr_456_otherparams
+Epsilon: 0.3
+Seed: 456
+
+## What this report measures
+
+Chosen perturbation = perturbation at the best-loss inner step.
+Final perturbation = perturbation at the last inner step.
+All token-level values are aggregated using mean, median, p90, min, and max where relevant.
+
+## Core distances
+
+### Chosen perturbation
+
+- Mean L2 to original embedding: 0.09130011
+- Median L2 to original embedding: 0.09213525
+- P90 L2 to original embedding: 0.10727780
+- Max L2 to original embedding: 0.11660227
+- Mean distance to nearest embedding: 0.09176307
+- Median distance to nearest embedding: 0.09239071
+- P90 distance to nearest embedding: 0.10830759
+- Min distance to nearest embedding: 0.06351173
+- Fraction nearest changed: 0.001760
+- Fraction original still in top-k: 0.998640
+- Mean original-token rank: 1.405885
+
+### Final perturbation
+
+- Mean L2 to original embedding: 0.09232630
+- Median L2 to original embedding: 0.09311445
+- P90 L2 to original embedding: 0.10858974
+- Max L2 to original embedding: 0.11805082
+- Mean distance to nearest embedding: 0.09278271
+- Median distance to nearest embedding: 0.09338716
+- P90 distance to nearest embedding: 0.10954194
+- Min distance to nearest embedding: 0.06434299
+- Fraction nearest changed: 0.001817
+- Fraction original still in top-k: 0.998575
+- Mean original-token rank: 1.426105
+
+### Chosen versus final
+
+- Mean final-minus-chosen L2 to original: 0.00102619
+- Mean final-minus-chosen distance to nearest: 0.00101965
+- Mean final-minus-chosen original rank: 0.02021994
+
+## Best inner-step distribution
+
+ best_loss_step  count  fraction                                      run_id  epsilon  seed
+              1      2  0.001271 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+              2      2  0.001271 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+              3      4  0.002541 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+              4      8  0.005083 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+              5     10  0.006353 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+              6     15  0.009530 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+              7     42  0.026684 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+              8    128  0.081321 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+              9   1363  0.865947 CAT_llama3b_0300_relativelr_456_otherparams      0.3   456
+
+## Top-k neighbour distance by rank
+
+                                     run_id  epsilon  seed chosen_or_final  topk_rank  attack_avg_mean_distance  attack_avg_median_distance  attack_avg_p90_distance  attack_avg_min_distance  attack_avg_max_distance
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456          chosen          1                  0.091763                    0.092391                 0.108308                 0.063512                 0.118579
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456          chosen          2                  0.379618                    0.393605                 0.622540                 0.073383                 0.694188
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456          chosen          3                  0.396084                    0.425042                 0.626582                 0.073575                 0.695536
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456          chosen          4                  0.400770                    0.434451                 0.626774                 0.073657                 0.695691
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456          chosen          5                  0.402032                    0.434912                 0.626868                 0.073712                 0.695779
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456           final          1                  0.092783                    0.093387                 0.109542                 0.064343                 0.119962
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456           final          2                  0.379898                    0.393758                 0.622624                 0.074050                 0.694277
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456           final          3                  0.396343                    0.425142                 0.626664                 0.074247                 0.695615
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456           final          4                  0.401017                    0.434543                 0.626854                 0.074328                 0.695768
+CAT_llama3b_0300_relativelr_456_otherparams      0.3   456           final          5                  0.402275                    0.435003                 0.626949                 0.074385                 0.695855
+
+## Interpretation guide
+
+- If best_loss_step is usually the final step, the attack is still improving at the end of the 10 inner steps.
+- If chosen and final distances are nearly identical, the chosen perturbation is usually the final perturbation.
+- If chosen_frac_nearest_changed is close to 0 and original rank is close to 1, perturbations remain in the original token's local nearest-neighbour cell.
+- If L2 to original increases but distance to nearest stays stable, the perturbation moves inside a local cell without changing nearest token.
+- If top-1 to top-5 distances are very close, the perturbed point lies in a dense/ambiguous part of embedding space.
+- If top-1 is much smaller than top-2, the perturbed point has a clear nearest vocabulary embedding.

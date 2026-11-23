@@ -1,0 +1,147 @@
+# Mean L2 to original embedding, aggregated over seeds
+
+Standard deviation uses ddof=1 (divide by n-1), i.e. the sample standard deviation, since each family only has a handful of seeds and is being treated as a sample from a larger population of possible seeds.
+
+## CAT_llama3b_005_relativelr (epsilon=0.05)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.02491925 +/- 0.00050356
+- Final mean L2 to original:  0.02506161 +/- 0.00049360
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.02540433 +/- 0.00051905
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.36474129 +/- 0.00022351
+- Final attack_avg_mean_distance (topk_rank=1):  0.02554710 +/- 0.00050975
+- Final attack_avg_mean_distance (topk_rank=2):  0.36476069 +/- 0.00022377
+- Chosen fraction nearest changed: 0.00000000 +/- 0.00000000
+- Final fraction nearest changed:  0.00000000 +/- 0.00000000
+- Chosen mean original-token rank: 1.00000000 +/- 0.00000000
+- Final mean original-token rank:  1.00000000 +/- 0.00000000
+- Mean chosen iteration (1-10): 9.9354 +/- 0.0087
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.940845 +/- 0.004686
+
+## CAT_llama3b_01_relativelr (epsilon=0.1)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.04517207 +/- 0.00030168
+- Final mean L2 to original:  0.04522175 +/- 0.00031872
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.04590884 +/- 0.00030391
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.36817438 +/- 0.00001406
+- Final attack_avg_mean_distance (topk_rank=1):  0.04595850 +/- 0.00032093
+- Final attack_avg_mean_distance (topk_rank=2):  0.36818384 +/- 0.00001764
+- Chosen fraction nearest changed: 0.00000000 +/- 0.00000000
+- Final fraction nearest changed:  0.00000000 +/- 0.00000000
+- Chosen mean original-token rank: 1.00000000 +/- 0.00000000
+- Final mean original-token rank:  1.00000000 +/- 0.00000000
+- Mean chosen iteration (1-10): 9.9836 +/- 0.0055
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.984263 +/- 0.006095
+
+## CAT_llama3b_02_relativelr (epsilon=0.2)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.07038765 +/- 0.00285275
+- Final mean L2 to original:  0.07099794 +/- 0.00248264
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.07096073 +/- 0.00284084
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.37407377 +/- 0.00092868
+- Final attack_avg_mean_distance (topk_rank=1):  0.07156999 +/- 0.00247164
+- Final attack_avg_mean_distance (topk_rank=2):  0.37420888 +/- 0.00087770
+- Chosen fraction nearest changed: 0.00004182 +/- 0.00004703
+- Final fraction nearest changed:  0.00004182 +/- 0.00004703
+- Chosen mean original-token rank: 1.00975400 +/- 0.00984959
+- Final mean original-token rank:  1.00975400 +/- 0.00984959
+- Mean chosen iteration (1-10): 9.7988 +/- 0.1550
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.901378 +/- 0.047417
+
+## CAT_llama3b_04_relativelr (epsilon=0.4)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.10171698 +/- 0.00552892
+- Final mean L2 to original:  0.10467074 +/- 0.00469656
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.10214402 +/- 0.00550516
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.38383615 +/- 0.00140938
+- Final attack_avg_mean_distance (topk_rank=1):  0.10508010 +/- 0.00467812
+- Final attack_avg_mean_distance (topk_rank=2):  0.38473387 +/- 0.00119262
+- Chosen fraction nearest changed: 0.00264643 +/- 0.00152001
+- Final fraction nearest changed:  0.00285250 +/- 0.00141203
+- Chosen mean original-token rank: 1.50446568 +/- 0.14147972
+- Final mean original-token rank:  1.56016106 +/- 0.10759201
+- Mean chosen iteration (1-10): 9.4569 +/- 0.1382
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.759163 +/- 0.061176
+
+## eps0075_seed_likeLlama2 (epsilon=0.075)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.03491246 +/- 0.00106917
+- Final mean L2 to original:  0.03500808 +/- 0.00101600
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.03566154 +/- 0.00107410
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.36621219 +/- 0.00027228
+- Final attack_avg_mean_distance (topk_rank=1):  0.03575616 +/- 0.00102393
+- Final attack_avg_mean_distance (topk_rank=2):  0.36622657 +/- 0.00026665
+- Chosen fraction nearest changed: 0.00000000 +/- 0.00000000
+- Final fraction nearest changed:  0.00000000 +/- 0.00000000
+- Chosen mean original-token rank: 1.00000000 +/- 0.00000000
+- Final mean original-token rank:  1.00000000 +/- 0.00000000
+- Mean chosen iteration (1-10): 9.9621 +/- 0.0281
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.970566 +/- 0.014091
+
+## eps0150_seed_likeLlama2 (epsilon=0.15)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.06035042 +/- 0.00038567
+- Final mean L2 to original:  0.06046205 +/- 0.00037393
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.06098476 +/- 0.00038229
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.37127022 +/- 0.00028421
+- Final attack_avg_mean_distance (topk_rank=1):  0.06109582 +/- 0.00037078
+- Final attack_avg_mean_distance (topk_rank=2):  0.37129338 +/- 0.00028632
+- Chosen fraction nearest changed: 0.00000000 +/- 0.00000000
+- Final fraction nearest changed:  0.00000000 +/- 0.00000000
+- Chosen mean original-token rank: 1.00000000 +/- 0.00000000
+- Final mean original-token rank:  1.00000000 +/- 0.00000000
+- Mean chosen iteration (1-10): 9.9617 +/- 0.0154
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.967990 +/- 0.007887
+
+## eps0300_seed_likeLlama2 (epsilon=0.3)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.09349558 +/- 0.00361382
+- Final mean L2 to original:  0.09416618 +/- 0.00336226
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.09394930 +/- 0.00359193
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.38029970 +/- 0.00062908
+- Final attack_avg_mean_distance (topk_rank=1):  0.09461531 +/- 0.00334176
+- Final attack_avg_mean_distance (topk_rank=2):  0.38049734 +/- 0.00056260
+- Chosen fraction nearest changed: 0.00111348 +/- 0.00041900
+- Final fraction nearest changed:  0.00114186 +/- 0.00040927
+- Chosen mean original-token rank: 1.19624563 +/- 0.03388329
+- Final mean original-token rank:  1.20541919 +/- 0.03402863
+- Mean chosen iteration (1-10): 9.8459 +/- 0.0435
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.899339 +/- 0.030605
+
+## eps0600_seed_likeLlama2 (epsilon=0.6)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.13176164 +/- 0.00495668
+- Final mean L2 to original:  0.13788727 +/- 0.00295253
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.13207726 +/- 0.00494852
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.39605111 +/- 0.00195515
+- Final attack_avg_mean_distance (topk_rank=1):  0.13817905 +/- 0.00295427
+- Final attack_avg_mean_distance (topk_rank=2):  0.39825533 +/- 0.00129092
+- Chosen fraction nearest changed: 0.01015410 +/- 0.00203582
+- Final fraction nearest changed:  0.01146787 +/- 0.00248761
+- Chosen mean original-token rank: 3.80511249 +/- 0.54490627
+- Final mean original-token rank:  4.14670005 +/- 0.66395305
+- Mean chosen iteration (1-10): 9.2315 +/- 0.2707
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.682386 +/- 0.068443
+
+## github_seed_likeLlama2 (epsilon=0.05)
+- Seeds: [42, 123, 456] (n=3)
+- Chosen mean L2 to original: 0.02946520 +/- 0.00000961
+- Final mean L2 to original:  0.02947053 +/- 0.00000756
+- Chosen attack_avg_mean_distance (topk_rank=1): 0.03009443 +/- 0.00000877
+- Chosen attack_avg_mean_distance (topk_rank=2): 0.36535987 +/- 0.00005731
+- Final attack_avg_mean_distance (topk_rank=1):  0.03009974 +/- 0.00001088
+- Final attack_avg_mean_distance (topk_rank=2):  0.36534503 +/- 0.00005824
+- Chosen fraction nearest changed: 0.00000000 +/- 0.00000000
+- Final fraction nearest changed:  0.00000000 +/- 0.00000000
+- Chosen mean original-token rank: 1.00000000 +/- 0.00000000
+- Final mean original-token rank:  1.00000000 +/- 0.00000000
+- Mean chosen iteration (1-10): 9.6718 +/- 0.0399
+- Median chosen iteration (1-10), averaged across seeds: 10.0000 +/- 0.0000
+- Fraction selecting final (10th) iteration: 0.762242 +/- 0.025691

@@ -1,0 +1,78 @@
+# Compact attack-space analysis report
+
+Run ID: eps0150_seed123_likeZephyr
+Epsilon: 0.15
+Seed: 123
+
+## What this report measures
+
+Chosen perturbation = perturbation at the best-loss inner step.
+Final perturbation = perturbation at the last inner step.
+All token-level values are aggregated using mean, median, p90, min, and max where relevant.
+
+## Core distances
+
+### Chosen perturbation
+
+- Mean L2 to original embedding: 0.06106664
+- Median L2 to original embedding: 0.06195711
+- P90 L2 to original embedding: 0.06803643
+- Max L2 to original embedding: 0.07162409
+- Mean distance to nearest embedding: 0.06169512
+- Median distance to nearest embedding: 0.06204937
+- P90 distance to nearest embedding: 0.07056602
+- Min distance to nearest embedding: 0.04490010
+- Fraction nearest changed: 0.000000
+- Fraction original still in top-k: 1.000000
+- Mean original-token rank: 1.000000
+
+### Final perturbation
+
+- Mean L2 to original embedding: 0.06118868
+- Median L2 to original embedding: 0.06207597
+- P90 L2 to original embedding: 0.06819485
+- Max L2 to original embedding: 0.07180059
+- Mean distance to nearest embedding: 0.06181625
+- Median distance to nearest embedding: 0.06217159
+- P90 distance to nearest embedding: 0.07070995
+- Min distance to nearest embedding: 0.04498036
+- Fraction nearest changed: 0.000000
+- Fraction original still in top-k: 1.000000
+- Mean original-token rank: 1.000000
+
+### Chosen versus final
+
+- Mean final-minus-chosen L2 to original: 0.00012204
+- Mean final-minus-chosen distance to nearest: 0.00012113
+- Mean final-minus-chosen original rank: 0.00000000
+
+## Best inner-step distribution
+
+ best_loss_step  count  fraction                     run_id  epsilon  seed
+              6      1  0.000639 eps0150_seed123_likeZephyr     0.15   123
+              7      5  0.003195 eps0150_seed123_likeZephyr     0.15   123
+              8     41  0.026198 eps0150_seed123_likeZephyr     0.15   123
+              9   1518  0.969968 eps0150_seed123_likeZephyr     0.15   123
+
+## Top-k neighbour distance by rank
+
+                    run_id  epsilon  seed chosen_or_final  topk_rank  attack_avg_mean_distance  attack_avg_median_distance  attack_avg_p90_distance  attack_avg_min_distance  attack_avg_max_distance
+eps0150_seed123_likeZephyr     0.15   123          chosen          1                  0.061695                    0.062049                 0.070566                 0.044900                 0.076178
+eps0150_seed123_likeZephyr     0.15   123          chosen          2                  0.371747                    0.387214                 0.619203                 0.057825                 0.691523
+eps0150_seed123_likeZephyr     0.15   123          chosen          3                  0.388962                    0.419779                 0.623832                 0.057990                 0.693146
+eps0150_seed123_likeZephyr     0.15   123          chosen          4                  0.394204                    0.430003                 0.624085                 0.058070                 0.693305
+eps0150_seed123_likeZephyr     0.15   123          chosen          5                  0.395709                    0.430382                 0.624172                 0.058120                 0.693392
+eps0150_seed123_likeZephyr     0.15   123           final          1                  0.061816                    0.062172                 0.070710                 0.044980                 0.076338
+eps0150_seed123_likeZephyr     0.15   123           final          2                  0.371773                    0.387229                 0.619208                 0.057873                 0.691527
+eps0150_seed123_likeZephyr     0.15   123           final          3                  0.388986                    0.419790                 0.623837                 0.058038                 0.693150
+eps0150_seed123_likeZephyr     0.15   123           final          4                  0.394226                    0.430013                 0.624090                 0.058118                 0.693309
+eps0150_seed123_likeZephyr     0.15   123           final          5                  0.395731                    0.430392                 0.624177                 0.058168                 0.693396
+
+## Interpretation guide
+
+- If best_loss_step is usually the final step, the attack is still improving at the end of the 10 inner steps.
+- If chosen and final distances are nearly identical, the chosen perturbation is usually the final perturbation.
+- If chosen_frac_nearest_changed is close to 0 and original rank is close to 1, perturbations remain in the original token's local nearest-neighbour cell.
+- If L2 to original increases but distance to nearest stays stable, the perturbation moves inside a local cell without changing nearest token.
+- If top-1 to top-5 distances are very close, the perturbed point lies in a dense/ambiguous part of embedding space.
+- If top-1 is much smaller than top-2, the perturbed point has a clear nearest vocabulary embedding.

@@ -1,0 +1,67 @@
+# Multi-run compact attack-space analysis report
+
+## Runs loaded
+
+- Number of runs: 12
+- Epsilons: [0.05, 0.1, 0.2, 0.4]
+- Seeds: [42, 123, 456]
+
+## Epsilon-level summary
+
+ epsilon  num_runs  seeds_seen  total_attacks  mean_best_loss_step  std_best_loss_step  mean_frac_best_step_last  mean_chosen_l2_to_original  std_chosen_l2_to_original  mean_chosen_dist_to_nearest  std_chosen_dist_to_nearest  mean_chosen_frac_nearest_changed  mean_chosen_frac_original_in_topk  mean_chosen_original_rank  mean_final_l2_to_original  std_final_l2_to_original  mean_final_dist_to_nearest  std_final_dist_to_nearest  mean_final_frac_nearest_changed  mean_final_frac_original_in_topk  mean_final_original_rank  mean_delta_final_minus_chosen_l2  mean_delta_final_minus_chosen_dist_nearest
+    0.05         3           3          12110             5.570325            0.121944                  0.148431                    0.008634               3.524603e-04                     0.008534                2.482897e-04                               0.0                                1.0                        1.0                   0.008637              3.485955e-04                    0.008535               2.474569e-04                              0.0                               1.0                       1.0                      1.612215e-06                                7.541073e-08
+    0.10         3           3          11878             5.545046            0.081768                  0.155503                    0.017674               2.419384e-06                     0.017711                2.315591e-06                               0.0                                1.0                        1.0                   0.017674              2.419394e-06                    0.017711               2.319813e-06                              0.0                               1.0                       1.0                      3.390176e-11                                1.411003e-10
+    0.20         3           3          11857             5.856174            0.101743                  0.180307                    0.035352               1.290243e-11                     0.035381                4.101911e-07                               0.0                                1.0                        1.0                   0.035352              3.594764e-12                    0.035381               4.085880e-07                              0.0                               1.0                       1.0                      7.513291e-11                                1.652036e-09
+    0.40         3           3          11672             5.773255            0.205086                  0.197259                    0.070703               1.086896e-11                     0.070719                3.883969e-07                               0.0                                1.0                        1.0                   0.070703              2.411727e-12                    0.070719               3.894982e-07                              0.0                               1.0                       1.0                      9.034326e-11                                5.548974e-10
+
+## Best-step distribution across runs
+
+ epsilon  best_loss_step  mean_fraction  total_count
+    0.05               0       0.000593            5
+    0.05               1       0.037174          447
+    0.05               2       0.093040         1125
+    0.05               3       0.116875         1416
+    0.05               4       0.111811         1352
+    0.05               5       0.121074         1464
+    0.05               6       0.120796         1460
+    0.05               7       0.120049         1456
+    0.05               8       0.130355         1580
+    0.05               9       0.148431         1805
+    0.10               0       0.013903           55
+    0.10               1       0.034917          416
+    0.10               2       0.090919         1080
+    0.10               3       0.136993         1627
+    0.10               4       0.098906         1174
+    0.10               5       0.119471         1418
+    0.10               6       0.107659         1280
+    0.10               7       0.129137         1534
+    0.10               8       0.121862         1447
+    0.10               9       0.155503         1847
+    0.20               0       0.006431           51
+    0.20               1       0.060917          721
+    0.20               2       0.041170          488
+    0.20               3       0.110177         1306
+    0.20               4       0.085629         1015
+    0.20               5       0.116203         1378
+    0.20               6       0.114445         1357
+    0.20               7       0.145493         1726
+    0.20               8       0.141372         1676
+    0.20               9       0.180307         2139
+    0.40               0       0.004620           54
+    0.40               1       0.104498         1221
+    0.40               2       0.038862          454
+    0.40               3       0.081415          950
+    0.40               4       0.084391          985
+    0.40               5       0.106345         1241
+    0.40               6       0.113978         1330
+    0.40               7       0.130757         1526
+    0.40               8       0.137875         1609
+    0.40               9       0.197259         2302
+
+## Interpretation guide
+
+- Compare chosen_mean_l2_to_original across epsilon to see whether larger epsilon actually moves points further from original embeddings.
+- Compare chosen_mean_dist_to_nearest across epsilon to see whether perturbations move closer to neighbouring vocabulary embeddings.
+- Compare chosen_frac_nearest_changed and final_frac_nearest_changed to detect actual nearest-neighbour boundary crossings.
+- Compare mean_best_loss_step across epsilon to see whether stronger epsilon changes the attack optimisation dynamics.
+- Check seed variation before making claims about geometry.

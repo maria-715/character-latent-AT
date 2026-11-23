@@ -1,0 +1,81 @@
+# Compact attack-space analysis report
+
+Run ID: eps0300_seed42_likeLlama2
+Epsilon: 0.3
+Seed: 42
+
+## What this report measures
+
+Chosen perturbation = perturbation at the best-loss inner step.
+Final perturbation = perturbation at the last inner step.
+All token-level values are aggregated using mean, median, p90, min, and max where relevant.
+
+## Core distances
+
+### Chosen perturbation
+
+- Mean L2 to original embedding: 0.09681580
+- Median L2 to original embedding: 0.09829988
+- P90 L2 to original embedding: 0.11390940
+- Max L2 to original embedding: 0.12263415
+- Mean distance to nearest embedding: 0.09724871
+- Median distance to nearest embedding: 0.09853506
+- P90 distance to nearest embedding: 0.11480357
+- Min distance to nearest embedding: 0.06435577
+- Fraction nearest changed: 0.000971
+- Fraction original still in top-k: 0.999437
+- Mean original-token rank: 1.162503
+
+### Final perturbation
+
+- Mean L2 to original embedding: 0.09731713
+- Median L2 to original embedding: 0.09878739
+- P90 L2 to original embedding: 0.11452808
+- Max L2 to original embedding: 0.12337772
+- Mean distance to nearest embedding: 0.09774635
+- Median distance to nearest embedding: 0.09902380
+- P90 distance to nearest embedding: 0.11541519
+- Min distance to nearest embedding: 0.06473517
+- Fraction nearest changed: 0.001014
+- Fraction original still in top-k: 0.999409
+- Mean original-token rank: 1.171356
+
+### Chosen versus final
+
+- Mean final-minus-chosen L2 to original: 0.00050133
+- Mean final-minus-chosen distance to nearest: 0.00049763
+- Mean final-minus-chosen original rank: 0.00885315
+
+## Best inner-step distribution
+
+ best_loss_step  count  fraction                    run_id  epsilon  seed
+              3      1  0.000635 eps0300_seed42_likeLlama2      0.3    42
+              4      4  0.002538 eps0300_seed42_likeLlama2      0.3    42
+              5      3  0.001904 eps0300_seed42_likeLlama2      0.3    42
+              6     12  0.007614 eps0300_seed42_likeLlama2      0.3    42
+              7     13  0.008249 eps0300_seed42_likeLlama2      0.3    42
+              8     94  0.059645 eps0300_seed42_likeLlama2      0.3    42
+              9   1449  0.919416 eps0300_seed42_likeLlama2      0.3    42
+
+## Top-k neighbour distance by rank
+
+                   run_id  epsilon  seed chosen_or_final  topk_rank  attack_avg_mean_distance  attack_avg_median_distance  attack_avg_p90_distance  attack_avg_min_distance  attack_avg_max_distance
+eps0300_seed42_likeLlama2      0.3    42          chosen          1                  0.097249                    0.098535                 0.114804                 0.064356                 0.124375
+eps0300_seed42_likeLlama2      0.3    42          chosen          2                  0.380915                    0.394561                 0.623107                 0.073956                 0.694410
+eps0300_seed42_likeLlama2      0.3    42          chosen          3                  0.397571                    0.426007                 0.627219                 0.074141                 0.696056
+eps0300_seed42_likeLlama2      0.3    42          chosen          4                  0.402324                    0.435061                 0.627442                 0.074221                 0.696226
+eps0300_seed42_likeLlama2      0.3    42          chosen          5                  0.403540                    0.435512                 0.627542                 0.074278                 0.696311
+eps0300_seed42_likeLlama2      0.3    42           final          1                  0.097746                    0.099024                 0.115415                 0.064735                 0.125078
+eps0300_seed42_likeLlama2      0.3    42           final          2                  0.381065                    0.394638                 0.623158                 0.074279                 0.694444
+eps0300_seed42_likeLlama2      0.3    42           final          3                  0.397711                    0.426085                 0.627265                 0.074466                 0.696084
+eps0300_seed42_likeLlama2      0.3    42           final          4                  0.402460                    0.435127                 0.627486                 0.074546                 0.696255
+eps0300_seed42_likeLlama2      0.3    42           final          5                  0.403674                    0.435577                 0.627586                 0.074602                 0.696340
+
+## Interpretation guide
+
+- If best_loss_step is usually the final step, the attack is still improving at the end of the 10 inner steps.
+- If chosen and final distances are nearly identical, the chosen perturbation is usually the final perturbation.
+- If chosen_frac_nearest_changed is close to 0 and original rank is close to 1, perturbations remain in the original token's local nearest-neighbour cell.
+- If L2 to original increases but distance to nearest stays stable, the perturbation moves inside a local cell without changing nearest token.
+- If top-1 to top-5 distances are very close, the perturbed point lies in a dense/ambiguous part of embedding space.
+- If top-1 is much smaller than top-2, the perturbed point has a clear nearest vocabulary embedding.

@@ -1,0 +1,83 @@
+# Compact attack-space analysis report
+
+Run ID: CAT_zephyr_github_42
+Epsilon: 0.075
+Seed: 42
+
+## What this report measures
+
+Chosen perturbation = perturbation at the best-loss inner step.
+Final perturbation = perturbation at the last inner step.
+All token-level values are aggregated using mean, median, p90, min, and max where relevant.
+
+## Core distances
+
+### Chosen perturbation
+
+- Mean L2 to original embedding: 0.01325246
+- Median L2 to original embedding: 0.01325657
+- P90 L2 to original embedding: 0.01325659
+- Max L2 to original embedding: 0.01325662
+- Mean distance to nearest embedding: 0.01326724
+- Median distance to nearest embedding: 0.01354801
+- P90 distance to nearest embedding: 0.01478686
+- Min distance to nearest embedding: 0.00942329
+- Fraction nearest changed: 0.000000
+- Fraction original still in top-k: 1.000000
+- Mean original-token rank: 1.000000
+
+### Final perturbation
+
+- Mean L2 to original embedding: 0.01325278
+- Median L2 to original embedding: 0.01325684
+- P90 L2 to original embedding: 0.01325684
+- Max L2 to original embedding: 0.01325684
+- Mean distance to nearest embedding: 0.01326758
+- Median distance to nearest embedding: 0.01354843
+- P90 distance to nearest embedding: 0.01478733
+- Min distance to nearest embedding: 0.00942273
+- Fraction nearest changed: 0.000000
+- Fraction original still in top-k: 1.000000
+- Mean original-token rank: 1.000000
+
+### Chosen versus final
+
+- Mean final-minus-chosen L2 to original: 0.00000033
+- Mean final-minus-chosen distance to nearest: 0.00000033
+- Mean final-minus-chosen original rank: 0.00000000
+
+## Best inner-step distribution
+
+ best_loss_step  count  fraction               run_id  epsilon  seed
+              1      1  0.000253 CAT_zephyr_github_42    0.075    42
+              2     12  0.003032 CAT_zephyr_github_42    0.075    42
+              3    145  0.036635 CAT_zephyr_github_42    0.075    42
+              4    274  0.069227 CAT_zephyr_github_42    0.075    42
+              5    396  0.100051 CAT_zephyr_github_42    0.075    42
+              6    557  0.140728 CAT_zephyr_github_42    0.075    42
+              7    730  0.184437 CAT_zephyr_github_42    0.075    42
+              8    821  0.207428 CAT_zephyr_github_42    0.075    42
+              9   1022  0.258211 CAT_zephyr_github_42    0.075    42
+
+## Top-k neighbour distance by rank
+
+              run_id  epsilon  seed chosen_or_final  topk_rank  attack_avg_mean_distance  attack_avg_median_distance  attack_avg_p90_distance  attack_avg_min_distance  attack_avg_max_distance
+CAT_zephyr_github_42    0.075    42          chosen          1                  0.013267                    0.013548                 0.014787                 0.009423                 0.016296
+CAT_zephyr_github_42    0.075    42          chosen          2                  0.135427                    0.137288                 0.173691                 0.076538                 0.192666
+CAT_zephyr_github_42    0.075    42          chosen          3                  0.137531                    0.143348                 0.174406                 0.076702                 0.192839
+CAT_zephyr_github_42    0.075    42          chosen          4                  0.137673                    0.143531                 0.174483                 0.076846                 0.192901
+CAT_zephyr_github_42    0.075    42          chosen          5                  0.137729                    0.143592                 0.174520                 0.076919                 0.192934
+CAT_zephyr_github_42    0.075    42           final          1                  0.013268                    0.013548                 0.014787                 0.009423                 0.016296
+CAT_zephyr_github_42    0.075    42           final          2                  0.135384                    0.137277                 0.173640                 0.076431                 0.192618
+CAT_zephyr_github_42    0.075    42           final          3                  0.137478                    0.143300                 0.174348                 0.076597                 0.192790
+CAT_zephyr_github_42    0.075    42           final          4                  0.137620                    0.143481                 0.174425                 0.076740                 0.192851
+CAT_zephyr_github_42    0.075    42           final          5                  0.137675                    0.143542                 0.174462                 0.076813                 0.192884
+
+## Interpretation guide
+
+- If best_loss_step is usually the final step, the attack is still improving at the end of the 10 inner steps.
+- If chosen and final distances are nearly identical, the chosen perturbation is usually the final perturbation.
+- If chosen_frac_nearest_changed is close to 0 and original rank is close to 1, perturbations remain in the original token's local nearest-neighbour cell.
+- If L2 to original increases but distance to nearest stays stable, the perturbation moves inside a local cell without changing nearest token.
+- If top-1 to top-5 distances are very close, the perturbed point lies in a dense/ambiguous part of embedding space.
+- If top-1 is much smaller than top-2, the perturbed point has a clear nearest vocabulary embedding.

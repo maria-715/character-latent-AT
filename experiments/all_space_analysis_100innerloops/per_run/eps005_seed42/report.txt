@@ -1,0 +1,167 @@
+# Compact attack-space analysis report
+
+Run ID: eps005_seed42
+Epsilon: 0.05
+Seed: 42
+
+## What this report measures
+
+Chosen perturbation = perturbation at the best-loss inner step.
+Final perturbation = perturbation at the last inner step.
+All token-level values are aggregated using mean, median, p90, min, and max where relevant.
+
+## Core distances
+
+### Chosen perturbation
+
+- Mean L2 to original embedding: 0.00883482
+- Median L2 to original embedding: 0.00883512
+- P90 L2 to original embedding: 0.00883553
+- Max L2 to original embedding: 0.00883571
+- Mean distance to nearest embedding: 0.00867851
+- Median distance to nearest embedding: 0.00927133
+- P90 distance to nearest embedding: 0.01099693
+- Min distance to nearest embedding: 0.00122543
+- Fraction nearest changed: 0.000000
+- Fraction original still in top-k: 1.000000
+- Mean original-token rank: 1.000000
+
+### Final perturbation
+
+- Mean L2 to original embedding: 0.00883772
+- Median L2 to original embedding: 0.00883789
+- P90 L2 to original embedding: 0.00883789
+- Max L2 to original embedding: 0.00883789
+- Mean distance to nearest embedding: 0.00868160
+- Median distance to nearest embedding: 0.00927410
+- P90 distance to nearest embedding: 0.01099893
+- Min distance to nearest embedding: 0.00122775
+- Fraction nearest changed: 0.000000
+- Fraction original still in top-k: 1.000000
+- Mean original-token rank: 1.000000
+
+### Chosen versus final
+
+- Mean final-minus-chosen L2 to original: 0.00000290
+- Mean final-minus-chosen distance to nearest: 0.00000309
+- Mean final-minus-chosen original rank: 0.00000000
+
+## Best inner-step distribution
+
+ best_loss_step  count  fraction        run_id  epsilon  seed
+              7      1  0.000278 eps005_seed42     0.05    42
+              8      4  0.001110 eps005_seed42     0.05    42
+              9      2  0.000555 eps005_seed42     0.05    42
+             10      7  0.001943 eps005_seed42     0.05    42
+             11     14  0.003887 eps005_seed42     0.05    42
+             12     26  0.007218 eps005_seed42     0.05    42
+             13     22  0.006108 eps005_seed42     0.05    42
+             14     25  0.006941 eps005_seed42     0.05    42
+             15     24  0.006663 eps005_seed42     0.05    42
+             16     29  0.008051 eps005_seed42     0.05    42
+             17     23  0.006385 eps005_seed42     0.05    42
+             18     31  0.008606 eps005_seed42     0.05    42
+             19     42  0.011660 eps005_seed42     0.05    42
+             20     44  0.012215 eps005_seed42     0.05    42
+             21     52  0.014436 eps005_seed42     0.05    42
+             22     44  0.012215 eps005_seed42     0.05    42
+             23     40  0.011105 eps005_seed42     0.05    42
+             24     48  0.013326 eps005_seed42     0.05    42
+             25     38  0.010550 eps005_seed42     0.05    42
+             26     44  0.012215 eps005_seed42     0.05    42
+             27     40  0.011105 eps005_seed42     0.05    42
+             28     34  0.009439 eps005_seed42     0.05    42
+             29     45  0.012493 eps005_seed42     0.05    42
+             30     43  0.011938 eps005_seed42     0.05    42
+             31     46  0.012771 eps005_seed42     0.05    42
+             32     36  0.009994 eps005_seed42     0.05    42
+             33     48  0.013326 eps005_seed42     0.05    42
+             34     44  0.012215 eps005_seed42     0.05    42
+             35     47  0.013048 eps005_seed42     0.05    42
+             36     39  0.010827 eps005_seed42     0.05    42
+             37     55  0.015269 eps005_seed42     0.05    42
+             38     44  0.012215 eps005_seed42     0.05    42
+             39     50  0.013881 eps005_seed42     0.05    42
+             40     42  0.011660 eps005_seed42     0.05    42
+             41     34  0.009439 eps005_seed42     0.05    42
+             42     36  0.009994 eps005_seed42     0.05    42
+             43     38  0.010550 eps005_seed42     0.05    42
+             44     41  0.011383 eps005_seed42     0.05    42
+             45     49  0.013604 eps005_seed42     0.05    42
+             46     45  0.012493 eps005_seed42     0.05    42
+             47     36  0.009994 eps005_seed42     0.05    42
+             48     38  0.010550 eps005_seed42     0.05    42
+             49     38  0.010550 eps005_seed42     0.05    42
+             50     42  0.011660 eps005_seed42     0.05    42
+             51     38  0.010550 eps005_seed42     0.05    42
+             52     45  0.012493 eps005_seed42     0.05    42
+             53     48  0.013326 eps005_seed42     0.05    42
+             54     36  0.009994 eps005_seed42     0.05    42
+             55     42  0.011660 eps005_seed42     0.05    42
+             56     38  0.010550 eps005_seed42     0.05    42
+             57     40  0.011105 eps005_seed42     0.05    42
+             58     32  0.008884 eps005_seed42     0.05    42
+             59     47  0.013048 eps005_seed42     0.05    42
+             60     32  0.008884 eps005_seed42     0.05    42
+             61     34  0.009439 eps005_seed42     0.05    42
+             62     31  0.008606 eps005_seed42     0.05    42
+             63     35  0.009717 eps005_seed42     0.05    42
+             64     37  0.010272 eps005_seed42     0.05    42
+             65     35  0.009717 eps005_seed42     0.05    42
+             66     52  0.014436 eps005_seed42     0.05    42
+             67     32  0.008884 eps005_seed42     0.05    42
+             68     39  0.010827 eps005_seed42     0.05    42
+             69     37  0.010272 eps005_seed42     0.05    42
+             70     38  0.010550 eps005_seed42     0.05    42
+             71     40  0.011105 eps005_seed42     0.05    42
+             72     35  0.009717 eps005_seed42     0.05    42
+             73     40  0.011105 eps005_seed42     0.05    42
+             74     49  0.013604 eps005_seed42     0.05    42
+             75     44  0.012215 eps005_seed42     0.05    42
+             76     42  0.011660 eps005_seed42     0.05    42
+             77     32  0.008884 eps005_seed42     0.05    42
+             78     46  0.012771 eps005_seed42     0.05    42
+             79     35  0.009717 eps005_seed42     0.05    42
+             80     53  0.014714 eps005_seed42     0.05    42
+             81     36  0.009994 eps005_seed42     0.05    42
+             82     43  0.011938 eps005_seed42     0.05    42
+             83     47  0.013048 eps005_seed42     0.05    42
+             84     40  0.011105 eps005_seed42     0.05    42
+             85     34  0.009439 eps005_seed42     0.05    42
+             86     49  0.013604 eps005_seed42     0.05    42
+             87     58  0.016102 eps005_seed42     0.05    42
+             88     40  0.011105 eps005_seed42     0.05    42
+             89     33  0.009162 eps005_seed42     0.05    42
+             90     42  0.011660 eps005_seed42     0.05    42
+             91     38  0.010550 eps005_seed42     0.05    42
+             92     50  0.013881 eps005_seed42     0.05    42
+             93     36  0.009994 eps005_seed42     0.05    42
+             94     56  0.015547 eps005_seed42     0.05    42
+             95     46  0.012771 eps005_seed42     0.05    42
+             96     50  0.013881 eps005_seed42     0.05    42
+             97     49  0.013604 eps005_seed42     0.05    42
+             98     54  0.014992 eps005_seed42     0.05    42
+             99     47  0.013048 eps005_seed42     0.05    42
+
+## Top-k neighbour distance by rank
+
+       run_id  epsilon  seed chosen_or_final  topk_rank  attack_avg_mean_distance  attack_avg_median_distance  attack_avg_p90_distance  attack_avg_min_distance  attack_avg_max_distance
+eps005_seed42     0.05    42          chosen          1                  0.008679                    0.009271                 0.010997                 0.001225                 0.012922
+eps005_seed42     0.05    42          chosen          2                  0.135276                    0.137186                 0.173626                 0.076452                 0.192483
+eps005_seed42     0.05    42          chosen          3                  0.137443                    0.143450                 0.174370                 0.076630                 0.192667
+eps005_seed42     0.05    42          chosen          4                  0.137588                    0.143627                 0.174451                 0.076758                 0.192729
+eps005_seed42     0.05    42          chosen          5                  0.137644                    0.143691                 0.174489                 0.076824                 0.192763
+eps005_seed42     0.05    42           final          1                  0.008682                    0.009274                 0.010999                 0.001228                 0.012924
+eps005_seed42     0.05    42           final          2                  0.135268                    0.137189                 0.173611                 0.076440                 0.192469
+eps005_seed42     0.05    42           final          3                  0.137433                    0.143440                 0.174354                 0.076619                 0.192652
+eps005_seed42     0.05    42           final          4                  0.137578                    0.143618                 0.174435                 0.076744                 0.192714
+eps005_seed42     0.05    42           final          5                  0.137634                    0.143682                 0.174473                 0.076810                 0.192748
+
+## Interpretation guide
+
+- If best_loss_step is usually the final step, the attack is still improving at the end of the 10 inner steps.
+- If chosen and final distances are nearly identical, the chosen perturbation is usually the final perturbation.
+- If chosen_frac_nearest_changed is close to 0 and original rank is close to 1, perturbations remain in the original token's local nearest-neighbour cell.
+- If L2 to original increases but distance to nearest stays stable, the perturbation moves inside a local cell without changing nearest token.
+- If top-1 to top-5 distances are very close, the perturbed point lies in a dense/ambiguous part of embedding space.
+- If top-1 is much smaller than top-2, the perturbed point has a clear nearest vocabulary embedding.
