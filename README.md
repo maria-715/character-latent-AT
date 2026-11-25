@@ -2,7 +2,7 @@
 
 Code, results and logs for the Oxford MSc thesis and the NeurIPS 2026 (Agents in the Wild) workshop paper, both named _Characterising Latent-Space Adversarial Training for LLM Safety_. The work studies **continuous (embedding-space) adversarial training (CAT)** and **latent adversarial training (LAT)** of LLMs (Zephyr-7B-β, a Mistral-7B fine-tune, and Llama-3-8B-Instruct). It looks at robustness to jailbreak attacks, utility, and over-refusal of benign prompts.
 
-**Trained models (LoRA adapters):** https://huggingface.co/collections/maria715/masters-thesis (also listed at https://huggingface.co/maria715). The models used in the thesis and paper are listed in [`commands/All_final_used_models.txt`](commands/All_final_used_models.txt); the collection also contains exploratory runs (`diag_*`).
+**Trained models (LoRA adapters):** https://huggingface.co/collections/maria715/masters-thesis (also listed at https://huggingface.co/maria715). The models used in the thesis and paper are listed in [`commands/All_final_used_models.txt`](commands/All_final_used_models.txt).
 
 ---
 
